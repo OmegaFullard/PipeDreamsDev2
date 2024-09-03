@@ -2,10 +2,10 @@
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="head">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../App_Themes/sign-in.css" rel="stylesheet" />
-            </asp:Content>
-           <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder1" >
+           
+      
     <h2><%: Title %></h2>
 
     <div class="row">
@@ -61,6 +61,12 @@
             </section>
         </div>
     </div>              
-           
+         <div>
+              <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#twitter"/></svg></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#instagram"/></svg></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use href="#facebook"/></svg></a></li>
+    </ul>
+         </div>  
 </asp:Content>
 
