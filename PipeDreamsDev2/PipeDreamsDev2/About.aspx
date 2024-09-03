@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="PipeDreamsDev2.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
-   
+
                 <section class="hero">
             <div class="container">
                 <h1>About Pipe Dreams Developers</h1>
+                <img src="images/PDLogo.png" alt="company logo" style="width:250px;height:250px;" />
                 <p>"Creating immersive gaming experiences for everyone."</p>
 
                 <br/>
@@ -104,7 +104,7 @@ Event Hosting: Organizing and hosting gaming events, tournaments, and live strea
  
   <br />
 </p> 
-                <br />
+
 </div>
                     </section>
 </asp:Content>

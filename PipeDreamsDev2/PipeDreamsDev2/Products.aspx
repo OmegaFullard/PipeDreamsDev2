@@ -173,9 +173,6 @@ Width: 100%;
     </div>
 
 
- <div class="b-example-divider"></div>
-
-  <header class="p-3 text-bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -183,11 +180,12 @@ Width: 100%;
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          <li><a href="~/Default" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="~/Services" class="nav-link px-2 text-white">Services</a></li>
+          <li><a href="~/Products" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="~/Contact" class="nav-link px-2 text-white">Contact</a></li>
+          <li><a href="~/About" class="nav-link px-2 text-white">About</a></li>
+             <li><a href="~/Support" class="nav-link px-2 text-white">Support</a></li>
         </ul>
 
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
@@ -196,7 +194,7 @@ Width: 100%;
         
       </div>
     </div>
-  </header>
+  
 
   
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">

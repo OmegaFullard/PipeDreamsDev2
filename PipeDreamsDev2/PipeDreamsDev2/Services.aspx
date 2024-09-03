@@ -58,17 +58,21 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Products and Services</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Contact</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-		    <li><a href="#" class="nav-link px-2 text-white">Support</a></li>
+              <li><a href="~/Default" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="~/Services" class="nav-link px-2 text-white">Products and Services</a></li>
+          <li><a href="~/Products" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="~/Contact" class="nav-link px-2 text-white">Contact</a></li>
+          <li><a href="~/About" class="nav-link px-2 text-white">About</a></li>
+		    <li><a href="~/Support" class="nav-link px-2 text-white">Support</a></li>
         </ul>
 
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
+          <div class="text-end">
+      <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
 
 
+  <button type="button" class="btn btn-outline-light me-2">Login</button>
+  <button type="button" class="btn btn-warning">Sign-up</button>
+</div>
         
       </div>
     </div>
@@ -247,8 +251,8 @@
         <h1 class="fw-light">Completed and Current Projects</h1>
         <p class="lead text-body-secondary">Examples of projects recently completed by our talented team of developers. Be sure to contact us for further questions.</p>
         <p>
-          <a href="#" class="btn btn-primary my-2">Contact</a>
-          <a href="#" class="btn btn-secondary my-2">Location</a>
+          <a href="~/Contact" class="btn btn-primary my-2">Contact</a>
+          <a href="~/About" class="btn btn-secondary my-2">About</a>
         </p>
       </div>
     </div>
@@ -264,11 +268,19 @@
             <div class="card-body">
               <p class="card-text">Project for a bakery "AJ's Sweets" with custom logo and color schemes. Mobile Ordering Application Design in Progress</p>
               <div class="d-flex justify-content-between align-items-center">
+                  <br/>
+ <img src="images/ajslogo.png" alt="logo" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/pies.png" alt="pie" style="width:250px;height:250px; Border-Radius:25px;" />
+
+  <br />
+ 
+  <br />
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-body-secondary">placeholder</small>
+                <small class="text-body-secondary">Sweets and Treats</small>
               </div>
             </div>
           </div>
@@ -280,11 +292,20 @@
             <div class="card-body">
               <p class="card-text">Web Design Project for newly opened LoStylz Hair Salon with custom logo, design and color schemes. Appointment Booker Mobile Application in development phase.</p>
               <div class="d-flex justify-content-between align-items-center">
+                  <img src="images/LogoLoStylz.png" alt="LogoLoStylz" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/10offPromo.png" alt="promo flyer" style="width:250px;height:250px; Border-Radius:25px;" />
+ 
+  <br />
+ 
+  <br />
+
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-body-secondary">placeholder</small>
+               <small class="text-body-secondary">Back to School Promo</small>
+
               </div>
             </div>
           </div>
@@ -295,11 +316,28 @@
             <div class="card-body">
               <p class="card-text">Web Design Project devoloped for Royal City Basketball League with custom logo, design, and color schemes. Mobile Game App "Royal All-Stars" in progress</p>
               <div class="d-flex justify-content-between align-items-center">
+
+                  <br/>
+ <img src="images/player.png" alt="player" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/RCLogo.png" alt="rclogo" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/RCBasketball.png" alt="rclogo2" style="width:250px;height:250px; Border-Radius:25px;" />
+ 
+ <img src="images/basketball1.png" alt="bbtournament" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/basketball2.png" alt="bbgame" style="width:250px;height:250px; Border-Radius:25px;" />
+
+  <br />            
+
+ 
+  <br />
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-body-secondary">placeholder</small>
+             
+
               </div>
             </div>
           </div>
@@ -315,7 +353,7 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-body-secondary">place holder</small>
+             <small class="text-body-secondary">more pics to come!</small>
               </div>
             </div>
           </div>
@@ -326,11 +364,16 @@
             <div class="card-body">
               <p class="card-text">Mobile Game conted created for Lost Angels Corporation. First Person Shooter game with heads up display, in-game purchases, advertisements, free/paid option, and more. </p>
               <div class="d-flex justify-content-between align-items-center">
+                  <br/>
+<img src="images/fps1.png" alt="fpsgame" style="width:250px;height:250px; Border-Radius:25px;" />
+ 
+ 
+  <br />
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-body-secondary">placeholder</small>
+             
               </div>
             </div>
           </div>
@@ -341,11 +384,19 @@
             <div class="card-body">
               <p class="card-text">Website Application Project for Lucky Rollers Casino and Games. Online gambling website with real time updates, virtual currency, and progression jackpots.</p>
               <div class="d-flex justify-content-between align-items-center">
+                  <br/>
+ <img src="images/casino.png" alt="casino" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/casino2.png" alt="casino" style="width:250px;height:250px; Border-Radius:25px;" />
+
+ <img src="images/casino3.png" alt="casino" style="width:250px;height:250px; Border-Radius:25px;" />
+ 
+  <br />
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-body-secondary">placeholder</small>
+               <small class="text-body-secondary">Casino Game Screenshots</small>
               </div>
             </div>
           </div>
