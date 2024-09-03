@@ -1,0 +1,2 @@
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.csproj.AssemblyReference.cache
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.csproj.CoreCompileInputs.cache
