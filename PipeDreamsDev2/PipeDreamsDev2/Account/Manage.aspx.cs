@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
+using Renci.SshNet.Messages.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PipeDreamsDev;
+
 
 public partial class Account_Manage : System.Web.UI.Page
 {
@@ -53,7 +54,7 @@ public partial class Account_Manage : System.Web.UI.Page
                     : message == "SetPwdSuccess" ? "Your password has been set."
                     : message == "RemoveLoginSuccess" ? "The account was removed."
                     : String.Empty;
-                successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
+                SuccessMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
             }
         }
     }
