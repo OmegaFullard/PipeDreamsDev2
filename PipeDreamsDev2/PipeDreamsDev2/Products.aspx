@@ -2,6 +2,22 @@
 
 <!DOCTYPE html>
 
+
+ <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+         <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
+
+                  <%--Logo--%>
+
+            <a href="#" class="logo">
+                <img src="images/PDLogo.png" alt="company logo" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+                  <h4 style="font-size: xx-large; font-weight: bold; font-style: italic; text-align: center;">Pipe Dreams Developers</h4>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Services Offered</title>
@@ -180,12 +196,12 @@ Width: 100%;
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="~/Default" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="~/Services" class="nav-link px-2 text-white">Services</a></li>
-          <li><a href="~/Products" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="~/Contact" class="nav-link px-2 text-white">Contact</a></li>
-          <li><a href="~/About" class="nav-link px-2 text-white">About</a></li>
-             <li><a href="~/Support" class="nav-link px-2 text-white">Support</a></li>
+          <li><a href="Default.aspx" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="Services.aspx" class="nav-link px-2 text-white">Services</a></li>
+          <li><a href="Products.aspx" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="Contact.aspx" class="nav-link px-2 text-white">Contact</a></li>
+          <li><a href="About.aspx" class="nav-link px-2 text-white">About</a></li>
+             <li><a href="Support.aspx" class="nav-link px-2 text-white">Support</a></li>
         </ul>
 
           <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>

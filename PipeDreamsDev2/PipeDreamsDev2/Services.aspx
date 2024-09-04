@@ -2,6 +2,23 @@
 
 <!DOCTYPE html>
 
+
+ <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+         <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
+
+
+ <%--Logo--%>
+
+            <a href="#" class="logo">
+                <img src="images/PDLogo.png" alt="company logo" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+                  <h4 style="font-size: xx-large; font-weight: bold; font-style: italic; text-align: center;">Pipe Dreams Developers</h4>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
    <title>Products and Services</title>
@@ -51,31 +68,38 @@
         <div class="b-example-divider"></div>
 
   <header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
-        </a>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" runat="server" href="~/">Pipe Dreams Developers</a>
+           </div>
+           <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                   <li><a runat="server" href="~/Default">Home</a></li>
+                   <li><a runat="server" href="~/Services">Services</a></li>
+                   <li><a runat="server" href="~/Products">Pricing</a></li>
+                   <li><a runat="server" href="~/Contact">Contact</a></li>
+<li><a runat="server" href="~/About">About</a></li>
+<li><a runat="server" href="~/Support">Support</a></li>
+               </ul>
+               
+   <div class="text-end">
+         <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="~/Default" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="~/Services" class="nav-link px-2 text-white">Products and Services</a></li>
-          <li><a href="~/Products" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="~/Contact" class="nav-link px-2 text-white">Contact</a></li>
-          <li><a href="~/About" class="nav-link px-2 text-white">About</a></li>
-		    <li><a href="~/Support" class="nav-link px-2 text-white">Support</a></li>
-        </ul>
 
-          <div class="text-end">
-      <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
-
-
-  <button type="button" class="btn btn-outline-light me-2">Login</button>
-  <button type="button" class="btn btn-warning">Sign-up</button>
-</div>
-        
-      </div>
-    </div>
+     <button type="button" class="btn btn-info">Login</button>
+     <button type="button" class="btn btn-warning">Sign-up</button>
+   </div>
+  
+           </div>
+       </div>
+   </div>
+       
   </header>
 
 
@@ -251,8 +275,8 @@
         <h1 class="fw-light">Completed and Current Projects</h1>
         <p class="lead text-body-secondary">Examples of projects recently completed by our talented team of developers. Be sure to contact us for further questions.</p>
         <p>
-          <a href="~/Contact" class="btn btn-primary my-2">Contact</a>
-          <a href="~/About" class="btn btn-secondary my-2">About</a>
+          <a href="Contact.aspx" class="btn btn-primary my-2">Contact</a>
+          <a href="About.aspx" class="btn btn-secondary my-2">About</a>
         </p>
       </div>
     </div>
@@ -266,7 +290,7 @@
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             <div class="card-body">
-              <p class="card-text">Project for a bakery "AJ's Sweets" with custom logo and color schemes. Mobile Ordering Application Design in Progress</p>
+              <p class="card-text">Project for a bakery <strong>"AJ's Sweets"</strong> with custom logo and color schemes. Mobile Ordering Application Design in Progress</p>
               <div class="d-flex justify-content-between align-items-center">
                   <br/>
  <img src="images/ajslogo.png" alt="logo" style="width:250px;height:250px; Border-Radius:25px;" />
@@ -290,7 +314,7 @@
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             <div class="card-body">
-              <p class="card-text">Web Design Project for newly opened LoStylz Hair Salon with custom logo, design and color schemes. Appointment Booker Mobile Application in development phase.</p>
+              <p class="card-text">Web Design Project for newly opened <strong>LoStylz Hair Salon</strong> with custom logo, design and color schemes. Appointment Booker Mobile Application in development phase.</p>
               <div class="d-flex justify-content-between align-items-center">
                   <img src="images/LogoLoStylz.png" alt="LogoLoStylz" style="width:250px;height:250px; Border-Radius:25px;" />
 
@@ -314,7 +338,7 @@
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             <div class="card-body">
-              <p class="card-text">Web Design Project devoloped for Royal City Basketball League with custom logo, design, and color schemes. Mobile Game App "Royal All-Stars" in progress</p>
+              <p class="card-text">Web Design Project devoloped for <strong>Royal City Basketball League</strong> with custom logo, design, and color schemes. Mobile Game App "Royal All-Stars" in progress</p>
               <div class="d-flex justify-content-between align-items-center">
 
                   <br/>
@@ -347,7 +371,7 @@
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             <div class="card-body">
-              <p class="card-text">Mobile Game Design Project designed for Royal City Dreamers with custom logo and color schemes. Simulated dating game.</p>
+              <p class="card-text">Mobile Game Design Project designed for <strong>Royal City Dreamers</strong> with custom logo and color schemes. Simulated dating game.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -362,7 +386,7 @@
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             <div class="card-body">
-              <p class="card-text">Mobile Game conted created for Lost Angels Corporation. First Person Shooter game with heads up display, in-game purchases, advertisements, free/paid option, and more. </p>
+              <p class="card-text">Mobile Game content created for <strong>Lost Angels Corporation</strong>. First Person Shooter game with heads up display, in-game purchases, advertisements, free/paid option, and more. </p>
               <div class="d-flex justify-content-between align-items-center">
                   <br/>
 <img src="images/fps1.png" alt="fpsgame" style="width:250px;height:250px; Border-Radius:25px;" />
@@ -382,7 +406,7 @@
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
             <div class="card-body">
-              <p class="card-text">Website Application Project for Lucky Rollers Casino and Games. Online gambling website with real time updates, virtual currency, and progression jackpots.</p>
+              <p class="card-text">Website Application Project for <strong>Lucky Rollers Casino and Games</strong>. Online gambling website with real time updates, virtual currency, and progression jackpots.</p>
               <div class="d-flex justify-content-between align-items-center">
                   <br/>
  <img src="images/casino.png" alt="casino" style="width:250px;height:250px; Border-Radius:25px;" />
