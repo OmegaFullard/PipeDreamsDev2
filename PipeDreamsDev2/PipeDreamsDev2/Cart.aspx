@@ -412,7 +412,7 @@ Width: 100%;
 
           <hr class="my-4"/>
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+          <button class="btn btn-success rounded-pill px-3" type="submit">Submit Order</button>
 
       </div>
     </div>

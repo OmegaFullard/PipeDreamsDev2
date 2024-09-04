@@ -4,7 +4,7 @@
 
                 <section class="hero">
             <div class="container">
-                <h1>About Pipe Dreams Developers</h1>
+               
                 <img src="images/PDLogo.png" alt="company logo" style="width:250px;height:250px;" />
                 <p>"Creating immersive gaming experiences for everyone."</p>
 
@@ -31,24 +31,24 @@ We are dedicated to pushing the boundaries of creativity and technology, fosteri
 </p> 
                 <br />
                 <hr />
-<h2>Products and Services</h2> 
+<h1>Products and Services</h1> 
 
-<h2>Products</h2>
+<h2><strong>Products</strong></h2>
                 <br />
 <p>
-Video Games:
+<strong>Video Games:</strong>
     <br/>
  <center><img src="images/fps1.png" alt="fps game" style="width:250px;height:250px;" /></center>
  
  
   <br />
 <br />
-Action and Adventure Games: Immersive and thrilling games that take players on epic journeys.
-Puzzle and Strategy Games: Challenging games that test players’ problem-solving skills and strategic thinking.
-Role-Playing Games (RPGs): Deeply engaging games with rich storylines and character development.</p> 
+<strong>Action and Adventure Games:</strong> Immersive and thrilling games that take players on epic journeys.
+<strong>Puzzle and Strategy Games: </strong>Challenging games that test players’ problem-solving skills and strategic thinking.
+<strong>Role-Playing Games (RPGs):</strong> Deeply engaging games with rich storylines and character development.</p> 
 <br />
                
-Mobile Games:
+<strong>Mobile Games:</strong>
 <br />
                 <br/>
  <center><img src="images/cellphone2.png" alt="cellphone" style="width:250px;height:250px;" /></center>
@@ -56,53 +56,58 @@ Mobile Games:
  
   <br />
 <p>
-Casual Games: Fun and easy-to-play games designed for quick entertainment.
-Multiplayer Games: Games that allow players to compete or collaborate with others online.
-Virtual Reality (VR) Experiences:
-VR Games: Cutting-edge games that provide an immersive virtual reality experience.
-VR Simulations: Realistic simulations for training and educational purposes.
+<strong>Casual Games:</strong> Fun and easy-to-play games designed for quick entertainment.
+    <br />
+<strong>Multiplayer Games:</strong> Games that allow players to compete or collaborate with others online.
+    <br />
+<strong>Virtual Reality (VR) Experiences:</strong>
+    <br />
+<strong>VR Games:</strong> Cutting-edge games that provide an immersive virtual reality experience.
+    <br />
+<strong>VR Simulations:</strong> Realistic simulations for training and educational purposes.
 </p> 
                 <br />
                  <hr />
-<h2>Services</h2>
+<h2><strong>Services</strong></h2>
 <p>
     <br />
-Game Development:
+<strong>Game Development:</strong>
     <br />
-Custom Game Development: Tailored game development services to meet specific client needs.
-Game Design Consultation: Expert advice and consultation on game design and development.
+<strong>Custom Game Development:</strong> Tailored game development services to meet specific client needs.
+    <br />
+<strong>Game Design Consultation:</strong> Expert advice and consultation on game design and development.
     </p> <br />
  <hr />
-Game Publishing:
+<strong>Game Publishing:</strong>
 <br />
                 <p>
-Marketing and Distribution: Comprehensive services to market and distribute games to a global audience.
-Monetization Strategies: Effective strategies to monetize games and maximize revenue.
+<strong>Marketing and Distribution:</strong> Comprehensive services to market and distribute games to a global audience.
+<br />
+<strong>Monetization Strategies:</strong> Effective strategies to monetize games and maximize revenue.
                     </p> 
                 <br />
                  <hr />
                 <p>
-Support and Maintenance:
+<strong>Support and Maintenance:</strong>
                     <br />
 
-Technical Support: Ongoing technical support to ensure smooth gameplay and user satisfaction.
+<strong>Technical Support:</strong> Ongoing technical support to ensure smooth gameplay and user satisfaction.
                     <br />
-Updates and Patches: Regular updates and patches to keep games running smoothly and introduce new features.
+<strong>Updates and Patches:</strong> Regular updates and patches to keep games running smoothly and introduce new features.
                     </p> <br />
                  <hr />
                 <p>
                 
-Community Engagement:
+<strong>Community Engagement:</strong>
                     <br />
-Player Community Management: Building and managing vibrant player communities.
-
-Event Hosting: Organizing and hosting gaming events, tournaments, and live streams.
+<strong>Player Community Management:</strong> Building and managing vibrant player communities.
+<br />
+<strong>Event Hosting:</strong> Organizing and hosting gaming events, tournaments, and live streams.
                     <br/>
                     <br />
  <center><img src="images/basketball1.png" alt="tournament" style="width:250px;height:250px;" /></center>
  
- 
-  <br />
+
 </p> 
 
 </div>
