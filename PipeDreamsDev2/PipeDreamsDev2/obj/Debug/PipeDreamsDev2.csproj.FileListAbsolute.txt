@@ -213,7 +213,6 @@ C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Newtonsoft.Json.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Antlr3.Runtime.pdb
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.AspNet.FriendlyUrls.xml
-C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDrea.53F65BAB.Up2Date
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.pdb
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\AspNet.ScriptManager.bootstrap.dll
@@ -549,3 +548,4 @@ C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.csproj.CopyComplete
