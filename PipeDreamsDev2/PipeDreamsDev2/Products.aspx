@@ -140,8 +140,8 @@
     </div>
       <br />
       <br />
-      <a href="Cart.aspx">Continue to Checkout!</a>
-
+    
+    <center><a class="btn btn-primary" href="Cart.aspx" role="button">Continue to Checkout!</a></center>
              <br/>
             <a href="default.aspx"><< Back to Home</a>
          
