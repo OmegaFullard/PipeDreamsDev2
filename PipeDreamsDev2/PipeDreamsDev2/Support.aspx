@@ -13,7 +13,7 @@
     <svg class="bi mt-5 mb-3" width="48" height="48"><use href="#check2-circle"/></svg>
   
     <p class="col-lg-6 mx-auto mb-4">
-        <center><img src="images/support.png" alt="support logo" /></center>
+        <center><img src="images/support.png" alt="support logo" style="width:150px;height:150px; Border-Radius:25px;" /></center>
         <br />
 
     Offering 24/7 Support to our clients through our partner "Royal City Help Desk".

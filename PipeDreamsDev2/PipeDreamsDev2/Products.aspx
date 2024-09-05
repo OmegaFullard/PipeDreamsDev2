@@ -60,7 +60,7 @@
               <li>Priority email support</li>
               <li>Royal City Notification Center</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary" style="color: #2097db;">Get started</button>
+            <button type="button" class="w-100 btn btn-lg btn-primary" >Get started</button>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
               <li>Phone and email support 24/7</li>
               <li>Royal City Notification Center</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary" style="color: #2097db;">Contact us</button>
+            <button type="button" class="w-100 btn btn-lg btn-primary" >Contact us</button>
           </div>
         </div>
       </div>
