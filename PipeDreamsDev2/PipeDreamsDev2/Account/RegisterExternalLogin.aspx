@@ -1,8 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="RegisterExternalLogin.aspx.cs" Inherits="Account_RegisterExternalLogin" Async="true" %>
-
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="head">
-            </asp:Content>
-           <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder1" >
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Register with your <%: ProviderName %> account</h3>
 
     <asp:PlaceHolder runat="server">
