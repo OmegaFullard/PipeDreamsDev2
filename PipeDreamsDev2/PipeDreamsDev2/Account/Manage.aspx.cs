@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using Renci.SshNet.Messages.Authentication;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 public partial class Account_Manage : System.Web.UI.Page
 {
@@ -19,45 +22,45 @@ public partial class Account_Manage : System.Web.UI.Page
         private set;
     }
 
-    //private bool HasPassword(UserManager manager)
-    //{
-    //    var user = manager.FindById(User.Identity.GetUserId());
-    //    return (user != null && user.PasswordHash != null);
-    //}
+	//private bool HasPassword(UserManager manager)
+	//{
+	//	var user = manager.FindById(User.Identity.GetUserId());
+	//	return (user != null && user.PasswordHash != null);
+	//}
 
-    protected void Page_Load()
+	protected void Page_Load()
     {
-        //if (!IsPostBack)
-        //{
-        //    // Determine the sections to render
-        //    UserManager manager = new UserManager();
-        //    if (HasPassword(manager))
-        //    {
-        //        changePasswordHolder.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        setPassword.Visible = true;
-        //        changePasswordHolder.Visible = false;
-        //    }
-        //    CanRemoveExternalLogins = manager.GetLogins(User.Identity.GetUserId()).Count() > 1;
+		//if (!IsPostBack)
+		//{
+		//	// Determine the sections to render
+		//	UserManager manager = new UserManager();
+		//	if (HasPassword(manager))
+		//	{
+		//		changePasswordHolder.Visible = true;
+		//	}
+		//	else
+		//	{
+		//		setPassword.Visible = true;
+		//		changePasswordHolder.Visible = false;
+		//	}
+		//	CanRemoveExternalLogins = manager.GetLogins(User.Identity.GetUserId()).Count() > 1;
 
-        //    // Render success message
-        //    var message = Request.QueryString["m"];
-        //    if (message != null)
-        //    {
-        //        // Strip the query string from action
-        //        Form.Action = ResolveUrl("~/Account/Manage");
+		//	// Render success message
+		//	var message = Request.QueryString["m"];
+		//	if (message != null)
+		//	{
+		//		// Strip the query string from action
+		//		Form.Action = ResolveUrl("~/Account/Manage");
 
-        //        SuccessMessage =
-        //            message == "ChangePwdSuccess" ? "Your password has been changed."
-        //            : message == "SetPwdSuccess" ? "Your password has been set."
-        //            : message == "RemoveLoginSuccess" ? "The account was removed."
-        //            : String.Empty;
-        //        SuccessMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
-        //    }
-        //}
-    }
+		//		SuccessMessage =
+		//			message == "ChangePwdSuccess" ? "Your password has been changed."
+		//			: message == "SetPwdSuccess" ? "Your password has been set."
+		//			: message == "RemoveLoginSuccess" ? "The account was removed."
+		//			: String.Empty;
+		//		SuccessMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
+		//	}
+		
+	}
 
     protected void ChangePassword_Click(object sender, EventArgs e)
     {
@@ -118,11 +121,11 @@ public partial class Account_Manage : System.Web.UI.Page
         //Response.Redirect("~/Account/Manage" + msg);
     }
 
-    private void AddErrors(IdentityResult result)
-    {
-        foreach (var error in result.Errors)
-        {
-            ModelState.AddModelError("", error);
-        }
-    }
+    //private void AddErrors(IdentityResult result)
+    //{
+    //    foreach (var error in result.Errors)
+    //    {
+    //        ModelState.AddModelError("", error);
+    //    }
+    //}
 }
