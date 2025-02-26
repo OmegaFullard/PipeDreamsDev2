@@ -938,7 +938,7 @@
             <summary>
             Gets a list of <see cref="T:System.Security.Claims.Claim"/>s to be belonging to the specified <paramref name="user"/> as an asynchronous operation.
             </summary>
-            <param name="user">The role whose claims to retrieve.</param>
+            <param name="user">The user whose claims to retrieve.</param>
             <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
             <returns>
             A <see cref="T:System.Threading.Tasks.Task`1"/> that represents the result of the asynchronous query, a list of <see cref="T:System.Security.Claims.Claim"/>s.
@@ -3383,11 +3383,11 @@
         </member>
         <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.SetLockoutEnabledAsync(`0,System.Boolean)">
             <summary>
-            Sets a flag indicating whether the specified <paramref name="user"/> is locked out,
+            Sets a flag indicating whether the specified <paramref name="user"/> can be locked out,
             as an asynchronous operation.
             </summary>
             <param name="user">The user whose locked out status should be set.</param>
-            <param name="enabled">Flag indicating whether the user is locked out or not.</param>
+            <param name="enabled">Flag indicating whether the user can be locked out or not.</param>
             <returns>
             The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult"/> of the operation
             </returns>
@@ -3892,6 +3892,35 @@
             <param name="claimType">The claim type whose first value should be returned.</param>
             <returns>The value of the first instance of the specified claim type, or null if the claim is not present.</returns>
         </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
+            <summary>
+            Indicates that the specified method requires the ability to generate new code at runtime,
+            for example through <see cref="N:System.Reflection"/>.
+            </summary>
+            <remarks>
+            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
+            with the specified message.
+            </summary>
+            <param name="message">
+            A message that contains information about the usage of dynamic code.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
+            <summary>
+            Gets a message that contains information about the usage of dynamic code.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
+            <summary>
+            Gets or sets an optional URL that contains more information about the method,
+            why it requires dynamic code, and what options a consumer has to deal with it.
+            </summary>
+        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
             <summary>
             Indicates that the specified method requires dynamic access to code that is not referenced
@@ -3920,35 +3949,6 @@
             <summary>
             Gets or sets an optional URL that contains more information about the method,
             why it requires unreferenced code, and what options a consumer has to deal with it.
-            </summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
-            <summary>
-            Indicates that the specified method requires the ability to generate new code at runtime,
-            for example through <see cref="N:System.Reflection"/>.
-            </summary>
-            <remarks>
-            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
-            </remarks>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
-            with the specified message.
-            </summary>
-            <param name="message">
-            A message that contains information about the usage of dynamic code.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
-            <summary>
-            Gets a message that contains information about the usage of dynamic code.
-            </summary>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
-            <summary>
-            Gets or sets an optional URL that contains more information about the method,
-            why it requires dynamic code, and what options a consumer has to deal with it.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute">

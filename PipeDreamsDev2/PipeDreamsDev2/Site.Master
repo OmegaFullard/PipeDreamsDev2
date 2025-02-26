@@ -113,13 +113,15 @@
 
 
                     </ul>
+                    <br />
+                    <br />
              
         <div class="text-end">
-              <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
+              <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search"/>
 
 
-          <button type="button" class="btn btn-info" NavigateUrl="~/Account/Login.aspx">Login</button>
-          <button type="button" class="btn btn-warning" NavigateUrl="~/Account/Register.aspx">Sign-up</button>
+           <button type="button" href="~/sign-in" class="btn btn-info">Login</button>
+          <button type="button" href="~/sign-up"class="btn btn-warning">Register</button>
         </div>
   
                 </div>
