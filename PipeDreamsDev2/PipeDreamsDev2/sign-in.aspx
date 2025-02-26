@@ -182,43 +182,7 @@
       </ul>
     </div>
 
-       <%--Logo--%>
-
-            <a href="#" class="logo">
-                <img src="images/PDLogo.png" alt="company logo" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Site Navigation</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Default">Home</a></li>
-                        <li><a runat="server" href="~/Services">Services</a></li>
-                        <li><a runat="server" href="~/Products">Pricing</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-     <li><a runat="server" href="~/About">About</a></li>
-     <li><a runat="server" href="~/Support">Support</a></li>
-
-
-                    </ul>
-                    <br />
-                    <br />
-             
-       <div class="text-end">
-              <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search"/>
-</div>
-  
-                </div>
-            </div>
-        </div>
-
        <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -301,15 +265,35 @@
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
+      <div>
+                <nav class="navbar navbar-light" style="background-color:#a0d9ef">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Default">Home</a></li>
+                        <li><a runat="server" href="~/Services">Services</a></li>
+                        <li><a runat="server" href="~/Products">Pricing</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+     <li><a runat="server" href="~/About">About</a></li>
+     <li><a runat="server" href="~/Support">Support</a></li>
+
+
+                    </ul>
+
+                    <br />
+                    <br />
+     
+                </nav>
+         </div>
+    <br />
+    <br />
+  <form class="row g-3">
     
     <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
 
-    <div class="form-group">
+    <div class="col-md-12">
       <input type="email" class="form-control" id="Email" placeholder="name@example.com">
       <label for="Email">Email address</label>
     </div>
-    <div class="form-group">
+    <div class="col-md-12">
       <input type="password" class="form-control" id="Password" placeholder="Password">
       <label for="Password">Password</label>
     </div>
@@ -331,16 +315,19 @@
       <br />
       <br />
 
-  </form>
-        <div class="container">
+
+
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
+    <div class="col-md-12 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
       
       </a>
       <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Pipe Dreams Developers</span>
     </div>
+      <br />
+      <br />
  <a href="#" class="btn btn-primary">Follow Us on Social Media!</a> 
+      <br />
       <br />
  <!-- Footer -->
  <div class="row">
@@ -357,7 +344,7 @@
      </div>
  
   </footer>
-</div>
+        </form>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 

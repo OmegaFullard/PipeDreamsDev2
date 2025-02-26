@@ -267,7 +267,7 @@
     
       
           <div>
-                <nav class="navbar navbar-light" style="background-color:#a0d9ef">
+                <nav class="navbar navbar-light" style="background-color:#a0d9ef; top: 1px; left: -1px;">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/Default">Home</a></li>
                         <li><a runat="server" href="~/Services">Services</a></li>
@@ -397,14 +397,21 @@
     <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
       <br />
       <br />
-      <div class="col-md-12">
-      <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Pipe Dreams Developers</span>
+     
  
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-12 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+      
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Pipe Dreams Developers</span>
+    </div>
+      <br />
+      <br />
  <a href="#" class="btn btn-primary">Follow Us on Social Media!</a> 
       <br />
-             </div>
+      <br />
  <!-- Footer -->
-      <footer>
  <div class="row">
         <div class="col-md-12">
     

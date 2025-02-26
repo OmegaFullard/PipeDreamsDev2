@@ -387,7 +387,7 @@ div.topnav a:active {
 
 
 * {
-    margin: 0;
+    margin: 0 0 27px 0;
     padding: 0;
     box-sizing: border-box;
 }
