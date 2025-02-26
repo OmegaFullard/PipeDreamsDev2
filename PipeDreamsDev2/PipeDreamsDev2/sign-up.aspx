@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="Omega Fullard, Pipe Dreams Productions">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Sign In</title>
+    <title>Sign Up</title>
 
     <!-- Custom Styles -->
 
@@ -128,7 +128,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="sign-in.css" rel="stylesheet">
+    <link href="sign-up.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -181,44 +181,7 @@
         </li>
       </ul>
     </div>
-
-       <%--Logo--%>
-
-            <a href="#" class="logo">
-                <img src="images/PDLogo.png" alt="company logo" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Site Navigation</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Default">Home</a></li>
-                        <li><a runat="server" href="~/Services">Services</a></li>
-                        <li><a runat="server" href="~/Products">Pricing</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-     <li><a runat="server" href="~/About">About</a></li>
-     <li><a runat="server" href="~/Support">Support</a></li>
-
-
-                    </ul>
-                    <br />
-                    <br />
-             
-       <div class="text-end">
-              <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search"/>
-</div>
-  
-                </div>
-            </div>
-        </div>
-
        <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -299,58 +262,131 @@
     </style>
 
 
-    
+
 <main class="form-signup w-100 m-auto">
-  <form>
+    
+      
+          <div>
+                <nav class="navbar navbar-light" style="background-color:#a0d9ef">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Default">Home</a></li>
+                        <li><a runat="server" href="~/Services">Services</a></li>
+                        <li><a runat="server" href="~/Products">Pricing</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+     <li><a runat="server" href="~/About">About</a></li>
+     <li><a runat="server" href="~/Support">Support</a></li>
+
+
+                    </ul>
+
+                    <br />
+                    <br />
+     
+                </nav>
+         </div>
+
+   
+  <form class="row g-3">
     
     <h1 class="h3 mb-3 fw-normal">Please Enter Details</h1>
       <br />
-      <div class="form-floating">
-      <input type="text" class="form-control" id="floatingFName" placeholder="First">
-      <label for="floatingFName">First Name</label>
+      <div class="col-md-6">
+         
+      <input type="text" class="form-control" id="floatingFName" placeholder="First Name">
+              <label for="floatingFName" class="form-label">First Name</label>
     </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingLName" placeholder="Last">
-      <label for="floatingLName">Last Name</label>
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="floatingLName" placeholder="Last Name">
+      <label for="floatingLName" class="form-label">Last Name</label>
     </div>
- <div class="form-floating">
+<div class="col-md-12">
       <input type="text" class="form-control" id="floatingAddress" placeholder="Address">
       <label for="floatingAddress">Address</label>
     </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingCity" placeholder="City">
-      <label for="floatingCity">City</label>
+      <div class="col-md-12">
+      <input type="text" class="form-control" id="floatingAddress2" placeholder="Address">
+      <label for="floatingAddress2">Address 2</label>
     </div>
- <div class="form-floating">
-      <input type="text" class="form-control" id="floatingState" placeholder="State">
-      <label for="floatingState">State</label>
-    </div>
-    <div class="form-floating">
-      <input type="number" class="form-control" id="floatingZip" placeholder="Zip">
-      <label for="floatingZip">Zip</label>
-    </div>
+    <div class="col-md-6">
+ 
+        <input type="text" class="form-control" id="inputCity" placeholder="City">
+   <label for="inputCity" class="form-label">City</label>
+        </div>
+  <div class="col-md-6">
 
- <div class="form-floating">
+    <select id="inputState" class="form-select">
+        
+      <option selected>Choose...</option>
+                              <option>Alabama</option>
+                              <option>Alaska<option/>
+                              <option>Arizona<option/>
+                              <option>Arkansas<option/>
+                              <option>California<option/>
+                              <option>Colorado<option/>
+                              <option>Connecticut<option/>
+                              <option>Delaware<option/>
+                              <option>Florida<option/>
+                              <option>Georgia<option/>
+                              <option>Hawaii<option/>
+                              <option>Idaho<option/>
+                              <option>Illinois<option/>
+                              <option>Indiana<option/>
+                              <option>Iowa<option/>
+                              <option>Kansas<option/>
+                              <option>Kentucky<option/>
+                              <option>Louisiana<option/>
+                              <option>Maine<option/>
+                              <option>Maryland<option/>
+                              <option>Massachusetts<option/>
+                              <option>Michigan<option/>
+                              <option>Minnesota<option/>
+                              <option>Mississippi<option/>
+                              <option>Missouri<option/>
+                              <option>Montana<option/>
+                              <option>Nebraska<option/>
+                              <option>Nevada<option/>
+                              <option>New Hampshire<option/>
+                             <option>New Jersey<option/>
+                               <option>New Mexico<option/>
+                               <option>New York<option/>
+                               <option>North Carolina<option/>
+                               <option>North Dakota<option/>
+                               <option>Ohio<option/>
+                               <option>Oklahoma<option/>
+                               <option>Oregon<option/>
+                               <option>Pennsylvania<option/>
+                               <option>Rhode Island<option/>
+                               <option>South Carolina<option/>
+                               <option>South Dakota<option/>
+                                <option>Tennessee<option/>
+                                <option>Texas<option/>
+                                <option>Utah<option/>
+                                <option>Vermont<option/>
+                                <option>Virginia<option/>
+                                <option>Washington<option/>
+                                <option>West Virginia<option/>
+                               <option>Wisconsin<option/>
+                                <option>Wyoming<option/>
+    </select>
+      <label for="inputState" class="form-label">State</label>
+  </div>
+  <div class="col-md-4">
+    <label for="inputZip" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="inputZip" placeholder="Zip">
+  </div>
+  <div class="col-md-12">
       <input type="tel" class="form-control" id="floatingTel" placeholder="000-000-0000">
       <label for="floatingTel">Phone</label>
     </div>
- <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="Email">Email address</label>
+  <div class="col-md-12">
+      <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+      <label for="floatingEmail">Email Address</label>
     </div>
-    <div class="form-floating">
+     <div class="col-md-12">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="Email">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
 
     <div class="form-check text-start my-3">
       <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
@@ -361,17 +397,14 @@
     <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
       <br />
       <br />
-       <div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-      
-      </a>
+      <div class="col-md-12">
       <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Pipe Dreams Developers</span>
-    </div>
+ 
  <a href="#" class="btn btn-primary">Follow Us on Social Media!</a> 
       <br />
+             </div>
  <!-- Footer -->
+      <footer>
  <div class="row">
         <div class="col-md-12">
     
@@ -386,9 +419,10 @@
      </div>
  
   </footer>
-</div>
+
   </form>
 </main>
+       
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
