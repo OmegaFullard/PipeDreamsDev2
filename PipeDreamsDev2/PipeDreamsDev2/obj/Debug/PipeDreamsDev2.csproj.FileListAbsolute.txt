@@ -548,6 +548,6 @@ C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
-C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.csproj.CopyComplete
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDrea.53F65BAB.Up2Date
