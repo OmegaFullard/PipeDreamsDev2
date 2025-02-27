@@ -704,6 +704,8 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="search-results.html" />
+    <Content Include="search.js" />
     <Content Include="Services.aspx" />
     <Content Include="sign-in.aspx" />
     <Content Include="sign-up.aspx" />

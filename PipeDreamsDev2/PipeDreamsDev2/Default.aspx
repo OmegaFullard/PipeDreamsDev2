@@ -3,8 +3,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
 <script src="../assets/js/color-modes.js"></script>
+    
         
                <div style="width:1000px;margin-left: auto;margin-right: auto;">
+             
         <aside id="leftmenu">
           <center><img src="images/gamecontrollers.png" alt="controllers" style="width:250px;height:250px;" /></center>
             <br />
@@ -14,10 +16,11 @@
             <br />
             <center>
 
-            <action="search.html" enctype="application/x-www-form-urlencoded"
-            method="GET"/>
-                <input name="q"/>
-                <input type="submit"/>
+            <input type="text" id="searchInput" placeholder="Search...">
+        <button type="button" onclick="performSearch()">Search</button>
+
+                <div id="searchResults"></div>
+
                 </center>
         </aside>
 
@@ -52,5 +55,5 @@ We are dedicated to pushing the boundaries of creativity and technology, fosteri
             </div>
         </section>
 <br />
-
+    <script src="search.js"></script>
 </asp:Content>
