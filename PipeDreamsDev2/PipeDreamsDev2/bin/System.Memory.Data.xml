@@ -7,13 +7,13 @@
     <member name="T:System.BinaryData">
       <summary>A lightweight abstraction for a payload of bytes that supports converting between string, stream, JSON, and bytes.</summary>
     </member>
-    <member name="M:System.BinaryData.#ctor(System.Byte[])">
-      <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array.</summary>
-      <param name="data">The byte array to wrap.</param>
-    </member>
     <member name="M:System.BinaryData.#ctor(System.Byte[],System.String)">
       <param name="data" />
       <param name="mediaType" />
+    </member>
+    <member name="M:System.BinaryData.#ctor(System.Byte[])">
+      <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array.</summary>
+      <param name="data">The byte array to wrap.</param>
     </member>
     <member name="M:System.BinaryData.#ctor(System.Object,System.Text.Json.JsonSerializerOptions,System.Type)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by serializing the provided object to JSON using <see cref="T:System.Text.Json.JsonSerializer" />.</summary>
@@ -27,11 +27,15 @@
       <param name="context">The <see cref="T:System.Text.Json.Serialization.JsonSerializerContext" /> to use when serializing to JSON.</param>
       <param name="type">The type to use when serializing the data. If not specified, <see cref="M:System.Object.GetType" /> will be used to determine the type.</param>
     </member>
+    <member name="M:System.BinaryData.#ctor(System.ReadOnlyMemory{System.Byte},System.String)">
+      <param name="data" />
+      <param name="mediaType" />
+    </member>
     <member name="M:System.BinaryData.#ctor(System.ReadOnlyMemory{System.Byte})">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided bytes.</summary>
       <param name="data">The byte data to wrap.</param>
     </member>
-    <member name="M:System.BinaryData.#ctor(System.ReadOnlyMemory{System.Byte},System.String)">
+    <member name="M:System.BinaryData.#ctor(System.String,System.String)">
       <param name="data" />
       <param name="mediaType" />
     </member>
@@ -39,22 +43,22 @@
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from a string by converting the string to bytes using the UTF-8 encoding.</summary>
       <param name="data">The string data.</param>
     </member>
-    <member name="M:System.BinaryData.#ctor(System.String,System.String)">
-      <param name="data" />
-      <param name="mediaType" />
-    </member>
     <member name="M:System.BinaryData.Equals(System.Object)">
       <summary>Determines whether the specified object is equal to the current object.</summary>
       <param name="obj">The object to compare with the current object.</param>
       <returns>
         <see langword="true" /> if the specified object is equal to the current object; otherwise, <see langword="false" />.</returns>
     </member>
+    <member name="M:System.BinaryData.FromBytes(System.Byte[],System.String)">
+      <param name="data" />
+      <param name="mediaType" />
+    </member>
     <member name="M:System.BinaryData.FromBytes(System.Byte[])">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array.</summary>
       <param name="data">The byte array to wrap.</param>
       <returns>A wrapper over <paramref name="data" />.</returns>
     </member>
-    <member name="M:System.BinaryData.FromBytes(System.Byte[],System.String)">
+    <member name="M:System.BinaryData.FromBytes(System.ReadOnlyMemory{System.Byte},System.String)">
       <param name="data" />
       <param name="mediaType" />
     </member>
@@ -62,10 +66,6 @@
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided <see cref="T:System.ReadOnlyMemory`1" />.</summary>
       <param name="data">The byte data to wrap.</param>
       <returns>A wrapper over <paramref name="data" />.</returns>
-    </member>
-    <member name="M:System.BinaryData.FromBytes(System.ReadOnlyMemory{System.Byte},System.String)">
-      <param name="data" />
-      <param name="mediaType" />
     </member>
     <member name="M:System.BinaryData.FromObjectAsJson``1(``0,System.Text.Json.JsonSerializerOptions)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by serializing the provided object using the <see cref="T:System.Text.Json.JsonSerializer" />.</summary>
@@ -81,34 +81,36 @@
       <typeparam name="T">The type to use when serializing the data.</typeparam>
       <returns>A value representing the UTF-8 encoding of the JSON representation of <paramref name="jsonSerializable" />.</returns>
     </member>
+    <member name="M:System.BinaryData.FromStream(System.IO.Stream,System.String)">
+      <param name="stream" />
+      <param name="mediaType" />
+    </member>
     <member name="M:System.BinaryData.FromStream(System.IO.Stream)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from the specified stream. The stream is not disposed by this method.</summary>
       <param name="stream">The stream containing the data.</param>
       <returns>A value representing all of the data remaining in <paramref name="stream" />.</returns>
     </member>
-    <member name="M:System.BinaryData.FromStream(System.IO.Stream,System.String)">
-      <param name="stream" />
-      <param name="mediaType" />
-    </member>
     <member name="M:System.BinaryData.FromStreamAsync(System.IO.Stream,System.String,System.Threading.CancellationToken)">
       <param name="stream" />
       <param name="mediaType" />
       <param name="cancellationToken" />
+      <exception cref="T:System.OperationCanceledException">The cancellation token was canceled. This exception is stored into the returned task.</exception>
     </member>
     <member name="M:System.BinaryData.FromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from the specified stream. The stream is not disposed by this method.</summary>
       <param name="stream">The stream containing the data.</param>
       <param name="cancellationToken">A token that may be used to cancel the operation.</param>
+      <exception cref="T:System.OperationCanceledException">The cancellation token was canceled. This exception is stored into the returned task.</exception>
       <returns>A value representing all of the data remaining in <paramref name="stream" />.</returns>
+    </member>
+    <member name="M:System.BinaryData.FromString(System.String,System.String)">
+      <param name="data" />
+      <param name="mediaType" />
     </member>
     <member name="M:System.BinaryData.FromString(System.String)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from a string by converting the string to bytes using the UTF-8 encoding.</summary>
       <param name="data">The string data.</param>
       <returns>A value representing the UTF-8 encoding of <paramref name="data" />.</returns>
-    </member>
-    <member name="M:System.BinaryData.FromString(System.String,System.String)">
-      <param name="data" />
-      <param name="mediaType" />
     </member>
     <member name="M:System.BinaryData.GetHashCode">
       <summary>Returns the hash code for the current <xref data-throw-if-not-resolved="true" uid="System.BinaryData"></xref> object.</summary>
@@ -173,16 +175,17 @@
     </member>
     <member name="M:System.Text.Json.Serialization.BinaryDataJsonConverter.#ctor" />
     <member name="M:System.Text.Json.Serialization.BinaryDataJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-      <summary>Reads and converts the JSON to type <code data-dev-comment-type="typeparamref">T</code>.</summary>
+      <summary>Reads and converts the JSON to type <code>T</code>.</summary>
       <param name="reader">The reader.</param>
       <param name="typeToConvert">The type to convert.</param>
       <param name="options">An object that specifies serialization options to use.</param>
       <returns>The converted value.</returns>
     </member>
     <member name="M:System.Text.Json.Serialization.BinaryDataJsonConverter.Write(System.Text.Json.Utf8JsonWriter,System.BinaryData,System.Text.Json.JsonSerializerOptions)">
-      <param name="writer" />
-      <param name="value" />
-      <param name="options" />
+      <summary>Writes a specified value as JSON.</summary>
+      <param name="writer">The writer to write to.</param>
+      <param name="value">The value to convert to JSON.</param>
+      <param name="options">An object that specifies serialization options to use.</param>
     </member>
   </members>
 </doc>

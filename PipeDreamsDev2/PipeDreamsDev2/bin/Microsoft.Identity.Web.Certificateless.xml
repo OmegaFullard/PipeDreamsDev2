@@ -132,6 +132,15 @@
             <param name="tokenExchangeUrl">Optional audience of the token to be requested from Managed Identity. Default value is "api://AzureADTokenExchange". 
             This value is different on clouds other than Azure Public</param>
         </member>
+        <member name="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.#ctor(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            See https://aka.ms/ms-id-web/certificateless.
+            </summary>
+            <param name="managedIdentityClientId">Optional ClientId of the Managed Identity</param>
+            <param name="tokenExchangeUrl">Optional audience of the token to be requested from Managed Identity. Default value is "api://AzureADTokenExchange". 
+            This value is different on clouds other than Azure Public</param>
+            <param name="logger">A logger</param>
+        </member>
         <member name="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.GetClientAssertionAsync(Microsoft.Identity.Client.AssertionRequestOptions)">
             <summary>
             Prototype of certificate-less authentication using a signed assertion

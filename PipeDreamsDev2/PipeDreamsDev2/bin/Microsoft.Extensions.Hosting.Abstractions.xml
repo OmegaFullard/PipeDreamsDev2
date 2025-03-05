@@ -24,7 +24,7 @@
             </summary>
             <param name="stoppingToken">Triggered when <see cref="M:Microsoft.Extensions.Hosting.IHostedService.StopAsync(System.Threading.CancellationToken)"/> is called.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the long running operations.</returns>
-            <remarks>See <see href="https://docs.microsoft.com/dotnet/core/extensions/workers">Worker Services in .NET</see> for implementation guidelines.</remarks>
+            <remarks>See <see href="https://learn.microsoft.com/dotnet/core/extensions/workers">Worker Services in .NET</see> for implementation guidelines.</remarks>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.BackgroundService.StartAsync(System.Threading.CancellationToken)">
             <summary>
@@ -190,21 +190,21 @@
             Checks if the current host environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Development"/>.
             </summary>
             <param name="hostEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
-            <returns>True if the environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Development"/>, otherwise false.</returns>
+            <returns><see langword="true"/> if the environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Development"/>, otherwise <see langword="false"/>.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostEnvironmentEnvExtensions.IsStaging(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
             Checks if the current host environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Staging"/>.
             </summary>
             <param name="hostEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
-            <returns>True if the environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Staging"/>, otherwise false.</returns>
+            <returns><see langword="true"/> if the environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Staging"/>, otherwise <see langword="false"/>.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostEnvironmentEnvExtensions.IsProduction(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
             Checks if the current host environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Production"/>.
             </summary>
             <param name="hostEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
-            <returns>True if the environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Production"/>, otherwise false.</returns>
+            <returns><see langword="true"/> if the environment name is <see cref="F:Microsoft.Extensions.Hosting.Environments.Production"/>, otherwise <see langword="false"/>.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostEnvironmentEnvExtensions.IsEnvironment(Microsoft.Extensions.Hosting.IHostEnvironment,System.String)">
             <summary>
@@ -212,7 +212,7 @@
             </summary>
             <param name="hostEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
             <param name="environmentName">Environment name to validate against.</param>
-            <returns>True if the specified name is the same as the current environment, otherwise false.</returns>
+            <returns><see langword="true"/> if the specified name is the same as the current environment, otherwise <see langword="false"/>.</returns>
         </member>
         <member name="T:Microsoft.Extensions.Hosting.HostingAbstractionsHostBuilderExtensions">
             <summary>
@@ -256,13 +256,13 @@
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown(Microsoft.Extensions.Hosting.IHost)">
             <summary>
-            Block the calling thread until shutdown is triggered via Ctrl+C or SIGTERM.
+            Blocks the calling thread until shutdown is triggered via Ctrl+C or SIGTERM.
             </summary>
             <param name="host">The running <see cref="T:Microsoft.Extensions.Hosting.IHost"/>.</param>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(Microsoft.Extensions.Hosting.IHost)">
             <summary>
-            Runs an application and block the calling thread until host shutdown.
+            Runs an application and blocks the calling thread until host shutdown is triggered and all <see cref="T:Microsoft.Extensions.Hosting.IHostedService" /> instances are stopped.
             </summary>
             <param name="host">The <see cref="T:Microsoft.Extensions.Hosting.IHost"/> to run.</param>
         </member>
@@ -293,21 +293,21 @@
             Checks if the current hosting environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Development"/>.
             </summary>
             <param name="hostingEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostingEnvironment"/>.</param>
-            <returns>True if the environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Development"/>, otherwise false.</returns>
+            <returns><see langword="true" /> if the environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Development"/>, otherwise <see langword="false" />.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostingEnvironmentExtensions.IsStaging(Microsoft.Extensions.Hosting.IHostingEnvironment)">
             <summary>
             Checks if the current hosting environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Staging"/>.
             </summary>
             <param name="hostingEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostingEnvironment"/>.</param>
-            <returns>True if the environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Staging"/>, otherwise false.</returns>
+            <returns><see langword="true" /> if the environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Staging"/>, otherwise <see langword="false" />.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostingEnvironmentExtensions.IsProduction(Microsoft.Extensions.Hosting.IHostingEnvironment)">
             <summary>
             Checks if the current hosting environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Production"/>.
             </summary>
             <param name="hostingEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostingEnvironment"/>.</param>
-            <returns>True if the environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Production"/>, otherwise false.</returns>
+            <returns><see langword="true" /> if the environment name is <see cref="F:Microsoft.Extensions.Hosting.EnvironmentName.Production"/>, otherwise <see langword="false" />.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.HostingEnvironmentExtensions.IsEnvironment(Microsoft.Extensions.Hosting.IHostingEnvironment,System.String)">
             <summary>
@@ -315,7 +315,7 @@
             </summary>
             <param name="hostingEnvironment">An instance of <see cref="T:Microsoft.Extensions.Hosting.IHostingEnvironment"/>.</param>
             <param name="environmentName">Environment name to validate against.</param>
-            <returns>True if the specified name is the same as the current environment, otherwise false.</returns>
+            <returns><see langword="true" /> if the specified name is the same as the current environment, otherwise <see langword="false" />.</returns>
         </member>
         <member name="T:Microsoft.Extensions.Hosting.IApplicationLifetime">
             <summary>
@@ -328,19 +328,19 @@
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IApplicationLifetime.ApplicationStarted">
             <summary>
-            Triggered when the application host has fully started and is about to wait
+            Gets a cancellation token. Triggered when the application host has fully started and is about to wait
             for a graceful shutdown.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IApplicationLifetime.ApplicationStopping">
             <summary>
-            Triggered when the application host is performing a graceful shutdown.
+            Gets a cancellation token. Triggered when the application host is performing a graceful shutdown.
             Requests may still be in flight. Shutdown will block until this event completes.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IApplicationLifetime.ApplicationStopped">
             <summary>
-            Triggered when the application host is performing a graceful shutdown.
+            Gets a cancellation token. Triggered when the application host is performing a graceful shutdown.
             All requests should be complete at this point. Shutdown will block
             until this event completes.
             </summary>
@@ -405,7 +405,7 @@
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IHostApplicationBuilder.Metrics">
             <summary>
-            Allows enabling metrics and directing their output.
+            Gets a builder that allows enabling metrics and directing their output.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IHostApplicationBuilder.Services">
@@ -419,7 +419,7 @@
             </summary>
             <param name="factory">The factory object that can create the <typeparamref name="TContainerBuilder"/> and <see cref="T:System.IServiceProvider"/>.</param>
             <param name="configure">
-            A delegate used to configure the <typeparamref T="TContainerBuilder" />. This can be used to configure services using
+            A delegate used to configure the <typeparamref name="TContainerBuilder" />. This can be used to configure services using
             APIS specific to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceProviderFactory`1" /> implementation.
             </param>
             <typeparam name="TContainerBuilder">The type of builder provided by the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceProviderFactory`1" />.</typeparam>
@@ -441,18 +441,18 @@
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IHostApplicationLifetime.ApplicationStarted">
             <summary>
-            Triggered when the application host has fully started.
+            Gets a cancellation token. Triggered when the application host has fully started.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IHostApplicationLifetime.ApplicationStopping">
             <summary>
-            Triggered when the application host is starting a graceful shutdown.
+            Gets a cancellation token. Triggered when the application host is starting a graceful shutdown.
             Shutdown will block until all callbacks registered on this token have completed.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IHostApplicationLifetime.ApplicationStopped">
             <summary>
-            Triggered when the application host has completed a graceful shutdown.
+            Gets a cancellation token. Triggered when the application host has completed a graceful shutdown.
             The application will not exit until all callbacks registered on this token have completed.
             </summary>
         </member>
@@ -468,12 +468,12 @@
         </member>
         <member name="P:Microsoft.Extensions.Hosting.IHostBuilder.Properties">
             <summary>
-            A central location for sharing state between components during the host building process.
+            Gets a central location for sharing state between components during the host building process.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Hosting.IHostBuilder.ConfigureHostConfiguration(System.Action{Microsoft.Extensions.Configuration.IConfigurationBuilder})">
             <summary>
-            Set up the configuration for the builder itself. This will be used to initialize the <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>
+            Sets up the configuration for the builder itself. This will be used to initialize the <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>
             for use later in the build process. This can be called multiple times and the results will be additive.
             </summary>
             <param name="configureDelegate">The delegate for configuring the <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> that will be used
@@ -525,7 +525,7 @@
         </member>
         <member name="M:Microsoft.Extensions.Hosting.IHostBuilder.Build">
             <summary>
-            Run the given actions to initialize the host. This can only be called once.
+            Runs the given actions to initialize the host. This can only be called once.
             </summary>
             <returns>An initialized <see cref="T:Microsoft.Extensions.Hosting.IHost"/>.</returns>
         </member>
@@ -755,7 +755,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -981,7 +981,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -990,7 +990,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.

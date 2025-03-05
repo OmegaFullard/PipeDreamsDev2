@@ -6,7 +6,7 @@
     <members>
         <member name="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider">
             <summary>
-            An environment variable based <see cref="T:Microsoft.Extensions.Configuration.ConfigurationProvider"/>.
+            Provides configuration key-value pairs that are obtained from environment variables.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider.#ctor">
@@ -29,7 +29,7 @@
             <summary>
             Generates a string representing this provider name and relevant details.
             </summary>
-            <returns> The configuration name. </returns>
+            <returns>The configuration name.</returns>
         </member>
         <member name="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationSource">
             <summary>
@@ -46,11 +46,11 @@
             Builds the <see cref="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider"/> for this source.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</param>
-            <returns>A <see cref="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider"/></returns>
+            <returns>A <see cref="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider"/>.</returns>
         </member>
         <member name="T:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions">
             <summary>
-            Extension methods for registering <see cref="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider"/> with <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.
+            Provides extension methods for registering <see cref="T:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider"/> with <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables(Microsoft.Extensions.Configuration.IConfigurationBuilder)">
@@ -74,7 +74,7 @@
             Adds an <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider"/> that reads configuration values from environment variables.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> to add to.</param>
-            <param name="configureSource">Configures the source.</param>
+            <param name="configureSource">The action that configures the source.</param>
             <returns>The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</returns>
         </member>
         <member name="T:System.Runtime.InteropServices.LibraryImportAttribute">
@@ -135,7 +135,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -236,7 +236,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -245,7 +245,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.

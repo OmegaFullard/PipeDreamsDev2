@@ -109,12 +109,12 @@
         </member>
         <member name="T:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions">
             <summary>
-            Extension methods for adding configuration related options services to the DI container.
+            Extension methods for adding configuration-related options services to the DI container.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Registers a configuration instance which TOptions will bind against.
+            Registers a configuration instance that <typeparamref name="TOptions" /> will bind against.
             </summary>
             <typeparam name="TOptions">The type of options being configured.</typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
@@ -123,7 +123,7 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            Registers a configuration instance which TOptions will bind against.
+            Registers a configuration instance that <typeparamref name="TOptions" /> will bind against.
             </summary>
             <typeparam name="TOptions">The type of options being configured.</typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
@@ -133,7 +133,7 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Microsoft.Extensions.Configuration.BinderOptions})">
             <summary>
-            Registers a configuration instance which TOptions will bind against.
+            Registers a configuration instance that <typeparamref name="TOptions" /> will bind against.
             </summary>
             <typeparam name="TOptions">The type of options being configured.</typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
@@ -143,7 +143,7 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Microsoft.Extensions.Configuration.BinderOptions})">
             <summary>
-            Registers a configuration instance which TOptions will bind against.
+            Registers a configuration instance that <typeparamref name="TOptions" /> will bind against.
             </summary>
             <typeparam name="TOptions">The type of options being configured.</typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add the services to.</param>
@@ -224,7 +224,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -362,6 +362,35 @@
             Specifies all members.
             </summary>
         </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
+            <summary>
+            Indicates that the specified method requires the ability to generate new code at runtime,
+            for example through <see cref="N:System.Reflection"/>.
+            </summary>
+            <remarks>
+            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
+            with the specified message.
+            </summary>
+            <param name="message">
+            A message that contains information about the usage of dynamic code.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
+            <summary>
+            Gets a message that contains information about the usage of dynamic code.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
+            <summary>
+            Gets or sets an optional URL that contains more information about the method,
+            why it requires dynamic code, and what options a consumer has to deal with it.
+            </summary>
+        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
             <summary>
             Indicates that the specified method requires dynamic access to code that is not referenced
@@ -466,35 +495,6 @@
             Gets or sets the justification for suppressing the code analysis message.
             </summary>
         </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
-            <summary>
-            Indicates that the specified method requires the ability to generate new code at runtime,
-            for example through <see cref="N:System.Reflection"/>.
-            </summary>
-            <remarks>
-            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
-            </remarks>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
-            with the specified message.
-            </summary>
-            <param name="message">
-            A message that contains information about the usage of dynamic code.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
-            <summary>
-            Gets a message that contains information about the usage of dynamic code.
-            </summary>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
-            <summary>
-            Gets or sets an optional URL that contains more information about the method,
-            why it requires dynamic code, and what options a consumer has to deal with it.
-            </summary>
-        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
             <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
         </member>
@@ -583,7 +583,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -592,7 +592,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.

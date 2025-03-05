@@ -556,7 +556,7 @@
       <summary>Initializes an instance of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.Matcher" /> using case-insensitive matching.</summary>
     </member>
     <member name="M:Microsoft.Extensions.FileSystemGlobbing.Matcher.#ctor(System.StringComparison)">
-      <summary>Initializes an instance of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.Matcher" /> using the string comparsion method specified.</summary>
+      <summary>Initializes an instance of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.Matcher" /> using the specified string comparison method.</summary>
       <param name="comparisonType">One of the enumeration values that specifies the culture, case, and sort rules to be used.</param>
     </member>
     <member name="M:Microsoft.Extensions.FileSystemGlobbing.Matcher.AddExclude(System.String)">
@@ -607,12 +607,6 @@
       <param name="files">The files to run the matcher against.</param>
       <returns>The match results.</returns>
     </member>
-    <member name="M:Microsoft.Extensions.FileSystemGlobbing.MatcherExtensions.Match(Microsoft.Extensions.FileSystemGlobbing.Matcher,System.String)">
-      <summary>Matches the file passed in with the patterns in the matcher without going to disk.</summary>
-      <param name="matcher">The matcher that holds the patterns and pattern matching type.</param>
-      <param name="file">The file to run the matcher against.</param>
-      <returns>The match results.</returns>
-    </member>
     <member name="M:Microsoft.Extensions.FileSystemGlobbing.MatcherExtensions.Match(Microsoft.Extensions.FileSystemGlobbing.Matcher,System.String,System.Collections.Generic.IEnumerable{System.String})">
       <summary>Matches the files passed in with the patterns in the matcher without going to disk.</summary>
       <param name="matcher">The matcher that holds the patterns and pattern matching type.</param>
@@ -627,17 +621,23 @@
       <param name="file">The file to run the matcher against.</param>
       <returns>The match results.</returns>
     </member>
+    <member name="M:Microsoft.Extensions.FileSystemGlobbing.MatcherExtensions.Match(Microsoft.Extensions.FileSystemGlobbing.Matcher,System.String)">
+      <summary>Matches the file passed in with the patterns in the matcher without going to disk.</summary>
+      <param name="matcher">The matcher that holds the patterns and pattern matching type.</param>
+      <param name="file">The file to run the matcher against.</param>
+      <returns>The match results.</returns>
+    </member>
     <member name="T:Microsoft.Extensions.FileSystemGlobbing.PatternMatchingResult">
       <summary>Represents a collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</summary>
-    </member>
-    <member name="M:Microsoft.Extensions.FileSystemGlobbing.PatternMatchingResult.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch})">
-      <summary>Initializes the result with a collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</summary>
-      <param name="files">A collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</param>
     </member>
     <member name="M:Microsoft.Extensions.FileSystemGlobbing.PatternMatchingResult.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch},System.Boolean)">
       <summary>Initializes the result with a collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</summary>
       <param name="files">A collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</param>
       <param name="hasMatches">A value that determines if <see cref="T:Microsoft.Extensions.FileSystemGlobbing.PatternMatchingResult" /> has any matches.</param>
+    </member>
+    <member name="M:Microsoft.Extensions.FileSystemGlobbing.PatternMatchingResult.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch})">
+      <summary>Initializes the result with a collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</summary>
+      <param name="files">A collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</param>
     </member>
     <member name="P:Microsoft.Extensions.FileSystemGlobbing.PatternMatchingResult.Files">
       <summary>A collection of <see cref="T:Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch" />.</summary>

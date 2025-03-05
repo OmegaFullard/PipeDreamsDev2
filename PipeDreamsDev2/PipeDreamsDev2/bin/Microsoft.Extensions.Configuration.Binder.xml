@@ -6,22 +6,25 @@
     <members>
         <member name="T:Microsoft.Extensions.Configuration.BinderOptions">
             <summary>
-            Options class used by the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBinder"/>.
+            Specifies options used by the <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBinder"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.BinderOptions.BindNonPublicProperties">
             <summary>
-            When false (the default), the binder will only attempt to set public properties.
-            If true, the binder will attempt to set all non read-only properties.
+            Gets or sets a value that indicates whether the binder attempts to set all properties or only public properties.
             </summary>
+            <value>
+            <see langword="true" /> if the binder attempts to set all non-read-only properties; <see langword="false" /> if only public properties are set.
+            </value>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.BinderOptions.ErrorOnUnknownConfiguration">
             <summary>
-            When false (the default), no exceptions are thrown when trying to convert a value or when a configuration
-            key is found for which the provided model object does not have an appropriate property which matches the key's name.
-            When true, an <see cref="T:System.InvalidOperationException"/> is thrown with a description
-            of the error.
+            Gets or sets a value that indicates whether exceptions are thrown when converting a value or when a configuration
+            key is found for which the provided model object doesn't have an appropriate property that matches the key's name.
             </summary>
+            <value>
+            <see langword="true" /> if an <see cref="T:System.InvalidOperationException"/> is thrown with a description; <see langword="false" /> if no exceptions are thrown. The default is <see langword="false" />.
+            </value>
         </member>
         <member name="T:Microsoft.Extensions.Configuration.ConfigurationBinder">
             <summary>
@@ -131,6 +134,34 @@
             <param name="defaultValue">The default value to use if no value is found.</param>
             <returns>The converted value.</returns>
         </member>
+        <member name="M:Microsoft.Extensions.Configuration.ConfigurationBinder.ResetPropertyValue(System.Reflection.PropertyInfo,System.Object,Microsoft.Extensions.Configuration.BinderOptions)">
+            <summary>
+            Reset the property value to the value from the property getter. This is useful for properties that have a getter or setters that perform some logic changing the object state.
+            </summary>
+            <param name="property">The property to reset.</param>
+            <param name="instance">The instance to reset the property on.</param>
+            <param name="options">The binder options.</param>
+            <remarks>
+            This method doesn't do any configuration binding. It just resets the property value to the value from the property getter.
+            This method called only when creating an instance using a primary constructor with parameters names match properties names.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Extensions.Configuration.ConfigurationBinder.CreateInstance(System.Type,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.BinderOptions,System.Reflection.ParameterInfo[]@)">
+            <summary>
+            Create an instance of the specified type.
+            </summary>
+            <param name="type">The type to create an instance of.</param>
+            <param name="config">The configuration to bind to the instance.</param>
+            <param name="options">The binder options.</param>
+            <param name="constructorParameters">The parameters of the constructor used to create the instance.</param>
+            <returns>The created instance.</returns>
+            <exception cref="T:System.InvalidOperationException">If the type cannot be created.</exception>
+            <remarks>
+            constructorParameters will not be null only when using a constructor with a parameters which get their values from the configuration
+            This happen when using types having properties match the constructor parameter names. `record` types are an example.
+            In such cases we need to carry the parameters list to avoid binding the properties again during BindProperties.
+            </remarks>
+        </member>
         <member name="M:System.ThrowHelper.ThrowIfNull(System.Object,System.String)">
             <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is null.</summary>
             <param name="argument">The reference type argument to validate as non-null.</param>
@@ -203,7 +234,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -341,6 +372,35 @@
             Specifies all members.
             </summary>
         </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
+            <summary>
+            Indicates that the specified method requires the ability to generate new code at runtime,
+            for example through <see cref="N:System.Reflection"/>.
+            </summary>
+            <remarks>
+            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
+            with the specified message.
+            </summary>
+            <param name="message">
+            A message that contains information about the usage of dynamic code.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
+            <summary>
+            Gets a message that contains information about the usage of dynamic code.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
+            <summary>
+            Gets or sets an optional URL that contains more information about the method,
+            why it requires dynamic code, and what options a consumer has to deal with it.
+            </summary>
+        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
             <summary>
             Indicates that the specified method requires dynamic access to code that is not referenced
@@ -445,35 +505,6 @@
             Gets or sets the justification for suppressing the code analysis message.
             </summary>
         </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
-            <summary>
-            Indicates that the specified method requires the ability to generate new code at runtime,
-            for example through <see cref="N:System.Reflection"/>.
-            </summary>
-            <remarks>
-            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
-            </remarks>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
-            with the specified message.
-            </summary>
-            <param name="message">
-            A message that contains information about the usage of dynamic code.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
-            <summary>
-            Gets a message that contains information about the usage of dynamic code.
-            </summary>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
-            <summary>
-            Gets or sets an optional URL that contains more information about the method,
-            why it requires dynamic code, and what options a consumer has to deal with it.
-            </summary>
-        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
             <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
         </member>
@@ -562,7 +593,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -571,7 +602,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.

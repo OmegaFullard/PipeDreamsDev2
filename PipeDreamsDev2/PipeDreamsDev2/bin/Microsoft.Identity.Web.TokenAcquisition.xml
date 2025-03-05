@@ -172,6 +172,38 @@
             Name Identifier ID claim: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier".
             </summary>
         </member>
+        <member name="F:Microsoft.Identity.Web.ClaimConstants.Username">
+            <summary>
+            Username claims for ROPC flow.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Web.ClaimConstants.Password">
+            <summary>
+            Password claims for ROPC flow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ConfidentialClientApplicationBuilderExtension.Logger.AttemptToLoadCredentialsFailed(Microsoft.Extensions.Logging.ILogger,Microsoft.Identity.Abstractions.CredentialDescription,System.Exception)">
+            <summary>
+            Logger for attempting to use a CredentialDescription with MSAL
+            </summary>
+            <param name="logger"></param>
+            <param name="certificateDescription"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ConfidentialClientApplicationBuilderExtension.Logger.AttemptToLoadCredentials(Microsoft.Extensions.Logging.ILogger,Microsoft.Identity.Abstractions.CredentialDescription)">
+            <summary>
+            Logger for attempting to use a CredentialDescription with MSAL
+            </summary>
+            <param name="logger"></param>
+            <param name="certificateDescription"></param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ConfidentialClientApplicationBuilderExtension.Logger.FailedToLoadCredentials(Microsoft.Extensions.Logging.ILogger,Microsoft.Identity.Abstractions.CredentialDescription)">
+            <summary>
+            Logger for attempting to use a CredentialDescription with MSAL
+            </summary>
+            <param name="logger"></param>
+            <param name="certificateDescription"></param>
+        </member>
         <member name="M:Microsoft.Identity.Web.ConfidentialClientApplicationBuilderExtension.Logger.NotUsingManagedIdentity(Microsoft.Extensions.Logging.ILogger,System.String)">
             <summary>
             Logger for handling information specific to ConfidentialClientApplicationBuilderExtension.
@@ -193,6 +225,13 @@
             <param name="signedAssertionFileDiskPath"></param>
         </member>
         <member name="M:Microsoft.Identity.Web.ConfidentialClientApplicationBuilderExtension.Logger.UsingSignedAssertionFromVault(Microsoft.Extensions.Logging.ILogger,System.String)">
+            <summary>
+            Logger for handling information specific to ConfidentialClientApplicationBuilderExtension.
+            </summary>
+            <param name="logger">ILogger.</param>
+            <param name="signedAssertionUri"></param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ConfidentialClientApplicationBuilderExtension.Logger.UsingSignedAssertionFromCustomProvider(Microsoft.Extensions.Logging.ILogger,System.String)">
             <summary>
             Logger for handling information specific to ConfidentialClientApplicationBuilderExtension.
             </summary>
@@ -484,6 +523,12 @@
             Merges the MicrosoftIdentityWebOptions and the ConfidentialClientApplicationOptions.
             </summary>
         </member>
+        <member name="P:Microsoft.Identity.Web.MergedOptions.PreparedInstance">
+            <summary>
+            Id Web will modify the instance so that it can be used by MSAL.
+            This modifies this property so that the original value is not changed.
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Web.MicrosoftIdentityAppCallsWebApiAuthenticationBuilder">
             <summary>
             Authentication builder returned by the EnableTokenAcquisitionToCallDownstreamApi methods
@@ -588,7 +633,7 @@
         </member>
         <member name="P:Microsoft.Identity.Web.MicrosoftIdentityOptions.DefaultUserFlow">
             <summary>
-            Gets the default user flow (which is signUpsignIn).
+            Gets the default user flow (which is signUpSignIn).
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Web.MicrosoftIdentityOptions.LegacyCacheCompatibilityEnabled">
@@ -684,7 +729,7 @@
         <member name="P:Microsoft.Identity.Web.MicrosoftIdentityOptions.UserAssignedManagedIdentityClientId">
             <summary>
             Used, when deployed to Azure, to specify explicitly a user assigned managed identity.
-            See https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.
+            See https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Web.MicrosoftIdentityOptions.ClientCredentialsUsingManagedIdentity">
@@ -921,12 +966,20 @@
             <param name="serviceProvider">Service provider.</param>
             <param name="credentialsLoader">Credential loader used to provide the credentials.</param>
         </member>
+        <member name="M:Microsoft.Identity.Web.TokenAcquisition.GetApplicationKey(Microsoft.Identity.Web.MergedOptions)">
+            <summary>
+            Allows creation of confidential client applications targeting regional and global authorities
+            when supporting managed identities.
+            </summary>
+            <param name="mergedOptions">Merged configuration options</param>
+            <returns>Concatenated string of authority, cliend id and azure region</returns>
+        </member>
         <member name="M:Microsoft.Identity.Web.TokenAcquisition.GetAuthenticationResultForUserAsync(System.Collections.Generic.IEnumerable{System.String},System.String,System.String,System.String,System.Security.Claims.ClaimsPrincipal,Microsoft.Identity.Web.TokenAcquisitionOptions)">
             <summary>
             Typically used from a web app or web API controller, this method retrieves an access token
             for a downstream API using;
             1) the token cache (for web apps and web APIs) if a token exists in the cache
-            2) or the <a href='https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow'>on-behalf-of flow</a>
+            2) or the <a href='https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow'>on-behalf-of flow</a>
             in web APIs, for the user account that is ascertained from claims provided in the current claims principal.
             instance of the current HttpContext.
             </summary>
@@ -946,6 +999,15 @@
             passing the validated token (as a JwtSecurityToken or JSonWebToken). Calling it from a web app supposes that
             you have previously called AddAccountToCacheFromAuthorizationCodeAsync from a method called by
             OpenIdConnectOptions.Events.OnAuthorizationCodeReceived.</remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Web.TokenAcquisition.ResolveTenant(System.String,Microsoft.Identity.Web.MergedOptions)">
+            <summary>
+            Resolves the tenant based on if the tenant is already set or the TenantId configured
+            in the options or the AppHomeTenantId if the TenantId is a meta tenant.
+            </summary>
+            <param name="tenant">Provided tenant or null if not provided</param>
+            <param name="mergedOptions">Merged configuration from which to retrieve tenant value as necessary</param>
+            <returns>Resolved tenant</returns>
         </member>
         <member name="M:Microsoft.Identity.Web.TokenAcquisition.GetAuthenticationResultForAppAsync(System.String,System.String,System.String,Microsoft.Identity.Web.TokenAcquisitionOptions)">
             <summary>
@@ -985,7 +1047,7 @@
             Typically used from a web app or web API controller, this method retrieves an access token
             for a downstream API using;
             1) the token cache (for web apps and web APIs) if a token exists in the cache
-            2) or the <a href='https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow'>on-behalf-of flow</a>
+            2) or the <a href='https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow'>on-behalf-of flow</a>
             in web APIs, for the user account that is ascertained from the claims provided in the current claims principal.
             instance of the current HttpContext.
             </summary>
@@ -1083,7 +1145,7 @@
             <param name="cacheRefreshReason">cacheRefreshReason.</param>
             <param name="ex">Exception from MSAL.NET.</param>
         </member>
-        <member name="M:Microsoft.Identity.Web.TokenAcquisition.GetOrBuildManagedIdentityApplication(Microsoft.Identity.Web.MergedOptions,Microsoft.Identity.Abstractions.ManagedIdentityOptions)">
+        <member name="M:Microsoft.Identity.Web.TokenAcquisition.GetOrBuildManagedIdentityApplicationAsync(Microsoft.Identity.Web.MergedOptions,Microsoft.Identity.Abstractions.ManagedIdentityOptions)">
             <summary>
             Gets a cached ManagedIdentityApplication object or builds a new one if not found.
             </summary>
@@ -1106,6 +1168,47 @@
             </summary>
             <param name="managedIdOptions">Holds the clientId for managed identity if none is present.</param>
             <returns>A key value for the Managed Identity cache.</returns>
+        </member>
+        <member name="T:Microsoft.Identity.Web.TokenAcquisitionExtensionOptions">
+            <summary>
+            Options for TokenAcquisition add-ins. These options consist in a set of events, that can be subscribed to by add-ins
+            or parts of the add-ins.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Identity.Web.TokenAcquisitionExtensionOptions.OnBeforeTokenAcquisitionForApp">
+            <summary>
+            Event fired when a client credential flow request is being built.
+            </summary>        
+        </member>
+        <member name="M:Microsoft.Identity.Web.TokenAcquisitionExtensionOptions.InvokeOnBeforeTokenAcquisitionForApp(Microsoft.Identity.Client.AcquireTokenForClientParameterBuilder,Microsoft.Identity.Abstractions.AcquireTokenOptions)">
+            <summary>
+            Invoke the OnBeforeTokenAcquisitionForApp event.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Identity.Web.TokenAcquisitionExtensionOptions.OnBeforeTokenAcquisitionForTestUser">
+            <summary>
+            Event fired when a ROPC flow request is being built.
+            </summary>        
+        </member>
+        <member name="M:Microsoft.Identity.Web.TokenAcquisitionExtensionOptions.InvokeOnBeforeTokenAcquisitionForTestUser(Microsoft.Identity.Client.AcquireTokenByUsernameAndPasswordConfidentialParameterBuilder,Microsoft.Identity.Abstractions.AcquireTokenOptions,System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Invoke the BeforeTokenAcquisitionForTestUser event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Web.BeforeTokenAcquisitionForApp">
+            <summary>
+            Signature for token acquisition extensions that act on the request builder, for an app token
+            </summary>
+            <param name="builder">Builder</param>
+            <param name="acquireTokenOptions">Token acquisition options for the request. Can be null.</param>
+        </member>
+        <member name="T:Microsoft.Identity.Web.BeforeTokenAcquisitionForTestUser">
+            <summary>
+            Signature for token acquisition extensions that act on the request builder, for ROPC flow.
+            </summary>
+            <param name="builder">Builder</param>
+            <param name="acquireTokenOptions">Token acquisition options for the request. Can be null.</param>
+            <param name="user">User claims.</param>
         </member>
         <member name="T:Microsoft.Identity.Web.TokenAcquisitionOptions">
             <summary>

@@ -87,16 +87,6 @@
              Defines where and how to import the private key of an X.509 certificate.
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Web.CertificateDescription.Container">
-            <summary>
-            <inheritdoc/>.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Identity.Web.CertificateDescription.ReferenceOrValue">
-            <summary>
-            <inheritdoc/>.
-            </summary>
-        </member>
         <member name="P:Microsoft.Identity.Web.CertificateDescription.Certificate">
             <summary>
             <inheritdoc/>.
@@ -180,12 +170,26 @@
             Default constuctor.
             </summary>
         </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCertificateLoader.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICustomSignedAssertionProvider},Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DefaultCertificateLoader})">
+            <summary>
+            Constructor with custom signed assertion providers.
+            </summary>
+            <param name="customSignedAssertionProviders">List of providers of custom signed assertions</param>
+            <param name="logger">ILogger.</param>
+        </member>
         <member name="P:Microsoft.Identity.Web.DefaultCertificateLoader.UserAssignedManagedIdentityClientId">
             <summary>
              This default is overridable at the level of the credential description (for the certificate from KeyVault).
             </summary>
         </member>
         <member name="M:Microsoft.Identity.Web.DefaultCertificateLoader.LoadFirstCertificate(System.Collections.Generic.IEnumerable{Microsoft.Identity.Web.CertificateDescription})">
+            <summary>
+            Load the first certificate from the certificate description list.
+            </summary>
+            <param name="certificateDescriptions">Description of the certificates.</param>
+            <returns>First certificate in the certificate description list.</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCertificateLoader.LoadFirstCertificateAsync(System.Collections.Generic.IEnumerable{Microsoft.Identity.Web.CertificateDescription})">
             <summary>
             Load the first certificate from the certificate description list.
             </summary>
@@ -226,6 +230,12 @@
             </summary>
             <param name="certificateDescription">Description of the certificate.</param>
         </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCertificateLoader.LoadIfNeededAsync(Microsoft.Identity.Web.CertificateDescription)">
+            <summary>
+            Load the certificate from the description, if needed.
+            </summary>
+            <param name="certificateDescription">Description of the certificate.</param>
+        </member>
         <member name="T:Microsoft.Identity.Web.DefaultCredentialsLoader">
             <summary>
             Default credentials loader.
@@ -250,13 +260,33 @@
         </member>
         <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.LoadCredentialsIfNeededAsync(Microsoft.Identity.Abstractions.CredentialDescription,Microsoft.Identity.Abstractions.CredentialSourceLoaderParameters)">
             <inheritdoc/>
-            Load the credentials from the description, if needed.
+            Load the credentials from the description, if needed. 
+            Important: Ignores SKIP flag, propagates exceptions.
         </member>
         <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.LoadFirstValidCredentialsAsync(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.CredentialDescription},Microsoft.Identity.Abstractions.CredentialSourceLoaderParameters)">
             <inheritdoc/>
+            Loads first valid credential which is not marked as Skipped. 
         </member>
         <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.ResetCredentials(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.CredentialDescription})">
             <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICustomSignedAssertionProvider},Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DefaultCredentialsLoader})">
+            <summary>
+            Constructor for DefaultCredentialsLoader when using custom signed assertion provider source loaders.
+            </summary>
+            <param name="customSignedAssertionProviders">Set of custom signed assertion providers.</param>
+            <param name="logger">ILogger.</param>
+        </member>
+        <member name="P:Microsoft.Identity.Web.DefaultCredentialsLoader.CustomSignedAssertionCredentialSourceLoaders">
+            <summary>
+            Dictionary of custom signed assertion credential source loaders, by name (either ICustomSignedAssertionProvider.Name or the fully qualified type name).
+            The application can add more to process additional credential sources.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Web.DefaultCredentialsLoader.Logger">
+            <summary>
+            Logging infrastructure
+            </summary>
         </member>
         <member name="T:Microsoft.Identity.Web.ICertificateLoader">
              <summary>
@@ -281,7 +311,7 @@
             </summary>
             <param name="certificateDescription">Description of the certificate.</param>
         </member>
-        <member name="M:Microsoft.Identity.Web.KeyVaultCertificateLoader.LoadFromKeyVault(System.String,System.String,System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags)">
+        <member name="M:Microsoft.Identity.Web.KeyVaultCertificateLoader.LoadFromKeyVaultAsync(System.String,System.String,System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags)">
             <summary>
             Load a certificate from Key Vault, including the private key.
             </summary>

@@ -4,7 +4,8 @@
 
 <script src="../assets/js/color-modes.js"></script>
     
-        
+        <br />
+    <br />
                <div style="width:1000px;margin-left: auto;margin-right: auto;">
              
         <aside id="leftmenu">

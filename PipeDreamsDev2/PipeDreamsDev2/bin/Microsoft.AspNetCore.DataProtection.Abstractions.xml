@@ -349,6 +349,35 @@
             The minimum output <c>char[]</c> size required for encoding <paramref name="count"/> <see cref="T:System.Byte"/>s.
             </returns>
         </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
+            <summary>
+            Indicates that the specified method requires the ability to generate new code at runtime,
+            for example through <see cref="N:System.Reflection"/>.
+            </summary>
+            <remarks>
+            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
+            with the specified message.
+            </summary>
+            <param name="message">
+            A message that contains information about the usage of dynamic code.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
+            <summary>
+            Gets a message that contains information about the usage of dynamic code.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
+            <summary>
+            Gets or sets an optional URL that contains more information about the method,
+            why it requires dynamic code, and what options a consumer has to deal with it.
+            </summary>
+        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
             <summary>
             Indicates that the specified method requires dynamic access to code that is not referenced
@@ -377,35 +406,6 @@
             <summary>
             Gets or sets an optional URL that contains more information about the method,
             why it requires unreferenced code, and what options a consumer has to deal with it.
-            </summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
-            <summary>
-            Indicates that the specified method requires the ability to generate new code at runtime,
-            for example through <see cref="N:System.Reflection"/>.
-            </summary>
-            <remarks>
-            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
-            </remarks>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
-            with the specified message.
-            </summary>
-            <param name="message">
-            A message that contains information about the usage of dynamic code.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
-            <summary>
-            Gets a message that contains information about the usage of dynamic code.
-            </summary>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
-            <summary>
-            Gets or sets an optional URL that contains more information about the method,
-            why it requires dynamic code, and what options a consumer has to deal with it.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute">

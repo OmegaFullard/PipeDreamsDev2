@@ -1313,6 +1313,7 @@
             <summary>
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
+            There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
             </summary>
         </member>
         <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperation.Value">
@@ -1825,6 +1826,7 @@
             <summary>
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
+            There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
             </summary>
         </member>
         <member name="P:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.Value">
@@ -2200,6 +2202,7 @@
             <summary>
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
+            There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
             </summary>
         </member>
         <member name="P:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.Value">
@@ -2328,12 +2331,33 @@
         <member name="M:Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.AuthorizeRequestOnChallengeAsync(Azure.Core.HttpMessage)">
             <summary>
             Executed in the event a 401 response with a WWW-Authenticate authentication challenge header is received after the initial request.
+            The default implementation will attempt to handle Continuous Access Evaluation (CAE) claims challenges.
             </summary><remarks>Service client libraries may override this to handle service specific authentication challenges.</remarks><param name="message">The <see cref="T:Azure.Core.HttpMessage" /> to be authenticated.</param><returns>A boolean indicating whether the request was successfully authenticated and should be sent to the transport.</returns>
         </member>
         <member name="M:Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.AuthorizeRequestOnChallenge(Azure.Core.HttpMessage)">
             <summary>
             Executed in the event a 401 response with a WWW-Authenticate authentication challenge header is received after the initial request.
+            The default implementation will attempt to handle Continuous Access Evaluation (CAE) claims challenges.
             </summary><remarks>Service client libraries may override this to handle service specific authentication challenges.</remarks><param name="message">The <see cref="T:Azure.Core.HttpMessage" /> to be authenticated.</param><returns>A boolean indicating whether the request was successfully authenticated and should be sent to the transport.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.getDecodedClaimsParameter(System.String,Azure.Response)">
+            <summary>
+            Gets the claims parameter from the challenge response.
+            If there are no claims, returns null.
+            </summary>
+            <param name="error">The error message from the service.</param>
+            <param name="response">The response from the service which contains the headers.</param>
+            <returns>A string with the decoded claims if present, otherwise null</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.ProcessAsync(Azure.Core.HttpMessage,System.ReadOnlyMemory{Azure.Core.Pipeline.HttpPipelinePolicy})">
+            <summary>
+            Applies the policy to the <paramref name="message" />. Implementers are expected to mutate <see cref="P:Azure.Core.HttpMessage.Request" /> before calling <see cref="M:Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNextAsync(Azure.Core.HttpMessage,System.ReadOnlyMemory{Azure.Core.Pipeline.HttpPipelinePolicy})" /> and observe the <see cref="P:Azure.Core.HttpMessage.Response" /> changes after.
+            </summary><param name="message">The <see cref="T:Azure.Core.HttpMessage" /> this policy would be applied to.</param><param name="pipeline">The set of <see cref="T:Azure.Core.Pipeline.HttpPipelinePolicy" /> to execute after current one.</param><returns>The <see cref="T:System.Threading.Tasks.ValueTask" /> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.Process(Azure.Core.HttpMessage,System.ReadOnlyMemory{Azure.Core.Pipeline.HttpPipelinePolicy})">
+            <summary>
+            Applies the policy to the <paramref name="message" />. Implementers are expected to mutate <see cref="P:Azure.Core.HttpMessage.Request" /> before calling <see cref="M:Azure.Core.Pipeline.HttpPipelinePolicy.ProcessNextAsync(Azure.Core.HttpMessage,System.ReadOnlyMemory{Azure.Core.Pipeline.HttpPipelinePolicy})" /> and observe the <see cref="P:Azure.Core.HttpMessage.Response" /> changes after.
+            </summary><param name="message">The <see cref="T:Azure.Core.HttpMessage" /> this policy would be applied to.</param><param name="pipeline">The set of <see cref="T:Azure.Core.Pipeline.HttpPipelinePolicy" /> to execute after current one.</param>
         </member>
         <member name="P:Azure.Security.KeyVault.ChallengeBasedAuthenticationPolicy.ChallengeParameters.AuthorizationUri">
             <summary>
@@ -2487,6 +2511,13 @@
             <summary>
             A helper class for parsing Authorization challenge headers.
             </summary>
+        </member>
+        <member name="M:Azure.Core.AuthorizationChallengeParser.IsCaeClaimsChallenge(Azure.Response)">
+            <summary>
+            Determines if the specified <see cref="T:Azure.Core.HttpMessage" /> is a CAE claims challenge.
+            </summary>
+            <param name="response">The response containing a WWW-Authenticate header.</param>
+            <returns>True</returns>
         </member>
         <member name="M:Azure.Core.AuthorizationChallengeParser.GetChallengeParameterFromResponse(Azure.Response,System.String,System.String)">
             <summary>
@@ -2676,22 +2707,6 @@
             auditing this operation.
             </summary>
         </member>
-        <member name="T:Azure.Core.AppContextSwitchHelper">
-            <summary>
-            Helper for interacting with AppConfig settings and their related Environment variable settings.
-            </summary>
-        </member>
-        <member name="M:Azure.Core.AppContextSwitchHelper.GetConfigValue(System.String,System.String)">
-            <summary>
-            Determines if either an AppContext switch or its corresponding Environment Variable is set
-            </summary>
-            <param name="appContexSwitchName">Name of the AppContext switch.</param>
-            <param name="environmentVariableName">Name of the Environment variable.</param>
-            <returns>If the AppContext switch has been set, returns the value of the switch.
-            If the AppContext switch has not been set, returns the value of the environment variable.
-            False if neither is set.
-            </returns>
-        </member>
         <member name="T:Azure.Core.Argument">
             <summary>
             Argument validation.
@@ -2803,6 +2818,22 @@
             <param name="message">The error message.</param>
             <exception cref="T:System.ArgumentException"><paramref name="value" /> is not null.</exception>
         </member>
+        <member name="T:Azure.Core.AppContextSwitchHelper">
+            <summary>
+            Helper for interacting with AppConfig settings and their related Environment variable settings.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.AppContextSwitchHelper.GetConfigValue(System.String,System.String)">
+            <summary>
+            Determines if either an AppContext switch or its corresponding Environment Variable is set
+            </summary>
+            <param name="appContexSwitchName">Name of the AppContext switch.</param>
+            <param name="environmentVariableName">Name of the Environment variable.</param>
+            <returns>If the AppContext switch has been set, returns the value of the switch.
+            If the AppContext switch has not been set, returns the value of the environment variable.
+            False if neither is set.
+            </returns>
+        </member>
         <member name="T:Azure.Core.AsyncLockWithValue`1">
             <summary>
             Primitive that combines async lock and value cache
@@ -2864,7 +2895,7 @@
              The default value could change in the future, the flag should be only set to false if suppression for the client
              should never be enabled.</param>
         </member>
-        <member name="M:Azure.Core.Pipeline.DiagnosticScope.AddLink(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Azure.Core.Pipeline.DiagnosticScope.AddLink(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
             <summary>
             Adds a link to the scope. This must be called before <see cref="M:Azure.Core.Pipeline.DiagnosticScope.Start" /> has been called for the DiagnosticScope.
             </summary>
@@ -3457,6 +3488,7 @@
             <summary>
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
+            There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
             </summary>
         </member>
         <member name="P:Azure.Core.ProtocolOperation`1.Value">
@@ -3894,18 +3926,6 @@
             <summary>
             Specifies all members.
             </summary>
-        </member>
-        <member name="M:Azure.Core.ChangeTrackingDictionary`2.System#Collections#IEnumerable#GetEnumerator">
-            <summary>Returns an enumerator that iterates through a collection.</summary><returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
-        </member>
-        <member name="P:Azure.Core.ChangeTrackingDictionary`2.System#Collections#Generic#IReadOnlyDictionary{TKey@TValue}#Keys">
-            <summary>Gets an enumerable collection that contains the keys in the read-only dictionary.</summary><returns>An enumerable collection that contains the keys in the read-only dictionary.</returns>
-        </member>
-        <member name="P:Azure.Core.ChangeTrackingDictionary`2.System#Collections#Generic#IReadOnlyDictionary{TKey@TValue}#Values">
-            <summary>Gets an enumerable collection that contains the values in the read-only dictionary.</summary><returns>An enumerable collection that contains the values in the read-only dictionary.</returns>
-        </member>
-        <member name="M:Azure.Core.ChangeTrackingList`1.System#Collections#IEnumerable#GetEnumerator">
-            <summary>Returns an enumerator that iterates through a collection.</summary><returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
         </member>
         <member name="M:Azure.Core.Pipeline.TaskExtensions.Enumerable`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
             <summary>Returns an enumerator that iterates through the collection.</summary><returns>An enumerator that can be used to iterate through the collection.</returns>

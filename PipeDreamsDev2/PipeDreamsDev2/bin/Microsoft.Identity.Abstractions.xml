@@ -14,6 +14,17 @@
             (See the DefaultCredentialProvider class)
             </summary>
         </member>
+        <member name="M:Microsoft.Identity.Abstractions.CredentialDescription.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.CredentialDescription.#ctor(Microsoft.Identity.Abstractions.CredentialDescription)">
+            <summary>
+            Copy constructor for <see cref="T:Microsoft.Identity.Abstractions.CredentialDescription"/>
+            </summary>
+            <param name="other">CredentialDescription to copy.</param>
+        </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Id">
             <summary>
             Gets a unique identifier for a CredentialDescription based on <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> and <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.ReferenceOrValue"/>.
@@ -258,6 +269,24 @@
             ]]></format>
             </example>
         </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.TokenExchangeAuthority">
+            <summary>
+            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/>, 
+            specifies the authority URL to use for token exchange. This is useful in scenarios where the issuer 
+            for the token exchange is different from the application's authority.
+            </summary>
+            <example>
+            <format type="text/markdown">
+            <![CDATA[
+            The JSON fragment below describes a workload identity federation with a user assigned managed identity:
+            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeAuthority_json":::
+            
+            The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
+            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeAuthority_csharp":::
+            ]]></format>
+            </example>
+            <remarks>If you want to use the default authority, don't provide a token exchange authority URL.</remarks>
+        </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.ReferenceOrValue">
             <summary>
             Reference to the certificate or value. You will normally not use this property directly. It could be used
@@ -345,6 +374,19 @@
             ]]></format>
             </example> 
             <remarks>If you want to use the default token exchange resource "api://AzureADTokenExchange", don't provide a token exchange url.</remarks>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderName">
+            <summary>
+            Extensibility. When used with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.CustomSignedAssertion"/>, this property specifies the fully qualified
+            named of the extension that will be used to retrieve the signed assertion used as a client credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderData">
+            <summary>
+            Extensibility. When used with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.CustomSignedAssertion"/>, this property specifies 
+            additional data that will be passed to the extension computing the signed assertion. This is meant for SDKs extending the credential
+            description capabilities.
+            </summary>
         </member>
         <member name="T:Microsoft.Identity.Abstractions.CredentialSource">
             <summary>
@@ -520,6 +562,12 @@
             ]]></format>
             </example>
         </member>
+        <member name="F:Microsoft.Identity.Abstractions.CredentialSource.CustomSignedAssertion">
+            <summary>
+            Use this value in order to utilize a credential provider that is not part of the Microsoft.Identity.Abstractions library.
+            This is an extension point, which goes along with <see cref = "P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderName" />
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.CredentialSourceLoaderParameters">
             <summary>
             Parameters that credential loaders, like signed assertion providers, can use to load credentials. You won't use this class directly
@@ -635,6 +683,19 @@
         <member name="P:Microsoft.Identity.Abstractions.ICredentialSourceLoader.CredentialSource">
             <summary>
             CredentialSource that this credential source loader knows how to load.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.ICustomSignedAssertionProvider">
+            <summary>
+            Interface to implement loading of a custom signed assertion provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.ICustomSignedAssertionProvider.Name">
+            <summary>
+            Configuration friendly name of the custom signed assertion provider as it
+            will appear in the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderName"/>
+            Can be <c>null</c> in which case developers will need to pass-in the fully
+            qualified name of the implementing class.
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Abstractions.IdentityApplicationOptions">
@@ -810,6 +871,11 @@
             Gets or sets the Authority to use when making OpenIdConnect calls. By default the authority is computed
             from the <see cref="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.Instance"/> and <see cref="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.TenantId"/> properties, by concatenating them, and appending "v2.0".
             If your authority is not an Azure AD authority, you can set it directly here.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.AppHomeTenantId">
+            <summary>
+            Home tenant of the app in which the app can acquire a token to call a downstream API on behalf of itself.
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.AzureRegion">
@@ -1830,7 +1896,7 @@
         <member name="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.AuthenticationOptionsName">
             <summary>
             Gets the name of the options describing the confidential client application (ClientID,
-            Region, Authority, client credentials). In ASP.NET Core, the authenticatiopn options name 
+            Region, Authority, client credentials). In ASP.NET Core, the authentication options name
             is the same as the authentication scheme.
             </summary>
         </member>
@@ -1845,6 +1911,14 @@
             "/token" endpoint.
             </summary>
         </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraParameters">
+            <summary>
+            An property bag used for extensiblity. 
+            </summary>
+            <remarks>
+            Not meant to be used by application developers, but by other SDKs.
+            </remarks>
+        </member>
         <member name="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraHeadersParameters">
             Sets extra headers in the HTTP request to the STS "/token" endpoint.
         </member>
@@ -1855,6 +1929,11 @@
             It can also be used to request specific optional claims, and for 
             <see href="https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps">
             CA Auth context</see>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.FmiPath">
+            <summary>
+            Federated Managed Identity (FMI) sub-path.
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ForceRefresh">

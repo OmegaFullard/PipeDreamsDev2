@@ -6,7 +6,7 @@
     <members>
         <member name="T:Microsoft.Extensions.Configuration.FileConfigurationExtensions">
             <summary>
-            Extension methods for <see cref="T:Microsoft.Extensions.Configuration.FileConfigurationProvider"/>.
+            Provides extension methods for <see cref="T:Microsoft.Extensions.Configuration.FileConfigurationProvider"/>.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetFileProvider(Microsoft.Extensions.Configuration.IConfigurationBuilder,Microsoft.Extensions.FileProviders.IFileProvider)">
@@ -49,7 +49,7 @@
         </member>
         <member name="T:Microsoft.Extensions.Configuration.FileConfigurationProvider">
             <summary>
-            Base class for file based <see cref="T:Microsoft.Extensions.Configuration.ConfigurationProvider"/>.
+            Provides the base class for file-based <see cref="T:Microsoft.Extensions.Configuration.ConfigurationProvider"/> providers.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationProvider.#ctor(Microsoft.Extensions.Configuration.FileConfigurationSource)">
@@ -60,14 +60,14 @@
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationProvider.Source">
             <summary>
-            The source settings for this provider.
+            Gets the source settings for this provider.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationProvider.ToString">
             <summary>
             Generates a string representing this provider name and relevant details.
             </summary>
-            <returns> The configuration name. </returns>
+            <returns>The configuration name.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationProvider.Load">
             <summary>
@@ -92,44 +92,49 @@
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationProvider.Dispose(System.Boolean)">
             <summary>
-            Dispose the provider.
+            Disposes the provider.
             </summary>
             <param name="disposing"><c>true</c> if invoked from <see cref="M:System.IDisposable.Dispose"/>.</param>
         </member>
         <member name="T:Microsoft.Extensions.Configuration.FileConfigurationSource">
             <summary>
-            Represents a base class for file based <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSource"/>.
+            Provides the base class for file-based <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSource"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationSource.FileProvider">
             <summary>
-            Used to access the contents of the file.
+            Gets or sets the provider used to access the contents of the file.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationSource.Path">
             <summary>
-            The path to the file.
+            Gets or sets the path to the file.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationSource.Optional">
             <summary>
-            Determines if loading the file is optional.
+            Gets or sets a value that indicates whether loading the file is optional.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationSource.ReloadOnChange">
             <summary>
-            Determines whether the source will be loaded if the underlying file changes.
+            Gets or sets a value that indicates whether the source will be loaded if the underlying file changes.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationSource.ReloadDelay">
             <summary>
-            Number of milliseconds that reload will wait before calling Load.  This helps
-            avoid triggering reload before a file is completely written. Default is 250.
+            Gets or sets the number of milliseconds that reload will wait before calling Load.
             </summary>
+            <value>
+            The number of milliseconds that reload waits before calling Load. The default is 250.
+            </value>
+            <remarks>
+            This delay helps avoid triggering reload before a file is completely written.
+            </remarks>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileConfigurationSource.OnLoadException">
             <summary>
-            Will be called if an uncaught exception occurs in FileConfigurationProvider.Load.
+            Gets or sets the action that's called if an uncaught exception occurs in FileConfigurationProvider.Load.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationSource.Build(Microsoft.Extensions.Configuration.IConfigurationBuilder)">
@@ -137,7 +142,7 @@
             Builds the <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider"/> for this source.
             </summary>
             <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</param>
-            <returns>A <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider"/></returns>
+            <returns>To be added.</returns>
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationSource.EnsureDefaults(Microsoft.Extensions.Configuration.IConfigurationBuilder)">
             <summary>
@@ -147,8 +152,7 @@
         </member>
         <member name="M:Microsoft.Extensions.Configuration.FileConfigurationSource.ResolveFileProvider">
             <summary>
-            If no file provider has been set, for absolute Path, this will creates a physical file provider
-            for the nearest existing directory.
+            Creates a physical file provider for the nearest existing directory if no file provider has been set, for absolute Path.
             </summary>
         </member>
         <member name="T:Microsoft.Extensions.Configuration.FileLoadExceptionContext">
@@ -158,18 +162,21 @@
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileLoadExceptionContext.Provider">
             <summary>
-            The <see cref="T:Microsoft.Extensions.Configuration.FileConfigurationProvider"/> that caused the exception.
+            Gets or sets the <see cref="T:Microsoft.Extensions.Configuration.FileConfigurationProvider"/> that caused the exception.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileLoadExceptionContext.Exception">
             <summary>
-            The exception that occurred in Load.
+            Gets or sets the exception that occurred in Load.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.Configuration.FileLoadExceptionContext.Ignore">
             <summary>
-            If true, the exception will not be rethrown.
+            Gets or sets a value that indicates whether the exception is rethrown.
             </summary>
+            <value>
+            <see langword="true" /> if the exception isn't rethrown; otherwise, <see langword="false" />.
+            </value>
         </member>
         <member name="M:System.ThrowHelper.ThrowIfNull(System.Object,System.String)">
             <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is null.</summary>
@@ -243,7 +250,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -353,7 +360,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -362,7 +369,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.

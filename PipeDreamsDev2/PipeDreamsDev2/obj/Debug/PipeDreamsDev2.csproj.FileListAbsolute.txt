@@ -215,7 +215,6 @@ C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDreamsDev2.pdb
-C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Azure.DevOps.Comments.WebApi.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Azure.Pipelines.WebApi.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.TeamFoundation.Build.Client.dll
@@ -551,3 +550,14 @@ C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Extensions.Identity.Stores.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\obj\Debug\PipeDrea.53F65BAB.Up2Date
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\BouncyCastle.Cryptography.dll
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Bcl.Cryptography.dll
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Bcl.Memory.dll
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Bcl.TimeProvider.dll
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Newtonsoft.Json.Bson.dll
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\BouncyCastle.Cryptography.xml
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Bcl.Cryptography.xml
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Bcl.Memory.xml
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Microsoft.Bcl.TimeProvider.xml
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Newtonsoft.Json.Bson.pdb
+C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Newtonsoft.Json.Bson.xml

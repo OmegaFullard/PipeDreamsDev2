@@ -957,12 +957,6 @@
             <param name="configuration">The <see cref="T:Microsoft.IdentityModel.Tokens.BaseConfiguration"/> to be used for validating the token.</param>
             <param name="callContext"></param>
             <returns>The decoded / cleartext contents of the JWE.</returns>
-            <exception cref="T:System.ArgumentNullException">Returned inside <see cref="P:Microsoft.IdentityModel.Tokens.TokenDecryptionResult.Exception"/> if <paramref name="jwtToken"/> is null.</exception>
-            <exception cref="T:System.ArgumentNullException">Returned inside <see cref="P:Microsoft.IdentityModel.Tokens.TokenDecryptionResult.Exception"/> if <paramref name="validationParameters"/> is null.</exception>
-            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenException">Returned inside <see cref="P:Microsoft.IdentityModel.Tokens.TokenDecryptionResult.Exception"/> if <see cref="P:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.Enc"/> is null or empty.</exception>
-            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenDecompressionFailedException">Returned inside <see cref="P:Microsoft.IdentityModel.Tokens.TokenDecryptionResult.Exception"/> if the decompression failed.</exception>
-            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenEncryptionKeyNotFoundException">Returned inside <see cref="P:Microsoft.IdentityModel.Tokens.TokenDecryptionResult.Exception"/> if <see cref="P:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.Kid"/> is not null AND the decryption fails.</exception>
-            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenDecryptionFailedException">Returned inside <see cref="P:Microsoft.IdentityModel.Tokens.TokenDecryptionResult.Exception"/> if the JWE was not able to be decrypted.</exception>
         </member>
         <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ResolveTokenDecryptionKey(System.String,Microsoft.IdentityModel.JsonWebTokens.JsonWebToken,Microsoft.IdentityModel.Tokens.ValidationParameters,Microsoft.IdentityModel.Tokens.CallContext)">
             <summary>
@@ -977,11 +971,11 @@
         </member>
         <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(System.String,Microsoft.IdentityModel.Tokens.CallContext)">
             <summary>
-            Converts a string into an instance of <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/>, returned inside of a <see cref="T:Microsoft.IdentityModel.Tokens.TokenReadingResult"/>.
+            Converts a string into an instance of <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/>, returned inside of a <see cref="T:Microsoft.IdentityModel.Tokens.ValidationResult`1"/>.
             </summary>
             <param name="token">A JSON Web Token (JWT) in JWS or JWE Compact Serialization format.</param>
             <param name="callContext"></param>
-            <returns>A <see cref="T:Microsoft.IdentityModel.Tokens.TokenReadingResult"/> with the <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/> if valid, or an Exception.</returns>
+            <returns>A <see cref="T:Microsoft.IdentityModel.Tokens.ValidationResult`1"/> with the <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/> if valid, or an error.</returns>
             <exception cref="T:System.ArgumentNullException">returned if <paramref name="token"/> is null or empty.</exception>
             <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException">returned if the validationParameters.TokenReader delegate is not able to parse/read the token as a valid <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/>.</exception>
             <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException">returned if <paramref name="token"/> is not a valid JWT, <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/>.</exception>
@@ -994,7 +988,7 @@
             <param name="validationParameters">The parameters used for validation.</param>
             <param name="configuration">The optional configuration used for validation.</param>
             <param name="callContext">The context in which the method is called.</param>
-            <exception cref="T:System.ArgumentNullException">Returned if <paramref name="jwtToken"/> or <paramref name="validationParameters"/> is null.</exception>"
+            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenArgumentNullException">Returned if <paramref name="jwtToken"/> or <paramref name="validationParameters"/> is null.</exception>"
             <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenInvalidSignatureException">Returned by the default implementation if the token is not signed, or if the validation fails.</exception>
             <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenInvalidAlgorithmException">Returned if the algorithm is not supported by the key.</exception>
             <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException">Returned if the key cannot be resolved.</exception>
@@ -1049,40 +1043,19 @@
             <param name="validationParameters">The <see cref="T:Microsoft.IdentityModel.Tokens.TokenValidationParameters"/> to be used for validating the token.</param>
             <returns></returns>
         </member>
-        <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenAsync(System.String,Microsoft.IdentityModel.Tokens.ValidationParameters,Microsoft.IdentityModel.Tokens.CallContext,System.Nullable{System.Threading.CancellationToken})">
+        <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenAsync(System.String,Microsoft.IdentityModel.Tokens.ValidationParameters,Microsoft.IdentityModel.Tokens.CallContext,System.Threading.CancellationToken)">
             <summary>
             Validates a token.
-            On a validation failure, no exception will be thrown; instead, the exception will be set in the returned TokenValidationResult.Exception property.
-            Callers should always check the TokenValidationResult.IsValid property to verify the validity of the result.
+            On validation failure no exception will be thrown. 'see cref="ValidationError"' will contain information pertaining to the error.
             </summary>
             <param name="token">The token to be validated.</param>
             <param name="validationParameters">The <see cref="T:Microsoft.IdentityModel.Tokens.ValidationParameters"/> to be used for validating the token.</param>
-            <param name="callContext">A <see cref="T:Microsoft.IdentityModel.Tokens.CallContext"/> that contains useful information for logging.</param>
+            <param name="callContext">A <see cref="T:Microsoft.IdentityModel.Tokens.CallContext"/> that contains call information.</param>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> that can be used to request cancellation of the asynchronous operation.</param>
-            <returns>A <see cref="T:Microsoft.IdentityModel.Tokens.TokenValidationResult"/>.</returns>
-            <remarks>
-            <para>TokenValidationResult.Exception will be set to one of the following exceptions if the <paramref name="token"/> is invalid.</para>
-            </remarks>
-            <exception cref="T:System.ArgumentNullException">Returned if <paramref name="token"/> is null or empty.</exception>
-            <exception cref="T:System.ArgumentNullException">Returned if <paramref name="validationParameters"/> is null.</exception>
-            <exception cref="T:System.ArgumentException">Returned if 'token.Length' is greater than <see cref="P:Microsoft.IdentityModel.Tokens.TokenHandler.MaximumTokenSizeInBytes"/>.</exception>
-            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException">Returned if <paramref name="token"/> is not a valid <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/>, <see cref="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(System.String,Microsoft.IdentityModel.Tokens.CallContext)"/></exception>
-            <exception cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException">Returned if the validationParameters.TokenReader delegate is not able to parse/read the token as a valid <see cref="T:Microsoft.IdentityModel.JsonWebTokens.JsonWebToken"/>, <see cref="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(System.String,Microsoft.IdentityModel.Tokens.CallContext)"/></exception>
+            <returns>A <see cref="T:Microsoft.IdentityModel.Tokens.ValidationResult`1"/> with either a <see cref="T:Microsoft.IdentityModel.Tokens.ValidatedToken"/> if the token was validated or an <see cref="T:Microsoft.IdentityModel.Tokens.ValidationError"/> with the failure information and exception otherwise.</returns>
         </member>
-        <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenAsync(Microsoft.IdentityModel.Tokens.SecurityToken,Microsoft.IdentityModel.Tokens.ValidationParameters,Microsoft.IdentityModel.Tokens.CallContext,System.Nullable{System.Threading.CancellationToken})">
+        <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenAsync(Microsoft.IdentityModel.Tokens.SecurityToken,Microsoft.IdentityModel.Tokens.ValidationParameters,Microsoft.IdentityModel.Tokens.CallContext,System.Threading.CancellationToken)">
             <inheritdoc/>
-        </member>
-        <member name="M:Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.InternalValidateTokenAsync(Microsoft.IdentityModel.JsonWebTokens.JsonWebToken,Microsoft.IdentityModel.Tokens.ValidationParameters,Microsoft.IdentityModel.Tokens.CallContext,System.Nullable{System.Threading.CancellationToken})">
-            <summary>
-             Internal method for token validation, responsible for:
-             (1) Obtaining a configuration from the <see cref="P:Microsoft.IdentityModel.Tokens.ValidationParameters.ConfigurationManager"/>.
-             (2) Revalidating using the Last Known Good Configuration (if present), and obtaining a refreshed configuration (if necessary) and revalidating using it.
-            </summary>
-            <param name="jsonWebToken">The JWT token.</param>
-            <param name="validationParameters">The <see cref="T:Microsoft.IdentityModel.Tokens.ValidationParameters"/> to be used for validating the token.</param>
-            <param name="callContext">A <see cref="T:Microsoft.IdentityModel.Tokens.CallContext"/> that contains useful information for logging.</param>
-            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> that can be used to request cancellation of the asynchronous operation.</param>
-            <returns></returns>
         </member>
         <member name="T:Microsoft.IdentityModel.JsonWebTokens.JsonClaimSet">
             <summary>

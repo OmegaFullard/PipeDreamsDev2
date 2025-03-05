@@ -1129,11 +1129,43 @@
             an activation date of less than 5 minutes in the future, we'll use it.
             </remarks>
         </member>
-        <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.DeferredKey">
+        <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IDeletableKeyManager">
             <summary>
-            The basic implementation of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKey"/>, where the incoming XML element
-            hasn't yet been fully processed.
+            An extension of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKeyManager"/> that supports key deletion.
             </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.KeyManagement.IDeletableKeyManager.CanDeleteKeys">
+            <summary>
+            Indicates whether this key manager and the underlying <see cref="T:Microsoft.AspNetCore.DataProtection.Repositories.IXmlRepository"/> support key deletion.
+            </summary>
+            <seealso cref="M:Microsoft.AspNetCore.DataProtection.KeyManagement.IDeletableKeyManager.DeleteKeys(System.Func{Microsoft.AspNetCore.DataProtection.KeyManagement.IKey,System.Boolean})"/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.IDeletableKeyManager.DeleteKeys(System.Func{Microsoft.AspNetCore.DataProtection.KeyManagement.IKey,System.Boolean})">
+             <summary>
+             Deletes keys matching a predicate.
+            
+             Use with caution as deleting active keys will normally cause data loss.
+             </summary>
+             <param name="shouldDelete">
+             A predicate applied to each key.
+             Returning true will cause the key to be deleted.
+             </param>
+             <returns>
+             True if all attempted deletions succeeded.
+             </returns>
+             <remarks>
+             Deletion is stronger than revocation.  A revoked key is retained and can even be (forcefully) applied.
+             A deleted key is indistinguishable from a key that never existed.
+             
+             Generally, keys should only be deleted to save space.  If space is not a concern, keys
+             should be revoked or allowed to expire instead.
+            
+             This method will not mutate existing IKey instances. After calling this method,
+             all existing IKey instances should be discarded, and GetAllKeys should be called again.
+             </remarks>
+             <exception cref="T:System.NotSupportedException">
+             If <see cref="P:Microsoft.AspNetCore.DataProtection.KeyManagement.IDeletableKeyManager.CanDeleteKeys"/> is false.
+             </exception>
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKey">
             <summary>
@@ -1309,9 +1341,13 @@
         </member>
         <member name="F:Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.DefaultKeyResolution.ShouldGenerateNewKey">
             <summary>
-            'true' if a new key should be persisted to the keyring, 'false' otherwise.
+            True if the caller should generate and persist a new key to the keyring.
+            False if the caller should determine for itself whether to generate a new key.
             This value may be 'true' even if a valid default key was found.
             </summary>
+            <remarks>
+            Does not reflect the time to expiration of the default key, if there is one.
+            </remarks>
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.ICacheableKeyRingProvider">
             <summary>
@@ -1400,13 +1436,19 @@
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.Key">
             <summary>
+            The basic implementation of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKey"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.Key.#ctor(System.Guid,System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.IAuthenticatedEncryptorDescriptor,System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.IAuthenticatedEncryptorFactory})">
+            <summary>
             The basic implementation of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKey"/>, where the <see cref="T:Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.IAuthenticatedEncryptorDescriptor"/>
             has already been created.
             </summary>
         </member>
-        <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase">
+        <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.Key.#ctor(System.Guid,System.DateTimeOffset,System.DateTimeOffset,System.DateTimeOffset,Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager,System.Xml.Linq.XElement,System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.IAuthenticatedEncryptorFactory})">
             <summary>
-            The basic implementation of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKey"/>.
+            The basic implementation of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.IKey"/>, where the incoming XML element
+            hasn't yet been fully processed.
             </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyEscrowServiceProviderExtensions.GetKeyEscrowSink(System.IServiceProvider)">
@@ -1470,6 +1512,25 @@
             This value is currently fixed at 5 minutes.
             </remarks>
         </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyManagementOptions.MaximumTotalDefaultKeyResolverRetries">
+            <summary>
+            During each default key resolution, if a key decryption attempt fails,
+            it can be retried, as long as the total number of retries across all keys
+            does not exceed this value.
+            </summary>
+            <remarks>
+            Settable for testing.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyManagementOptions.DefaultKeyResolverRetryDelay">
+            <summary>
+            Wait this long before each default key resolution decryption retry.
+            <seealso cref="P:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyManagementOptions.MaximumTotalDefaultKeyResolverRetries"/>
+            </summary>
+            <remarks>
+            Settable for testing.
+            </remarks>
+        </member>
         <member name="P:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyManagementOptions.NewKeyLifetime">
             <summary>
             Controls the lifetime (number of days before expiration)
@@ -1512,6 +1573,16 @@
             A basic implementation of <see cref="T:Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IKeyRing"/>.
             </summary>
         </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider.GetKeyRingFromCompletedTaskUnsynchronized(System.Threading.Tasks.Task{Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.CacheableKeyRing},System.DateTime)">
+            <summary>
+            If the given completed task completed successfully, clears the task and either
+            caches and returns the resulting key ring or throws, according to the successfulness
+            of the task.
+            </summary>
+            <remarks>
+            Must be called under <see cref="F:Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider._cacheableKeyRingLockObj"/>.
+            </remarks>
+        </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager">
             <summary>
             A key manager backed by an <see cref="T:Microsoft.AspNetCore.DataProtection.Repositories.IXmlRepository"/>.
@@ -1538,6 +1609,15 @@
         <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.GetAllKeys">
             <inheritdoc/>
         </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.ProcessAllElements(System.Collections.Generic.IReadOnlyCollection{System.Xml.Linq.XElement},System.Nullable{System.DateTimeOffset}@)">
+            <summary>
+            Returns an array paralleling <paramref name="allElements"/> but:
+             1. Key elements become IKeys (with revocation data)
+             2. KeyId-based revocations become Guids
+             3. Date-based revocations become DateTimeOffsets
+             4. Unknown elements become null
+            </summary>
+        </member>
         <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.GetCacheExpirationToken">
             <inheritdoc/>
         </member>
@@ -1545,6 +1625,12 @@
             <inheritdoc/>
         </member>
         <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.RevokeKey(System.Guid,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.CanDeleteKeys">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.DeleteKeys(System.Func{Microsoft.AspNetCore.DataProtection.KeyManagement.IKey,System.Boolean})">
             <inheritdoc/>
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.MemoryProtection">
@@ -1573,6 +1659,18 @@
             An ephemeral XML repository backed by process memory. This class must not be used for
             anything other than dev scenarios as the keys will not be persisted to storage.
             </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository.DeleteElements(System.Action{System.Collections.Generic.IReadOnlyCollection{Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement}})">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository.DeletableElement.Element">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository.DeletableElement.StoredElement">
+            <summary>The <see cref="T:System.Xml.Linq.XElement"/> from which <see cref="P:Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository.DeletableElement.Element"/> was cloned.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository.DeletableElement.DeletionOrder">
+            <inheritdoc/>
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository">
             <summary>
@@ -1608,10 +1706,51 @@
         <member name="M:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository.StoreElement(System.Xml.Linq.XElement,System.String)">
             <inheritdoc/>
         </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository.DeleteElements(System.Action{System.Collections.Generic.IReadOnlyCollection{Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement}})">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository.DeletableElement.Element">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository.DeletableElement.FileSystemInfo">
+            <summary>The FileSystemInfo from which <see cref="P:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository.DeletableElement.Element"/> was read.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository.DeletableElement.DeletionOrder">
+            <inheritdoc/>
+        </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.Repositories.IDefaultKeyStorageDirectories">
             <summary>
             This interface enables overridding the default storage location of keys on disk
             </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement">
+            <summary>
+            Represents an XML element in an <see cref="T:Microsoft.AspNetCore.DataProtection.Repositories.IXmlRepository"/> that can be deleted.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement.Element">
+            <summary>The XML element.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement.DeletionOrder">
+            <summary>Elements are deleted in increasing DeletionOrder.  <c>null</c> means "don't delete".</summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.DataProtection.Repositories.IDeletableXmlRepository">
+            <summary>
+            An extension of <see cref="T:Microsoft.AspNetCore.DataProtection.Repositories.IXmlRepository"/> that supports deletion of elements.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.Repositories.IDeletableXmlRepository.DeleteElements(System.Action{System.Collections.Generic.IReadOnlyCollection{Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement}})">
+            <summary>
+            Deletes selected elements from the repository.
+            </summary>
+            <param name="chooseElements">
+            A snapshot of the elements in this repository.
+            For each, set <see cref="P:Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement.DeletionOrder"/> to a non-<c>null</c> value if it should be deleted.
+            Elements are deleted in increasing order.  If any deletion fails, the remaining deletions *MUST* be skipped.
+            </param>
+            <returns>
+            True if all deletions succeeded.
+            </returns>
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.Repositories.IXmlRepository">
             <summary>
@@ -1671,6 +1810,18 @@
             <inheritdoc/>
         </member>
         <member name="M:Microsoft.AspNetCore.DataProtection.Repositories.RegistryXmlRepository.StoreElement(System.Xml.Linq.XElement,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.Repositories.RegistryXmlRepository.DeleteElements(System.Action{System.Collections.Generic.IReadOnlyCollection{Microsoft.AspNetCore.DataProtection.Repositories.IDeletableElement}})">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.RegistryXmlRepository.DeletableElement.Element">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.RegistryXmlRepository.DeletableElement.ValueName">
+            <summary>The name of the registry value from which <see cref="P:Microsoft.AspNetCore.DataProtection.Repositories.RegistryXmlRepository.DeletableElement.Element"/> was read.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Repositories.RegistryXmlRepository.DeletableElement.DeletionOrder">
             <inheritdoc/>
         </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.Secret">
@@ -2210,6 +2361,9 @@
         <member name="P:Microsoft.AspNetCore.DataProtection.Resources.XmlKeyManager_DuplicateKey">
             <summary>The key {0:B} already exists in the keyring. For more information go to https://aka.ms/aspnet/dataprotectionwarning</summary>
         </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Resources.XmlKeyManager_DoesNotSupportKeyDeletion">
+            <summary>This key manager does not support key deletion.</summary>
+        </member>
         <member name="P:Microsoft.AspNetCore.DataProtection.Resources.Common_ArgumentCannotBeNullOrEmpty">
             <summary>Argument cannot be null or empty.</summary>
         </member>
@@ -2251,6 +2405,12 @@
         </member>
         <member name="P:Microsoft.AspNetCore.DataProtection.Resources.KeyRingProvider_NoDefaultKey_AutoGenerateDisabled">
             <summary>The key ring does not contain a valid default protection key. The data protection system cannot create a new key because auto-generation of keys is disabled. For more information go to https://aka.ms/aspnet/dataprotectionwarning</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Resources.KeyRingProvider_DefaultKeyRevoked">
+            <summary>The key ring's default data protection key {0:B} has been revoked.</summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.DataProtection.Resources.KeyRingProvider_RefreshFailedOnOtherThread">
+            <summary>Another thread failed to refresh the key ring. Refer to the inner exception for more information.</summary>
         </member>
         <member name="P:Microsoft.AspNetCore.DataProtection.Resources.LifetimeMustNotBeNegative">
             <summary>{0} must not be negative.</summary>
@@ -2357,6 +2517,35 @@
             Marks APIs that were removed in a given operating system version.
             </summary>
         </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
+            <summary>
+            Indicates that the specified method requires the ability to generate new code at runtime,
+            for example through <see cref="N:System.Reflection"/>.
+            </summary>
+            <remarks>
+            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
+            with the specified message.
+            </summary>
+            <param name="message">
+            A message that contains information about the usage of dynamic code.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
+            <summary>
+            Gets a message that contains information about the usage of dynamic code.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
+            <summary>
+            Gets or sets an optional URL that contains more information about the method,
+            why it requires dynamic code, and what options a consumer has to deal with it.
+            </summary>
+        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute">
             <summary>
             Indicates that the specified method requires dynamic access to code that is not referenced
@@ -2385,35 +2574,6 @@
             <summary>
             Gets or sets an optional URL that contains more information about the method,
             why it requires unreferenced code, and what options a consumer has to deal with it.
-            </summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">
-            <summary>
-            Indicates that the specified method requires the ability to generate new code at runtime,
-            for example through <see cref="N:System.Reflection"/>.
-            </summary>
-            <remarks>
-            This allows tools to understand which methods are unsafe to call when compiling ahead of time.
-            </remarks>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute"/> class
-            with the specified message.
-            </summary>
-            <param name="message">
-            A message that contains information about the usage of dynamic code.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Message">
-            <summary>
-            Gets a message that contains information about the usage of dynamic code.
-            </summary>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute.Url">
-            <summary>
-            Gets or sets an optional URL that contains more information about the method,
-            why it requires dynamic code, and what options a consumer has to deal with it.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute">

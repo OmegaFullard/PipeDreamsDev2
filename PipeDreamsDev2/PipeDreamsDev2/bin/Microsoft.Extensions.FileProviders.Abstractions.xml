@@ -21,39 +21,40 @@
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.IFileInfo.Exists">
             <summary>
-            True if resource exists in the underlying storage system.
+            Gets a value that indicates if the resource exists in the underlying storage system.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.IFileInfo.Length">
             <summary>
-            The length of the file in bytes, or -1 for a directory or non-existing files.
+            Gets the length of the file in bytes, or -1 for a directory or nonexistent file.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath">
             <summary>
-            The path to the file, including the file name. Return null if the file is not directly accessible.
+            Gets the path to the file, including the file name. Returns <see langword="null"/> if the file is not directly accessible.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.IFileInfo.Name">
             <summary>
-            The name of the file or directory, not including any path.
+            Gets the name of the file or directory, not including any path.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.IFileInfo.LastModified">
             <summary>
-            When the file was last modified
+            Gets the time when the file was last modified.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.IFileInfo.IsDirectory">
             <summary>
-            True for the case TryGetDirectoryContents has enumerated a sub-directory
+            Gets a value that indicates whether <c>TryGetDirectoryContents</c> has enumerated a subdirectory.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.IFileInfo.CreateReadStream">
             <summary>
-            Return file contents as readonly stream. Caller should dispose stream when complete.
+            Returns file contents as a read-only stream.
             </summary>
-            <returns>The file stream</returns>
+            <returns>The file stream.</returns>
+            <remarks>The caller should dispose the stream when complete.</remarks>
         </member>
         <member name="T:Microsoft.Extensions.FileProviders.IFileProvider">
             <summary>
@@ -71,8 +72,8 @@
             <summary>
             Enumerate a directory at the given path, if any.
             </summary>
-            <param name="subpath">Relative path that identifies the directory.</param>
-            <returns>Returns the contents of the directory.</returns>
+            <param name="subpath">The relative path that identifies the directory.</param>
+            <returns>The contents of the directory.</returns>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.IFileProvider.Watch(System.String)">
             <summary>
@@ -83,17 +84,17 @@
         </member>
         <member name="T:Microsoft.Extensions.FileProviders.NotFoundDirectoryContents">
             <summary>
-            Represents a non-existing directory
+            Represents a nonexistent directory.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundDirectoryContents.Singleton">
             <summary>
-            A shared instance of <see cref="T:Microsoft.Extensions.FileProviders.NotFoundDirectoryContents"/>
+            Gets a shared instance of <see cref="T:Microsoft.Extensions.FileProviders.NotFoundDirectoryContents"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundDirectoryContents.Exists">
             <summary>
-            Always false.
+            Gets a value that's always <see langword="false"/>.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NotFoundDirectoryContents.GetEnumerator">
@@ -105,33 +106,33 @@
         </member>
         <member name="T:Microsoft.Extensions.FileProviders.NotFoundFileInfo">
             <summary>
-            Represents a non-existing file.
+            Represents a nonexistent file.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NotFoundFileInfo.#ctor(System.String)">
             <summary>
             Initializes an instance of <see cref="T:Microsoft.Extensions.FileProviders.NotFoundFileInfo"/>.
             </summary>
-            <param name="name">The name of the file that could not be found</param>
+            <param name="name">The name of the file that could not be found.</param>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundFileInfo.Exists">
             <summary>
-            Always false.
+            Gets a value that's always <see langword="false"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundFileInfo.IsDirectory">
             <summary>
-            Always false.
+            Gets a value that's always <see langword="false"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundFileInfo.LastModified">
             <summary>
-            Returns <see cref="F:System.DateTimeOffset.MinValue"/>.
+            Gets <see cref="F:System.DateTimeOffset.MinValue"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundFileInfo.Length">
             <summary>
-            Always equals -1.
+            Gets a value that's always -1.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundFileInfo.Name">
@@ -139,15 +140,15 @@
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NotFoundFileInfo.PhysicalPath">
             <summary>
-            Always null.
+            Gets a value that's always <see langword="null"/>.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NotFoundFileInfo.CreateReadStream">
             <summary>
-            Always throws. A stream cannot be created for non-existing file.
+            Always throws. A stream cannot be created for a nonexistent file.
             </summary>
-            <exception cref="T:System.IO.FileNotFoundException">Always thrown.</exception>
-            <returns>Does not return</returns>
+            <exception cref="T:System.IO.FileNotFoundException">In all cases.</exception>
+            <returns>Does not return.</returns>
         </member>
         <member name="T:Microsoft.Extensions.FileProviders.NullChangeToken">
             <summary>
@@ -156,26 +157,26 @@
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NullChangeToken.Singleton">
             <summary>
-            A singleton instance of <see cref="T:Microsoft.Extensions.FileProviders.NullChangeToken"/>
+            Gets a singleton instance of <see cref="T:Microsoft.Extensions.FileProviders.NullChangeToken"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NullChangeToken.HasChanged">
             <summary>
-            Always false.
+            Gets a value that's always <see langword="false"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Extensions.FileProviders.NullChangeToken.ActiveChangeCallbacks">
             <summary>
-            Always false.
+            Gets a value that's always <see langword="false"/>.
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NullChangeToken.RegisterChangeCallback(System.Action{System.Object},System.Object)">
             <summary>
             Always returns an empty disposable object. Callbacks will never be called.
             </summary>
-            <param name="callback">This parameter is ignored</param>
-            <param name="state">This parameter is ignored</param>
-            <returns>A disposable object that noops on dispose.</returns>
+            <param name="callback">This parameter is ignored.</param>
+            <param name="state">This parameter is ignored.</param>
+            <returns>A disposable object that no-ops on dispose.</returns>
         </member>
         <member name="T:Microsoft.Extensions.FileProviders.NullFileProvider">
             <summary>
@@ -184,17 +185,17 @@
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NullFileProvider.GetDirectoryContents(System.String)">
             <summary>
-            Enumerate a non-existent directory.
+            Enumerates a nonexistent directory.
             </summary>
             <param name="subpath">A path under the root directory. This parameter is ignored.</param>
             <returns>A <see cref="T:Microsoft.Extensions.FileProviders.IDirectoryContents"/> that does not exist and does not contain any contents.</returns>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NullFileProvider.GetFileInfo(System.String)">
             <summary>
-            Locate a non-existent file.
+            Locates a nonexistent file.
             </summary>
             <param name="subpath">A path under the root directory.</param>
-            <returns>A <see cref="T:Microsoft.Extensions.FileProviders.IFileInfo"/> representing a non-existent file at the given path.</returns>
+            <returns>A <see cref="T:Microsoft.Extensions.FileProviders.IFileInfo"/> representing a nonexistent file at the given path.</returns>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.NullFileProvider.Watch(System.String)">
             <summary>
@@ -264,7 +265,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -365,7 +366,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -374,7 +375,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.
