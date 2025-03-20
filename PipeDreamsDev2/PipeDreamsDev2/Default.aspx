@@ -6,27 +6,7 @@
     
         <br />
     <br />
-               <div style="width:1000px;margin-left: auto;margin-right: auto;">
-             
-        <aside id="leftmenu">
-          <center><img src="images/gamecontrollers.png" alt="controllers" style="width:250px;height:250px;" /></center>
-            <br />
-       
-                <h4 style="text-align: center;">Browse Games</h4>
-           
-            <br />
-            <center>
-
-            <input type="text" id="searchInput" placeholder="Search...">
-        <button type="button" onclick="performSearch()">Search</button>
-
-                <div id="searchResults"></div>
-
-                </center>
-        </aside>
-
- 
- </div>
+            
   <br />
         <section class="about">
             <div class="container">
