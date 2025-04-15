@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\services.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\services.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\app_themes\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\app_themes\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,63 +9,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Default.aspx",
-              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Default.aspx",
-              "RelativeDocumentMoniker": "PipeDreamsDev2\\Default.aspx",
-              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Default.aspx",
-              "RelativeToolTip": "PipeDreamsDev2\\Default.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-05T20:06:31.055Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "styles.css",
-              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\App_Themes\\styles.css",
-              "RelativeDocumentMoniker": "PipeDreamsDev2\\App_Themes\\styles.css",
-              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\App_Themes\\styles.css",
-              "RelativeToolTip": "PipeDreamsDev2\\App_Themes\\styles.css",
-              "ViewState": "AQIAADsBAAAAAAAAAAAAAIwBAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-05T18:50:09.288Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Services.aspx",
-              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Services.aspx",
-              "RelativeDocumentMoniker": "PipeDreamsDev2\\Services.aspx",
-              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Services.aspx",
-              "RelativeToolTip": "PipeDreamsDev2\\Services.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-05T18:48:15.445Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Site.Master",
-              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Site.Master",
-              "RelativeDocumentMoniker": "PipeDreamsDev2\\Site.Master",
-              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Site.Master",
-              "RelativeToolTip": "PipeDreamsDev2\\Site.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-03-05T18:05:18.359Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3fd5e0cc-709a-4f8c-94c3-7f0f8dff5bb2}"
             }
           ]
         }
