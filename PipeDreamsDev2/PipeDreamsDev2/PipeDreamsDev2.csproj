@@ -196,10 +196,6 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=9.0.0.4, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.9.0.4\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-    <Reference Include="Microsoft.Identity.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Identity.Abstractions.9.0.0\lib\net462\Microsoft.Identity.Abstractions.dll</HintPath>
-=======
     <Reference Include="Microsoft.Identity.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae">
       <HintPath>..\packages\Microsoft.Identity.Abstractions.9.0.0\lib\net462\Microsoft.Identity.Abstractions.dll</HintPath>
       <Private>True</Private>
