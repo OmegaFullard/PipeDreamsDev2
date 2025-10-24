@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\support.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\support.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\sign-up.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\sign-up.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|c:\\users\\omega.fullard\\source\\repos\\pipedreamsdev2\\pipedreamsdev2\\pipedreamsdev2\\contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1A68256B-93CF-4907-AB38-4BA6513EE1B2}|PipeDreamsDev2\\PipeDreamsDev2.csproj|solutionrelative:pipedreamsdev2\\contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,15 +50,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Site.Master",
-              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Site.Master",
-              "RelativeDocumentMoniker": "PipeDreamsDev2\\Site.Master",
-              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Site.Master",
-              "RelativeToolTip": "PipeDreamsDev2\\Site.Master",
+              "DocumentIndex": 2,
+              "Title": "Contact.aspx",
+              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Contact.aspx",
+              "RelativeDocumentMoniker": "PipeDreamsDev2\\Contact.aspx",
+              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Contact.aspx",
+              "RelativeToolTip": "PipeDreamsDev2\\Contact.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-23T18:24:15.982Z",
+              "WhenOpened": "2025-10-24T23:29:50.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Support.aspx",
+              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Support.aspx",
+              "RelativeDocumentMoniker": "PipeDreamsDev2\\Support.aspx",
+              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\Support.aspx",
+              "RelativeToolTip": "PipeDreamsDev2\\Support.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-24T23:27:10.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "sign-up.aspx",
+              "DocumentMoniker": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\sign-up.aspx",
+              "RelativeDocumentMoniker": "PipeDreamsDev2\\sign-up.aspx",
+              "ToolTip": "C:\\Users\\omega.fullard\\source\\repos\\PipeDreamsDev2\\PipeDreamsDev2\\PipeDreamsDev2\\sign-up.aspx",
+              "RelativeToolTip": "PipeDreamsDev2\\sign-up.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-24T16:41:43.932Z",
               "EditorCaption": ""
             }
           ]

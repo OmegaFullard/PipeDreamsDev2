@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sign-in.aspx.cs" Inherits="PipeDreamsDev2.sign_in" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="sign-in.aspx.cs" Inherits="PipeDreamsDev2.sign_in" %>
+
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
@@ -261,62 +262,53 @@
         display: block !important;
       }
     </style>
+        
+        <div class="container">
 
-
+    <div class="py-5 text-center">
+      <a href="index.aspx"><img class="d-block mx-auto mb-4" src="images/PDLogo.png" alt="" width="72" height="57"></a>
+      <h2>Pipe Dreams Developers</h2>
+      <p class="lead">Welcome Back! Please sign in to continue to your account.</p>
     
-<main class="form-signin w-100 m-auto">
-      <div>
-                <nav class="navbar navbar-light" style="background-color:#a0d9ef">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Default">Home</a></li>
-                        <li><a runat="server" href="~/Services">Services</a></li>
-                        <li><a runat="server" href="~/Products">Pricing</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-     <li><a runat="server" href="~/About">About</a></li>
-     <li><a runat="server" href="~/Support">Support</a></li>
-
-
-                    </ul>
-
-                    <br />
-                    <br />
-     
-                </nav>
-         </div>
-    <br />
-    <br />
-  <form class="row g-3">
-    
-    <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
-
-    <div class="col-md-12">
-      <input type="email" class="form-control" id="Email" placeholder="name@example.com">
+  
+                   
+                    <div class="col-md-4">
+                         <input type="email" class="form-control" id="Email" placeholder="name@example.com">
       <label for="Email">Email address</label>
     </div>
-    <div class="col-md-12">
-      <input type="password" class="form-control" id="Password" placeholder="Password">
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" id="Password" placeholder="Password">
       <label for="Password">Password</label>
-    </div>
+                    </div>
 
-    <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div>
-    <button class="btn btn-success rounded-pill px-3" type="submit">Sign In</button>
-      <br />
-      <br />
-       <p>
+    <br/>
+    <br/>
+                    <div class="col-md-12">
+                        <div class="col-md-offset-2 col-md-10">
+                           
+                        </div>
+                    </div>
+                    <div>
+                           <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+  <div class="d-grid gap-2">
+                             <button class="btn btn-secondary rounded-pill px-3" type="submit">Login</button>
+                        </div>
+                    </div>
+                        </div>
+                <section>
+                      <p>
                     <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" NavigateUrl="~/sign-up.aspx">Register</asp:HyperLink>
            <br />         
            If you don't have a local account.
                 </p>
+            </section>
+                      
       <br />
       <br />
 
-
-
+        <a href="default.aspx"><< Back to Home</a>
+        <br />
+        </div>
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-12 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
@@ -344,8 +336,8 @@
      </div>
  
   </footer>
-        </form>
-</main>
+    
+      </div>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>

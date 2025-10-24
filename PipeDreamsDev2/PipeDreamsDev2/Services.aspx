@@ -14,7 +14,7 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Completed and Current Projects</h1>
-        <p class="lead text-body-secondary">Examples of projects recently completed by our talented team of developers. Be sure to contact us for further questions.</p>
+        <p class="lead text-secondary">Examples of projects recently completed by our talented team of developers. Be sure to contact us for further questions.</p>
         <p>
           <a href="Contact.aspx" class="btn btn-info my-2">Contact</a>
           <a href="About.aspx" class="btn btn-info my-2">About</a>

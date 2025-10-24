@@ -15,7 +15,7 @@
     <div class="py-5 text-center">
     
       <h2>Checkout Form</h2>
-      <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+      
     </div>
 
     <div class="row g-5">
@@ -28,25 +28,25 @@
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
               <h6 class="my-0">Product name</h6>
-              <small class="text-body-secondary">Brief description</small>
+              <small class="text-secondary">Brief description</small>
             </div>
-            <span class="text-body-secondary">$12</span>
+            <span class="text-secondary">$12</span>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
               <h6 class="my-0">Second product</h6>
-              <small class="text-body-secondary">Brief description</small>
+              <small class="text-secondary">Brief description</small>
             </div>
-            <span class="text-body-secondary">$8</span>
+            <span class="text-secondary">$8</span>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
               <h6 class="my-0">Third item</h6>
-              <small class="text-body-secondary">Brief description</small>
+              <small class="text-secondary">Brief description</small>
             </div>
-            <span class="text-body-secondary">$5</span>
+            <span class="text-secondary">$5</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+          <li class="list-group-item d-flex justify-content-between">
             <div class="text-success">
               <h6 class="my-0">Promo code</h6>
               <small>VIPP</small>

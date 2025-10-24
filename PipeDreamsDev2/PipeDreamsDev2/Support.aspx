@@ -1,18 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Support.aspx.cs" Inherits="PipeDreamsDev2.Support" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-
-    <h1>Royal City Help Desk</h1>
+    <div class="container">
+    <center><h1>Royal City Help Desk</h1></center>
 	
     
-<div class="b-example-divider"></div>
 
-<div class="container my-5">
-  <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-    <button type="button" class="position-absolute top-0 end-0 p-3 m-3 btn-close bg-secondary bg-opacity-10 rounded-pill" aria-label="Close"></button>
-    <svg class="bi mt-5 mb-3" width="48" height="48"><use href="#check2-circle"/></svg>
-  
-    <p class="col-lg-6 mx-auto mb-4">
+    <p class="col-lg-12 mx-auto mb-12">
         <center><img src="images/support.png" alt="support logo" style="width:150px;height:150px; Border-Radius:25px;" /></center>
         <br />
 
@@ -22,12 +16,9 @@
                <a href="Contact.aspx"></a> 
   
     </p>
-    <button class="btn btn-primary px-5 mb-5" type="button">
-      
-    </button>
-  </div>
-</div>
 
+
+        <hr />
     <br />
 
                <h2>Contact Support</h2>
@@ -56,6 +47,6 @@
             <a href="https://google.com/maps?q=39.57.09,75.10.14.8"></a>
         
     <br />
-
+        </div>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </asp:Content>

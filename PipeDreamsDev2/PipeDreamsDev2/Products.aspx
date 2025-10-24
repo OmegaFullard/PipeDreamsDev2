@@ -2,8 +2,21 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+   
+      
+          <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
   
- 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="check" viewBox="0 0 16 16">
     <title>Check</title>
@@ -12,7 +25,7 @@
 </svg>
 
 <div class="container py-3">
-
+ 
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none"></a>
       <nav>
@@ -36,7 +49,7 @@
             <h4 class="my-0 fw-normal">Free</h4>
           </div>
           <div class="card-body">
-            <h4 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h4>
+          <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>5 users included</li>
               <li>20 GB of storage</li>
@@ -53,7 +66,7 @@
             <h4 class="my-0 fw-normal">Pro</h4>
           </div>
           <div class="card-body">
-            <h4 class="card-title pricing-card-title">$99<small class="text-body-secondary fw-light">/mo</small></h4>
+            <h4 class="card-title pricing-card-title">$99<small class="text-body-secondary fw-dark">/mo</small></h4>
             <ul class="list-unstyled mt-3 mb-4">
               <li>10 users included</li>
               <li>100 GB of storage</li>
@@ -70,7 +83,7 @@
             <h4 class="my-0 fw-normal">Enterprise</h4>
           </div>
           <div class="card-body">
-            <h4 class="card-title pricing-card-title">$299<small class="text-body-secondary fw-light">/mo</small></h4>
+            <h4 class="card-title pricing-card-title">$299<small class="text-body-secondary fw-dark">/mo</small></h4>
             <ul class="list-unstyled mt-3 mb-4">
               <li>20 users included</li>
               <li>unlimited storage</li>
@@ -138,6 +151,7 @@
         </tbody>
       </table>
     </div>
+    
       <br />
       <br />
     
@@ -186,5 +200,5 @@
       </div>
     </div>
 
-   
+   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </asp:Content>

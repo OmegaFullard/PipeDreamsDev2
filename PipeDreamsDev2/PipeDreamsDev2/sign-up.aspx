@@ -260,35 +260,12 @@
         display: block !important;
       }
     </style>
-
-
-
-<main class="form-signup w-100 m-auto">
+ <div class="container">
+   <div class="py-5 text-center">
+  <a href="index.aspx"><img class="d-block mx-auto mb-4" src="images/PDLogo.png" alt="" width="72" height="57"></a>
+  <h2>Pipe Dreams Developers</h2>
+  <p class="lead">Please Enter Details.</p>
     
-      
-          <div>
-                <nav class="navbar navbar-light" style="background-color:#a0d9ef; top: 1px; left: -1px;">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Default">Home</a></li>
-                        <li><a runat="server" href="~/Services">Services</a></li>
-                        <li><a runat="server" href="~/Products">Pricing</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-     <li><a runat="server" href="~/About">About</a></li>
-     <li><a runat="server" href="~/Support">Support</a></li>
-
-
-                    </ul>
-
-                    <br />
-                    <br />
-     
-                </nav>
-         </div>
-
-   
-  <form class="row g-3">
-    
-    <h1 class="h3 mb-3 fw-normal">Please Enter Details</h1>
       <br />
       <div class="col-md-6">
          
@@ -299,11 +276,11 @@
       <input type="text" class="form-control" id="floatingLName" placeholder="Last Name">
       <label for="floatingLName" class="form-label">Last Name</label>
     </div>
-<div class="col-md-12">
+<div class="col-md-6">
       <input type="text" class="form-control" id="floatingAddress" placeholder="Address">
       <label for="floatingAddress">Address</label>
     </div>
-      <div class="col-md-12">
+      <div class="col-md-6">
       <input type="text" class="form-control" id="floatingAddress2" placeholder="Address">
       <label for="floatingAddress2">Address 2</label>
     </div>
@@ -374,29 +351,47 @@
     <label for="inputZip" class="form-label">Zip</label>
     <input type="text" class="form-control" id="inputZip" placeholder="Zip">
   </div>
-  <div class="col-md-12">
+  <div class="col-md-6">
       <input type="tel" class="form-control" id="floatingTel" placeholder="000-000-0000">
       <label for="floatingTel">Phone</label>
     </div>
-  <div class="col-md-12">
+  <div class="col-md-6">
       <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
       <label for="floatingEmail">Email Address</label>
     </div>
-     <div class="col-md-12">
+     <div class="col-md-6">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
+  
+      <br/>
+<br/>
+                <div class="col-md-12">
+                    <div class="col-md-offset-2 col-md-10">
+                       
+                    </div>
+                </div>
+                
 
-
-    <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Remember me
-      </label>
-    </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
-      <br />
-      <br />
+    
+   <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+  <div class="d-grid gap-2">
+    <button class="btn btn-secondary rounded-pill px-3" type="submit">Register</button>
+       </div>
+      </div>
+       </div>
+      
+           <section>
+           <p>
+         <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" NavigateUrl="~/sign-in.aspx">Login</asp:HyperLink>
+<br />         
+If you already have an account.
+     </p>
+ </section>
+     <br />
+     <br />
+       <a href="default.aspx"><< Back to Home</a>
+ <br />
      
  
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -427,8 +422,8 @@
  
   </footer>
 
-  </form>
-</main>
+  </div>
+
        
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
