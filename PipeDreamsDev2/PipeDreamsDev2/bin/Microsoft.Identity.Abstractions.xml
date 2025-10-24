@@ -27,7 +27,7 @@
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Id">
             <summary>
-            Gets a unique identifier for a CredentialDescription based on <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> and <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.ReferenceOrValue"/>.
+            Gets a unique identifier for a CredentialDescription based on <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>.
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType">
@@ -35,25 +35,6 @@
             Type of the source of the credential. This property is used to determine which other properties need
             to be provided to describe the credential.
             </summary>
-        </member>
-        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Container">
-            <summary>
-            Container in which to find the credential. You will normally not use this property directly. It could be used
-            by property editors in tools or IDEs. Instead, use the properties that are specific to the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>.
-            </summary>
-            <remarks>
-            <list type="bullet">
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>, then
-            the container is the Key Vault base URL.</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/>, then
-            this value is not used.</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>, then
-            this value is the path on disk where to find the credential.</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/>,
-            or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/>, then
-            this value is the path to the credential in the cert store, for instance <c>CurrentUser/My</c>.</item>
-            </list>
-            </remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultUrl">
             <summary>
@@ -159,6 +140,7 @@
             </example>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword"/>
+            <remarks>Using a certificate from a file is not recommended in production.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword">
             <summary>
@@ -177,6 +159,7 @@
             </example>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDiskPath"/>
+            <remarks>Using a certificate from a file is not recommended in production.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Base64EncodedValue">
             <summary>
@@ -192,6 +175,7 @@
             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="base64_csharp":::
             ]]></format>
             </example>
+            <remarks>Using a certificate from its base64 encoded value is not recommended in production.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.ClientSecret">
             <summary>
@@ -286,26 +270,6 @@
             ]]></format>
             </example>
             <remarks>If you want to use the default authority, don't provide a token exchange authority URL.</remarks>
-        </member>
-        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.ReferenceOrValue">
-            <summary>
-            Reference to the certificate or value. You will normally not use this property directly. It could be used
-            by property editors in tools or IDEs. Instead, use the properties that are specific to the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>.
-            </summary>
-            <remarks>
-            <list type="bullet">
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>, then
-            the reference is the name of the certificate in Key Vault (maybe the version?).</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/>, then
-            this value is the base 64 encoded certificate itself.</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>, then
-            this value is the password to access the certificate (if needed).</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/>,
-            this value is the distinguished name.</item>
-            <item>If <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> equals <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/>,
-            this value is the thumbprint.</item>
-            </list>
-            </remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Certificate">
             <summary>
@@ -436,6 +400,7 @@
             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="base64_csharp":::
             ]]></format>
             </example>
+            <remarks>Using the base64 encoded representation of a certificate is not recommended in production.</remarks>
         </member>
         <member name="F:Microsoft.Identity.Abstractions.CredentialSource.Path">
             <summary>
@@ -452,6 +417,7 @@
             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_csharp":::
             ]]></format>
             </example>
+            <remarks>Using a certificate from a local path is not recommended in production.</remarks>
         </member>
         <member name="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint">
             <summary>
@@ -502,6 +468,7 @@
             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="secret_csharp":::
             ]]></format>
             </example>
+            <remarks>Using a client secret is not recommended in production.</remarks>
         </member>
         <member name="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity">
             <summary>
@@ -713,8 +680,8 @@
         <member name="P:Microsoft.Identity.Abstractions.IdentityApplicationOptions.Authority">
             <summary>
             Gets or sets the authority to use when calling the identity provider. 
-            For AzureAD or Azure AD B2C, rather use <see cref="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.Instance"/>
-            and <see cref="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.TenantId"/>. For Microsoft Entra External IDs, use
+            For AzureAD or Azure AD B2C, rather use <see cref="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.Instance"/>
+            and <see cref="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.TenantId"/>. For Microsoft Entra External IDs, use
             the authority of the form <c>https://subdomain.ciamlogin.com</c>.
             </summary>
             <example>
@@ -847,18 +814,24 @@
             </summary>
             The default is <c>false.</c>
         </member>
-        <member name="T:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions">
+        <member name="T:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions">
             <summary>
-            Options for configuring authentication for a web app, web API, or daemon application, using Azure Active Directory. 
-            It has both AAD and B2C configuration attributes.
+            Options for configuring authentication specific to Microsoft Entra (Azure AD) for a web app, web API, or daemon application.
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.Instance">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.Name">
+            <summary>
+            Gets or sets the name of the options.
+            This can be used to associate the options with a named options in 
+            the .NET IOptionsMonitor or IOptionsSnapshot (or ASP.NET Core authentication schemes)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.Instance">
             <summary>
             Gets or sets the Azure Active Directory instance, e.g. <c>"https://login.microsoftonline.com/"</c>.
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.TenantId">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.TenantId">
             <summary>
             Gets or sets the tenant ID. If your application is multi-tenant, you can also use "common" if it supports
             both work and school, or personal accounts accounts, or "organizations" if your application supports only work 
@@ -866,33 +839,33 @@
             If your application works only for Microsoft personal accounts, use "consumers".
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.Authority">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.Authority">
             <summary>
             Gets or sets the Authority to use when making OpenIdConnect calls. By default the authority is computed
-            from the <see cref="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.Instance"/> and <see cref="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.TenantId"/> properties, by concatenating them, and appending "v2.0".
+            from the <see cref="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.Instance"/> and <see cref="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.TenantId"/> properties, by concatenating them, and appending "v2.0".
             If your authority is not an Azure AD authority, you can set it directly here.
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.AppHomeTenantId">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.AppHomeTenantId">
             <summary>
             Home tenant of the app in which the app can acquire a token to call a downstream API on behalf of itself.
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.AzureRegion">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.AzureRegion">
             <summary>
             Specifies the Azure region. See https://aka.ms/azure-region. To have
             the app attempt to detect the Azure region automatically,
             use "TryAutoDetect".
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.ClientCapabilities">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.ClientCapabilities">
             <summary>
             Specifies the capabilities of the client (for instance {"cp1", "cp2"}). This is
             useful to express that the Client is capable of handling claims challenge. If your application
             is CAE capable, it needs to express "cp1".
             </summary>
         </member>
-        <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.SendX5C">
+        <member name="P:Microsoft.Identity.Abstractions.MicrosoftEntraApplicationOptions.SendX5C">
             <summary>
             Specifies if the x5c claim (public key of the certificate) should be sent to the STS.
             Sending the x5c enables application developers to achieve easy certificate rollover in Azure AD:
@@ -901,8 +874,14 @@
             This saves the application admin from the need to explicitly manage the certificate rollover
             (either via the app registration portal or using PowerShell/CLI). 
             For details see https://aka.ms/msal-net-sni.
-            </summary>
             The default is <c>false</c>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions">
+            <summary>
+            Options for configuring authentication for a web app, web API, or daemon application, using Azure Active Directory. 
+            It has both AAD and B2C configuration attributes.
+            </summary>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.MicrosoftIdentityApplicationOptions.WithSpaAuthCode">
             <summary>

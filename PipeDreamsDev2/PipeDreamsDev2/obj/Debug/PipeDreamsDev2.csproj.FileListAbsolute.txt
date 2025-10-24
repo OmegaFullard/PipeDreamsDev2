@@ -208,7 +208,6 @@ C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\System.Text.Encodings.Web.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\System.Text.Json.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\System.Threading.Tasks.Extensions.xml
-C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\System.ValueTuple.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\System.Web.Optimization.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Newtonsoft.Json.xml
 C:\Users\omega.fullard\source\repos\PipeDreamsDev2\PipeDreamsDev2\PipeDreamsDev2\bin\Antlr3.Runtime.pdb

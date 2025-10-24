@@ -70,9 +70,21 @@
             is used for `kid` and the public portion of <see cref="P:Microsoft.IdentityModel.Tokens.EncryptingCredentials.Key"/> is used for `epk`.
             </remarks>
         </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.AppContextSwitches.UpdateConfigAsBlockingSwitch">
+            <summary>
+            Enabling this switch will cause the configuration manager to block other requests to GetConfigurationAsync if a request is already in progress.
+            The default configuration refresh behavior is if a request is already in progress, the current configuration will be returned until the ongoing request is completed on
+            a background thread.
+            </summary>
+        </member>
         <member name="P:Microsoft.IdentityModel.Tokens.AppContextSwitches.UpdateConfigAsBlocking">
             <summary>
             Unused, part of a previous release. This is a friend, so we cannot remove.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.AppContextSwitches.DoNotScrubExceptionsSwitch">
+            <summary>
+            When enabled, some exceptions and log messages will contain additional details. Enable temporarily only for debugging purposes.
             </summary>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.AppContextSwitches.ResetAllSwitches">
@@ -685,6 +697,49 @@
             Facilitates the creation of <see cref="T:System.Security.Claims.ClaimsIdentity"/> and <see cref="T:Microsoft.IdentityModel.Tokens.CaseSensitiveClaimsIdentity"/> instances based on the <see cref="F:Microsoft.IdentityModel.Tokens.AppContextSwitches.UseClaimsIdentityTypeSwitch"/>.
             </summary>
         </member>
+        <member name="T:Microsoft.IdentityModel.Tokens.Cnf">
+            <summary>
+            Represents the Cnf Claim
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Tokens.Cnf.ClassName">
+            <summary>
+            The class name used for logging and exception messages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Tokens.Cnf.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.IdentityModel.Tokens.Cnf"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Tokens.Cnf.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.IdentityModel.Tokens.Cnf"/> class.
+            </summary>
+            <param name="json">
+            JSON representation of the Cnf Claim.
+            </param>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Tokens.Cnf.Kid">
+            <summary>
+            The Kid property is used to specify the key ID of the public key used to verify the signature of the JWT.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Tokens.Cnf.Jwe">
+            <summary>
+            The Jwe property is used to specify an encrypted JSON web key.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Tokens.Cnf.Jku">
+            <summary>
+            The Jku property is used to specify the location of the public key used to verify the signature of the JWT.
+            </summary>
+        </member>
+        <member name="P:Microsoft.IdentityModel.Tokens.Cnf.JsonWebKey">
+            <summary>
+            The Jwk property is used to specify the public key used to verify the signature of the JWT.
+            </summary>
+        </member>
         <member name="T:Microsoft.IdentityModel.Tokens.CollectionUtilities">
             <summary>
             A class which contains useful methods for processing collections.
@@ -790,6 +845,37 @@
         <member name="P:Microsoft.IdentityModel.Tokens.Configuration.LKGConfigurationCacheOptions.RemoveExpiredValues">
             <summary>
             Whether or not to remove expired items.
+            </summary>
+        </member>
+        <member name="T:Microsoft.IdentityModel.Tokens.ConfirmationClaimTypes">
+            <summary>
+            Confirmation Claim ("cnf") related constants
+            https://datatracker.ietf.org/doc/html/rfc7800
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.ConfirmationClaimTypes.Cnf">
+            <summary>
+            https://datatracker.ietf.org/doc/html/rfc7800#section-6.1.1
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.ConfirmationClaimTypes.Jwk">
+            <summary>
+            https://datatracker.ietf.org/doc/html/rfc7800#section-6.2.2
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.ConfirmationClaimTypes.Jwe">
+            <summary>
+            https://datatracker.ietf.org/doc/html/rfc7800#section-6.2.2
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.ConfirmationClaimTypes.Jku">
+            <summary>
+            https://datatracker.ietf.org/doc/html/rfc7800#section-6.2.2
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Tokens.ConfirmationClaimTypes.Kid">
+            <summary>
+            https://datatracker.ietf.org/doc/html/rfc7800#section-6.2.2
             </summary>
         </member>
         <member name="T:Microsoft.IdentityModel.Tokens.CryptoProviderCache">
@@ -2556,13 +2642,13 @@
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenEncryptionKeyNotFoundException"/> class.
             </summary>
-            <param name="message">Addtional information to be included in the exception and displayed to user.</param>
+            <param name="message">Additional information to be included in the exception and displayed to user.</param>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.SecurityTokenEncryptionKeyNotFoundException.#ctor(System.String,System.Exception)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenEncryptionKeyNotFoundException"/> class.
             </summary>
-            <param name="message">Addtional information to be included in the exception and displayed to user.</param>
+            <param name="message">Additional information to be included in the exception and displayed to user.</param>
             <param name="innerException">A <see cref="T:System.Exception"/> that represents the root cause of the exception.</param>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.SecurityTokenEncryptionKeyNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
@@ -3193,13 +3279,13 @@
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException"/> class.
             </summary>
-            <param name="message">Addtional information to be included in the exception and displayed to user.</param>
+            <param name="message">Additional information to be included in the exception and displayed to user.</param>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException.#ctor(System.String,System.Exception)">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException"/> class.
             </summary>
-            <param name="message">Addtional information to be included in the exception and displayed to user.</param>
+            <param name="message">Additional information to be included in the exception and displayed to user.</param>
             <param name="innerException">A <see cref="T:System.Exception"/> that represents the root cause of the exception.</param>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
@@ -5092,9 +5178,19 @@
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableException(System.Exception)">
             <summary>
+            Should not be used. Exists only for backwards compatibility.
             Check whether the given exception type is recoverable by LKG.
             </summary>
             <param name="exception">The exception to check.</param>
+            <returns><c>true</c> if the exception is certain types of exceptions otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableException(System.Exception,System.Boolean)">
+            <summary>
+            Check whether the given exception type is recoverable by LKG.
+            Decryption error is only recoverable, if the configuration has decryption keys in it.
+            </summary>
+            <param name="exception">The exception to check.</param>
+            <param name="configContainsDecryptionKeys">Whether the configuration contains decryption keys.</param>
             <returns><c>true</c> if the exception is certain types of exceptions otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfiguration(System.String,Microsoft.IdentityModel.Tokens.BaseConfiguration,Microsoft.IdentityModel.Tokens.BaseConfiguration,System.Exception)">
@@ -5109,9 +5205,18 @@
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableExceptionType(System.Type)">
             <summary>
+            Should not be used. Exists only for backwards compatibility.
             Check whether the given exception type is recoverable by LKG.
             </summary>
             <param name="exceptionType">The exception type to check</param>
+            <returns><c>true</c> if the exception is certain types of exceptions otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableExceptionType(System.Type,System.Boolean)">
+            <summary>
+            Check whether the given exception type is recoverable by LKG.
+            </summary>
+            <param name="exceptionType">The exception type to check</param>
+            <param name="configContainsDecryptionKeys">Whether the configuration contains decryption keys.</param>
             <returns><c>true</c> if the exception is certain types of exceptions otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:Microsoft.IdentityModel.Tokens.TokenUtilities.IsRecoverableConfigurationAndExceptionType(System.String,Microsoft.IdentityModel.Tokens.BaseConfiguration,Microsoft.IdentityModel.Tokens.BaseConfiguration,System.Type)">

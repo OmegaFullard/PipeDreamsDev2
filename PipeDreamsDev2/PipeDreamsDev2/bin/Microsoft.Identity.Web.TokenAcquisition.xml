@@ -927,6 +927,18 @@
         <member name="M:Microsoft.Identity.Web.TokenAcquirerFactory.GetTokenAcquirer(System.String)">
             <inheritdoc/>
         </member>
+        <member name="T:Microsoft.Identity.Web.TestOnly.TokenAcquirerFactoryTesting">
+            <summary>
+            Class that should only be used in tests, not product code, used
+            to reset the default instance of the token acquirer factory.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.TestOnly.TokenAcquirerFactoryTesting.ResetTokenAcquirerFactoryInTest">
+            <summary>
+            Resets the default instance of the token acquirer factory.
+            Use in tests, but not in production code.
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Web.TokenAcquisition">
             <summary>
             Token acquisition service.
@@ -940,7 +952,8 @@
         </member>
         <member name="F:Microsoft.Identity.Web.TokenAcquisition._applicationsByAuthorityClientId">
             <summary>
-             Please call GetOrBuildConfidentialClientApplication instead of accessing _applicationsByAuthorityClientId directly.
+             Important: call GetOrBuildConfidentialClientApplication instead of accessing _applicationsByAuthorityClientId directly.
+             Write access to this dictionary is synchronized.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Web.TokenAcquisition._scopesRequestedByMsal">

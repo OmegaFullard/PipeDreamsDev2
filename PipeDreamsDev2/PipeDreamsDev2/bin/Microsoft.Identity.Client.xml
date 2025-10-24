@@ -644,6 +644,7 @@
         </member>
         <member name="M:Microsoft.Identity.Client.AcquireTokenForClientParameterBuilder.Validate">
             <inheritdoc/>
+            <seealso cref="M:Microsoft.Identity.Client.ConfidentialClientApplicationBuilder.Validate"/> for a comment inside this function for AzureRegion.
         </member>
         <member name="M:Microsoft.Identity.Client.AcquireTokenForClientParameterBuilder.CalculateApiEventId">
             <inheritdoc/>
@@ -1169,8 +1170,10 @@
         <member name="M:Microsoft.Identity.Client.ApiConfig.Parameters.AcquireTokenByUsernamePasswordParameters.LogParameters(Microsoft.Identity.Client.Core.ILoggerAdapter)">
             <inheritdoc/>
         </member>
-        <member name="P:Microsoft.Identity.Client.ApiConfig.Parameters.AcquireTokenForClientParameters.ForceRefresh">
+        <member name="P:Microsoft.Identity.Client.ApiConfig.Parameters.AcquireTokenForClientParameters.AccessTokenHashToRefresh">
             <summary>
+            The SHA-256 hash of the access token that should be refreshed.
+            If set, token refresh will occur only if a matching token is found in cache.
             </summary>
         </member>
         <member name="M:Microsoft.Identity.Client.ApiConfig.Parameters.AcquireTokenForClientParameters.LogParameters(Microsoft.Identity.Client.Core.ILoggerAdapter)">
@@ -4524,6 +4527,24 @@
             </summary>
             <returns>Boolean indicating if Proof-of-Possession is supported</returns>
         </member>
+        <member name="T:Microsoft.Identity.Client.RP.AcquireTokenForClientParameterBuilderForResourceProviders">
+            <summary>
+            Resource Provider extensibility methods for AcquireTokenForClientParameterBuilder
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Client.RP.AcquireTokenForClientParameterBuilderForResourceProviders.WithAccessTokenSha256ToRefresh(Microsoft.Identity.Client.AcquireTokenForClientParameterBuilder,System.String)">
+            <summary>
+            Configures the SDK to not retrieve a token from the cache if it matches the SHA256 hash 
+            of the token configured. Similar to WithForceRefresh(bool) API, but instead of bypassing 
+            the cache for all tokens, the cache bypass only occurs for 1 token
+            </summary>
+            <param name="builder">The existing AcquireTokenForClientParameterBuilder instance.</param>
+            <param name="hash">
+            A Base64-encoded SHA-256 hash of the token (UTF-8). For example:
+            <c>Convert.ToBase64String(SHA256(Encoding.UTF8.GetBytes(accessToken)))</c>.
+            </param>
+            <returns>The builder to chain the .With methods.</returns>
+        </member>
         <member name="T:Microsoft.Identity.Client.RP.ConfidentialClientApplicationBuilderForResourceProviders">
             <summary>
             Resource Provider extensibility methods for <see cref="T:Microsoft.Identity.Client.ConfidentialClientApplicationBuilder"/>
@@ -5227,6 +5248,59 @@
             <summary>
             User-provided cache key for long-running OBO flow.
             </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.GetCachedAccessTokenAsync">
+            <summary>
+            Checks if the token should be used from the cache and returns the cached access token if applicable.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.ShouldUseCachedToken(Microsoft.Identity.Client.Cache.Items.MsalAccessTokenCacheItem)">
+            <summary>
+            Checks if the token should be used from the cache.
+            </summary>
+            <param name="cacheItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.IsMatchingTokenHash(System.String,System.String)">
+            <summary>
+            Checks if the token hash matches the hash provided in AccessTokenHashToRefresh.
+            </summary>
+            <param name="tokenSecret"></param>
+            <param name="accessTokenHashToRefresh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.MarkAccessTokenAsCacheHit">
+            <summary>
+            Marks the request as a cache hit and increments the cache hit count.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.CreateAuthenticationResultFromCache(Microsoft.Identity.Client.Cache.Items.MsalAccessTokenCacheItem)">
+            <summary>
+            returns the cached access token item 
+            </summary>
+            <param name="cachedAccessTokenItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.GetOverriddenScopes(System.Collections.Generic.ISet{System.String})">
+            <summary>
+            Gets overriden scopes for client credentials flow
+            </summary>
+            <param name="inputScopes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.GetBodyParameters">
+            <summary>
+            Gets the body parameters for the client credentials flow
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.GetCcsHeader(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Gets the CCS header for the client credentials flow
+            </summary>
+            <param name="additionalBodyParameters"></param>
+            <returns></returns>
         </member>
         <member name="T:Microsoft.Identity.Client.Internal.Requests.IntegratedWindowsAuthRequest">
             <summary>
@@ -7212,6 +7286,17 @@
             <para>Mitigation:</para> Ensure that the AzureRegion configuration is set when using mTLS PoP as it requires a regional endpoint.
             </summary>
         </member>
+        <member name="F:Microsoft.Identity.Client.MsalError.ForceRefreshNotCompatibleWithTokenHash">
+            <summary>
+            <para>What happened?</para> The operation attempted to force a token refresh while also using a token hash. 
+            These two options are incompatible because forcing a refresh bypasses token caching, 
+            which conflicts with token hash validation.
+            <para>Mitigation:</para>
+            - Ensure that `force_refresh` is not set to `true` when using a token hash.
+            - Review the request parameters to ensure they are not conflicting.
+            - If token hashing is required, allow the cached token to be used instead of forcing a refresh.
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Client.MsalErrorMessage">
             <summary>
             The active directory authentication error message.
@@ -8752,6 +8837,11 @@
         <member name="P:Microsoft.Identity.Client.TokenCacheNotificationArgs.TelemetryData">
             <summary>
             Cache Details contains the details of L1/ L2 cache for telemetry logging.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Client.TokenCacheNotificationArgs.NoDistributedCacheUseReason">
+            <summary>
+            Determines whether the client application authentication instance is classified as an FMI (Federated Managed Identity) node under a specified RMA (Resource Managed Authority).
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Client.TokenSource">
