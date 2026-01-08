@@ -20,7 +20,7 @@ Table of Contents
 - [Contact](#contact)
 
 ## About
-Provide a paragraph describing PipeDreamsDev2 in more detail:
+
 Pipe Dreams Developers is a passionate team of game designers, developers, and storytellers dedicated to creating unique and engaging gaming experiences. 
 Founded on the principles of innovation and creativity, we strive to push the boundaries of what’s possible in the gaming world. Our mission is to craft games that not only entertain but also inspire and connect players globally
 
