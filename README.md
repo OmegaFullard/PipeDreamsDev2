@@ -86,5 +86,5 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 ## Contact
 Project maintained by OmegaFullard.
 - GitHub: [OmegaFullard](https://github.com/OmegaFullard)
-- Email: your-email@example.com (replace as needed)
+- Email: n/a
 
