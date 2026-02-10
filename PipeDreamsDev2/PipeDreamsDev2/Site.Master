@@ -24,7 +24,7 @@
     </asp:PlaceHolder>
     
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    
+   </head> 
     	 <!-- Custom Styles-->
     
 	 
@@ -79,7 +79,7 @@
       </li>
     </ul>
   </div>
-    </body>
+
 	 
 			 
 			     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/"/>
@@ -122,7 +122,7 @@
     });
 </script>
 
-<body>
+
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -204,9 +204,9 @@
                 <br />
                 <br />
         <div class="text-end">
-              <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search"/>
+              <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-dark text-bg-light" placeholder="Search..." MaxLength="100"></asp:TextBox>
             <br />
-             <button class="btn btn-outline-primary" type="submit">Search</button>
+             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-outline-primary" OnClick="btnSearch_Click" />
             <br />
             <br />
             <a class="btn btn-info" href="sign-in.aspx">Login</a>
@@ -331,7 +331,7 @@
       </a>
       <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Pipe Dreams Developers</span>
     </div>
- <a href="#" class="btn btn-primary" hreflang="Social.aspx">Follow Us on Social Media!</a> 
+ <a href="Social.aspx" class="btn btn-primary" >Follow Us on Social Media!</a> 
  <!-- Footer -->
  <div class="row">
         <div class="col-md-12">

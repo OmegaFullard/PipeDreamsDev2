@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Directions.aspx.cs" MasterPageFile="~/Site.Master" Inherits="PipeDreamsDev2.Directions" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         .directions-container {
             max-width: 1200px;
@@ -152,7 +152,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="directions-container">
-        <h1 class="directions-header">🗺️ Directions to Our Help Desk Center</h1>
+        <h1 class="directions-header">🗺️ Directions to Our Office</h1>
 
         <div class="route-selector">
             <button class="route-btn active" onclick="changeRoute('driving')">

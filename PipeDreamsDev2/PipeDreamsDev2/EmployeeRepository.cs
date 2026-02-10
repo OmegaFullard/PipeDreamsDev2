@@ -36,67 +36,67 @@ namespace PipeDreamsDev2
                     Phone = "(555) 123-4567",
                     Email = "Lola.James@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/lola.png"),
-                    Bio = "Lola leads client operations and ensures placements meet expectations."
+                    Bio = "Lola leads client operations and ensures package offerings meet expectations."
                 },
                 new Employee
                 {
                     EmployeeId = 2,
                     FirstName = "Bill",
                     LastName = "Gully",
-                    Title = "Senior Recruiter",
+                    Title = "Senior Developer",
                     Location = "Downtown Royal City, PA",
                     Phone = "(555) 987-6543",
                     Email = "Bill.Gully@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/bill.png"),
-                    Bio = "Bill specializes in IT and engineering recruitment."
+                    Bio = "Bill specializes in project management and software development."
                 },
                 new Employee
                 {
                     EmployeeId = 3,
                     FirstName = "Nicole",
                     LastName = "Rappenport",
-                    Title = "Client Success Manager",
+                    Title = "UI/UX Designer",
                     Location = "Royal City, PA",
                     Phone = "(555) 555-1212",
                     Email = "Nicole.Rappenport@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/nicole.jpg"),
-                    Bio = "Nicole manages long-term client relationships and onboarding."
+                    Bio = "Nicole designs user-friendly interfaces and enhances user experiences."
                 },
                 new Employee
                 {
                     EmployeeId = 4,
                     FirstName = "Jessie",
                     LastName = "Baker",
-                    Title = "Director of Operations",
+                    Title = "Marketing Specialist",
                     Location = "Midtown Royal City, PA",
                     Phone = "(555) 123-4567",
                     Email = "Jessie.Baker@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/jessie.png"),
-                    Bio = "Jessie leads client operations and ensures placements meet expectations."
+                    Bio = "Jessie specializes in digital marketing strategies."
                 },
                 new Employee
                 {
                     EmployeeId = 5,
                     FirstName = "Lilith",
                     LastName = "Carlton",
-                    Title = "Senior IT Recruiter",
+                    Title = "Senior Data Analyst",
                     Location = "Midtown Royal City, PA",
                     Phone = "(555) 987-6543",
                     Email = "Lilith.Carlton@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/lilith.png"),
-                    Bio = "Lilith specializes in IT and engineering recruitment."
+                    Bio = "Lilith specializes in data analysis and visualization."
                 },
                 new Employee
                 {
                     EmployeeId = 6,
                     FirstName = "Kannady",
                     LastName = "Linberg",
-                    Title = "Client Success Manager",
+                    Title = "Technical Support Specialist",
                     Location = "Royal City, PA",
                     Phone = "(555) 555-1212",
                     Email = "Kannady.Linberg@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/kannady.png"),
-                    Bio = "Kannady manages long-term client relationships and onboarding."
+                    Bio = "Kannady specializes in technical support and customer service."
                 },
 
                 new Employee
@@ -104,12 +104,12 @@ namespace PipeDreamsDev2
                     EmployeeId = 7,
                     FirstName = "Skylar",
                     LastName = "Olstein",
-                    Title = "Talent Success Manager",
+                    Title = "Product Manager",
                     Location = "Uptown Royal City, PA",
                     Phone = "(555) 123-4567",
                     Email = "Skylar.Olstein@pipedreamsdev.com",
                     PhotoUrl = VirtualPaths.EmployeePhoto("images/skylar.png"),
-                    Bio = "Skylar prepares candidates through resume review, testing, and interview prep."
+                    Bio = "Skylar oversees product development and manages cross-functional teams."
                 },
                 new Employee
                 {

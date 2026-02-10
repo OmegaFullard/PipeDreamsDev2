@@ -5,7 +5,7 @@
      <h1 style="margin-top:0;">Terms and Conditions</h1>
      <p style="color:#555">Last updated: February 10, 2026</p>
          <section>
-    <h1>Terms and Conditions</h1>
+
     <p>Welcome to Pipe Dreams Development! These terms and conditions outline the rules and regulations for the use of our website and services. By accessing or using our website, you agree to be bound by these terms and conditions. If you do not agree with any part of these terms, please do not use our website.</p>
     <h2>1. Use of Our Services</h2>
     <p>You may use our services only for lawful purposes and in accordance with these terms. You agree not to use our services:</p>
