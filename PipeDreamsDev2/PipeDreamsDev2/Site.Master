@@ -22,11 +22,11 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
+    
     <webopt:bundlereference runat="server" path="~/Content/css" />
     
     	 <!-- Custom Styles-->
-    </head>
+    
 	 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -121,7 +121,7 @@
         });
     });
 </script>
-</head>
+
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
