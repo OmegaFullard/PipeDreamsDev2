@@ -56,7 +56,7 @@
               <li>limited email support</li>
               
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" style="color: #2097db;">Sign up for free</button>
+            <a href="sign-up.aspx" class="w-100 btn btn-lg btn-outline-primary" style="color: #2097db;">Sign up for free</a>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
               <li>Priority email support</li>
               <li>Royal City Notification Center</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary" >Get started</button>
+            <a href="Cart.aspx"class="w-100 btn btn-lg btn-primary" >Get started</a>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
               <li>Phone and email support 24/7</li>
               <li>Royal City Notification Center</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary" >Contact us</button>
+            <a href="mailto:Sales@example.com" class="w-100 btn btn-lg btn-primary" >Sales</a>
           </div>
         </div>
       </div>
@@ -192,10 +192,10 @@
       <div class="col-4 col-md">
         <h5>About</h5>
         <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="Team.aspx">Team</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="Directions.aspx">Locations</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="Privacy.aspx">Privacy</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="Terms.aspx">Terms</a></li>
         </ul>
       </div>
     </div>

@@ -26,6 +26,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     
     	 <!-- Custom Styles-->
+    </head>
 	 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -78,6 +79,7 @@
       </li>
     </ul>
   </div>
+    </body>
 	 
 			 
 			     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/"/>
@@ -142,7 +144,7 @@
             </Scripts>
         </asp:ScriptManager>
         
-         <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/"/>
+         <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers"/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
 
@@ -198,11 +200,15 @@
      <li><a runat="server" href="~/About">About</a></li>
      <li><a runat="server" href="~/Support">Support</a></li>
                     </ul>
-              </div>      
+              </div>  
+                <br />
+                <br />
         <div class="text-end">
               <input type="search" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search"/>
-
+            <br />
              <button class="btn btn-outline-primary" type="submit">Search</button>
+            <br />
+            <br />
             <a class="btn btn-info" href="sign-in.aspx">Login</a>
         <a class="btn btn-warning" href="sign-up.aspx">Register</a>
         
@@ -293,7 +299,18 @@
     </style>
 
 
+   <div class="body">
+  <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
    
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+            </asp:ContentPlaceHolder>
+        
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+  </asp:ContentPlaceHolder>
     
 <header data-bs-theme="dark">
   <div class="collapse text-bg-dark" id="navbarHeader">
@@ -314,7 +331,7 @@
       </a>
       <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Pipe Dreams Developers</span>
     </div>
- <a href="#" class="btn btn-primary">Follow Us on Social Media!</a> 
+ <a href="#" class="btn btn-primary" hreflang="Social.aspx">Follow Us on Social Media!</a> 
  <!-- Footer -->
  <div class="row">
         <div class="col-md-12">
@@ -331,7 +348,7 @@
  
   </footer>
 </div>
-
+       </div>
 
  </form>
 </body>

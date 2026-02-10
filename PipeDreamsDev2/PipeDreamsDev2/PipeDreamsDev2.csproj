@@ -196,14 +196,12 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=9.0.0.4, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.9.0.4\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-
     <Reference Include="Microsoft.Identity.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Identity.Abstractions.9.0.0\lib\net462\Microsoft.Identity.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Identity.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae">
       <HintPath>..\packages\Microsoft.Identity.Abstractions.9.0.0\lib\net462\Microsoft.Identity.Abstractions.dll</HintPath>
       <Private>True</Private>
-
     </Reference>
     <Reference Include="Microsoft.Identity.Client, Version=4.70.2.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Identity.Client.4.70.2\lib\net472\Microsoft.Identity.Client.dll</HintPath>
@@ -564,6 +562,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Directions.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\favicon\site.webmanifest" />
     <Content Include="images\10offPromo.png" />
@@ -604,6 +603,7 @@
     <Content Include="images\support.png" />
     <Content Include="images\svg\check.svg" />
     <Content Include="images\techbg2.png" />
+    <Content Include="Privacy.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="script.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -751,7 +751,10 @@
     <Content Include="sign-in.aspx" />
     <Content Include="sign-up.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="Social.aspx" />
     <Content Include="Support.aspx" />
+    <Content Include="Team.aspx" />
+    <Content Include="Terms.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -808,8 +811,23 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Directions.aspx.cs">
+      <DependentUpon>Directions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Directions.aspx.designer.cs">
+      <DependentUpon>Directions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Privacy.aspx.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Privacy.aspx.designer.cs">
+      <DependentUpon>Privacy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
@@ -854,12 +872,33 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Social.aspx.cs">
+      <DependentUpon>Social.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Social.aspx.designer.cs">
+      <DependentUpon>Social.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Support.aspx.cs">
       <DependentUpon>Support.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Support.aspx.designer.cs">
       <DependentUpon>Support.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Team.aspx.cs">
+      <DependentUpon>Team.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Team.aspx.designer.cs">
+      <DependentUpon>Team.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Terms.aspx.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Terms.aspx.designer.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

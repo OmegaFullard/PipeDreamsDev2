@@ -403,7 +403,7 @@ If you already have an account.
     </div>
       <br />
       <br />
- <a href="#" class="btn btn-primary">Follow Us on Social Media!</a> 
+ <a href="Social.aspx" class="btn btn-primary">Follow Us on Social Media!</a> 
       <br />
       <br />
  <!-- Footer -->
