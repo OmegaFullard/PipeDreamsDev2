@@ -211,7 +211,7 @@
             <br />
             <br />
             <!-- Shopping Cart Icon -->
-            <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-success position-relative me-2" ToolTip="View Shopping Cart">
+            <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-outline-info position-relative me-2" ToolTip="View Shopping Cart">
                 <i class="fa fa-shopping-cart"></i> Cart
                 <asp:Label ID="lblCartCount" runat="server" CssClass="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" Visible="false">
                     0

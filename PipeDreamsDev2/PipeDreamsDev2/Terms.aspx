@@ -28,4 +28,9 @@
 
         <p style="font-size:13px;color:#666;margin-top:18px;">This page is for informational purposes and is not legal advice. For a legally binding policy tailored to your jurisdiction and business, consult an attorney.</p>
     </div>
+    <br />
+    <br />
+    <div>
+        <a href="Products.aspx"><< Back to Pricing</a><br />
+    </div>
 </asp:Content>

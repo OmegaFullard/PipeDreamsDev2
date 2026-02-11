@@ -5,7 +5,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="display-4 mb-4">
-                    <i class="fa fa-shopping-cart"></i> Shopping Cart
+                    <i class="fa fa-shopping-cart"></i> &nbsp;&nbsp;&nbsp
+                    Shopping Cart
                 </h1>
 
                 <asp:Panel ID="pnlEmptyCart" runat="server" Visible="false">

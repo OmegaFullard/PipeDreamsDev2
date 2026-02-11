@@ -175,9 +175,7 @@
         <asp:HyperLink ID="lnkViewCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-success btn-lg" Visible="false">
             <i class="fa fa-shopping-cart"></i> View Cart & Checkout
         </asp:HyperLink>
-        <asp:HyperLink ID="lnkContinueToCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-primary" role="button">
-            Continue to Checkout!
-        </asp:HyperLink>
+      
     </center>
              <br/>
             <a href="default.aspx"><< Back to Home</a>
