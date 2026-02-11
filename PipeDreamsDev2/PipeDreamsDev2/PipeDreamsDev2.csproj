@@ -565,6 +565,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Directions.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\enterprise.png" />
     <Content Include="images\favicon\site.webmanifest" />
     <Content Include="images\10offPromo.png" />
     <Content Include="images\ajslogo.png" />
@@ -587,6 +588,7 @@
     <Content Include="images\favicon\favicon-32x32.png" />
     <Content Include="images\favicon\favicon.ico" />
     <Content Include="images\fps1.png" />
+    <Content Include="images\free.png" />
     <Content Include="images\gamecontrollers.png" />
     <Content Include="images\gamergirl.png" />
     <Content Include="images\laptopcellphone.png" />
@@ -598,7 +600,10 @@
     <Content Include="images\PDLogo3.png" />
     <Content Include="images\pies.png" />
     <Content Include="images\Player.png" />
+    <Content Include="images\pro.png" />
     <Content Include="images\product.png" />
+    <Content Include="images\product1.png" />
+    <Content Include="images\product2.png" />
     <Content Include="images\RCBasketball.png" />
     <Content Include="images\RCDLogo.png" />
     <Content Include="images\RCLogo.png" />
@@ -606,6 +611,8 @@
     <Content Include="images\svg\check.svg" />
     <Content Include="images\techbg2.png" />
     <Content Include="OrderConfirmation.aspx" />
+    <Content Include="OrderDetail.aspx" />
+    <Content Include="OrderHistory.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="script.js" />
@@ -832,6 +839,14 @@
     </Compile>
     <Compile Include="OrderConfirmation.aspx.cs">
       <DependentUpon>OrderConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetail.aspx.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderHistory.aspx.cs">
+      <DependentUpon>OrderHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Privacy.aspx.cs">

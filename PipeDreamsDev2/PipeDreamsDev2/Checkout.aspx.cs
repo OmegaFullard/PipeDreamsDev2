@@ -75,6 +75,51 @@ namespace PipeDreamsDev2
             }
         }
 
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+
+            // Assign controls from the page markup to the fields
+            lblSubtotal = (Label)FindControl("lblSubtotal");
+            lblTax = (Label)FindControl("lblTax");
+            lblShipping = (Label)FindControl("lblShipping");
+            lblTotal = (Label)FindControl("lblTotal");
+            lblTotalTax = (Label)FindControl("lblTotalTax");
+            lblShippingTax = (Label)FindControl("lblShippingTax");
+            lblTotalTaxTaxTax = (Label)FindControl("lblTotalTaxTaxTax");
+            lblError = (Label)FindControl("lblError");
+            lblErrorTax = (Label)FindControl("lblErrorTax");
+            lblErrorTaxTaxTax = (Label)FindControl("lblErrorTaxTaxTax");
+            lblErrorTaxTaxTaxTax = (Label)FindControl("lblErrorTaxTaxTaxTax");
+            pnlError = (Panel)FindControl("pnlError");
+            pnlErrorTax = (Panel)FindControl("pnlErrorTax");
+            pnlErrorTaxTaxTax = (Panel)FindControl("pnlErrorTaxTaxTax");
+            pnlTax = (Panel)FindControl("pnlTax");
+            pnlTaxTaxTax = (Panel)FindControl("pnlTaxTaxTax");
+            pnlTaxTaxTaxTax = (Panel)FindControl("pnlTaxTaxTaxTax");
+            txtFirstName = (TextBox)FindControl("txtFirstName");
+            txtLastName = (TextBox)FindControl("txtLastName");
+            txtEmail = (TextBox)FindControl("txtEmail");
+            txtPhone = (TextBox)FindControl("txtPhone");
+            txtAddress = (TextBox)FindControl("txtAddress");
+            txtAddress2 = (TextBox)FindControl("txtAddress2");
+            txtCity = (TextBox)FindControl("txtCity");
+            ddlState = (DropDownList)FindControl("ddlState");
+            txtZipCode = (TextBox)FindControl("txtZipCode");
+            rblPaymentMethod = (RadioButtonList)FindControl("rblPaymentMethod");
+            txtCardName = (TextBox)FindControl("txtCardName");
+            txtCardNumber = (TextBox)FindControl("txtCardNumber");
+            txtExpiryDate = (TextBox)FindControl("txtExpiryDate");
+            txtCVV = (TextBox)FindControl("txtCVV");
+            txtCVV2 = (TextBox)FindControl("txtCVV2");
+            txtCVV3 = (TextBox)FindControl("txtCVV3");
+            txtCVV4 = (TextBox)FindControl("txtCVV4");
+            txtNotes = (TextBox)FindControl("txtNotes");
+            btnPlaceOrder = (Button)FindControl("btnPlaceOrder");
+            btnOrder = (Button)FindControl("btnOrder");
+            rptOrderItems = (Repeater)FindControl("rptOrderItems");
+        }
+
         private void LoadOrderSummary()
         {
             List<CartItem> cartItems = SiteMaster.GetCartItems();

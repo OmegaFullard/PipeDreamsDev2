@@ -41,6 +41,11 @@
     <hr />
         </div>
 
+    <!-- Success Message -->
+    <asp:Panel ID="pnlSuccess" runat="server" Visible="false" CssClass="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa fa-check-circle"></i> <strong>Success!</strong> <asp:Label ID="lblSuccessMessage" runat="server"></asp:Label> has been added to your cart.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </asp:Panel>
 
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
       <div class="col">
@@ -56,7 +61,11 @@
               <li>limited email support</li>
               
             </ul>
-            <a href="sign-up.aspx" class="w-100 btn btn-lg btn-outline-primary" style="color: #2097db;">Sign up for free</a>
+            <asp:Button ID="btnFree" runat="server" Text="Sign up for free" 
+                CssClass="w-100 btn btn-lg btn-outline-primary" 
+                style="color: #2097db;" 
+                OnClick="btnAddToCart_Click" 
+                CommandArgument="Free" />
           </div>
         </div>
       </div>
@@ -73,7 +82,10 @@
               <li>Priority email support</li>
               <li>Royal City Notification Center</li>
             </ul>
-            <a href="Cart.aspx"class="w-100 btn btn-lg btn-primary" >Get started</a>
+            <asp:Button ID="btnPro" runat="server" Text="Buy Now" 
+                CssClass="w-100 btn btn-lg btn-primary" 
+                OnClick="btnAddToCart_Click" 
+                CommandArgument="Pro" />
           </div>
         </div>
       </div>
@@ -90,7 +102,11 @@
               <li>Phone and email support 24/7</li>
               <li>Royal City Notification Center</li>
             </ul>
-            <a href="mailto:Sales@example.com" class="w-100 btn btn-lg btn-primary" >Sales</a>
+            <asp:Button ID="btnEnterprise" runat="server" Text="Buy Now" 
+                CssClass="w-100 btn btn-lg btn-primary mb-2" 
+                OnClick="btnAddToCart_Click" 
+                CommandArgument="Enterprise" />
+            <a href="mailto:Sales@example.com" class="w-100 btn btn-lg btn-outline-primary">Questions</a>
           </div>
         </div>
       </div>
@@ -155,7 +171,14 @@
       <br />
       <br />
     
-    <center><a class="btn btn-primary" href="Cart.aspx" role="button">Continue to Checkout!</a></center>
+    <center>
+        <asp:HyperLink ID="lnkViewCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-success btn-lg" Visible="false">
+            <i class="fa fa-shopping-cart"></i> View Cart & Checkout
+        </asp:HyperLink>
+        <asp:HyperLink ID="lnkContinueToCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-primary" role="button">
+            Continue to Checkout!
+        </asp:HyperLink>
+    </center>
              <br/>
             <a href="default.aspx"><< Back to Home</a>
          
