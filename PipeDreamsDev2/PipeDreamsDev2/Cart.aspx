@@ -1,241 +1,119 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Cart.aspx.cs" Inherits="PipeDreamsDev2.Cart" %>
+﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="PipeDreamsDev2.Cart" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="display-4 mb-4">
+                    <i class="fa fa-shopping-cart"></i> Shopping Cart
+                </h1>
 
-  <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+                <asp:Panel ID="pnlEmptyCart" runat="server" Visible="false">
+                    <div class="alert alert-info text-center">
+                        <i class="fa fa-shopping-cart fa-3x mb-3"></i>
+                        <h4>Your cart is empty</h4>
+                        <p>Start shopping to add items to your cart.</p>
+                        <a href="~/Products.aspx" runat="server" class="btn btn-primary">Continue Shopping</a>
+                    </div>
+                </asp:Panel>
 
-      <asp:PlaceHolder runat="server">
-      <%: Scripts.Render("~/bundles/modernizr") %>
-  </asp:PlaceHolder>
+                <asp:Panel ID="pnlCartItems" runat="server" Visible="false">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Cart Items</h5>
+                        </div>
+                        <div class="card-body">
+                            <asp:GridView ID="gvCart" runat="server" CssClass="table table-striped table-hover" 
+                                AutoGenerateColumns="false" OnRowCommand="gvCart_RowCommand" DataKeyNames="ProductId"
+                                ShowFooter="true" OnRowDataBound="gvCart_RowDataBound">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Product">
+                                        <ItemTemplate>
+                                            <div class="d-flex align-items-center">
+                                                <asp:Image ID="imgProduct" runat="server" 
+                                                    ImageUrl='<%# Eval("ImageUrl") %>' 
+                                                    CssClass="me-3" 
+                                                    Width="80" Height="80" 
+                                                    AlternateText='<%# Eval("ProductName") %>' />
+                                                <div>
+                                                    <strong><%# Eval("ProductName") %></strong><br />
+                                                    <small class="text-muted"><%# Eval("Description") %></small>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <strong>Total:</strong>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:BoundField DataField="Price" HeaderText="Price" 
+                                        DataFormatString="{0:C}" ItemStyle-CssClass="text-end" />
+                                    
+                                    <asp:TemplateField HeaderText="Quantity">
+                                        <ItemTemplate>
+                                            <div class="input-group" style="width: 130px;">
+                                                <asp:Button ID="btnDecrease" runat="server" Text="-" 
+                                                    CssClass="btn btn-outline-secondary btn-sm" 
+                                                    CommandName="Decrease" 
+                                                    CommandArgument='<%# Eval("ProductId") %>' />
+                                                <asp:TextBox ID="txtQuantity" runat="server" 
+                                                    Text='<%# Eval("Quantity") %>' 
+                                                    CssClass="form-control form-control-sm text-center" 
+                                                    ReadOnly="true" 
+                                                    style="width: 50px;" />
+                                                <asp:Button ID="btnIncrease" runat="server" Text="+" 
+                                                    CssClass="btn btn-outline-secondary btn-sm" 
+                                                    CommandName="Increase" 
+                                                    CommandArgument='<%# Eval("ProductId") %>' />
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Total">
+                                        <ItemTemplate>
+                                            <span class="text-end d-block"><%# Eval("TotalPrice", "{0:C}") %></span>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            <strong><asp:Label ID="lblGrandTotal" runat="server" CssClass="text-end d-block"></asp:Label></strong>
+                                        </FooterTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Action">
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnRemove" runat="server" 
+                                                Text="Remove" 
+                                                CssClass="btn btn-danger btn-sm" 
+                                                CommandName="Remove" 
+                                                CommandArgument='<%# Eval("ProductId") %>'
+                                                OnClientClick="return confirm('Are you sure you want to remove this item?');" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <EmptyDataTemplate>
+                                    <div class="text-center p-4">
+                                        <p>Your cart is empty.</p>
+                                    </div>
+                                </EmptyDataTemplate>
+                            </asp:GridView>
+                        </div>
+                    </div>
 
-  <webopt:bundlereference runat="server" path="~/Content/css" />
-
-      
-        <div class="container">
-
-    <div class="py-5 text-center">
-    
-      <h2>Checkout Form</h2>
-      
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="~/Products.aspx" runat="server" class="btn btn-outline-primary">
+                                <i class="fa fa-arrow-left"></i> Continue Shopping
+                            </a>
+                            <asp:Button ID="btnClearCart" runat="server" Text="Clear Cart" 
+                                CssClass="btn btn-outline-danger" OnClick="btnClearCart_Click" 
+                                OnClientClick="return confirm('Are you sure you want to clear your cart?');" />
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" 
+                                CssClass="btn btn-success btn-lg" OnClick="btnCheckout_Click" />
+                        </div>
+                    </div>
+                </asp:Panel>
+            </div>
+        </div>
     </div>
-
-    <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-secondary">Your cart</span>
-          <span class="badge bg-info rounded-pill">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-secondary">Brief description</small>
-            </div>
-            <span class="text-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-secondary">Brief description</small>
-            </div>
-            <span class="text-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-secondary">Brief description</small>
-            </div>
-            <span class="text-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>VIPP</small>
-            </div>
-            <span class="text-success">−$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
-
-        <class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code"/>
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </>
-      </div>
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">Billing address</h4>
-        <class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" />
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" />
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="username" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" id="username" placeholder="Username" />
-              <div class="invalid-feedback">
-                  Your username is required.
-                </div>
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com"/>
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" />
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address2" class="form-label">Address 2 <span class="text-body-secondary">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"/>
-            </div>
-
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" >
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" >
-                <option value="">Choose...</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" />
-              <div class="invalid-feedback">
-                Zip code required.
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-4"/>
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address"/>
-            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-          </div>
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info"/>
-            <label class="form-check-label" for="save-info">Save this information for next time</label>
-          </div>
-
-          <hr class="my-4"/>
-
-          <h4 class="mb-3">Payment</h4>
-
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" />
-              <label class="form-check-label" for="credit">Credit card</label>
-            </div>
-            <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" />
-              <label class="form-check-label" for="debit">Debit card</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"/>
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Name on card</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="required" />
-              <small class="text-body-secondary">Full name as displayed on card</small>
-              <div class="invalid-feedback">
-                Name on card is required
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="cc-number" class="form-label">Credit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="required" />
-              <div class="invalid-feedback">
-                Credit card number is required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Expiration</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="required" />
-              <div class="invalid-feedback">
-                Expiration date required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="required" />
-              <div class="invalid-feedback">
-                Security code required
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-4"/>
-
-          <button class="btn btn-success rounded-pill px-3" type="submit">Submit Order</button>
-
-      </div>
-    </div>
-
-            </div>
-  
-    <div>
-  
-    
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="Privacy.aspx">Privacy</a></li>
-      <li class="list-inline-item"><a href="Terms.aspx">Terms</a></li>
-      <li class="list-inline-item"><a href="Support.aspx">Support</a></li>
-    </ul>
-
-</div>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="checkout.js"></script>
-
-      </asp:content>
+</asp:Content>

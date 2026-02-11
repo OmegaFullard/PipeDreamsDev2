@@ -209,6 +209,14 @@
              <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-outline-primary" OnClick="btnSearch_Click" />
             <br />
             <br />
+            <!-- Shopping Cart Icon -->
+            <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="btn btn-success position-relative me-2" ToolTip="View Shopping Cart">
+                <i class="fa fa-shopping-cart"></i> Cart
+                <asp:Label ID="lblCartCount" runat="server" CssClass="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" Visible="false">
+                    0
+                </asp:Label>
+            </asp:HyperLink>
+            <br />
             <a class="btn btn-info" href="sign-in.aspx">Login</a>
         <a class="btn btn-warning" href="sign-up.aspx">Register</a>
         

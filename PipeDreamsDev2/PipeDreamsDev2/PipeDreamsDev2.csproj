@@ -542,6 +542,7 @@
     <Content Include="assets\dist\js\bootstrap.bundle.min.js" />
     <Content Include="assets\js\color-modes.js" />
     <Content Include="Cart.aspx" />
+    <Content Include="Checkout.aspx" />
     <Content Include="checkout.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -597,12 +598,14 @@
     <Content Include="images\PDLogo3.png" />
     <Content Include="images\pies.png" />
     <Content Include="images\Player.png" />
+    <Content Include="images\product.png" />
     <Content Include="images\RCBasketball.png" />
     <Content Include="images\RCDLogo.png" />
     <Content Include="images\RCLogo.png" />
     <Content Include="images\support.png" />
     <Content Include="images\svg\check.svg" />
     <Content Include="images\techbg2.png" />
+    <Content Include="OrderConfirmation.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="script.js" />
@@ -798,6 +801,10 @@
     <Compile Include="Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -822,6 +829,10 @@
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="OrderConfirmation.aspx.cs">
+      <DependentUpon>OrderConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Privacy.aspx.cs">
       <DependentUpon>Privacy.aspx</DependentUpon>

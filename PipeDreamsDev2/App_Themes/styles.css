@@ -1,0 +1,47 @@
+/* Shopping Cart Badge */
+.position-relative {
+    position: relative !important;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+
+.top-0 {
+    top: 0 !important;
+}
+
+.start-100 {
+    left: 100% !important;
+}
+
+.translate-middle {
+    transform: translate(-50%, -50%) !important;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+/* Cart Icon Styling */
+.btn .fa-shopping-cart {
+    font-size: 1.1em;
+    margin-right: 5px;
+}
