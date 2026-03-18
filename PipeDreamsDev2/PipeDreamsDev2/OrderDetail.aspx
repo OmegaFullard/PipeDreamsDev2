@@ -13,6 +13,16 @@
                     </a>
                 </div>
 
+                <!-- Order Not Found Panel -->
+                <asp:Panel ID="pnlOrderNotFound" runat="server" Visible="false" CssClass="alert alert-warning text-center">
+                    <h3><i class="fa fa-exclamation-triangle"></i> Order Not Found</h3>
+                    <p>The order you're looking for could not be found. Please check the order number and try again.</p>
+                    <asp:Button ID="btnContactSupport" runat="server" Text="Contact Support" CssClass="btn btn-info" OnClick="btnContactSupport_Click" />
+                </asp:Panel>
+
+                <!-- Order Detail Panel -->
+                <asp:Panel ID="pnlOrderDetail" runat="server" Visible="true">
+
                 <!-- Order Status Timeline -->
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
@@ -69,19 +79,19 @@
                                 <table class="table table-borderless mb-0">
                                     <tr>
                                         <td><strong>Order Number:</strong></td>
-                                        <td><asp:Label ID="lblOrderId" runat="server" CssClass="text-primary"></asp:Label></td>
+                                        <td><asp:Literal ID="litOrderId" runat="server"></asp:Literal></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Order Date:</strong></td>
-                                        <td><asp:Label ID="lblOrderDate" runat="server"></asp:Label></td>
+                                        <td><asp:Literal ID="litOrderDate" runat="server"></asp:Literal></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Status:</strong></td>
-                                        <td><asp:Label ID="lblStatus" runat="server" CssClass="badge"></asp:Label></td>
+                                        <td><asp:Literal ID="litOrderStatus" runat="server"></asp:Literal></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Payment Method:</strong></td>
-                                        <td><asp:Label ID="lblPaymentMethod" runat="server"></asp:Label></td>
+                                        <td><asp:Literal ID="litPaymentMethod" runat="server"></asp:Literal></td>
                                     </tr>
                                 </table>
                             </div>
@@ -103,7 +113,7 @@
                                 <h5 class="mb-0"><i class="fa fa-map-marker"></i> Shipping Address</h5>
                             </div>
                             <div class="card-body">
-                                <asp:Label ID="lblShippingAddress" runat="server"></asp:Label>
+                                <asp:Literal ID="litShippingAddress" runat="server"></asp:Literal>
                             </div>
                         </div>
                     </div>
@@ -115,28 +125,23 @@
                                 <h5 class="mb-0"><i class="fa fa-shopping-cart"></i> Order Items</h5>
                             </div>
                             <div class="card-body">
-                                <asp:GridView ID="gvOrderItems" runat="server" CssClass="table table-striped" 
-                                    AutoGenerateColumns="false" ShowHeader="false" GridLines="None">
-                                    <Columns>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <asp:Image ID="imgProduct" runat="server" 
-                                                        ImageUrl='<%# Eval("ImageUrl") %>' 
-                                                        Width="60" Height="60" CssClass="me-3" />
-                                                    <div class="flex-grow-1">
-                                                        <strong><%# Eval("ProductName") %></strong><br />
-                                                        <small class="text-muted"><%# Eval("Description") %></small><br />
-                                                        <small>Qty: <%# Eval("Quantity") %> × <%# ((decimal)Eval("Price")).ToString("C") %></small>
-                                                    </div>
-                                                    <div class="text-end">
-                                                        <strong><%# ((decimal)Eval("TotalPrice")).ToString("C") %></strong>
-                                                    </div>
-                                                </div>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                </asp:GridView>
+                                <asp:Repeater ID="rptOrderItems" runat="server">
+                                    <ItemTemplate>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <asp:Image ID="imgProduct" runat="server" 
+                                                ImageUrl='<%# Eval("ImageUrl") %>' 
+                                                Width="60" Height="60" CssClass="me-3" />
+                                            <div class="flex-grow-1">
+                                                <strong><%# Eval("ProductName") %></strong><br />
+                                                <small class="text-muted"><%# Eval("Description") %></small><br />
+                                                <small>Qty: <%# Eval("Quantity") %> × <%# ((decimal)Eval("Price")).ToString("C") %></small>
+                                            </div>
+                                            <div class="text-end">
+                                                <strong><%# ((decimal)Eval("TotalPrice")).ToString("C") %></strong>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
                         </div>
 
@@ -147,20 +152,20 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span>Subtotal:</span>
-                                    <strong><asp:Label ID="lblSubtotal" runat="server"></asp:Label></strong>
+                                    <strong><asp:Literal ID="litSubtotal" runat="server"></asp:Literal></strong>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2">
                                     <span>Tax:</span>
-                                    <strong><asp:Label ID="lblTax" runat="server"></asp:Label></strong>
+                                    <strong><asp:Literal ID="litTax" runat="server"></asp:Literal></strong>
                                 </div>
                                 <div class="d-flex justify-content-between mb-3">
                                     <span>Shipping:</span>
-                                    <strong><asp:Label ID="lblShipping" runat="server"></asp:Label></strong>
+                                    <strong><asp:Literal ID="litShipping" runat="server"></asp:Literal></strong>
                                 </div>
                                 <hr />
                                 <div class="d-flex justify-content-between">
                                     <h5>Total:</h5>
-                                    <h5 class="text-success"><asp:Label ID="lblTotal" runat="server"></asp:Label></h5>
+                                    <h5 class="text-success"><asp:Literal ID="litTotal" runat="server"></asp:Literal></h5>
                                 </div>
                             </div>
                         </div>
@@ -180,11 +185,13 @@
                             <asp:Button ID="btnReorder" runat="server" Text="Reorder Items" CssClass="btn btn-primary" OnClick="btnReorder_Click" />
                             <asp:Button ID="btnPrintInvoice" runat="server" Text="Print Invoice" CssClass="btn btn-outline-secondary" 
                                 OnClientClick="window.print(); return false;" />
-                            <asp:Button ID="btnContactSupport" runat="server" Text="Contact Support" CssClass="btn btn-outline-info" 
-                                OnClick="btnContactSupport_Click" />
                         </div>
                     </div>
                 </div>
+
+                </asp:Panel>
+                <!-- End Order Detail Panel -->
+
             </div>
         </div>
     </div>

@@ -628,6 +628,7 @@
     <Content Include="OrderConfirmation.aspx" />
     <Content Include="OrderDetail.aspx" />
     <Content Include="OrderHistory.aspx" />
+    <Content Include="PrintInvoice.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="script.js" />
@@ -862,6 +863,10 @@
     </Compile>
     <Compile Include="OrderHistory.aspx.cs">
       <DependentUpon>OrderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintInvoice.aspx.cs">
+      <DependentUpon>PrintInvoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Privacy.aspx.cs">

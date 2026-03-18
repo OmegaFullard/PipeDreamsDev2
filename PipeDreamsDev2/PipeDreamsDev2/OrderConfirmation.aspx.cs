@@ -9,19 +9,19 @@ namespace PipeDreamsDev2
 {
     public partial class OrderConfirmation : Page
     {
-        private Label lblOrderId;
-        private Label lblOrderDate;
-        private Label lblCustomerName;
-        private Label lblEmail;
-        private Label lblConfirmEmail;
-        private Label lblShippingAddress;
-        private GridView gvOrderItems;
-        private Label lblSubtotal;
-        private Label lblTax;
-        private Label lblShipping;
-        private Label lblTotal;
-        private Button btnCancel;
-        private Button btnOk;
+        protected Label lblOrderId;
+        protected Label lblOrderDate;
+        protected Label lblCustomerName;
+        protected Label lblEmail;
+        protected Label lblConfirmEmail;
+        protected Label lblShippingAddress;
+        protected GridView gvOrderItems;
+        protected Label lblSubtotal;
+        protected Label lblTax;
+        protected Label lblShipping;
+        protected Label lblTotal;
+        protected Button btnCancel;
+        protected Button btnOk;
 
         protected void Page_Load(object sender, EventArgs e)
         {

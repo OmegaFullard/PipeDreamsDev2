@@ -9,23 +9,23 @@ namespace PipeDreamsDev2
 {
     public partial class OrderHistory : Page
     {
-        private Label lblOrderCount;
-        private Panel pnlNoOrders;
+        protected Label lblOrderCount;
+        protected Panel pnlNoOrders;
         private List<Order> orders;
-        private Panel pnlOrders;
+        protected Panel pnlOrders;
         private List<OrderDetail> orderDetail;
-        private Repeater rptOrders;
+        protected Repeater rptOrders;
         private List<OrderDetail> orderDetailList;
-        private DropDownList ddlStatus;
-        private DropDownList ddlTimeRange;
-        private TextBox txtSearch;
-        private Panel pnlPagination;
-        private Repeater rptPagination;
-        private Panel pnlPreviousPage;
-        private LinkButton lnkPrevious;
-        private Panel pnlNextPage;
-        private LinkButton lnkNext;
-        private LinkButton lnkPrev;
+        protected DropDownList ddlStatus;
+        protected DropDownList ddlTimeRange;
+        protected TextBox txtSearch;
+        protected Panel pnlPagination;
+        protected Repeater rptPagination;
+        protected Panel pnlPreviousPage;
+        protected LinkButton lnkPrevious;
+        protected Panel pnlNextPage;
+        protected LinkButton lnkNext;
+        protected LinkButton lnkPrev;
 
         private const int PageSize = 10;
         
@@ -308,8 +308,9 @@ namespace PipeDreamsDev2
                     });
                 }
 
-                // Redirect to cart
-                Response.Redirect("~/Cart.aspx");
+                // Redirect to cart - use false to prevent thread abort
+                Response.Redirect("~/Cart.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
 

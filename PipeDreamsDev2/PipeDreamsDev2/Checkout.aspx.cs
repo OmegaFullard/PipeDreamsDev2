@@ -11,44 +11,29 @@ namespace PipeDreamsDev2
 
     public partial class Checkout : Page
     {
-        private Label lblSubtotal;
-        private Label lblTax;
-        private Label lblShipping;
-        private Label lblTotal;
-        private Label lblTotalTax;
-        private Label lblShippingTax;
-        private Label lblTotalTaxTaxTax;
-        private Label lblError;
-        private Label lblErrorTax;
-        private Label lblErrorTaxTaxTax;
-        private Label lblErrorTaxTaxTaxTax;
-        private Panel pnlError;
-        private Panel pnlErrorTax;
-        private Panel pnlErrorTaxTaxTax;
-        private Panel pnlTax;
-        private Panel pnlTaxTaxTax;
-        private Panel pnlTaxTaxTaxTax;
-        private TextBox txtFirstName;
-        private TextBox txtLastName;
-        private TextBox txtEmail;
-        private TextBox txtPhone;
-        private TextBox txtAddress;
-        private TextBox txtAddress2;
-        private TextBox txtCity;
-        private DropDownList ddlState;
-        private TextBox txtZipCode;
-        private RadioButtonList rblPaymentMethod;
-        private TextBox txtCardName;
-        private TextBox txtCardNumber;
-        private TextBox txtExpiryDate;
-        private TextBox txtCVV;
-        private TextBox txtCVV2;
-        private TextBox txtCVV3;
-        private TextBox txtCVV4;
-        private TextBox txtNotes;
-        private Button btnPlaceOrder;
-        private Button btnOrder;
-        private Repeater rptOrderItems;
+        protected Label lblSubtotal;
+        protected Label lblTax;
+        protected Label lblShipping;
+        protected Label lblTotal;
+        protected Label lblError;
+        protected Panel pnlError;
+        protected TextBox txtFirstName;
+        protected TextBox txtLastName;
+        protected TextBox txtEmail;
+        protected TextBox txtPhone;
+        protected TextBox txtAddress;
+        protected TextBox txtAddress2;
+        protected TextBox txtCity;
+        protected DropDownList ddlState;
+        protected TextBox txtZipCode;
+        protected RadioButtonList rblPaymentMethod;
+        protected TextBox txtCardName;
+        protected TextBox txtCardNumber;
+        protected TextBox txtExpiryDate;
+        protected TextBox txtCVV;
+        protected TextBox txtNotes;
+        protected Button btnPlaceOrder;
+        protected Repeater rptOrderItems;
 
 
         private decimal subtotal = 0;
@@ -73,51 +58,6 @@ namespace PipeDreamsDev2
                 // Pre-fill customer info if user is logged in
                 LoadCustomerInfo();
             }
-        }
-
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
-
-            // Assign controls from the page markup to the fields
-            lblSubtotal = (Label)FindControl("lblSubtotal");
-            lblTax = (Label)FindControl("lblTax");
-            lblShipping = (Label)FindControl("lblShipping");
-            lblTotal = (Label)FindControl("lblTotal");
-            lblTotalTax = (Label)FindControl("lblTotalTax");
-            lblShippingTax = (Label)FindControl("lblShippingTax");
-            lblTotalTaxTaxTax = (Label)FindControl("lblTotalTaxTaxTax");
-            lblError = (Label)FindControl("lblError");
-            lblErrorTax = (Label)FindControl("lblErrorTax");
-            lblErrorTaxTaxTax = (Label)FindControl("lblErrorTaxTaxTax");
-            lblErrorTaxTaxTaxTax = (Label)FindControl("lblErrorTaxTaxTaxTax");
-            pnlError = (Panel)FindControl("pnlError");
-            pnlErrorTax = (Panel)FindControl("pnlErrorTax");
-            pnlErrorTaxTaxTax = (Panel)FindControl("pnlErrorTaxTaxTax");
-            pnlTax = (Panel)FindControl("pnlTax");
-            pnlTaxTaxTax = (Panel)FindControl("pnlTaxTaxTax");
-            pnlTaxTaxTaxTax = (Panel)FindControl("pnlTaxTaxTaxTax");
-            txtFirstName = (TextBox)FindControl("txtFirstName");
-            txtLastName = (TextBox)FindControl("txtLastName");
-            txtEmail = (TextBox)FindControl("txtEmail");
-            txtPhone = (TextBox)FindControl("txtPhone");
-            txtAddress = (TextBox)FindControl("txtAddress");
-            txtAddress2 = (TextBox)FindControl("txtAddress2");
-            txtCity = (TextBox)FindControl("txtCity");
-            ddlState = (DropDownList)FindControl("ddlState");
-            txtZipCode = (TextBox)FindControl("txtZipCode");
-            rblPaymentMethod = (RadioButtonList)FindControl("rblPaymentMethod");
-            txtCardName = (TextBox)FindControl("txtCardName");
-            txtCardNumber = (TextBox)FindControl("txtCardNumber");
-            txtExpiryDate = (TextBox)FindControl("txtExpiryDate");
-            txtCVV = (TextBox)FindControl("txtCVV");
-            txtCVV2 = (TextBox)FindControl("txtCVV2");
-            txtCVV3 = (TextBox)FindControl("txtCVV3");
-            txtCVV4 = (TextBox)FindControl("txtCVV4");
-            txtNotes = (TextBox)FindControl("txtNotes");
-            btnPlaceOrder = (Button)FindControl("btnPlaceOrder");
-            btnOrder = (Button)FindControl("btnOrder");
-            rptOrderItems = (Repeater)FindControl("rptOrderItems");
         }
 
         private void LoadOrderSummary()

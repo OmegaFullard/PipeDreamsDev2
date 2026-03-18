@@ -98,11 +98,56 @@
                                 <label for="ddlState">State <span class="text-danger">*</span></label>
                                 <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control">
                                     <asp:ListItem Value="" Text="Select State"></asp:ListItem>
-                                    <asp:ListItem Value="PA" Text="Pennsylvania"></asp:ListItem>
-                                    <asp:ListItem Value="NJ" Text="New Jersey"></asp:ListItem>
-                                    <asp:ListItem Value="NY" Text="New York"></asp:ListItem>
+                                    <asp:ListItem Value="AL" Text="Alabama"></asp:ListItem>
+                                    <asp:ListItem Value="AK" Text="Alaska"></asp:ListItem>
+                                    <asp:ListItem Value="AZ" Text="Arizona"></asp:ListItem>
+                                    <asp:ListItem Value="AR" Text="Arkansas"></asp:ListItem>
+                                    <asp:ListItem Value="CA" Text="California"></asp:ListItem>
+                                    <asp:ListItem Value="CO" Text="Colorado"></asp:ListItem>
+                                    <asp:ListItem Value="CT" Text="Connecticut"></asp:ListItem>
                                     <asp:ListItem Value="DE" Text="Delaware"></asp:ListItem>
+                                    <asp:ListItem Value="FL" Text="Florida"></asp:ListItem>
+                                    <asp:ListItem Value="GA" Text="Georgia"></asp:ListItem>
+                                    <asp:ListItem Value="HI" Text="Hawaii"></asp:ListItem>
+                                    <asp:ListItem Value="ID" Text="Idaho"></asp:ListItem>
+                                    <asp:ListItem Value="IL" Text="Illinois"></asp:ListItem>
+                                    <asp:ListItem Value="IN" Text="Indiana"></asp:ListItem>
+                                    <asp:ListItem Value="IA" Text="Iowa"></asp:ListItem>
+                                    <asp:ListItem Value="KS" Text="Kansas"></asp:ListItem>
+                                    <asp:ListItem Value="KY" Text="Kentucky"></asp:ListItem>
+                                    <asp:ListItem Value="LA" Text="Louisiana"></asp:ListItem>
+                                    <asp:ListItem Value="ME" Text="Maine"></asp:ListItem>
                                     <asp:ListItem Value="MD" Text="Maryland"></asp:ListItem>
+                                    <asp:ListItem Value="MA" Text="Massachusetts"></asp:ListItem>
+                                    <asp:ListItem Value="MI" Text="Michigan"></asp:ListItem>
+                                    <asp:ListItem Value="MN" Text="Minnesota"></asp:ListItem>
+                                    <asp:ListItem Value="MS" Text="Mississippi"></asp:ListItem>
+                                    <asp:ListItem Value="MO" Text="Missouri"></asp:ListItem>
+                                    <asp:ListItem Value="MT" Text="Montana"></asp:ListItem>
+                                    <asp:ListItem Value="NE" Text="Nebraska"></asp:ListItem>
+                                    <asp:ListItem Value="NV" Text="Nevada"></asp:ListItem>
+                                    <asp:ListItem Value="NH" Text="New Hampshire"></asp:ListItem>
+                                    <asp:ListItem Value="NJ" Text="New Jersey"></asp:ListItem>
+                                    <asp:ListItem Value="NM" Text="New Mexico"></asp:ListItem>
+                                    <asp:ListItem Value="NY" Text="New York"></asp:ListItem>
+                                    <asp:ListItem Value="NC" Text="North Carolina"></asp:ListItem>
+                                    <asp:ListItem Value="ND" Text="North Dakota"></asp:ListItem>
+                                    <asp:ListItem Value="OH" Text="Ohio"></asp:ListItem>
+                                    <asp:ListItem Value="OK" Text="Oklahoma"></asp:ListItem>
+                                    <asp:ListItem Value="OR" Text="Oregon"></asp:ListItem>
+                                    <asp:ListItem Value="PA" Text="Pennsylvania"></asp:ListItem>
+                                    <asp:ListItem Value="RI" Text="Rhode Island"></asp:ListItem>
+                                    <asp:ListItem Value="SC" Text="South Carolina"></asp:ListItem>
+                                    <asp:ListItem Value="SD" Text="South Dakota"></asp:ListItem>
+                                    <asp:ListItem Value="TN" Text="Tennessee"></asp:ListItem>
+                                    <asp:ListItem Value="TX" Text="Texas"></asp:ListItem>
+                                    <asp:ListItem Value="UT" Text="Utah"></asp:ListItem>
+                                    <asp:ListItem Value="VT" Text="Vermont"></asp:ListItem>
+                                    <asp:ListItem Value="VA" Text="Virginia"></asp:ListItem>
+                                    <asp:ListItem Value="WA" Text="Washington"></asp:ListItem>
+                                    <asp:ListItem Value="WV" Text="West Virginia"></asp:ListItem>
+                                    <asp:ListItem Value="WI" Text="Wisconsin"></asp:ListItem>
+                                    <asp:ListItem Value="WY" Text="Wyoming"></asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvState" runat="server" ControlToValidate="ddlState" 
                                     InitialValue="" ErrorMessage="State is required" CssClass="text-danger" Display="Dynamic" ValidationGroup="Checkout"></asp:RequiredFieldValidator>
