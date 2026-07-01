@@ -1,11 +1,23 @@
 <%@ Page Title="Checkout" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Checkout.aspx.cs" Inherits="PipeDreamsDev2.Checkout" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        /* Override card body text color for this page */
+        .card .card-body {
+            color: #36454f;
+        }
+        
+        /* Override h5 text color to white on Checkout page */
+        h5 {
+            color: #ffffff !important;
+        }
+    </style>
+
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-8">
                 <h1 class="display-4 mb-4">
-                    <i class="fa fa-credit-card"></i> Checkout
+                    <i class="fa fa-credit-card"></i> &nbsp &nbsp Checkout
                 </h1>
 
                 <!-- Progress Steps -->

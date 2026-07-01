@@ -1,6 +1,12 @@
 <%@ Page Title="Order History" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderHistory.aspx.cs" Inherits="PipeDreamsDev2.OrderHistory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        /* Override card body text color for this page */
+        .card .card-body {
+            color: #36454f;
+        }
+    </style>
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-12">

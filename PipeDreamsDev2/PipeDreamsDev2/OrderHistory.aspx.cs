@@ -190,7 +190,30 @@ namespace PipeDreamsDev2
                 {
                     litOrderActions.Text = GetOrderActions(order.Status, order.OrderId);
                 }
+
+                // Set the product image for the first item in the order
+                var imgItem = (Image)e.Item.FindControl("imgItem");
+                if (imgItem != null && order.Items.Count > 0)
+                {
+                    var firstItem = order.Items[0];
+                    imgItem.ImageUrl = ResolveUrl("~/Images/" + GetProductImageFile(firstItem));
+                    imgItem.AlternateText = firstItem.ProductName;
+                }
             }
+        }
+
+        private string GetProductImageFile(CartItem item)
+        {
+            // Map product identifiers to provided images
+            string imageFile = "free.png"; // default
+            string pid = item.ProductId.ToString().ToLower();
+            string name = (item.ProductName ?? string.Empty).ToLower();
+
+            if (pid.Contains("enterprise") || name.Contains("enterprise")) imageFile = "enterprise.png";
+            else if (pid.Contains("pro") || name.Contains("pro")) imageFile = "pro.png";
+            else if (pid.Contains("free") || name.Contains("free")) imageFile = "free.png";
+
+            return imageFile;
         }
 
         private string GetOrderActions(string status, string orderId)

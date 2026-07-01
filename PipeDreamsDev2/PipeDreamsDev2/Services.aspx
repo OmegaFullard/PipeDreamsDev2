@@ -3,6 +3,12 @@
 
   <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+          <style>
+        /* Override card body text color for this page */
+        .card .card-body {
+            color: #36454f;
+        }
+    </style>
       <asp:PlaceHolder runat="server">
       <%: Scripts.Render("~/bundles/modernizr") %>
   </asp:PlaceHolder>

@@ -266,7 +266,7 @@
         <div class="container">
 
     <div class="py-5 text-center">
-      <a href="index.aspx"><img class="d-block mx-auto mb-4" src="images/PDLogo.png" alt="" width="72" height="57"></a>
+      <a href="index.aspx"><img class="d-block mx-auto mb-4" src="images/PDLogo.png" alt="logo" width="125" height="125"></a>
       <h2>Pipe Dreams Developers</h2>
       <p class="lead">Welcome Back! Please sign in to continue to your account.</p>
     

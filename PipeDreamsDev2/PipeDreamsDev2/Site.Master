@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PipeDreamsDev2.SiteMaster" %>
+﻿        <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PipeDreamsDev2.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -179,7 +179,7 @@
                   <%--Logo--%>
 
             <a href="#" class="logo">
-                <img src="images/PDLogo.png" alt="company logo" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="images/PDLogo.png" alt="company logo" width="125" height="125" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      
     <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">

@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="PipeDreamsDev2.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <style>
+        /* Override card body text color for this page */
+        .card .card-body {
+            color: #36454f;
+        }
+
+    </style>
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-6">
