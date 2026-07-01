@@ -115,8 +115,9 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.4\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Bcl.Cryptography, Version=9.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.Cryptography.9.0.4\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=10.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\Microsoft.Bcl.Cryptography.10.0.7\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Bcl.Memory, Version=9.0.0.14, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\packages\Microsoft.Bcl.Memory.9.0.14\lib\net462\Microsoft.Bcl.Memory.dll</HintPath>
@@ -423,8 +424,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.Formats.Asn1, Version=9.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Formats.Asn1.9.0.4\lib\net462\System.Formats.Asn1.dll</HintPath>
+    <Reference Include="System.Formats.Asn1, Version=10.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Formats.Asn1.10.0.7\lib\net462\System.Formats.Asn1.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=8.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -469,8 +471,9 @@
     <Reference Include="System.Security.Cryptography.ProtectedData, Version=9.0.0.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.ProtectedData.9.0.4\lib\net462\System.Security.Cryptography.ProtectedData.dll</HintPath>
     </Reference>
-    <Reference Include="System.Security.Cryptography.Xml, Version=9.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Xml.9.0.4\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    <Reference Include="System.Security.Cryptography.Xml, Version=9.0.0.15, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.9.0.15\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Security.Permissions, Version=9.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Permissions.9.0.4\lib\net462\System.Security.Permissions.dll</HintPath>
@@ -1028,12 +1031,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.TeamFoundationServer.ExtendedClient.19.225.1\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TeamFoundationServer.ExtendedClient.19.225.1\build\Microsoft.TeamFoundationServer.ExtendedClient.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.8.1\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.8.1\build\Microsoft.TypeScript.MSBuild.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.5.8.1\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.5.8.1\build\Microsoft.TypeScript.MSBuild.targets'))" />
-    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <Import Project="..\packages\Microsoft.TeamFoundationServer.ExtendedClient.19.225.1\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\Microsoft.TeamFoundationServer.ExtendedClient.19.225.1\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" />
   <Import Project="..\packages\Microsoft.TypeScript.MSBuild.5.8.1\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.5.8.1\build\Microsoft.TypeScript.MSBuild.targets')" />
-  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -1041,4 +1043,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />
 </Project>
