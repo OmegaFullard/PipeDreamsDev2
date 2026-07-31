@@ -2439,7 +2439,11 @@
             Reference to the embedded tree control.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.ComboTree.#ctor" -->
+        <member name="M:Microsoft.TeamFoundation.Client.ComboTree.#ctor">
+            <summary>
+            Initializes the underlying tree &amp; form controls.
+            </summary>
+        </member>
         <member name="P:Microsoft.TeamFoundation.Client.ComboTree.TreeNodes">
             <summary>
             Returns underlying Nodes collection
@@ -3146,7 +3150,13 @@
             </summary>
             <param name="setting">the new setting as a string, "on" or "off"</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Client.CommandLine.CommandLine.CommandLineArgs" -->
+        <member name="P:Microsoft.TeamFoundation.Client.CommandLine.CommandLine.CommandLineArgs">
+            <summary>
+            Set the command line arguments
+            Needed in the case that RunCommandLine is call from qa code
+            Environment.CommandLine need to be overwrite
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.CommandLine.CommandLine.IsNoPromptSet">
             <summary>
             Returns true if no prompt is set to true globally; false otherwise
@@ -3694,7 +3704,7 @@
         </member>
         <member name="P:Microsoft.TeamFoundation.Client.ConsoleUtils.RedirectedOutputEncoding">
             <summary>
-            Return the encoding to use for redirected console output for closer consistency with 
+            Return the encoding to use for redirected console output for closer consistency with
             CMD.EXE output.
             </summary>
         </member>
@@ -3728,7 +3738,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Client.ConsoleUtils.Write(System.Byte[],System.Boolean)">
             <summary>
-            Write a byte array to the console.  Unprintable characters will be converted to spaces if 
+            Write a byte array to the console.  Unprintable characters will be converted to spaces if
             the console handle is not redirected.
             </summary>
             <param name="bytes">the bytes to display</param>
@@ -3737,7 +3747,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Client.ConsoleUtils.Write(System.Byte[],System.Int32,System.Boolean)">
             <summary>
-            Write a byte array to the console.  Unprintable characters will be converted to spaces if 
+            Write a byte array to the console.  Unprintable characters will be converted to spaces if
             the console handle is not redirected.
             </summary>
             <param name="bytes">the bytes to display</param>
@@ -6178,7 +6188,13 @@
             <param name="unboundTextSize">returning unrestricted text size</param>
             <param name="format">returning text formatting flags</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.ExpanderButton.StripHotKey(System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.Client.ExpanderButton.StripHotKey(System.String)">
+            <summary>
+            Strip the hotkey character '&amp;'
+            </summary>
+            <param name="text">input text</param>
+            <returns>stripped text</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.ExpanderButton.OnMouseHover(System.EventArgs)">
             <summary>
             Now that we ownerdraw the control, we need to manually show the tooltip.
@@ -6393,8 +6409,32 @@
             </summary>
             <param name="keyword">A help keyword.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.HelpUtilities.LaunchLocalHelp(System.String)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.HelpUtilities.LaunchOnlineHelp(System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.Client.HelpUtilities.LaunchLocalHelp(System.String)">
+            <summary>
+            Attempts to launch the local help viewer on a keyword.
+            </summary>
+            <param name="keyword">A help keyword.</param>
+            <returns><c>true</c> if the local help viewer was found and was launched; 
+            <c>false</c> if it was not available and not launched.</returns>
+            <remarks>
+            <![CDATA[
+            A sample set of command line arguments for this would be:
+            C:\Program Files\Microsoft Help Viewer\v2.0\HlpViewer.exe 
+            /catalogName VisualStudio11 /helpQuery method=f1&query=vs.tfc.office.choose.team.project 
+            /launchingApp Microsoft,VisualStudio,12.0
+            ]]>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Client.HelpUtilities.LaunchOnlineHelp(System.String)">
+            <summary>
+            Launches the online help for a given help keyword.
+            </summary>
+            <param name="keyword">A help keyword.</param>
+            <remarks>
+            A sample URL to launch for online help is: 
+            <![CDATA[http://msdn.microsoft.com/query/dev11.query?appId=Dev11IDEF1&rd=true&l=EN-US&k=k(vs.tfc.office.datavalidation)]]>
+            </remarks>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.HelpUtilities.GetOnlineStatus">
             <summary>
             Returns a flag indicating whether the help system preference is online or not.
@@ -7079,7 +7119,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Client.Internal.ClientResources.FileTypeFilter">
              <summary>
-             {StrEnds="|*.*"}The part after the pipe (which is the actual file filter) should not be localized
+             {StrEnds=&quot;|*.*&quot;}The part after the pipe (which is the actual file filter) should not be localized
             
              All files (*.*)|*.*
              </summary>
@@ -7794,7 +7834,18 @@
             if desired.</param>
             <returns>True if the notification should be sent to this window.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.TeamFoundation.Client.NotificationManager.NotificationWindowVersion" -->
+        <member name="T:Microsoft.TeamFoundation.Client.NotificationManager.NotificationWindowVersion">
+            <summary>
+            The version of the notification messages supported by this notification window.
+            </summary>
+            <remarks>
+            Due to how Orcas SP1 checks the window flags, all later versions must OR in the 1 bit.  In
+            other words, all version numbers Dev10+ must be odd.  Here's how Orcas did the checK:
+            
+                uint value = (uint)NativeMethods.GetWindowLong(hwnd, NativeMethods.GWL_USERDATA).ToInt32();
+                return ((value &amp; flag) == flag); // flag == 1
+            </remarks>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.NotificationManager.EnqueueNotification(Microsoft.TeamFoundation.Client.Internal.Notification)">
             <summary>
             Queue a notification for delivery on the next timer event.
@@ -7959,7 +8010,16 @@
             <returns><c>true</c> if the minimum version (or higher) of the target Office application is installed;
             otherwise, <c>false</c>.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.Office.OfficeInstall.CompareVersions(System.String,System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.Client.Office.OfficeInstall.CompareVersions(System.String,System.String)">
+            <summary>
+            Compares two version strings.  Makes the assumption that the version strings are of the
+            form majorVersion.minorVersion.build.patch (or some subset) where each component
+            of the version is an integer.
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <returns>-1 if v1 &lt; v2, 0 if v1 = v2, 1 fo v1 &gt; v2</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.Office.OfficeInstall.IsOfficeIntegrationAddinInstalled(System.String)">
             <summary>
             Util Dev 14, we would always lay down the extensions while installing VS, hence checking if office was installed used to suffice.
@@ -8109,7 +8169,11 @@
             </summary>
             <returns>true if reporting cube is configured</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.ProjectSettings.ReportingSettings.GetReportServiceUri(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection)" -->
+        <member name="M:Microsoft.TeamFoundation.Client.ProjectSettings.ReportingSettings.GetReportServiceUri(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection)">
+            <summary />
+            <param name="tpc"></param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.ProjectSettings.ReportingSettings.GetBaseProjectCollectionPath(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection)">
             <summary>
             Returns the item path for the project collection, such as 'tfsreports/collection0'.
@@ -8329,7 +8393,13 @@
             </summary>
             <param name="projectUris"></param>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.TeamFoundation.Client.ReadOnlyDictionary`2" -->
+        <member name="T:Microsoft.TeamFoundation.Client.ReadOnlyDictionary`2">
+            <summary>
+            A read-only wrapper for any IDictionary&lt;TKey, TValue&gt; object.
+            </summary>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <typeparam name="TValue">The type of the value.</typeparam>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.ReadOnlyDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
             <summary>
             Create a read-only dictionary.
@@ -8370,7 +8440,11 @@
             Returns the number of items in the dictionary.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.ReadOnlyDictionary`2.GetEnumerator" -->
+        <member name="M:Microsoft.TeamFoundation.Client.ReadOnlyDictionary`2.GetEnumerator">
+            <summary>
+            Returns an enumearator of KeyValuePair&lt;TKey, TValue&gt; of the items in the dictionary.
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.ReadOnlyDictionary`2.System#Collections#Generic#IDictionary{TKey,TValue}#Add(`0,`1)">
             <summary>
             Throws NotImpementedException.
@@ -8683,7 +8757,12 @@
             If this is called a InvalidOperationException exception will be thrown.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Client.ResultCollection`2.Current" -->
+        <member name="P:Microsoft.TeamFoundation.Client.ResultCollection`2.Current">
+            <summary>
+            Current&lt;V&gt; and (object) can be used to access the object in the
+            collection currently referenced by the Enumerator.
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.ResultCollection`2.ReadAll">
             <summary>
             Implement ITfsResult.ReadAll().  This method ensures that the Previous
@@ -8751,7 +8830,15 @@
             True if there are items in the queue
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Client.ResultCollection`2.ResultSetEnumerator.System#Collections#IEnumerator#Current" -->
+        <member name="P:Microsoft.TeamFoundation.Client.ResultCollection`2.ResultSetEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+            Because C# does not support covariant return types, we must implement
+            IEnumerator.Current.  It must be explicitly qualified due to
+            its method signature conflicting with IEnumerator&lt;V&gt;.Current.
+            In addition, this declaration is implicitly public.  C# does not allow
+            the use of an explicit access modifier (even public).
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.Client.SelectToolStripLabel">
             <summary>
             This class exists merely as a means for us to get input focus properly set to a 
@@ -16746,7 +16833,11 @@
             <param name="descriptor"></param>
             <returns>True if owned and is well-known group.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Framework.Client.IIdentityManagementService.IdentityDomainScope" -->
+        <member name="P:Microsoft.TeamFoundation.Framework.Client.IIdentityManagementService.IdentityDomainScope">
+            <summary>
+            Return the Scope Uri for global Groups in the domain
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Framework.Client.IIdentityManagementService2.GetMostRecentlyUsedUsers">
             <summary>
              Get the set of identities which have been recently accessed by the current user
@@ -16998,7 +17089,22 @@
             Modified properties, to be processed on update.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Framework.Client.TeamFoundationIdentity.UniqueName" -->
+        <member name="P:Microsoft.TeamFoundation.Framework.Client.TeamFoundationIdentity.UniqueName">
+            <summary>
+            A human-readable string that can be used to reference the identity. Intended to be easy to read and type. 
+            Can be used in conjunction with the general search factor in leiu of a display name. See shortest overload of
+            <see cref="M:Microsoft.TeamFoundation.Framework.Client.IIdentityManagementService2.ReadIdentity(System.String)" />.
+            </summary>
+            <remarks>
+            Do not take dependencies on the format of this string.
+            Do not parse this string.
+            The UniqueName is not guaranteed to include a domain name.
+            The format and information in this string is subject to change.
+            </remarks>
+            <example>
+            CONTOSO\jsmith or jsmith@contoso.com
+            </example>
+        </member>
         <member name="P:Microsoft.TeamFoundation.Framework.Client.TeamFoundationIdentity.Descriptor">
             <summary>
             The identity descriptor for this identity. The unique identifier for the identity's provider. 
@@ -19604,7 +19710,13 @@
             specified here. If not, this value will be the null character.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Framework.Client.SecurityNamespaceDescription.ElementLength" -->
+        <member name="P:Microsoft.TeamFoundation.Framework.Client.SecurityNamespaceDescription.ElementLength">
+            <summary>
+            If the security tokens this namespace will be operating on need to be split 
+            on certain character lengths to determine its elements, that length should be
+            specified here. If not, this value will be -1.
+            </summary>
+        </member>
         <member name="P:Microsoft.TeamFoundation.Framework.Client.SecurityNamespaceDescription.WritePermission">
             <summary>
             The permission bits needed by a user in order to modify security data on the
@@ -20397,8 +20509,34 @@
             </param>
             <returns>True if something was removed. False otherwise.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Framework.Client.SecurityNamespace.RemoveAccessControlEntries(System.String,System.Collections.Generic.IEnumerable{Microsoft.TeamFoundation.Framework.Client.IdentityDescriptor})" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Framework.Client.SecurityNamespace.RemoveAccessControlEntry(System.String,Microsoft.TeamFoundation.Framework.Client.IdentityDescriptor)" -->
+        <member name="M:Microsoft.TeamFoundation.Framework.Client.SecurityNamespace.RemoveAccessControlEntries(System.String,System.Collections.Generic.IEnumerable{Microsoft.TeamFoundation.Framework.Client.IdentityDescriptor})">
+            <summary>
+            Removes all of the AccessControlEntries for the given descriptors that exist on the
+            AccessControlList that is associated with the provided token. This function will
+            not throw an exception if either the token or descriptor cannot be found.
+            </summary>
+            <param name="token">
+                The token for the AccessControlList on which to remove the AccessControlEntries.
+            </param>
+            <param name="descriptors">
+                Descriptors for the identities that should have their AccessControlEntry removed.
+            </param>
+            <returns>True if something was removed.</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Framework.Client.SecurityNamespace.RemoveAccessControlEntry(System.String,Microsoft.TeamFoundation.Framework.Client.IdentityDescriptor)">
+            <summary>
+            Removes the AccessControlEntry for the given descriptor that exists on the
+            AccessControlList that is associated with the provided token. This function will
+            not throw an exception if either the token or descriptor cannot be found.
+            </summary>
+            <param name="token">
+                The token for the AccessControlList on which to remove the AccessControlEntry.
+            </param>
+            <param name="descriptor">
+                Descriptor for the identity that should have its AccessControlEntry removed.
+            </param>
+            <returns>True if something was removed.</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Framework.Client.SecurityNamespace.RemovePermissions(System.String,Microsoft.TeamFoundation.Framework.Client.IdentityDescriptor,System.Int32)">
             <summary>
             Removes the specified permission bits from the existing allows and denys for
@@ -20769,7 +20907,23 @@
             <param name="projectUri"></param>
             <returns>Array of NodeInfo</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Server.ICommonStructureService.GetNodesXml(System.String[],System.Boolean)" -->
+        <member name="M:Microsoft.TeamFoundation.Server.ICommonStructureService.GetNodesXml(System.String[],System.Boolean)">
+            <summary>
+            Returns the xml representation of the nodes
+            structure of the XmlElement is as follows
+            <![CDATA[
+            <Nodes> 
+               <Node StructureType = "<<structuretype of node>>" Name= "<<name of node>>" NodeID="<<id of node>>">
+               <Children\> 
+               <Properties\> 
+               </Node>
+            </Nodes>
+            ]]>
+            </summary>
+            <param name="nodeUris">array of nodeuris to get the info of </param>
+            <param name="childNodes">represents whether to include the descendants of the nodeuri in the xml representation</param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Server.ICommonStructureService.GetNode(System.String)">
             <summary>
              returns node information represented by the node uri
@@ -20805,8 +20959,42 @@
             Clears the cached ProjectInfo objects.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Server.ICommonStructureService.GetDeletedNodesXml(System.String,System.DateTime)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Server.ICommonStructureService.CreateProject(System.String,System.Xml.XmlElement)" -->
+        <member name="M:Microsoft.TeamFoundation.Server.ICommonStructureService.GetDeletedNodesXml(System.String,System.DateTime)">
+            <summary>
+            Returns a flat list of deleted nodes information that were deleted
+            since the input dateTime in UTC for the given
+            projectUri. 
+            THe format of the returned Xml is as follows
+            <![CDATA[
+             <DeletedNodes>
+             <Node NodeID=<<uri of the node>> \>
+             </DeletedNodes>
+            ]]>
+            </summary>
+            <param name="projectUri"></param>
+            <param name="since">datetime in UTC</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Server.ICommonStructureService.CreateProject(System.String,System.Xml.XmlElement)">
+            <summary>
+            Creates a project with the specified name
+            structure of the XmlElement is as follows
+            <![CDATA[
+            <Nodes> 
+               <Node StructureType = "ProjectModelHierarchy" Name= "root node name">
+               <Children\> (Optional)
+               <Properties\> (Optional)
+               </Node>
+               <Node StructureType = "ProjectLifecycle" Name= "root node name">
+               <Children\> (Optional)
+               <Properties\> (Optional)
+               </Node>
+            </Nodes>
+            ]]>
+            </summary>
+            <param name="projectName"></param>
+            <returns>the uri of the project</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Server.ICommonStructureService.DeleteProject(System.String)">
             <summary>
             Delete project. The project is moved to a tombstone
@@ -20958,7 +21146,17 @@
             <param name="toolName">the tool intance name</param>
             <returns>the service Url for correspond to the provide tool instance name</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Server.RegistrationUtilities.GetServiceInterfacesForTool(Microsoft.TeamFoundation.Server.IRegistration,System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.Server.RegistrationUtilities.GetServiceInterfacesForTool(Microsoft.TeamFoundation.Server.IRegistration,System.String)">
+            <summary>
+            Get the ServiceInterface for a particular tool
+            
+            preconditions: regProxy != null &amp;&amp; toolName != null
+            postconitions: ServiceInterface[] is an array of Length >= 1 or an RegistrationEntryRetrievalException will be thrown
+            </summary>
+            <param name="regProxy">the Registration proxy</param>
+            <param name="toolName">the tool instance name</param>
+            <returns>an array of ServiceInterface registered to this tool</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Server.RegistrationUtilities.GetConnectionString(Microsoft.TeamFoundation.Server.RegistrationEntry,System.String)">
             <summary>
             Get the generated connection string based on given registration entry and database name.
@@ -21180,7 +21378,14 @@
             in the dropdown
             </param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Server.CssDataProvider.TryGetCssNodeInfo(System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.Server.CssDataProvider.TryGetCssNodeInfo(System.String)">
+            <summary>
+            TryGetCssNodeInfo from the selected path
+            path is of the format <![CDATA[<project name>\<nodename>\<nodename>]]>
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Server.CssDataProvider.Microsoft#TeamFoundation#Client#ICssDataProvider#GetChildNodes(Microsoft.TeamFoundation.Client.CssNode)">
             <summary>
             GetChildNodes
@@ -21729,8 +21934,39 @@
             <param name="projectUri"></param>
             <returns>Array of NodeInfo</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Proxy.CommonStructureService.GetNodesXml(System.String[],System.Boolean)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Proxy.CommonStructureService.GetDeletedNodesXml(System.String,System.DateTime)" -->
+        <member name="M:Microsoft.TeamFoundation.Proxy.CommonStructureService.GetNodesXml(System.String[],System.Boolean)">
+            <summary>
+            Returns the xml representation of the nodes
+            structure of the XmlElement is as follows
+            <![CDATA[
+            <Nodes> 
+               <Node Type = "<<type of node>>" Name= "<<name of node>>" NodeID="<<id of node>>">
+               <Children\> 
+               <Properties\> 
+               </Node>
+            </Nodes>
+            ]]>
+            </summary>
+            <param name="nodeUris">array of nodeuris to get the info of </param>
+            <param name="childNodes">represents whether to include the descendants of the nodeuri in the xml representation</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Proxy.CommonStructureService.GetDeletedNodesXml(System.String,System.DateTime)">
+            <summary>
+            Returns a flat list of deleted nodes information that were deleted
+            since the input dateTime in UTC for the given
+            projectUri. 
+            THe format of the returned Xml is as follows
+            <![CDATA[
+            <DeletedNodes>
+            <Node NodeID=<<uri of the node>> \>
+            </DeletedNodes>
+            ]]>
+            </summary>
+            <param name="projectUri"></param>
+            <param name="since">datetime in UTC</param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Proxy.CommonStructureService.GetProject(System.String)">
             <summary>
             returns the project information of the project from its Uri
@@ -21761,7 +21997,26 @@
             <param name="projectName"></param>
             <returns>Project Information</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Proxy.CommonStructureService.CreateProject(System.String,System.Xml.XmlElement)" -->
+        <member name="M:Microsoft.TeamFoundation.Proxy.CommonStructureService.CreateProject(System.String,System.Xml.XmlElement)">
+            <summary>
+            Creates a project with the specified name
+            structure of the XmlElement is as follows
+            <![CDATA[
+            <Nodes> 
+              <Node Type = "ProjectModelHierarchy" Name= "root node name">
+               <Children\> (Optional)
+               <Properties\> (Optional)
+              </Node>
+              <Node Type = "ProjectLifecycle" Name= "root node name">
+               <Children\> (Optional)
+               <Properties\> (Optional)
+              </Node>
+            </Nodes>
+            ]]>
+            </summary>
+            <param name="projectName"></param>
+            <returns>the uri of the project</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Proxy.CommonStructureService.DeleteProject(System.String)">
             <summary>
             Delete project. The project is moved to a tombstone

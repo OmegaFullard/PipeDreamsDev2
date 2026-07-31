@@ -1897,6 +1897,12 @@
             A default <see cref="T:Microsoft.AspNetCore.DataProtection.SimpleActivator"/> whose wrapped <see cref="T:System.IServiceProvider"/> is null.
             </summary>
         </member>
+        <member name="M:Microsoft.AspNetCore.DataProtection.SP800_108.ManagedSP800_108_CTR_HMACSHA512.DeriveKeys(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Span{System.Byte},System.Security.Cryptography.HashAlgorithm)">
+            <remarks>
+            note: kdk will be used only if prf is null and only in later framework versions (10+)
+            where static method on `HMACSHA512` exists which avoids allocations
+            </remarks>
+        </member>
         <member name="T:Microsoft.AspNetCore.DataProtection.SP800_108.SP800_108_CTR_HMACSHA512Util">
             <summary>
             Provides an implementation of the SP800-108-CTR-HMACSHA512 key derivation function.
@@ -2427,6 +2433,11 @@
         <member name="M:Microsoft.AspNetCore.Shared.ArgumentNullThrowHelper.ThrowIfNull(System.Object,System.String)">
             <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is null.</summary>
             <param name="argument">The reference type argument to validate as non-null.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentNullThrowHelper.ThrowIfNullOrEmpty(System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is null or empty.</summary>
+            <param name="argument">The <see cref="T:System.String"/> argument to validate as non-null and non-empty.</param>
             <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
         </member>
         <member name="T:Microsoft.Extensions.DependencyInjection.DataProtectionServiceCollectionExtensions">

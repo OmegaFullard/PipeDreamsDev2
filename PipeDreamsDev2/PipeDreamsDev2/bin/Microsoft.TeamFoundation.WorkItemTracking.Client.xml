@@ -2377,6 +2377,16 @@
             Class of CurrituckClientException
             </summary>
         </member>
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Client.OMStringUtil.MarshalPtrToStringUni(System.IntPtr,System.Int32)">
+            <summary>
+            For security reasons, the code has been converted to Marshal.PtrToStringUni(IntPtr) -> Marshal.PtrToStringUni(IntPtr, int)
+            However, this new function has a change in behavior, in that it throws if the first parameter is null. So this helper function
+            Imitates the behavior of the older function, but with the added safety of a byte length that the new function provides.
+            </summary>
+            <param name="ptr"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
         <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Client.PageSizes">
             <!-- No matching elements were found for the following include tag --><include file="doc\om.uex" path="docs/doc[@for=&quot;PageSizes&quot;]" />   
         </member>
@@ -2843,10 +2853,33 @@
             Saves the specified query item to the server.  Updates the query item's Id if it was new.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.GetRootItems" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.GetChildren(System.Guid)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.GetQueryItems(System.Guid[])" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.SaveQueryItem(Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItem2)" -->
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.GetRootItems">
+            <summary>
+            Gets root level items and their children (upto 2 levels) from the server.
+            </summary>
+            <returns>IEnumerable&lt;QueryItem2&gt;</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.GetChildren(System.Guid)">
+            <summary>
+            Gets children and grand-children for the given query id.
+            </summary>
+            <params name="id">Guid of the parent </params>
+            <returns>IEnumerable&lt;QueryItem2&gt;</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.GetQueryItems(System.Guid[])">
+            <summary>
+            Gets queryItemInfo for given ids.
+            </summary>
+            <params Name="ids">Array of queryItemAsync ids </params>
+            <returns>IEnumerable&lt;QueryItemInfo&gt;</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderRest.SaveQueryItem(Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItem2)">
+            <summary>
+            Saves given queryItems.
+            </summary>
+            <params Name="items">Array of queryItemAsync that need to be saved</params>
+            <returns>IEnumerable&lt;QueryItem2&gt;</returns>
+        </member>
         <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Client.QueryItemDataProviderSoap">
             <summary>
             Soap based query item provider.  Interacts with the server using the old soap API which retrieves all query items at one time.
@@ -8632,14 +8665,14 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Client.Internal.ResourceStrings.CopiedCommentItem">
              <summary>
-             {0} is the workitem tage, example:  'Copied from Bug 324'
+             {0} is the workitem tage, example:  &apos;Copied from Bug 324&apos;
             
              Copied from {0}.
              </summary>
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Client.Internal.ResourceStrings.WorkItemTag">
              <summary>
-             {0} is the work item type name, {1} is the work item ID, example 'Task 32'
+             {0} is the work item type name, {1} is the work item ID, example &apos;Task 32&apos;
             
              {0} {1}
              </summary>

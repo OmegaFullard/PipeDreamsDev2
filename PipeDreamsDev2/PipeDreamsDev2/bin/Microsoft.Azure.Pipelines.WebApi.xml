@@ -24,6 +24,16 @@
             Signed url for downloading this artifact
             </summary>
         </member>
+        <member name="P:Microsoft.Azure.Pipelines.WebApi.BitBucketRepository.FullName">
+            <summary>
+            The full name (:owner/:repo) of the BitBucket repository. For example, octocat/Hello-World
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Pipelines.WebApi.BitBucketRepository.Connection">
+            <summary>
+            The service connection used to perform BitBucket operations against the repository
+            </summary>
+        </member>
         <member name="T:Microsoft.Azure.Pipelines.WebApi.GetArtifactExpandOptions">
             <summary>
             Expansion options for GetArtifact and ListArtifacts.
@@ -241,6 +251,11 @@
             The service connection used to perform Git operations against the repository
             </summary>
         </member>
+        <member name="P:Microsoft.Azure.Pipelines.WebApi.AzureReposGitRepository.FullName">
+            <summary>
+            The name (project/repo) of the TfsGitRepository.
+            </summary>
+        </member>
         <member name="F:Microsoft.Azure.Pipelines.WebApi.ConfigurationType.Unknown">
             <summary>
             Unknown type.
@@ -333,7 +348,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetArtifactAsync(System.String,System.Int32,System.Int32,System.String,System.Nullable{Microsoft.Azure.Pipelines.WebApi.GetArtifactExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a specific artifact from a pipeline run
+            [Preview API] Get a specific artifact from a pipeline run
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="pipelineId">ID of the pipeline.</param>
@@ -345,7 +360,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetArtifactAsync(System.Guid,System.Int32,System.Int32,System.String,System.Nullable{Microsoft.Azure.Pipelines.WebApi.GetArtifactExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a specific artifact from a pipeline run
+            [Preview API] Get a specific artifact from a pipeline run
             </summary>
             <param name="project">Project ID</param>
             <param name="pipelineId">ID of the pipeline.</param>
@@ -357,7 +372,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetLogAsync(System.String,System.Int32,System.Int32,System.Int32,System.Nullable{Microsoft.Azure.Pipelines.WebApi.GetLogExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a specific log from a pipeline run
+            [Preview API] Get a specific log from a pipeline run
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="pipelineId">ID of the pipeline.</param>
@@ -369,7 +384,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetLogAsync(System.Guid,System.Int32,System.Int32,System.Int32,System.Nullable{Microsoft.Azure.Pipelines.WebApi.GetLogExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a specific log from a pipeline run
+            [Preview API] Get a specific log from a pipeline run
             </summary>
             <param name="project">Project ID</param>
             <param name="pipelineId">ID of the pipeline.</param>
@@ -381,7 +396,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.ListLogsAsync(System.String,System.Int32,System.Int32,System.Nullable{Microsoft.Azure.Pipelines.WebApi.GetLogExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of logs from a pipeline run.
+            [Preview API] Get a list of logs from a pipeline run.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="pipelineId">ID of the pipeline.</param>
@@ -392,7 +407,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.ListLogsAsync(System.Guid,System.Int32,System.Int32,System.Nullable{Microsoft.Azure.Pipelines.WebApi.GetLogExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of logs from a pipeline run.
+            [Preview API] Get a list of logs from a pipeline run.
             </summary>
             <param name="project">Project ID</param>
             <param name="pipelineId">ID of the pipeline.</param>
@@ -403,7 +418,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.CreatePipelineAsync(Microsoft.Azure.Pipelines.WebApi.CreatePipelineParameters,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a pipeline.
+            [Preview API] Create a pipeline.
             </summary>
             <param name="inputParameters">Input parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -412,7 +427,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.CreatePipelineAsync(Microsoft.Azure.Pipelines.WebApi.CreatePipelineParameters,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a pipeline.
+            [Preview API] Create a pipeline.
             </summary>
             <param name="inputParameters">Input parameters.</param>
             <param name="project">Project ID</param>
@@ -421,7 +436,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetPipelineAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a pipeline, optionally at the specified version
+            [Preview API] Gets a pipeline, optionally at the specified version
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="pipelineId">The pipeline ID</param>
@@ -431,7 +446,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetPipelineAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a pipeline, optionally at the specified version
+            [Preview API] Gets a pipeline, optionally at the specified version
             </summary>
             <param name="project">Project ID</param>
             <param name="pipelineId">The pipeline ID</param>
@@ -441,10 +456,10 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.ListPipelinesAsync(System.String,System.String,System.Nullable{System.Int32},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of pipelines.
+            [Preview API] Get a list of pipelines.
             </summary>
             <param name="project">Project ID or project name</param>
-            <param name="orderBy">A sort expression. Defaults to "name asc"</param>
+            <param name="orderBy">A sort expression. Defaults to &quot;name asc&quot;</param>
             <param name="top">The maximum number of pipelines to return</param>
             <param name="continuationToken">A continuation token from a previous request, to retrieve the next page of results</param>
             <param name="userState"></param>
@@ -452,10 +467,10 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.ListPipelinesAsync(System.Guid,System.String,System.Nullable{System.Int32},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of pipelines.
+            [Preview API] Get a list of pipelines.
             </summary>
             <param name="project">Project ID</param>
-            <param name="orderBy">A sort expression. Defaults to "name asc"</param>
+            <param name="orderBy">A sort expression. Defaults to &quot;name asc&quot;</param>
             <param name="top">The maximum number of pipelines to return</param>
             <param name="continuationToken">A continuation token from a previous request, to retrieve the next page of results</param>
             <param name="userState"></param>
@@ -463,7 +478,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.PreviewAsync(Microsoft.Azure.Pipelines.WebApi.RunPipelineParameters,System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Queues a dry run of the pipeline and returns an object containing the final yaml.
+            [Preview API] Queues a dry run of the pipeline and returns an object containing the final yaml.
             </summary>
             <param name="runParameters">Optional additional parameters for this run.</param>
             <param name="project">Project ID or project name</param>
@@ -474,7 +489,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.PreviewAsync(Microsoft.Azure.Pipelines.WebApi.RunPipelineParameters,System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Queues a dry run of the pipeline and returns an object containing the final yaml.
+            [Preview API] Queues a dry run of the pipeline and returns an object containing the final yaml.
             </summary>
             <param name="runParameters">Optional additional parameters for this run.</param>
             <param name="project">Project ID</param>
@@ -485,7 +500,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetRunAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a run for a particular pipeline.
+            [Preview API] Gets a run for a particular pipeline.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="pipelineId">The pipeline id</param>
@@ -495,7 +510,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetRunAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a run for a particular pipeline.
+            [Preview API] Gets a run for a particular pipeline.
             </summary>
             <param name="project">Project ID</param>
             <param name="pipelineId">The pipeline id</param>
@@ -505,7 +520,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.ListRunsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets top 10000 runs for a particular pipeline.
+            [Preview API] Gets top 10000 runs for a particular pipeline.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="pipelineId">The pipeline id</param>
@@ -514,7 +529,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.ListRunsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets top 10000 runs for a particular pipeline.
+            [Preview API] Gets top 10000 runs for a particular pipeline.
             </summary>
             <param name="project">Project ID</param>
             <param name="pipelineId">The pipeline id</param>
@@ -523,7 +538,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.RunPipelineAsync(Microsoft.Azure.Pipelines.WebApi.RunPipelineParameters,System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Runs a pipeline.
+            [Preview API] Runs a pipeline.
             </summary>
             <param name="runParameters">Optional additional parameters for this run.</param>
             <param name="project">Project ID or project name</param>
@@ -534,7 +549,7 @@
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.RunPipelineAsync(Microsoft.Azure.Pipelines.WebApi.RunPipelineParameters,System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Runs a pipeline.
+            [Preview API] Runs a pipeline.
             </summary>
             <param name="runParameters">Optional additional parameters for this run.</param>
             <param name="project">Project ID</param>
@@ -544,24 +559,24 @@
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetSignedSignalRUrlAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
-             <summary>
-            
-             </summary>
-             <param name="project">Project ID or project name</param>
-             <param name="pipelineId"></param>
-             <param name="runId"></param>
-             <param name="userState"></param>
-             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="pipelineId"></param>
+            <param name="runId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.Azure.Pipelines.WebApi.PipelinesHttpClientBase.GetSignedSignalRUrlAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
-             <summary>
-            
-             </summary>
-             <param name="project">Project ID</param>
-             <param name="pipelineId"></param>
-             <param name="runId"></param>
-             <param name="userState"></param>
-             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="pipelineId"></param>
+            <param name="runId"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="T:Microsoft.Azure.Pipelines.WebApi.KnownFlagsEnumTypeConverter">
             <summary>

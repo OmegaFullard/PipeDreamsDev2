@@ -305,5 +305,10 @@
             </summary>
             <returns>A  value indicating if we are running on linux or not</returns>
         </member>
+        <member name="T:Microsoft.Identity.Web.Diagnostics.UnauthorizedHttpRequestException">
+            <summary>
+            Exception for a failed HTTP call. This is exclusively used by reporting and never thrown.
+            </summary>
+        </member>
     </members>
 </doc>

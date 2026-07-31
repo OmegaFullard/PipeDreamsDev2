@@ -89,7 +89,11 @@
             Represents a request to create a work item comment.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters.Text" -->
+        <member name="P:Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters.Text">
+            <summary>
+            Text of the comment
+            </summary>
+        </member>
         <member name="P:Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters.ParentId">
             <summary>
             Optional CommentId of the parent in order to add a reply for an existing comment
@@ -115,7 +119,12 @@
             Include the rendered text (html) in addition to markdown text
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions.RenderedTextOnly" -->
+        <member name="F:Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions.RenderedTextOnly">
+            <summary>
+            If specified, then ONLY rendered text (html) will be returned, w/o markdown.
+            Supposed to be used internally from data provides for optimization purposes.
+            </summary>
+        </member>
         <member name="F:Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions.Children">
             <summary>
             If specified, then responses will be expanded in the results
@@ -257,7 +266,11 @@
             Base class for comment resource references
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.Azure.DevOps.Comments.WebApi.CommentResourceReference.Url" -->
+        <member name="P:Microsoft.Azure.DevOps.Comments.WebApi.CommentResourceReference.Url">
+            <summary>
+            REST URL for the resource.
+            </summary>
+        </member>
         <member name="T:Microsoft.Azure.DevOps.Comments.WebApi.CommentUpdateParameters">
             <summary>
             Represents a request to update a comment.

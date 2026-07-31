@@ -142,8 +142,8 @@
             The handlers are invoked in a top-down fashion. That is, the first entry is invoked first for
             an outbound request message but last for an inbound response message.</param>
             <returns>The HTTP message handler chain.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="primaryHandler "/> or <paramref name="additionalHandlers "/> is <see langword="null"/>.</exception>
-            <exception cref="T:System.InvalidOperationException"><paramref name="additionalHandlers "/> contains a <see langword="null"/> entry.
+            <exception cref="T:System.ArgumentNullException"><paramref name="primaryHandler"/> or <paramref name="additionalHandlers"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.InvalidOperationException"><paramref name="additionalHandlers"/> contains a <see langword="null"/> entry.
             -or-
             The <c>DelegatingHandler.InnerHandler</c> property must be <see langword="null"/>. <c>DelegatingHandler</c> instances provided to <c>HttpMessageHandlerBuilder</c> must not be reused or cached.</exception>
         </member>
@@ -274,7 +274,7 @@
             would be called from the corresponding sync code paths.
             </para>
             <para>
-            It is up to the user implementing the interface to decide where (to <see cref="T:Microsoft.Extensions.Logging.ILogger"/>, or anything else) and what exactly to log.
+            It is up to the user implementing the interface to decide whether to use <see cref="T:Microsoft.Extensions.Logging.ILogger"/>, or anything else, and what exactly to log.
             However, the implementation should be mindful about potential adverse side effects of accessing some of the <see cref="T:System.Net.Http.HttpRequestMessage"/> or
             <see cref="T:System.Net.Http.HttpResponseMessage"/> properties, such as reading from a content stream; if possible, such behavior should be avoided.
             </para>
@@ -322,7 +322,7 @@
             </summary>
             <remarks>
             <para>
-            It is up to the user implementing the interface to decide where (to <see cref="T:Microsoft.Extensions.Logging.ILogger"/>, or anything else) and what exactly to log.
+            It is up to the user implementing the interface to decide whether to use <see cref="T:Microsoft.Extensions.Logging.ILogger"/>, or anything else, and what exactly to log.
             However, the implementation should be mindful about potential adverse side effects of accessing some of the <see cref="T:System.Net.Http.HttpRequestMessage"/> or
             <see cref="T:System.Net.Http.HttpResponseMessage"/> properties, such as reading from a content stream; if possible, such behavior should be avoided.
             </para>
@@ -743,7 +743,7 @@
             a transient service.
             </para>
             <para>
-            If used in conjuction with <see cref="M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.ConfigureHttpClientDefaults(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.IHttpClientBuilder})"/>,
+            If used in conjunction with <see cref="M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.ConfigureHttpClientDefaults(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.IHttpClientBuilder})"/>,
             the key <see cref="P:Microsoft.Extensions.DependencyInjection.KeyedService.AnyKey"/> is used, so any named <see cref="T:System.Net.Http.HttpClient"/> instance will be resolvable as a keyed service (unless explicitly opted-out
             from the keyed registration via <see cref="M:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.RemoveAsKeyed(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder)"/>).
             </para>
@@ -757,7 +757,7 @@
             <returns>An <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder"/> that can be used to configure the client.</returns>
             <remarks>
             <para>
-            If used in conjuction with <see cref="M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.ConfigureHttpClientDefaults(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.IHttpClientBuilder})"/>,
+            If used in conjunction with <see cref="M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.ConfigureHttpClientDefaults(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.IHttpClientBuilder})"/>,
             it will only affect the previous "global" <see cref="P:Microsoft.Extensions.DependencyInjection.KeyedService.AnyKey"/> registration, and won't affect the clients registered for a specific name
             with <see cref="M:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddAsKeyed(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)"/>.
             </para>
@@ -963,7 +963,7 @@
             </typeparam>
             <typeparam name="TImplementation">
             The implementation type of the typed client. The type specified will be instantiated by the
-            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>
+            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>.
             </typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
             <returns>An <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder"/> that can be used to configure the client.</returns>
@@ -1017,7 +1017,7 @@
             </typeparam>
             <typeparam name="TImplementation">
             The implementation type of the typed client. The type specified will be instantiated by the
-            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>
+            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>.
             </typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
             <param name="name">The logical name of the <see cref="T:System.Net.Http.HttpClient"/> to configure.</param>
@@ -1099,7 +1099,7 @@
             </typeparam>
             <typeparam name="TImplementation">
             The implementation type of the typed client. The type specified will be instantiated by the
-            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>
+            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>.
             </typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
             <param name="configureClient">A delegate that is used to configure an <see cref="T:System.Net.Http.HttpClient"/>.</param>
@@ -1128,7 +1128,7 @@
             </typeparam>
             <typeparam name="TImplementation">
             The implementation type of the typed client. The type specified will be instantiated by the
-            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>
+            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>.
             </typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
             <param name="configureClient">A delegate that is used to configure an <see cref="T:System.Net.Http.HttpClient"/>.</param>
@@ -1212,7 +1212,7 @@
             </typeparam>
             <typeparam name="TImplementation">
             The implementation type of the typed client. The type specified will be instantiated by the
-            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>
+            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>.
             </typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
             <param name="name">The logical name of the <see cref="T:System.Net.Http.HttpClient"/> to configure.</param>
@@ -1244,7 +1244,7 @@
             </typeparam>
             <typeparam name="TImplementation">
             The implementation type of the typed client. The type specified will be instantiated by the
-            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>
+            <see cref="T:Microsoft.Extensions.Http.ITypedHttpClientFactory`1"/>.
             </typeparam>
             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
             <param name="name">The logical name of the <see cref="T:System.Net.Http.HttpClient"/> to configure.</param>
@@ -1487,91 +1487,6 @@
             </para>
             </remarks>
         </member>
-        <member name="M:System.ThrowHelper.ThrowIfNull(System.Object,System.String)">
-            <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is null.</summary>
-            <param name="argument">The reference type argument to validate as non-null.</param>
-            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
-        </member>
-        <member name="M:System.ThrowHelper.IfNullOrWhitespace(System.String,System.String)">
-            <summary>
-            Throws either an <see cref="T:System.ArgumentNullException"/> or an <see cref="T:System.ArgumentException"/>
-            if the specified string is <see langword="null"/> or whitespace respectively.
-            </summary>
-            <param name="argument">String to be checked for <see langword="null"/> or whitespace.</param>
-            <param name="paramName">The name of the parameter being checked.</param>
-            <returns>The original value of <paramref name="argument"/>.</returns>
-        </member>
-        <member name="T:System.Runtime.InteropServices.LibraryImportAttribute">
-            <summary>
-            Attribute used to indicate a source generator should create a function for marshalling
-            arguments instead of relying on the runtime to generate an equivalent marshalling function at run-time.
-            </summary>
-            <remarks>
-            This attribute is meaningless if the source generator associated with it is not enabled.
-            The current built-in source generator only supports C# and only supplies an implementation when
-            applied to static, partial, non-generic methods.
-            </remarks>
-        </member>
-        <member name="M:System.Runtime.InteropServices.LibraryImportAttribute.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Runtime.InteropServices.LibraryImportAttribute"/>.
-            </summary>
-            <param name="libraryName">Name of the library containing the import.</param>
-        </member>
-        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.LibraryName">
-            <summary>
-            Gets the name of the library containing the import.
-            </summary>
-        </member>
-        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.EntryPoint">
-            <summary>
-            Gets or sets the name of the entry point to be called.
-            </summary>
-        </member>
-        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshalling">
-            <summary>
-            Gets or sets how to marshal string arguments to the method.
-            </summary>
-            <remarks>
-            If this field is set to a value other than <see cref="F:System.Runtime.InteropServices.StringMarshalling.Custom" />,
-            <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType" /> must not be specified.
-            </remarks>
-        </member>
-        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType">
-            <summary>
-            Gets or sets the <see cref="T:System.Type"/> used to control how string arguments to the method are marshalled.
-            </summary>
-            <remarks>
-            If this field is specified, <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshalling" /> must not be specified
-            or must be set to <see cref="F:System.Runtime.InteropServices.StringMarshalling.Custom" />.
-            </remarks>
-        </member>
-        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.SetLastError">
-            <summary>
-            Gets or sets whether the callee sets an error (SetLastError on Windows or errno
-            on other platforms) before returning from the attributed method.
-            </summary>
-        </member>
-        <member name="T:System.Runtime.InteropServices.StringMarshalling">
-            <summary>
-            Specifies how strings should be marshalled for generated p/invokes
-            </summary>
-        </member>
-        <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
-            <summary>
-            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
-            </summary>
-        </member>
-        <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
-            <summary>
-            Use the platform-provided UTF-8 marshaller.
-            </summary>
-        </member>
-        <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf16">
-            <summary>
-            Use the platform-provided UTF-16 marshaller.
-            </summary>
-        </member>
         <member name="T:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute">
              <summary>
              Indicates that certain members on a specified <see cref="T:System.Type"/> are accessed dynamically,
@@ -1690,6 +1605,76 @@
         <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.Interfaces">
             <summary>
             Specifies all interfaces implemented by the type.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicConstructorsWithInherited">
+            <summary>
+            Specifies all non-public constructors, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicMethodsWithInherited">
+            <summary>
+            Specifies all non-public methods, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicFieldsWithInherited">
+            <summary>
+            Specifies all non-public fields, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicNestedTypesWithInherited">
+            <summary>
+            Specifies all non-public nested types, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicPropertiesWithInherited">
+            <summary>
+            Specifies all non-public properties, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.NonPublicEventsWithInherited">
+            <summary>
+            Specifies all non-public events, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicConstructorsWithInherited">
+            <summary>
+            Specifies all public constructors, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.PublicNestedTypesWithInherited">
+            <summary>
+            Specifies all public nested types, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.AllConstructors">
+            <summary>
+            Specifies all constructors, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.AllMethods">
+            <summary>
+            Specifies all methods, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.AllFields">
+            <summary>
+            Specifies all fields, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.AllNestedTypes">
+            <summary>
+            Specifies all nested types, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.AllProperties">
+            <summary>
+            Specifies all properties, including those inherited from base classes.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.AllEvents">
+            <summary>
+            Specifies all events, including those inherited from base classes.
             </summary>
         </member>
         <member name="F:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMemberTypes.All">
@@ -1880,6 +1865,93 @@
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
             <summary>Gets field or property member names.</summary>
         </member>
+        <member name="T:System.Runtime.CompilerServices.CompilerLoweringPreserveAttribute">
+            <summary>
+            When applied to an attribute class, instructs the compiler to flow applications of that attribute,
+            from source code down to compiler-generated symbols. This can help IL-based analysis tools.
+            </summary>
+            <remarks>
+            One example where this attribute applies is in C# primary constructor parameters. If an attribute
+            marked with <see cref="T:System.Runtime.CompilerServices.CompilerLoweringPreserveAttribute"/> gets applied to a primary constructor
+            parameter, the attribute will also be applied to any compiler-generated fields storing that parameter.
+            </remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CompilerLoweringPreserveAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerLoweringPreserveAttribute"/> class.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.InteropServices.LibraryImportAttribute">
+            <summary>
+            Attribute used to indicate a source generator should create a function for marshalling
+            arguments instead of relying on the runtime to generate an equivalent marshalling function at run-time.
+            </summary>
+            <remarks>
+            This attribute is meaningless if the source generator associated with it is not enabled.
+            The current built-in source generator only supports C# and only supplies an implementation when
+            applied to static, partial, non-generic methods.
+            </remarks>
+        </member>
+        <member name="M:System.Runtime.InteropServices.LibraryImportAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.InteropServices.LibraryImportAttribute"/>.
+            </summary>
+            <param name="libraryName">Name of the library containing the import.</param>
+        </member>
+        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.LibraryName">
+            <summary>
+            Gets the name of the library containing the import.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.EntryPoint">
+            <summary>
+            Gets or sets the name of the entry point to be called.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshalling">
+            <summary>
+            Gets or sets how to marshal string arguments to the method.
+            </summary>
+            <remarks>
+            If this field is set to a value other than <see cref="F:System.Runtime.InteropServices.StringMarshalling.Custom" />,
+            <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType" /> must not be specified.
+            </remarks>
+        </member>
+        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType">
+            <summary>
+            Gets or sets the <see cref="T:System.Type"/> used to control how string arguments to the method are marshalled.
+            </summary>
+            <remarks>
+            If this field is specified, <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshalling" /> must not be specified
+            or must be set to <see cref="F:System.Runtime.InteropServices.StringMarshalling.Custom" />.
+            </remarks>
+        </member>
+        <member name="P:System.Runtime.InteropServices.LibraryImportAttribute.SetLastError">
+            <summary>
+            Gets or sets whether the callee sets an error (SetLastError on Windows or errno
+            on other platforms) before returning from the attributed method.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.InteropServices.StringMarshalling">
+            <summary>
+            Specifies how strings should be marshalled for generated p/invokes
+            </summary>
+        </member>
+        <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
+            <summary>
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
+            <summary>
+            Use the platform-provided UTF-8 marshaller.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf16">
+            <summary>
+            Use the platform-provided UTF-16 marshaller.
+            </summary>
+        </member>
         <member name="P:System.SR.HttpMessageHandlerBuilder_AdditionalHandlerIsNull">
             <summary>The '{0}' must not contain a null entry.</summary>
         </member>
@@ -1894,6 +1966,12 @@
         </member>
         <member name="P:System.SR.SocketsHttpHandlerBuilder_PrimaryHandlerIsInvalid">
             <summary>The '{0}' must be '{1}'.{2}Handler: '{3}'</summary>
+        </member>
+        <member name="P:System.SR.TypedClient_NoHttpClientCtor">
+            <summary>A suitable constructor for type '{0}' could not be located. A Typed client must provide a constructor taking a 'System.Net.Http.HttpClient' as a parameter.</summary>
+        </member>
+        <member name="T:System.ExceptionPolyfills">
+            <summary>Provides downlevel polyfills for static methods on Exception-derived types.</summary>
         </member>
     </members>
 </doc>

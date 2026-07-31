@@ -94,6 +94,24 @@
             <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
             <exception cref="T:System.ArgumentNullException"><paramref name="certificateName" /> or <paramref name="policy" /> is null.</exception>
         </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartCreateCertificate(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Nullable{System.Boolean},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <summary>
+            Starts a long running operation to create a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate" /> in the vault with the specified certificate policy.
+            </summary>
+            <remarks>
+            If no certificate with the specified name exists it will be created; otherwise, a new version of the existing certificate will be created.
+            This operation requires the certificates/create permission.
+            </remarks>
+            <param name="certificateName">The name of the certificate to create.</param>
+            <param name="policy">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy" /> which governs the properties and lifecycle of the created certificate.</param>
+            <param name="enabled">Specifies whether the certificate should be created in an enabled state. If null, the server default will be used.</param>
+            <param name="tags">Tags to be applied to the created certificate.</param>
+            <param name="preserveCertificateOrder">Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation" /> which contains details on the create operation, and can be used to retrieve updated status.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName" /> or <paramref name="policy" /> is null.</exception>
+        </member>
         <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartCreateCertificateAsync(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Nullable{System.Boolean},System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
             <summary>
             Starts a long running operation to create a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate" /> in the vault with the specified certificate policy.
@@ -106,6 +124,24 @@
             <param name="policy">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy" /> which governs the properties and lifecycle of the created certificate.</param>
             <param name="enabled">Specifies whether the certificate should be created in an enabled state. If null, the server default will be used.</param>
             <param name="tags">Tags to be applied to the created certificate.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation" /> which contains details on the create operation, and can be used to retrieve updated status.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName" /> or <paramref name="policy" /> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartCreateCertificateAsync(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Nullable{System.Boolean},System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+            <summary>
+            Starts a long running operation to create a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate" /> in the vault with the specified certificate policy.
+            </summary>
+            <remarks>
+            If no certificate with the specified name exists it will be created; otherwise, a new version of the existing certificate will be created.
+            This operation requires the certificates/create permission.
+            </remarks>
+            <param name="certificateName">The name of the certificate to create.</param>
+            <param name="policy">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy" /> which governs the properties and lifecycle of the created certificate.</param>
+            <param name="enabled">Specifies whether the certificate should be created in an enabled state. If null, the server default will be used.</param>
+            <param name="tags">Tags to be applied to the created certificate.</param>
+            <param name="preserveCertificateOrder">Specifies whether the certificate chain preserves its original order. The default value is false, which sets the leaf certificate at index 0.</param>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
             <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation" /> which contains details on the create operation, and can be used to retrieve updated status.</returns>
             <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
@@ -125,6 +161,33 @@
             </remarks>
             <param name="certificateName">The name of the certificate to download.</param>
             <param name="version">Optional version of a certificate to download.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
+            <returns>An <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> from the specified certificate.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName" /> is null.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The managed secret did not contain a certificate.</exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType" /> is not supported.</exception>
+            <exception cref="T:System.PlatformNotSupportedException">Cannot create an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> on this platform.</exception>
+            <exception cref="T:Azure.RequestFailedException">The request failed. See <see cref="P:Azure.RequestFailedException.ErrorCode" /> and the exception message for details.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.DownloadCertificate(System.String,System.String,System.Nullable{Azure.Security.KeyVault.Certificates.CertificateContentType},System.Threading.CancellationToken)">
+            <summary>
+            Creates an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> from the specified certificate.
+            </summary>
+            <remarks>
+            Because <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer" /> contains only the public key, this method attempts to download the managed secret
+            that contains the full certificate. If you do not have permissions to get the secret,
+            <see cref="T:Azure.RequestFailedException" /> will be thrown with an appropriate error response.
+            If you want an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> with only the public key, instantiate it passing only the
+            <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer" /> property.
+            This operation requires the certificates/get and secrets/get permissions.
+            </remarks>
+            <param name="certificateName">The name of the certificate to download.</param>
+            <param name="version">(Optional) The version of a certificate to download.</param>
+            <param name="outContentType"> The certificate content type in which the certificate will be downloaded. If a supported format is specified,
+            the certificate content is converted to the requested format. Currently, only PFX to PEM conversion is supported.
+            If an unsupported format is specified, the request is rejected. If not specified, the certificate is returned in its original
+            format without conversion.</param>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
             <returns>An <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> from the specified certificate.</returns>
             <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
@@ -169,6 +232,33 @@
             </remarks>
             <param name="certificateName">The name of the certificate to download.</param>
             <param name="version">Optional version of a certificate to download.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
+            <returns>An <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> from the specified certificate.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName" /> is null.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The managed secret did not contain a certificate.</exception>
+            <exception cref="T:System.NotSupportedException">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType" /> is not supported.</exception>
+            <exception cref="T:System.PlatformNotSupportedException">Cannot create an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> on this platform.</exception>
+            <exception cref="T:Azure.RequestFailedException">The request failed. See <see cref="P:Azure.RequestFailedException.ErrorCode" /> and the exception message for details.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.DownloadCertificateAsync(System.String,System.String,System.Nullable{Azure.Security.KeyVault.Certificates.CertificateContentType},System.Threading.CancellationToken)">
+            <summary>
+            Creates an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> from the specified certificate.
+            </summary>
+            <remarks>
+            Because <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer" /> contains only the public key, this method attempts to download the managed secret
+            that contains the full certificate. If you do not have permissions to get the secret,
+            <see cref="T:Azure.RequestFailedException" /> will be thrown with an appropriate error response.
+            If you want an <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> with only the public key, instantiate it passing only the
+            <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer" /> property.
+            This operation requires the certificates/get and secrets/get permissions.
+            </remarks>
+            <param name="certificateName">The name of the certificate to download.</param>
+            <param name="version">Optional version of a certificate to download.</param>
+            <param name="outContentType"> The certificate content type in which the certificate will be downloaded. If a supported format is specified,
+            the certificate content is converted to the requested format. Currently, only PFX to PEM conversion is supported.
+            If an unsupported format is specified, the request is rejected. If not specified, the certificate is returned in its original
+            format without conversion.</param>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> controlling the request lifetime.</param>
             <returns>An <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> from the specified certificate.</returns>
             <exception cref="T:System.ArgumentException"><paramref name="certificateName" /> is empty.</exception>
@@ -743,6 +833,16 @@
         <member name="F:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion.V7_5">
             <summary>
             The Key Vault API version 7.5.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion.V7_6">
+            <summary>
+            The Key Vault API version 7.6.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion.V2025_07_01">
+            <summary>
+            The Key Vault API version 2025-07-01.
             </summary>
         </member>
         <member name="P:Azure.Security.KeyVault.Certificates.CertificateClientOptions.Version">
@@ -1499,6 +1599,12 @@
             Gets any errors encountered during the processing of the certificate operation.
             </summary>
         </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.PreserveCertificateOrder">
+            <summary>
+            Gets or sets a value indicating whether the certificate chain preserves its original order.
+            The default value is false, which sets the leaf certificate at index 0.
+            </summary>
+        </member>
         <member name="T:Azure.Security.KeyVault.Certificates.CertificatePolicy">
             <summary>
             A policy which governs the lifecycle a properties of a certificate managed by Azure Key Vault.
@@ -1592,7 +1698,7 @@
         </member>
         <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.KeySize">
             <summary>
-            Gets or sets the size of the RSA key. The value must be a valid RSA key length such as 2048 or 4092.
+            Gets or sets the size of the RSA key. The value must be a valid RSA key length such as 2048 or 4096.
             </summary>
         </member>
         <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Subject">
@@ -1930,6 +2036,14 @@
             Gets or sets the optional version of a certificate to download.
             </summary>
         </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DownloadCertificateOptions.OutContentType">
+            <summary>
+            Gets or sets the optional certificate content type in which the certificate will be downloaded. If a supported format is specified,
+            the certificate content is converted to the requested format. Currently, only PFX to PEM conversion is supported.
+            If an unsupported format is specified, the request is rejected. If not specified, the certificate is returned in its original
+            format without conversion.
+            </summary>
+        </member>
         <member name="P:Azure.Security.KeyVault.Certificates.DownloadCertificateOptions.KeyStorageFlags">
             <summary>
             Gets or sets a combination of the enumeration values that control where and how to import the certificate.
@@ -1995,6 +2109,12 @@
              or initialized with a <see href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/how-to-initialize-a-dictionary-with-a-collection-initializer">collection initializer</see>.
             </summary>
         </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.PreserveCertificateOrder">
+            <summary>
+            Gets or sets a value indicating whether the certificate chain preserves its original order.
+            The default value is false, which sets the leaf certificate at index 0.
+            </summary>
+        </member>
         <member name="T:Azure.Security.KeyVault.Certificates.IssuerProperties">
             <summary>
             Properties of a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer" />.
@@ -2052,8 +2172,14 @@
             <remarks>
             This property contains only the public key.
             If you must retrieve the key pair including the private key instead of performing cryptographic operations in Azure Key Vault, see the sample:
-            <see href="https://docs.microsoft.com/samples/azure/azure-sdk-for-net/get-certificate-private-key" />
+            <see href="https://learn.microsoft.com/samples/azure/azure-sdk-for-net/get-certificate-private-key" />
             </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.PreserveCertificateOrder">
+            <summary>
+            Gets a value indicating whether the certificate chain preserves its original order.
+            The default value is false, which sets the leaf certificate at index 0.
+            </summary>
         </member>
         <member name="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateIdentifier">
             <summary>
@@ -2288,6 +2414,16 @@
         <member name="P:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.UserPrincipalNames">
             <summary>
             Gets a collection of user principal names (UPNs).
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.UniformResourceIdentifiers">
+            <summary>
+            Gets a collection of uniform resource identifiers (URIs).
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.IpAddresses">
+            <summary>
+            Gets a collection of IP addresses. Supports IPv4 and IPv6.
             </summary>
         </member>
         <member name="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames">
@@ -3055,6 +3191,11 @@
             </list>
             </returns>
         </member>
+        <member name="M:Azure.Core.IOperation.GetRehydrationToken">
+            <summary>
+            Get a token that can be used to rehydrate the operation.
+            </summary>
+        </member>
         <member name="T:Azure.Core.OperationState">
             <summary>
             A helper structure passed to <see cref="T:Azure.Core.OperationInternal" /> to indicate the current operation state. This structure must be
@@ -3437,6 +3578,11 @@
             </list>
             </returns>
         </member>
+        <member name="M:Azure.Core.IOperation`1.GetRehydrationToken">
+            <summary>
+            Get a token that can be used to rehydrate the operation.
+            </summary>
+        </member>
         <member name="T:Azure.Core.OperationState`1">
             <summary>
             A helper structure passed to <see cref="T:Azure.Core.OperationInternal`1" /> to indicate the current operation state. This structure must be
@@ -3489,6 +3635,11 @@
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
             There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ProtocolOperation`1.GetRehydrationToken">
+            <summary>
+            Get a token that can be used to rehydrate the operation.
             </summary>
         </member>
         <member name="P:Azure.Core.ProtocolOperation`1.Value">
@@ -3567,6 +3718,12 @@
         <member name="M:Microsoft.Extensions.Azure.CertificateClientBuilderExtensions.AddCertificateClient``2(``0,``1)">
             <summary>
             Registers a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient" /> instance with connection options loaded from the provided <paramref name="configuration" /> instance.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.UnsupportedOSPlatformAttribute">
+            <summary>
+            Polyfill for <see cref="T:System.Runtime.Versioning.UnsupportedOSPlatformAttribute" /> which is only available in .NET 5+.
+            Marks APIs that are unsupported on a given platform.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.RequiresDynamicCodeAttribute">

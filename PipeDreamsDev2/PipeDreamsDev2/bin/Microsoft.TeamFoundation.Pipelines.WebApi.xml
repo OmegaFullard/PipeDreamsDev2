@@ -122,7 +122,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.GetConfigurationsAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of existing configuration files for the given repository.
+            [Preview API] Gets a list of existing configuration files for the given repository.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="repositoryType">The type of the repository such as GitHub, TfsGit (i.e. Azure Repos), Bitbucket, etc.</param>
@@ -134,7 +134,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.GetConfigurationsAsync(System.Guid,System.String,System.String,System.String,System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of existing configuration files for the given repository.
+            [Preview API] Gets a list of existing configuration files for the given repository.
             </summary>
             <param name="project">Project ID</param>
             <param name="repositoryType">The type of the repository such as GitHub, TfsGit (i.e. Azure Repos), Bitbucket, etc.</param>
@@ -146,7 +146,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.CreateConnectionAsync(Microsoft.TeamFoundation.Pipelines.WebApi.CreatePipelineConnectionInputs,System.Object,System.Threading.CancellationToken)">
             <summary>
-            LEGACY METHOD - Obsolete Creates a new Pipeline connection between the provider installation and the specified project. Returns an Operation object that holds the redirect Url
+            [Preview API] LEGACY METHOD - Obsolete Creates a new Pipeline connection between the provider installation and the specified project. Returns an Operation object that holds the redirect Url
             </summary>
             <param name="createConnectionInputs"></param>
             <param name="userState"></param>
@@ -154,7 +154,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.CreateProjectConnectionAsync(Microsoft.TeamFoundation.Pipelines.WebApi.CreatePipelineConnectionInputs,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new Pipeline connection between the provider installation and the specified project. Returns the PipelineConnection object created.
+            [Preview API] Creates a new Pipeline connection between the provider installation and the specified project. Returns the PipelineConnection object created.
             </summary>
             <param name="createConnectionInputs"></param>
             <param name="project"></param>
@@ -163,7 +163,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.GetDetectedBuildFrameworksAsync(System.String,System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.Pipelines.WebApi.BuildFrameworkDetectionType},System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of build frameworks that best match the given repository based on its contents.
+            [Preview API] Returns a list of build frameworks that best match the given repository based on its contents.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="repositoryType">The type of the repository such as GitHub, TfsGit (i.e. Azure Repos), Bitbucket, etc.</param>
@@ -176,7 +176,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.GetDetectedBuildFrameworksAsync(System.Guid,System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.Pipelines.WebApi.BuildFrameworkDetectionType},System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of build frameworks that best match the given repository based on its contents.
+            [Preview API] Returns a list of build frameworks that best match the given repository based on its contents.
             </summary>
             <param name="project">Project ID</param>
             <param name="repositoryType">The type of the repository such as GitHub, TfsGit (i.e. Azure Repos), Bitbucket, etc.</param>
@@ -188,22 +188,22 @@
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.CreateResourcesAsync(System.Collections.Generic.IDictionary{System.String,Microsoft.TeamFoundation.Pipelines.WebApi.ResourceCreationParameter},System.String,System.Object,System.Threading.CancellationToken)">
-             <summary>
-            
-             </summary>
-             <param name="creationParameters"></param>
-             <param name="project">Project ID or project name</param>
-             <param name="userState"></param>
-             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="creationParameters"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Pipelines.WebApi.PipelinesHttpClient.CreateResourcesAsync(System.Collections.Generic.IDictionary{System.String,Microsoft.TeamFoundation.Pipelines.WebApi.ResourceCreationParameter},System.Guid,System.Object,System.Threading.CancellationToken)">
-             <summary>
-            
-             </summary>
-             <param name="creationParameters"></param>
-             <param name="project">Project ID</param>
-             <param name="userState"></param>
-             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="creationParameters"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
     </members>
 </doc>

@@ -64,6 +64,11 @@
             Key used in the root request context's Items property bag to store the ProjectInfo of the project associated with the request (if any)
             </summary>
         </member>
+        <member name="F:Microsoft.TeamFoundation.Core.WebApi.TfsRequestContextItemsKeys.RequestProjectId">
+            <summary>
+            Key used in the root request context's Items property bag to store the Id of the project associated with the request (if any)
+            </summary>
+        </member>
         <member name="F:Microsoft.TeamFoundation.Core.WebApi.TfsSettingsScopeNames.Project">
             <summary>
             Project-scoped settings use this as the scope name
@@ -85,20 +90,19 @@
             </summary>
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.Internal.CssUtils.IsValidCssNodeName(System.String)">
-            <summary>
-            Is this a valid CSS Node Name?
+             <summary>
+             Is this a valid CSS Node Name?
             
-            Preconditions: name is non-null and non-empty
+             Preconditions: name is non-null and non-empty
             
-            (re-factored slightly from code by LakshmiP)
-            </summary>
-            <param name="name">the name</param>
-            <returns>true if valid, false if invalid</returns>
+             (re-factored slightly from code by LakshmiP)
+             </summary>
+             <param name="name">the name</param>
+             <returns>true if valid, false if invalid</returns>
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.Internal.CssUtils.IsValidProjectName(System.String)">
             <summary>
-            Is this a valid project name for PCW?
-            
+            Is this a valid project name? This method is also used to verify project collection name.
             </summary>
             <param name="projectName">the desired name for the project</param>
             <returns>true if valid, false if invalid</returns>
@@ -123,7 +127,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.ProcessHttpClient.GetProcessByIdAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a process by ID.
+            [Preview API] Get a process by ID.
             </summary>
             <param name="processId">ID for a process.</param>
             <param name="userState"></param>
@@ -131,7 +135,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.ProcessHttpClient.GetProcessesAsync(System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of processes.
+            [Preview API] Get a list of processes.
             </summary>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -175,7 +179,7 @@
             [Preview API] Get a collection of team project properties.
             </summary>
             <param name="projectId">The team project ID.</param>
-            <param name="keys">A comma-delimited string of team project property names. Wildcard characters ("?" and "*") are supported. If no key is specified, all properties will be returned.</param>
+            <param name="keys">A comma-delimited string of team project property names. Wildcard characters (&quot;?&quot; and &quot;*&quot;) are supported. If no key is specified, all properties will be returned.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
@@ -218,7 +222,7 @@
             [Preview API] Gets list of user readable teams in a project and teams user is member of (excluded from readable list).
             </summary>
             <param name="projectId">The name or ID (GUID) of the team project containing the teams to retrieve.</param>
-            <param name="expandIdentity">A value indicating whether or not to expand <see cref="T:Microsoft.VisualStudio.Services.Identity.Identity" /> information in the result <see cref="T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam" /> object.</param>
+            <param name="expandIdentity">A value indicating whether or not to expand &lt;see cref=&quot;T:Microsoft.VisualStudio.Services.Identity.Identity&quot; /&gt; information in the result &lt;see cref=&quot;T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam&quot; /&gt; object.</param>
             <param name="top">Maximum number of teams to return.</param>
             <param name="skip">Number of teams to skip.</param>
             <param name="userState"></param>
@@ -226,62 +230,12 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.GetTeamMembersWithExtendedPropertiesAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of members for a specific team.
+            [Preview API] Get a list of members for a specific team.
             </summary>
             <param name="projectId">The name or ID (GUID) of the team project the team belongs to.</param>
             <param name="teamId">The name or ID (GUID) of the team .</param>
             <param name="top"></param>
             <param name="skip"></param>
-            <param name="userState"></param>
-            <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        </member>
-        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.CreateTeamAsync(Microsoft.TeamFoundation.Core.WebApi.WebApiTeam,System.String,System.Object,System.Threading.CancellationToken)">
-            <summary>
-            Create a team in a team project.
-            </summary>
-            <param name="team">The team data used to create the team.</param>
-            <param name="projectId">The name or ID (GUID) of the team project in which to create the team.</param>
-            <param name="userState"></param>
-            <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        </member>
-        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.DeleteTeamAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
-            <summary>
-            Delete a team.
-            </summary>
-            <param name="projectId">The name or ID (GUID) of the team project containing the team to delete.</param>
-            <param name="teamId">The name or ID of the team to delete.</param>
-            <param name="userState"></param>
-            <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        </member>
-        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.GetTeamAsync(System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
-            <summary>
-            Get a specific team.
-            </summary>
-            <param name="projectId">The name or ID (GUID) of the team project containing the team.</param>
-            <param name="teamId">The name or ID (GUID) of the team.</param>
-            <param name="expandIdentity">A value indicating whether or not to expand <see cref="T:Microsoft.VisualStudio.Services.Identity.Identity" /> information in the result <see cref="T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam" /> object.</param>
-            <param name="userState"></param>
-            <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        </member>
-        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.GetTeamsAsync(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
-            <summary>
-            Get a list of teams.
-            </summary>
-            <param name="projectId"></param>
-            <param name="mine">If true return all the teams requesting user is member, otherwise return all the teams user has read access.</param>
-            <param name="top">Maximum number of teams to return.</param>
-            <param name="skip">Number of teams to skip.</param>
-            <param name="expandIdentity">A value indicating whether or not to expand <see cref="T:Microsoft.VisualStudio.Services.Identity.Identity" /> information in the result <see cref="T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam" /> object.</param>
-            <param name="userState"></param>
-            <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        </member>
-        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.UpdateTeamAsync(Microsoft.TeamFoundation.Core.WebApi.WebApiTeam,System.String,System.String,System.Object,System.Threading.CancellationToken)">
-            <summary>
-            Update a team's name and/or description.
-            </summary>
-            <param name="teamData"></param>
-            <param name="projectId">The name or ID (GUID) of the team project containing the team to update.</param>
-            <param name="teamId">The name of ID of the team to update.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
@@ -292,7 +246,57 @@
             <param name="mine">If true, then return all teams requesting user is member. Otherwise return all teams user has read access.</param>
             <param name="top">Maximum number of teams to return.</param>
             <param name="skip">Number of teams to skip.</param>
-            <param name="expandIdentity">A value indicating whether or not to expand <see cref="T:Microsoft.VisualStudio.Services.Identity.Identity" /> information in the result <see cref="T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam" /> object.</param>
+            <param name="expandIdentity">A value indicating whether or not to expand &lt;see cref=&quot;T:Microsoft.VisualStudio.Services.Identity.Identity&quot; /&gt; information in the result &lt;see cref=&quot;T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam&quot; /&gt; object.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.CreateTeamAsync(Microsoft.TeamFoundation.Core.WebApi.WebApiTeam,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Create a team in a team project.
+            </summary>
+            <param name="team">The team data used to create the team.</param>
+            <param name="projectId">The name or ID (GUID) of the team project in which to create the team.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.DeleteTeamAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Delete a team.
+            </summary>
+            <param name="projectId">The name or ID (GUID) of the team project containing the team to delete.</param>
+            <param name="teamId">The name or ID of the team to delete.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.GetTeamAsync(System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get a specific team.
+            </summary>
+            <param name="projectId">The name or ID (GUID) of the team project containing the team.</param>
+            <param name="teamId">The name or ID (GUID) of the team.</param>
+            <param name="expandIdentity">A value indicating whether or not to expand &lt;see cref=&quot;T:Microsoft.VisualStudio.Services.Identity.Identity&quot; /&gt; information in the result &lt;see cref=&quot;T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam&quot; /&gt; object.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.GetTeamsAsync(System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get a list of teams.
+            </summary>
+            <param name="projectId"></param>
+            <param name="mine">If true return all the teams requesting user is member, otherwise return all the teams user has read access.</param>
+            <param name="top">Maximum number of teams to return.</param>
+            <param name="skip">Number of teams to skip.</param>
+            <param name="expandIdentity">A value indicating whether or not to expand &lt;see cref=&quot;T:Microsoft.VisualStudio.Services.Identity.Identity&quot; /&gt; information in the result &lt;see cref=&quot;T:Microsoft.TeamFoundation.Core.WebApi.WebApiTeam&quot; /&gt; object.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Core.WebApi.TeamHttpClientBase.UpdateTeamAsync(Microsoft.TeamFoundation.Core.WebApi.WebApiTeam,System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Update a team&apos;s name and/or description.
+            </summary>
+            <param name="teamData"></param>
+            <param name="projectId">The name or ID (GUID) of the team project containing the team to update.</param>
+            <param name="teamId">The name of ID of the team to update.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
@@ -563,7 +567,7 @@
         </member>
         <member name="T:Microsoft.TeamFoundation.Core.WebApi.ProjectDoesNotExistException">
             <summary>
-            This exception is shown whenever a project with a given id does not exist or if the user has insufficient 
+            This exception is shown whenever a project with a given id does not exist or if the user has insufficient
             rights to access it.
             </summary>
         </member>
@@ -1394,17 +1398,41 @@
             A data transfer object that stores the metadata associated with the creation of temporary data.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataCreatedDTO.Id" -->
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataCreatedDTO.Url" -->
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataCreatedDTO.ExpirationDate" -->
+        <member name="P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataCreatedDTO.Id">
+            <summary>
+            Temporary data id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataCreatedDTO.Url">
+            <summary>
+            Rest url for the temporary data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataCreatedDTO.ExpirationDate">
+            <summary>
+            Temporary data expiration date.
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO">
             <summary>
             A data transfer object that stores the metadata associated with the temporary data.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO.Value" -->
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO.Origin" -->
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO.ExpirationSeconds" -->
+        <member name="P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO.Value">
+            <summary>
+            Temporary data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO.Origin">
+            <summary>
+            Temporary data origin
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Core.WebApi.TemporaryDataDTO.ExpirationSeconds">
+            <summary>
+            Temporary data expire in seconds
+            </summary>
+        </member>
         <member name="P:Microsoft.TeamFoundation.Core.WebApi.CategorizedWebApiTeams.MyTeams">
             <summary>
             Teams that the user is a member of.
@@ -1473,6 +1501,11 @@
             VS402392: Project operation may not be performed due to ongoing work for the team project &apos;{0}&apos;. Wait a few minutes and try again.
             </summary>
         </member>
+        <member name="M:Microsoft.TeamFoundation.Core.WebApi.WebApiResources.ProjectCountLimitHasBeenReached(System.Object,System.Object)">
+            <summary>
+            Unable to create a new team project &apos;{0}&apos;. The limit of {1} projects has been reached. Please delete unused projects to free up space and try again.
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.WebApiResources.ProjectDoesNotExist(System.Object)">
             <summary>
             VS800075: The project with id &apos;{0}&apos; does not exist, or you do not have permission to access it.
@@ -1495,7 +1528,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.WebApiResources.InvalidNameNotRecognized(System.Object)">
             <summary>
-            TF200041: You have specified a name, {0}, that contains character(s) that are not recognized. Specify a name that only contains characters that are supported by the database collation setting and try again.
+            TF200041: You have specified a name, {0}, that contains character(s) that are not recognized. Specify a name that only contains characters that are supported and try again.
             </summary>
         </member>
         <member name="M:Microsoft.TeamFoundation.Core.WebApi.WebApiResources.ProjectPropertyValueTypeUnsupported(System.Object)">

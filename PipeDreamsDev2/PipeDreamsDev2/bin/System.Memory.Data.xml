@@ -8,8 +8,11 @@
       <summary>A lightweight abstraction for a payload of bytes that supports converting between string, stream, JSON, and bytes.</summary>
     </member>
     <member name="M:System.BinaryData.#ctor(System.Byte[],System.String)">
-      <param name="data" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="data">The array to wrap.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
     </member>
     <member name="M:System.BinaryData.#ctor(System.Byte[])">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array.</summary>
@@ -28,16 +31,22 @@
       <param name="type">The type to use when serializing the data. If not specified, <see cref="M:System.Object.GetType" /> will be used to determine the type.</param>
     </member>
     <member name="M:System.BinaryData.#ctor(System.ReadOnlyMemory{System.Byte},System.String)">
-      <param name="data" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided bytes and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="data">Byte data to wrap.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
     </member>
     <member name="M:System.BinaryData.#ctor(System.ReadOnlyMemory{System.Byte})">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided bytes.</summary>
       <param name="data">The byte data to wrap.</param>
     </member>
     <member name="M:System.BinaryData.#ctor(System.String,System.String)">
-      <param name="data" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance from a string by converting the string to bytes using the UTF-8 encoding and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="data">The string data.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
     </member>
     <member name="M:System.BinaryData.#ctor(System.String)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from a string by converting the string to bytes using the UTF-8 encoding.</summary>
@@ -50,8 +59,12 @@
         <see langword="true" /> if the specified object is equal to the current object; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromBytes(System.Byte[],System.String)">
-      <param name="data" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="data">The array to wrap.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
+      <returns>A wrapper over <paramref name="data" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromBytes(System.Byte[])">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided byte array.</summary>
@@ -59,13 +72,45 @@
       <returns>A wrapper over <paramref name="data" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromBytes(System.ReadOnlyMemory{System.Byte},System.String)">
-      <param name="data" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided <see cref="T:System.ReadOnlyMemory`1" /> and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="data">Byte data to wrap.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
+      <returns>A wrapper over <paramref name="data" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromBytes(System.ReadOnlyMemory{System.Byte})">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the provided <see cref="T:System.ReadOnlyMemory`1" />.</summary>
       <param name="data">The byte data to wrap.</param>
       <returns>A wrapper over <paramref name="data" />.</returns>
+    </member>
+    <member name="M:System.BinaryData.FromFile(System.String,System.String)">
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance from the specified file and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="path">The path to the file.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
+      <returns>A value representing all of the data from the file.</returns>
+    </member>
+    <member name="M:System.BinaryData.FromFile(System.String)">
+      <summary>Creates a <see cref="T:System.BinaryData" /> instance from the specified file.</summary>
+      <param name="path">The path to the file.</param>
+      <returns>A value representing all of the data from the file.</returns>
+    </member>
+    <member name="M:System.BinaryData.FromFileAsync(System.String,System.String,System.Threading.CancellationToken)">
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance from the specified file and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="path">The path to the file.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
+      <param name="cancellationToken">A token that can be used to cancel the operation.</param>
+      <returns>A value representing all of the data from the file.</returns>
+    </member>
+    <member name="M:System.BinaryData.FromFileAsync(System.String,System.Threading.CancellationToken)">
+      <summary>Creates a <see cref="T:System.BinaryData" /> instance from the specified file.</summary>
+      <param name="path">The path to the file.</param>
+      <param name="cancellationToken">A token that can be used to cancel the operation.</param>
+      <returns>A value representing all of the data from the file.</returns>
     </member>
     <member name="M:System.BinaryData.FromObjectAsJson``1(``0,System.Text.Json.JsonSerializerOptions)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance by serializing the provided object using the <see cref="T:System.Text.Json.JsonSerializer" />.</summary>
@@ -82,8 +127,13 @@
       <returns>A value representing the UTF-8 encoding of the JSON representation of <paramref name="jsonSerializable" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromStream(System.IO.Stream,System.String)">
-      <param name="stream" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance from the specified stream and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+        <para>The stream is not disposed by this method.</para>
+      </summary>
+      <param name="stream">Stream containing the data.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
+      <returns>A value representing all of the data remaining in <paramref name="stream" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromStream(System.IO.Stream)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from the specified stream. The stream is not disposed by this method.</summary>
@@ -91,21 +141,30 @@
       <returns>A value representing all of the data remaining in <paramref name="stream" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromStreamAsync(System.IO.Stream,System.String,System.Threading.CancellationToken)">
-      <param name="stream" />
-      <param name="mediaType" />
-      <param name="cancellationToken" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance from the specified stream and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+        <para>The stream is not disposed by this method.</para>
+      </summary>
+      <param name="stream">Stream containing the data.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</param>
+      <param name="cancellationToken">A token that can be used to cancel the operation.</param>
       <exception cref="T:System.OperationCanceledException">The cancellation token was canceled. This exception is stored into the returned task.</exception>
+      <returns>A value representing all of the data remaining in <paramref name="stream" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from the specified stream. The stream is not disposed by this method.</summary>
       <param name="stream">The stream containing the data.</param>
-      <param name="cancellationToken">A token that may be used to cancel the operation.</param>
+      <param name="cancellationToken">A token that can be used to cancel the operation.</param>
       <exception cref="T:System.OperationCanceledException">The cancellation token was canceled. This exception is stored into the returned task.</exception>
       <returns>A value representing all of the data remaining in <paramref name="stream" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromString(System.String,System.String)">
-      <param name="data" />
-      <param name="mediaType" />
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance from a string by converting the string to bytes using the UTF-8 encoding and sets <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
+      <param name="data">The string data.</param>
+      <param name="mediaType">The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Text.Plain" />.</param>
+      <returns>A value representing the UTF-8 encoding of <paramref name="data" />.</returns>
     </member>
     <member name="M:System.BinaryData.FromString(System.String)">
       <summary>Creates a <see cref="T:System.BinaryData" /> instance from a string by converting the string to bytes using the UTF-8 encoding.</summary>
@@ -113,7 +172,7 @@
       <returns>A value representing the UTF-8 encoding of <paramref name="data" />.</returns>
     </member>
     <member name="M:System.BinaryData.GetHashCode">
-      <summary>Returns the hash code for the current <xref data-throw-if-not-resolved="true" uid="System.BinaryData"></xref> object.</summary>
+      <summary>Returns the hash code for the current <see cref="T:System.BinaryData" /> object.</summary>
       <returns>A 32-bit signed integer hash code.</returns>
     </member>
     <member name="M:System.BinaryData.op_Implicit(System.BinaryData)~System.ReadOnlyMemory{System.Byte}">
@@ -155,7 +214,11 @@
       <returns>A string representation of the value of this instance.</returns>
     </member>
     <member name="M:System.BinaryData.WithMediaType(System.String)">
+      <summary>
+        <para>Creates a <see cref="T:System.BinaryData" /> instance by wrapping the same data and changed <see cref="P:System.BinaryData.MediaType" /> to <see pref="mediaType" /> value.</para>
+      </summary>
       <param name="mediaType" />
+      <returns>A wrapper over the same data with specified <see cref="P:System.BinaryData.MediaType" />.</returns>
     </member>
     <member name="P:System.BinaryData.Empty">
       <summary>Returns an empty <see cref="T:System.BinaryData" />.</summary>
@@ -169,13 +232,17 @@
       <summary>Gets the number of bytes of this data.</summary>
       <returns>The number of bytes of this data.</returns>
     </member>
-    <member name="P:System.BinaryData.MediaType" />
+    <member name="P:System.BinaryData.MediaType">
+      <summary>Gets the The MIME type of this data, for example, <see cref="F:System.Net.Mime.MediaTypeNames.Application.Octet" />.</summary>
+    </member>
     <member name="T:System.Text.Json.Serialization.BinaryDataJsonConverter">
       <summary>Serializes <see cref="T:System.BinaryData" /> instances as Base64 JSON strings.</summary>
     </member>
-    <member name="M:System.Text.Json.Serialization.BinaryDataJsonConverter.#ctor" />
+    <member name="M:System.Text.Json.Serialization.BinaryDataJsonConverter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Text.Json.Serialization.BinaryDataJsonConverter" />.</summary>
+    </member>
     <member name="M:System.Text.Json.Serialization.BinaryDataJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-      <summary>Reads and converts the JSON to type <code>T</code>.</summary>
+      <summary>Reads and converts the JSON to type <code data-dev-comment-type="typeparamref">T</code>.</summary>
       <param name="reader">The reader.</param>
       <param name="typeToConvert">The type to convert.</param>
       <param name="options">An object that specifies serialization options to use.</param>

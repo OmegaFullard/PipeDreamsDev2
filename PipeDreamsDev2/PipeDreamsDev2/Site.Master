@@ -28,7 +28,7 @@
     	 <!-- Custom Styles-->
     
 	 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
+<body class="bg-body-tertiary">
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -178,9 +178,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                   <%--Logo--%>
 
-            <a href="#" class="logo">
-                <img src="images/PDLogo.png" alt="company logo" width="125" height="125" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     
+            
     <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -190,6 +188,9 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Site Navigation</a>
+                    <a href="#" class="logo">
+    <img src="images/PDLogo.png" alt="company logo" width="250" height="250" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -324,7 +325,7 @@
 <header data-bs-theme="dark">
   <div class="collapse text-bg-dark" id="navbarHeader">
       </div>
- <div class="container body-content">
+ <div class="container-fluid body-content px-3 px-md-4">
      <asp:ContentPlaceHolder ID="MainContent" runat="server">
      </asp:ContentPlaceHolder>
      <hr />
@@ -332,7 +333,7 @@
 </div>
       </header>
 
-<div class="container">
+<div class="container-fluid px-3 px-md-4">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">

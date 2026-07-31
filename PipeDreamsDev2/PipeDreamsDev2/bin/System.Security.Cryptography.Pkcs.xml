@@ -47,8 +47,6 @@
     <member name="M:System.Security.Cryptography.CryptographicAttributeObjectCollection.Add(System.Security.Cryptography.CryptographicAttributeObject)">
       <summary>Adds the specified <see cref="T:System.Security.Cryptography.CryptographicAttributeObject" /> object to the collection.</summary>
       <param name="attribute">The <see cref="T:System.Security.Cryptography.CryptographicAttributeObject" /> object to add to the collection.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="asnEncodedData" /> is <see langword="null" />.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">A cryptographic operation could not be completed.</exception>
       <exception cref="T:System.InvalidOperationException">The specified item already exists in the collection.</exception>
       <returns>
@@ -173,11 +171,7 @@
       <param name="certificate">The certificate to use when encrypting for this recipient.</param>
       <param name="rsaEncryptionPadding">The RSA padding mode to use when encrypting for this recipient.</param>
       <exception cref="T:System.ArgumentNullException">The <paramref name="certificate" /> or <paramref name="rsaEncryptionPadding" /> parameter is <see langword="null" />.</exception>
-      <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="certificate" /> parameter public key is not recognized as an RSA public key.
-
--or-
-
-The <paramref name="recipientIdentifierType" /> value is not supported.</exception>
+      <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="certificate" /> parameter public key is not recognized as an RSA public key.</exception>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.CmsRecipient.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
       <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.Pkcs.CmsRecipient" /> class with a specified certificate, using the default encryption mode for the public key algorithm and an <see cref="F:System.Security.Cryptography.Pkcs.SubjectIdentifierType.IssuerAndSerialNumber" /> subject identifier.</summary>
@@ -318,12 +312,27 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <param name="certificate">The certificate whose private key will be used to sign a message.</param>
       <param name="privateKey">The private key object to use when signing the message.</param>
     </member>
+    <member name="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.CompositeMLDsa)">
+      <param name="signerIdentifierType" />
+      <param name="certificate" />
+      <param name="privateKey" />
+    </member>
+    <member name="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.MLDsa)">
+      <param name="signerIdentifierType" />
+      <param name="certificate" />
+      <param name="privateKey" />
+    </member>
     <member name="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.RSA,System.Security.Cryptography.RSASignaturePadding)">
       <summary>Initializes a new instance of the CmsSigner class with a specified signer certificate, subject identifier type, private key object, and RSA signature padding.</summary>
       <param name="signerIdentifierType">One of the enumeration values that specifies the scheme to use for identifying which signing certificate was used.</param>
       <param name="certificate">The certificate whose private key will be used to sign a message.</param>
       <param name="privateKey">The private key object to use when signing the message.</param>
       <param name="signaturePadding">The RSA signature padding to use.</param>
+    </member>
+    <member name="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.SlhDsa)">
+      <param name="signerIdentifierType" />
+      <param name="certificate" />
+      <param name="privateKey" />
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.CmsSigner.#ctor(System.Security.Cryptography.Pkcs.SubjectIdentifierType,System.Security.Cryptography.X509Certificates.X509Certificate2)">
       <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.Pkcs.CmsSigner" /> class with a specified signer certificate and subject identifier type.</summary>
@@ -380,7 +389,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <summary>The <see cref="T:System.Security.Cryptography.Pkcs.ContentInfo" /> class represents the CMS/PKCS #7 ContentInfo data structure as defined in the CMS/PKCS #7 standards document. This data structure is the basis for all CMS/PKCS #7 messages.</summary>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.ContentInfo.#ctor(System.Byte[])">
-      <summary>The <see cref="M:System.Security.Cryptography.Pkcs.ContentInfo.#ctor(System.Byte[])" /> constructor  creates an instance of the <see cref="T:System.Security.Cryptography.Pkcs.ContentInfo" /> class by using an array of byte values as the data and a default <paramref name="object identifier" /> (OID) that represents the content type.</summary>
+      <summary>The <see cref="M:System.Security.Cryptography.Pkcs.ContentInfo.#ctor(System.Byte[])" /> constructor creates an instance of the <see cref="T:System.Security.Cryptography.Pkcs.ContentInfo" /> class by using an array of byte values as the data and a default object identifier (OID) that represents the content type.</summary>
       <param name="content">An array of byte values that represents the data from which to create the <see cref="T:System.Security.Cryptography.Pkcs.ContentInfo" /> object.</param>
       <exception cref="T:System.ArgumentNullException">A null reference  was passed to a method that does not accept it as a valid argument.</exception>
     </member>
@@ -411,7 +420,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <returns>An array of byte values that represents the content data.</returns>
     </member>
     <member name="P:System.Security.Cryptography.Pkcs.ContentInfo.ContentType">
-      <summary>The <see cref="P:System.Security.Cryptography.Pkcs.ContentInfo.ContentType" /> property  retrieves the <see cref="T:System.Security.Cryptography.Oid" /> object that contains the <paramref name="object identifier" /> (OID)  of the content type of the inner content of the CMS/PKCS #7 message.</summary>
+      <summary>The <see cref="P:System.Security.Cryptography.Pkcs.ContentInfo.ContentType" /> property retrieves the <see cref="T:System.Security.Cryptography.Oid" /> object that contains the object identifier (OID) of the content type of the inner content of the CMS/PKCS #7 message.</summary>
       <returns>An <see cref="T:System.Security.Cryptography.Oid" /> object that contains the OID value that represents the content type.</returns>
     </member>
     <member name="T:System.Security.Cryptography.Pkcs.EnvelopedCms">
@@ -676,8 +685,8 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <returns>A certificate decoded from the contents of the CertBag.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12CertBag.GetCertificateType">
-      <summary>Gets the Object Identifier (OID) which identifies the content type of the encoded certificte value.</summary>
-      <returns>The Object Identifier (OID) which identifies the content type of the encoded certificate value.</returns>
+      <summary>Gets the Object Identifier (OID) that identifies the content type of the encoded certificte value.</summary>
+      <returns>The Object Identifier (OID) that identifies the content type of the encoded certificate value.</returns>
     </member>
     <member name="P:System.Security.Cryptography.Pkcs.Pkcs12CertBag.EncodedCertificate">
       <summary>Gets the uninterpreted certificate contents of the CertSafeBag.</summary>
@@ -709,7 +718,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12Info.Decode(System.ReadOnlyMemory{System.Byte},System.Int32@,System.Boolean)">
       <summary>Reads the provided data as a PKCS#12 PFX and returns an object view of the contents.</summary>
       <param name="encodedBytes">The data to interpret as a PKCS#12 PFX.</param>
-      <param name="bytesConsumed">When this method returns, contains a value that indicates the number of bytes from <paramref name="encodedBytes" /> which were read by this method. This parameter is treated as uninitialized.</param>
+      <param name="bytesConsumed">When this method returns, contains a value that indicates the number of bytes from <paramref name="encodedBytes" /> that were read by this method. This parameter is treated as uninitialized.</param>
       <param name="skipCopy">
         <see langword="true" /> to store <paramref name="encodedBytes" /> without making a defensive copy; otherwise, <see langword="false" />. The default is <see langword="false" />.</param>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The contents of the <paramref name="encodedBytes" /> parameter were not successfully decoded as a PKCS#12 PFX.</exception>
@@ -762,7 +771,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <param name="pkcs8PrivateKey">A BER-encoded PKCS#8 PrivateKeyInfo value.</param>
       <param name="skipCopy">
         <see langword="true" /> to store <paramref name="pkcs8PrivateKey" /> without making a defensive copy; otherwise, <see langword="false" />. The default is <see langword="false" />.</param>
-      <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="pkcs8privateKey" /> parameter does not represent a single ASN.1 BER-encoded value.</exception>
+      <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="pkcs8PrivateKey" /> parameter does not represent a single ASN.1 BER-encoded value.</exception>
     </member>
     <member name="P:System.Security.Cryptography.Pkcs.Pkcs12KeyBag.Pkcs8PrivateKey">
       <summary>Gets a memory value containing the PKCS#8 PrivateKeyInfo value transported by this bag.</summary>
@@ -817,7 +826,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="certificate" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="certificate" /> parameter is in an invalid state.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddKeyUnencrypted(System.Security.Cryptography.AsymmetricAlgorithm)">
       <summary>Adds an asymmetric private key to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12KeyBag" /> and returns the newly created bag instance.</summary>
@@ -825,7 +834,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="key" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The key export failed.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddNestedContents(System.Security.Cryptography.Pkcs.Pkcs12SafeContents)">
       <summary>Adds a nested SafeContents to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12SafeContentsBag" /> and returns the newly created bag instance.</summary>
@@ -833,7 +842,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="safeContents" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">The <paramref name="safeContents" /> parameter is encrypted.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddSafeBag(System.Security.Cryptography.Pkcs.Pkcs12SafeBag)">
       <summary>Adds a SafeBag to the SafeContents.</summary>
@@ -843,12 +852,12 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddSecret(System.Security.Cryptography.Oid,System.ReadOnlyMemory{System.Byte})">
       <summary>Adds an ASN.1 BER-encoded value with a specified type identifier to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12SecretBag" /> and returns the newly created bag instance.</summary>
-      <param name="secretType">The Object Identifier (OID) which identifies the data type of the secret value.</param>
+      <param name="secretType">The Object Identifier (OID) that identifies the data type of the secret value.</param>
       <param name="secretValue">The BER-encoded value representing the secret to add.</param>
       <exception cref="T:System.ArgumentNullException">The <paramref name="secretType" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="secretValue" /> parameter does not represent a single ASN.1 BER-encoded value.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddShroudedKey(System.Security.Cryptography.AsymmetricAlgorithm,System.Byte[],System.Security.Cryptography.PbeParameters)">
       <summary>Adds an encrypted asymmetric private key to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12ShroudedKeyBag" /> from a byte-based password in an array and returns the newly created bag instance.</summary>
@@ -858,7 +867,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="key" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The key export failed.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddShroudedKey(System.Security.Cryptography.AsymmetricAlgorithm,System.ReadOnlySpan{System.Byte},System.Security.Cryptography.PbeParameters)">
       <summary>Adds an encrypted asymmetric private key to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12ShroudedKeyBag" /> from a byte-based password in a span and returns the newly created bag instance.</summary>
@@ -868,7 +877,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="key" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The key export failed.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddShroudedKey(System.Security.Cryptography.AsymmetricAlgorithm,System.ReadOnlySpan{System.Char},System.Security.Cryptography.PbeParameters)">
       <summary>Adds an encrypted asymmetric private key to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12ShroudedKeyBag" /> from a character-based password in a span and returns the newly created bag instance.</summary>
@@ -878,7 +887,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="key" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The key export failed.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.AddShroudedKey(System.Security.Cryptography.AsymmetricAlgorithm,System.String,System.Security.Cryptography.PbeParameters)">
       <summary>Adds an encrypted asymmetric private key to the SafeContents via a new <see cref="T:System.Security.Cryptography.Pkcs.Pkcs12ShroudedKeyBag" /> from a character-based password in a string and returns the newly created bag instance.</summary>
@@ -888,7 +897,7 @@ The <paramref name="recipientIdentifierType" /> value is not supported.</excepti
       <exception cref="T:System.ArgumentNullException">The <paramref name="key" /> parameter is <see langword="null" />.</exception>
       <exception cref="T:System.InvalidOperationException">This instance is read-only.</exception>
       <exception cref="T:System.Security.Cryptography.CryptographicException">The key export failed.</exception>
-      <returns>The bag instance which was added to the SafeContents.</returns>
+      <returns>The bag instance that was added to the SafeContents.</returns>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SafeContents.Decrypt(System.Byte[])">
       <summary>Decrypts the contents of this SafeContents value using a byte-based password from an array.</summary>
@@ -955,8 +964,8 @@ The contents were not successfully decrypted.</exception>
       <summary>Represents the SecretBag from PKCS#12, a container whose contents are arbitrary data with a type identifier. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs12SecretBag.GetSecretType">
-      <summary>Gets the Object Identifier (OID) which identifies the data type of the secret value.</summary>
-      <returns>The Object Identifier (OID) which identifies the data type of the secret value.</returns>
+      <summary>Gets the Object Identifier (OID) that identifies the data type of the secret value.</summary>
+      <returns>The Object Identifier (OID) that identifies the data type of the secret value.</returns>
     </member>
     <member name="P:System.Security.Cryptography.Pkcs.Pkcs12SecretBag.SecretValue">
       <summary>Gets a memory value containing the BER-encoded contents of the bag.</summary>
@@ -970,7 +979,7 @@ The contents were not successfully decrypted.</exception>
       <param name="encryptedPkcs8PrivateKey">A BER-encoded PKCS#8 EncryptedPrivateKeyInfo value.</param>
       <param name="skipCopy">
         <see langword="true" /> to store <paramref name="encryptedPkcs8PrivateKey" /> without making a defensive copy; otherwise, <see langword="false" />. The default is <see langword="false" />.</param>
-      <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="encryptedPkcs8privateKey" /> parameter does not represent a single ASN.1 BER-encoded value.</exception>
+      <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="encryptedPkcs8PrivateKey" /> parameter does not represent a single ASN.1 BER-encoded value.</exception>
     </member>
     <member name="P:System.Security.Cryptography.Pkcs.Pkcs12ShroudedKeyBag.EncryptedPkcs8PrivateKey">
       <summary>Gets a memory value containing the PKCS#8 EncryptedPrivateKeyInfo value transported by this bag.</summary>
@@ -1096,10 +1105,10 @@ The contents of <paramref name="source" /> do not represent an ASN.1-BER-encoded
       <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.Pkcs.Pkcs9AttributeObject" /> class using a specified <see cref="T:System.Security.Cryptography.AsnEncodedData" /> object as its attribute type and value.</summary>
       <param name="asnEncodedData">An object that contains the PKCS #9 attribute type and value to use.</param>
       <exception cref="T:System.ArgumentException">The length of the <paramref name="Value" /> member of the <paramref name="Oid" /> member of <paramref name="asnEncodedData" /> is zero.</exception>
-      <exception cref="T:System.ArgumentNullException">The <paramref name="Oid" /> member of <paramref name="asnEncodedData" /> is <see langword="null" />.  
-  
- -or-  
-  
+      <exception cref="T:System.ArgumentNullException">The <paramref name="Oid" /> member of <paramref name="asnEncodedData" /> is <see langword="null" />.
+
+ -or-
+
  The <paramref name="Value" /> member of the <paramref name="Oid" /> member of <paramref name="asnEncodedData" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:System.Security.Cryptography.Pkcs.Pkcs9AttributeObject.#ctor(System.Security.Cryptography.Oid,System.Byte[])">
@@ -1116,7 +1125,7 @@ The contents of <paramref name="source" /> do not represent an ASN.1-BER-encoded
       <summary>Copies a PKCS #9 attribute type and value for this <see cref="T:System.Security.Cryptography.Pkcs.Pkcs9AttributeObject" /> from the specified <see cref="T:System.Security.Cryptography.AsnEncodedData" /> object.</summary>
       <param name="asnEncodedData">An object that contains the PKCS #9 attribute type and value to use.</param>
       <exception cref="T:System.ArgumentException">
-        <paramref name="asnEncodeData" /> does not represent a compatible attribute type.</exception>
+        <paramref name="asnEncodedData" /> does not represent a compatible attribute type.</exception>
       <exception cref="T:System.ArgumentNullException">
         <paramref name="asnEncodedData" /> is <see langword="null" />.</exception>
     </member>
@@ -1489,7 +1498,7 @@ The contents of <paramref name="source" /> do not represent an ASN.1-BER-encoded
     <member name="M:System.Security.Cryptography.Pkcs.Rfc3161TimestampToken.VerifySignatureForData(System.ReadOnlySpan{System.Byte},System.Security.Cryptography.X509Certificates.X509Certificate2@,System.Security.Cryptography.X509Certificates.X509Certificate2Collection)">
       <summary>Verifies that the current token is a valid time-stamp token for the provided data.</summary>
       <param name="data">The data to verify against this time-stamp token.</param>
-      <param name="signerCertificate">When this method returns, the certificate from the Timestamp Authority (TSA) which signed this token, or <see langword="null" /> if a signer certificate cannot be determined. This parameter is treated as uninitialized.</param>
+      <param name="signerCertificate">When this method returns, the certificate from the Timestamp Authority (TSA) that signed this token, or <see langword="null" /> if a signer certificate cannot be determined. This parameter is treated as uninitialized.</param>
       <param name="extraCandidates">An optional collection of certificates to consider as the Timestamp Authority (TSA) certificates, in addition to any certificates that may be included within the token.</param>
       <returns>
         <see langword="true" /> if the Timestamp Authority (TSA) certificate was found, the certificate public key validates the token signature, and the token matches the hash for the provided data; otherwise, <see langword="false" />.</returns>
@@ -1498,7 +1507,7 @@ The contents of <paramref name="source" /> do not represent an ASN.1-BER-encoded
       <summary>Verifies that the current token is a valid time-stamp token for the provided data hash and algorithm identifier.</summary>
       <param name="hash">The cryptographic hash to verify against this time-stamp token.</param>
       <param name="hashAlgorithm">The algorithm which produced <paramref name="hash" />.</param>
-      <param name="signerCertificate">When this method returns, the certificate from the Timestamp Authority (TSA) which signed this token, or <see langword="null" /> if a signer certificate cannot be determined. This parameter is treated as uninitialized.</param>
+      <param name="signerCertificate">When this method returns, the certificate from the Timestamp Authority (TSA) that signed this token, or <see langword="null" /> if a signer certificate cannot be determined. This parameter is treated as uninitialized.</param>
       <param name="extraCandidates">An optional collection of certificates to consider as the Timestamp Authority (TSA) certificates, in addition to any certificates that may be included within the token.</param>
       <returns>
         <see langword="true" /> if the Timestamp Authority (TSA) certificate was found, the certificate public key validates the token signature, and the token matches the hash for the provided data hash and algorithm; otherwise, <see langword="false" />.</returns>
@@ -1507,7 +1516,7 @@ The contents of <paramref name="source" /> do not represent an ASN.1-BER-encoded
       <summary>Verifies that the current token is a valid time-stamp token for the provided data hash and algorithm identifier.</summary>
       <param name="hash">The cryptographic hash to verify against this time-stamp token.</param>
       <param name="hashAlgorithmId">The OID of the hash algorithm.</param>
-      <param name="signerCertificate">When this method returns, the certificate from the Timestamp Authority (TSA) which signed this token, or <see langword="null" /> if a signer certificate cannot be determined. This parameter is treated as uninitialized.</param>
+      <param name="signerCertificate">When this method returns, the certificate from the Timestamp Authority (TSA) that signed this token, or <see langword="null" /> if a signer certificate cannot be determined. This parameter is treated as uninitialized.</param>
       <param name="extraCandidates">An optional collection of certificates to consider as the Timestamp Authority (TSA) certificates, in addition to any certificates that may be included within the token.</param>
       <returns>
         <see langword="true" /> if the Timestamp Authority (TSA) certificate was found, the certificate public key validates the token signature, and the token matches the hash for the provided data hash and algorithm; otherwise, <see langword="false" />.</returns>

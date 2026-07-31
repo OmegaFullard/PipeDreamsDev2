@@ -341,7 +341,19 @@
             Only maxLength characters will be written to the stream.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Common.Vss.WriteSideBySideRange(System.Collections.Generic.IList{Microsoft.TeamFoundation.VersionControl.Common.DiffLine},System.String,System.Int32,System.Int32,System.Int32,Microsoft.TeamFoundation.VersionControl.Common.Vss.Column)" -->
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Common.Vss.WriteSideBySideRange(System.Collections.Generic.IList{Microsoft.TeamFoundation.VersionControl.Common.DiffLine},System.String,System.Int32,System.Int32,System.Int32,Microsoft.TeamFoundation.VersionControl.Common.Vss.Column)">
+            <summary>
+            Writes a range of elements using a Vss-SideBySide template:
+            <![CDATA[
+            ...     ...
+            ...  <
+                 >  ...
+            ]]>
+            Where ... is the line of text
+            Only maxLength characters of the line of text will be written
+            The line of text will be written into the column(s) chosen.
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Common.Vss.Column">
             <summary>
             An enumeration of columns for SideBySide diff output
@@ -781,8 +793,31 @@
             <param name="labelSpec"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Common.LabelSpec.IsLegalName(System.String,System.Boolean)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Common.LabelSpec.IsLegalName(System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Common.LabelSpec.IsLegalName(System.String,System.Boolean)">
+            <summary>
+            Checks to see if the label name consists only of legal characters and is less than the maximum
+            length.
+            </summary>
+            <remarks>
+            Use IsLegalSpec to validate label name &amp; scope combinations; this method
+            validates only label names
+            </remarks>
+            <param name="LabelName">Label name to check</param>
+            <param name="permitWildcards">Indicates whether wildcards are permitted in label names</param>
+            <returns>true if the label name is legal; false otherwise</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Common.LabelSpec.IsLegalName(System.String)">
+            <summary>
+            Checks to see if the label name consists only of legal characters and is less than the maximum
+            length.
+            </summary>
+            <remarks>
+            Use IsLegalSpec to validate label name &amp; scope combinations; this method
+            validates only label names
+            </remarks>
+            <param name="LabelName">Label name to check</param>
+            <returns>true if the label name is legal; false otherwise</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Common.LabelSpec.IsLegalScope(System.String)">
             <summary>
              Returns true if labelScope is a legal label scope.  Verifies it is a server item with
@@ -3436,6 +3471,11 @@
             TF10137: Check-in policies may only be associated with team projects.
             </summary>
         </member>
+        <member name="F:Microsoft.TeamFoundation.VersionControl.Common.Internal.Resources.PoliciesNotInitialized">
+            <summary>
+            Policies should be initialized.
+            </summary>
+        </member>
         <member name="F:Microsoft.TeamFoundation.VersionControl.Common.Internal.Resources.PolicyActive">
             <summary>
             Policies cannot be edited after being initialized for evaluation.
@@ -5750,7 +5790,13 @@
             Options that are used when calling Destroy on the WebService.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.VersionControl.Common.DestroyFlags.DeleteWorkspaceState" -->
+        <member name="F:Microsoft.TeamFoundation.VersionControl.Common.DestroyFlags.DeleteWorkspaceState">
+            <summary>
+            Instructs the server to delete local version rows, working folder mappings
+            pending adds &amp; branches, for any affected workspaces. 
+            This should be used only for move cases.
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Common.PendChangesOptions">
             <summary>
             Options for the PendChanges Web Service.

@@ -4,6 +4,70 @@
         <name>Microsoft.Extensions.Identity.Stores</name>
     </assembly>
     <members>
+        <member name="T:Microsoft.AspNetCore.Identity.IdentityPasskeyData">
+            <summary>
+            Represents data associated with a passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.PublicKey">
+            <summary>
+            Gets or sets the public key associated with this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.Name">
+            <summary>
+            Gets or sets the friendly name for this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.CreatedAt">
+            <summary>
+            Gets or sets the time this passkey was created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.SignCount">
+            <summary>
+            Gets or sets the signature counter for this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.Transports">
+            <summary>
+            Gets or sets the transports supported by this passkey.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#enumdef-authenticatortransport"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.IsUserVerified">
+            <summary>
+            Gets or sets whether the passkey has a verified user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.IsBackupEligible">
+            <summary>
+            Gets or sets whether the passkey is eligible for backup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.IsBackedUp">
+            <summary>
+            Gets or sets whether the passkey is currently backed up.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.AttestationObject">
+            <summary>
+            Gets or sets the attestation object associated with this passkey.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#attestation-object"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityPasskeyData.ClientDataJson">
+            <summary>
+            Gets or sets the collected client data JSON associated with this passkey.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#dictdef-collectedclientdata"/>.
+            </remarks>
+        </member>
         <member name="T:Microsoft.AspNetCore.Identity.IdentityRole">
             <summary>
             The default implementation of <see cref="T:Microsoft.AspNetCore.Identity.IdentityRole`1"/> which uses a string as the primary key.
@@ -295,6 +359,30 @@
         <member name="P:Microsoft.AspNetCore.Identity.IdentityUserLogin`1.UserId">
             <summary>
             Gets or sets the primary key of the user associated with this login.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Identity.IdentityUserPasskey`1">
+            <summary>
+            Represents a passkey credential for a user in the identity system.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#credential-record"/>.
+            </remarks>
+            <typeparam name="TKey">The type used for the primary key for this passkey credential.</typeparam>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityUserPasskey`1.UserId">
+            <summary>
+            Gets or sets the primary key of the user that owns this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityUserPasskey`1.CredentialId">
+            <summary>
+            Gets or sets the credential ID for this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.IdentityUserPasskey`1.Data">
+            <summary>
+            Gets or sets additional data associated with this passkey.
             </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Identity.IdentityUserRole`1">
@@ -1205,6 +1293,11 @@
         <member name="M:Microsoft.AspNetCore.Shared.ArgumentNullThrowHelper.ThrowIfNull(System.Object,System.String)">
             <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is null.</summary>
             <param name="argument">The reference type argument to validate as non-null.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentNullThrowHelper.ThrowIfNullOrEmpty(System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is null or empty.</summary>
+            <param name="argument">The <see cref="T:System.String"/> argument to validate as non-null and non-empty.</param>
             <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
         </member>
         <member name="M:Microsoft.AspNetCore.Shared.ObjectDisposedThrowHelper.ThrowIf(System.Boolean,System.Object)">

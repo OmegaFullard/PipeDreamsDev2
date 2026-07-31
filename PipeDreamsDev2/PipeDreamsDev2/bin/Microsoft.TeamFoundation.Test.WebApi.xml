@@ -312,7 +312,15 @@
             <param name="testAgentId">The test agent which calls this api.</param>
             <param name="lastCommandId">The last command Id which agent has already read.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Test.WebApi.ITestHttpClient.UpdateTestRunAsync(Microsoft.TeamFoundation.Test.WebApi.DistributedTestRun,System.String,System.Object,System.Threading.CancellationToken)" -->
+        <member name="M:Microsoft.TeamFoundation.Test.WebApi.ITestHttpClient.UpdateTestRunAsync(Microsoft.TeamFoundation.Test.WebApi.DistributedTestRun,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Create or Update the Distributed Test run for a set of environment/machines
+            </summary>
+            <param name="distributedTestRun"></param>
+            <param name="project"></param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Test.WebApi.ITestHttpClient.GetRerunConfigurationAsync(Microsoft.TeamFoundation.Test.WebApi.TestRunExecutionConfiguration,System.Object,System.Threading.CancellationToken)">
             <summary>
             [Preview API] http://(tfsserver):8080/tfs/DefaultCollection/_apis/test/TestExecutionConfiguration/ Request: Json of TestRun

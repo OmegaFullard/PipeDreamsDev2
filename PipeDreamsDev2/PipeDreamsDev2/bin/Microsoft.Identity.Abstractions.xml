@@ -9,7 +9,7 @@
             Description of a credential. Credentials are used to prove the identity of the
             application (See <see cref="P:Microsoft.Identity.Abstractions.IdentityApplicationOptions.ClientCredentials"/>), or
             to decrypt tokens (See <see cref="P:Microsoft.Identity.Abstractions.IdentityApplicationOptions.TokenDecryptionCredentials"/>). Credentials can be
-            secrets (client secrets), certificates, or signed assertions. They can be stored or provided in a variety of ways, 
+            secrets (client secrets), certificates, or signed assertions. They can be stored or provided in a variety of ways,
             and this class provides a way to describe them. The description is then used by Microsoft.Identity.Web to retrieve the credential.
             (See the DefaultCredentialProvider class)
             </summary>
@@ -30,6 +30,11 @@
             Gets a unique identifier for a CredentialDescription based on <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>.
             </summary>
         </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Algorithm">
+            <summary>
+            Algorithm used to create signing credentials.
+            </summary>
+        </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType">
             <summary>
             Type of the source of the credential. This property is used to determine which other properties need
@@ -37,243 +42,261 @@
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultUrl">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>, use this property to specify the
-            URL of the Key Vault containing the certificate, in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultCertificateName"/>.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a certificate stored in Key Vault used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>, use this property to specify the
+             URL of the Key Vault containing the certificate, in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultCertificateName"/>.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a certificate stored in Key Vault used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_json":::
             
-            The code below describes programmatically in C#, the same certificate stored in Key Vault.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_csharp":::
-            ]]></format>
-            </example>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultCertificateName"/>
+             The code below describes programmatically in C#, the same certificate stored in Key Vault.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_csharp":::
+             ]]></format>
+             </example>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultCertificateName"/>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath">
             <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/> or 
-            <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/>, specifies the certificate store from which to extract
+            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/> or
+            <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithSubjectName"/>, specifies the certificate store from which to extract
             the certificate. The format is the concatenation of a value of <see cref="T:System.Security.Cryptography.X509Certificates.StoreLocation"/> and a value of <see cref="T:System.Security.Cryptography.X509Certificates.StoreName"/>
             separated by a slash. For instance, use <c>CurrentUser/My</c> for a user certificate, and <c>LocalMachine/My</c> for a computer certificate.
             </summary>
-            <remarks>Use this property in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDistinguishedName"/> or <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateThumbprint"/>.</remarks>
+            <remarks>Use this property in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDistinguishedName"/>, <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateThumbprint"/>, or <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateSubjectName"/>.</remarks>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDistinguishedName"/>
             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateThumbprint"/>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDistinguishedName">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/>, specifies the distinguished name of
-            the certificate in the store specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a user certificate stored in the personal certificates folder (<b>CurrentUser/My</b>) and specified by its distinguised name, used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="distinguishedname_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/>, specifies the distinguished name of
+             the certificate in the store specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a user certificate stored in the personal certificates folder (<b>CurrentUser/My</b>) and specified by its distinguised name, used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="distinguishedname_json":::
             
-            The code below describes programmatically in C#, a computer certificate in the personal certificates folder (<b>LocalMachine/My<b>).
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="distinguishedname_csharp":::
-            ]]></format>
-            </example>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateThumbprint"/>
+             The code below describes programmatically in C#, a computer certificate in the personal certificates folder (<b>LocalMachine/My<b>).
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="distinguishedname_csharp":::
+             ]]></format>
+             </example>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateThumbprint"/>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateSubjectName">
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithSubjectName"/>, specifies the subject name of
+             the certificate in the store specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a user certificate stored in the personal certificates folder (<b>CurrentUser/My</b>) and specified by its subject name, used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="subjectname_json":::
+            
+             The code below describes programmatically in C#, a computer certificate in the personal certificates folder (<b>LocalMachine/My</b>) accessed by its subject name.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="subjectname_csharp":::
+             ]]></format>
+             </example>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultCertificateName">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>, use this property to specify the
-            the name of the certificate in Key Vault in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultUrl"/>.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a certificate stored in Key Vault used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>, use this property to specify the
+             the name of the certificate in Key Vault in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.KeyVaultUrl"/>.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a certificate stored in Key Vault used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_json":::
             
-            The code below describes programmatically in C#, the same certificate stored in Key Vault.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_csharp":::
-            ]]></format>
-            </example>
+             The code below describes programmatically in C#, the same certificate stored in Key Vault.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="keyvault_csharp":::
+             ]]></format>
+             </example>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateThumbprint">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/> specifies the thumbprint of the certificate to extract from
-            the certificate store specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a user certificate stored in the personal certificates folder (<b>CurrentUser/My</b>) and specified by its thumbprint, used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="thumbprint_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/> specifies the thumbprint of the certificate to extract from
+             the certificate store specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a user certificate stored in the personal certificates folder (<b>CurrentUser/My</b>) and specified by its thumbprint, used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="thumbprint_json":::
             
-            The code below describes programmatically in C#, a computer certificate in the personal certificates folder (<b>LocalMachine/My<b>) accessed by its thumbprint.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="thumbprint_csharp":::
-            ]]></format>
-            </example>
-            <remarks>Use this property in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.</remarks>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDistinguishedName"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>
+             The code below describes programmatically in C#, a computer certificate in the personal certificates folder (<b>LocalMachine/My<b>) accessed by its thumbprint.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="thumbprint_csharp":::
+             ]]></format>
+             </example>
+             <remarks>Use this property in conjunction with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>.</remarks>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDistinguishedName"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDiskPath">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>, specifies the path to the certificate on disk. You can
-            use this property to specify the path to a PFX file containing the certificate and its private key. If a password is needed, 
-            use <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword"/>.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a certificate retrieved by its path and a password to be used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>, specifies the path to the certificate on disk. You can
+             use this property to specify the path to a PFX file containing the certificate and its private key. If a password is needed,
+             use <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword"/>.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a certificate retrieved by its path and a password to be used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_json":::
             
-            The code below describes programmatically in C#, a the same certificate.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_csharp":::
-            ]]></format>
-            </example>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword"/>
-            <remarks>Using a certificate from a file is not recommended in production.</remarks>
+             The code below describes programmatically in C#, a the same certificate.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_csharp":::
+             ]]></format>
+             </example>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword"/>
+             <remarks>Using a certificate from a file is not recommended in production.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificatePassword">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>, specifies the password to use to access the certificate which
-            path is specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDiskPath"/>. Only use this property if the certificate is protected by a password.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a certificate retrieved by its path and a password to be used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>, specifies the password to use to access the certificate which
+             path is specified by <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDiskPath"/>. Only use this property if the certificate is protected by a password.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a certificate retrieved by its path and a password to be used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_json":::
             
-            The code below describes programmatically in C#, the same certificate.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_csharp":::
-            ]]></format>
-            </example>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
-            <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDiskPath"/>
-            <remarks>Using a certificate from a file is not recommended in production.</remarks>
+             The code below describes programmatically in C#, the same certificate.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="path_csharp":::
+             ]]></format>
+             </example>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>
+             <seealso cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateDiskPath"/>
+             <remarks>Using a certificate from a file is not recommended in production.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Base64EncodedValue">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/>, specifies the base64 encoded value of the certificate.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a certificate by its base64 encoded value, to be used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="base64_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/>, specifies the base64 encoded value of the certificate.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a certificate by its base64 encoded value, to be used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="base64_json":::
             
-            The code below describes programmatically in C#, the same certificate.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="base64_csharp":::
-            ]]></format>
-            </example>
-            <remarks>Using a certificate from its base64 encoded value is not recommended in production.</remarks>
+             The code below describes programmatically in C#, the same certificate.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="base64_csharp":::
+             ]]></format>
+             </example>
+             <remarks>Using a certificate from its base64 encoded value is not recommended in production.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.ClientSecret">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.ClientSecret"/>, describes the client secret to use as a client credential in a confidential client application.
-            The client secret is a string known only to the application and the identity provider. It needs to match the value configured during the application registration.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a client secret used as a client credential in a confidential client application:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="secret_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.ClientSecret"/>, describes the client secret to use as a client credential in a confidential client application.
+             The client secret is a string known only to the application and the identity provider. It needs to match the value configured during the application registration.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a client secret used as a client credential in a confidential client application:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="secret_json":::
             
-            The code below describes programmatically in C#, the same client secret.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="secret_csharp":::
-            ]]></format>
-            </example>
+             The code below describes programmatically in C#, the same client secret.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="secret_csharp":::
+             ]]></format>
+             </example>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.ManagedIdentityClientId">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/>, it specifies the client ID of the Azure user-assigned managed identity 
-            used to provide a signed assertion to act as a client credential for the application. This requires that the application is deployed on Azure, that the managed identity is configured, 
-            and that workload identity federation with the managed identity is declared in the application registration. For details, see https://learn.microsoft.com/azure/active-directory/workload-identities/workload-identity-federation.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a workload identity federation with a user assigned managed identity:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="msi_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/>, it specifies the client ID of the Azure user-assigned managed identity
+             used to provide a signed assertion to act as a client credential for the application. This requires that the application is deployed on Azure, that the managed identity is configured,
+             and that workload identity federation with the managed identity is declared in the application registration. For details, see https://learn.microsoft.com/azure/active-directory/workload-identities/workload-identity-federation.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a workload identity federation with a user assigned managed identity:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="msi_json":::
             
-            The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="msi_csharp":::
-            ]]></format>
-            </example>        
-            <remarks>If you want to use the system-assigned managed identity, just use <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/> and
-            don't provide a managed identity client ID.</remarks>
+             The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="msi_csharp":::
+             ]]></format>
+             </example>
+             <remarks>If you want to use the system-assigned managed identity, just use <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/> and
+             don't provide a managed identity client ID.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.SignedAssertionFileDiskPath">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFilePath"/>, optionally specifies the path on disk of a file 
-            containing a signed assertion used as a client assertion for the confidential client application. 
-            The signed assertion file is a file containing a signed JWT assertion that is used as a client credential. You will usually use this option when you want to integrate
-            with workload identity federation with Azure Kubernetes Service (AKS). 
-            For details, see https://learn.microsoft.com/azure/active-directory/workload-identities/workload-identity-federation.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a signed assertion acquired with workload identity federation with Azure Kubernetes Services (AKS):
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="aks_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFilePath"/>, optionally specifies the path on disk of a file
+             containing a signed assertion used as a client assertion for the confidential client application.
+             The signed assertion file is a file containing a signed JWT assertion that is used as a client credential. You will usually use this option when you want to integrate
+             with workload identity federation with Azure Kubernetes Service (AKS).
+             For details, see https://learn.microsoft.com/azure/active-directory/workload-identities/workload-identity-federation.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a signed assertion acquired with workload identity federation with Azure Kubernetes Services (AKS):
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="aks_json":::
             
-            The code below describes programmatically in C#, the same workload identity federation with with Azure Kubernetes Services (AKS) signed assertion.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="aks_csharp":::
-            ]]></format>
-            </example>
-            <remarks>When deployed to AKS, if you specify <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFilePath"/> but don't provide
-            the signed assertion file disk path, the file will be searched based on the content of two environment variables: 
-            <b>AZURE_FEDERATED_TOKEN_FILE</b> and <b>AZURE_ACCESS_TOKEN_FILE</b>.</remarks>
+             The code below describes programmatically in C#, the same workload identity federation with with Azure Kubernetes Services (AKS) signed assertion.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="aks_csharp":::
+             ]]></format>
+             </example>
+             <remarks>When deployed to AKS, if you specify <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFilePath"/> but don't provide
+             the signed assertion file disk path, the file will be searched based on the content of two environment variables:
+             <b>AZURE_FEDERATED_TOKEN_FILE</b> and <b>AZURE_ACCESS_TOKEN_FILE</b>.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.DecryptKeysAuthenticationOptions">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.AutoDecryptKeys"/>, this property describes the authority to use
-            to get a token for a web API to get the keys used to decrypt an encrypted token. The cloud instance will be the same as the application, but the application can be a multi-tenant
-            application (tenant = <b>common</b> or <b>organizations</b>), and in this case to get a token on behalf of itself, the
-            credential type needs to provide a tenant. More generally you might want to specify authentication options, including protocol, PopKey, etc ...
-            This credential description is only used for decrypt credentials, not for client credentials.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a decrypt credential to get the decrypt keys automatically:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="autodecryp_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.AutoDecryptKeys"/>, this property describes the authority to use
+             to get a token for a web API to get the keys used to decrypt an encrypted token. The cloud instance will be the same as the application, but the application can be a multi-tenant
+             application (tenant = <b>common</b> or <b>organizations</b>), and in this case to get a token on behalf of itself, the
+             credential type needs to provide a tenant. More generally you might want to specify authentication options, including protocol, PopKey, etc ...
+             This credential description is only used for decrypt credentials, not for client credentials.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a decrypt credential to get the decrypt keys automatically:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="autodecryp_json":::
             
-            The code below describes the same, programmatically in C#.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="autodecryp_csharp":::
-            ]]></format>
-            </example>
+             The code below describes the same, programmatically in C#.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="autodecryp_csharp":::
+             ]]></format>
+             </example>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.TokenExchangeAuthority">
-            <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/>, 
-            specifies the authority URL to use for token exchange. This is useful in scenarios where the issuer 
-            for the token exchange is different from the application's authority.
-            </summary>
-            <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a workload identity federation with a user assigned managed identity:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeAuthority_json":::
+             <summary>
+             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/>,
+             specifies the authority URL to use for token exchange. This is useful in scenarios where the issuer
+             for the token exchange is different from the application's authority.
+             </summary>
+             <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a workload identity federation with a user assigned managed identity:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeAuthority_json":::
             
-            The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeAuthority_csharp":::
-            ]]></format>
-            </example>
-            <remarks>If you want to use the default authority, don't provide a token exchange authority URL.</remarks>
+             The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeAuthority_csharp":::
+             ]]></format>
+             </example>
+             <remarks>If you want to use the default authority, don't provide a token exchange authority URL.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.Certificate">
             <summary>
-            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Certificate"/>, you will use this property to provide the certificate yourself. 
+            When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Certificate"/>, you will use this property to provide the certificate yourself.
             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>
             or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/>
             after the certificate is retrieved by a <see cref="T:Microsoft.Identity.Abstractions.ICredentialsLoader"/>, it will be stored in this property and also in the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CachedValue"/>.
@@ -292,6 +315,43 @@
             It will also be used by the <see cref="T:Microsoft.Identity.Abstractions.ICredentialsLoader"/> if it cannot find or load the credential.
             </summary>
         </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.UseBoundCredential">
+            <summary>
+            Gets or sets a value indicating whether this credential is intended to be used as a bound credential (mTLS bound)
+            when supported by the host library.
+            Certificate-flavored sources (<see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Certificate"/>, <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>,
+            <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/>, <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/>,
+            <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/>, <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/>,
+            <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithSubjectName"/>, and <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.ManagedCertificate"/>)
+            and <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.SignedAssertionFromManagedIdentity"/> are expected to honor this setting.
+            Other source types are expected to ignore this setting, based on the host library's choice.
+            The default value is <see langword="false"/>, which preserves existing behavior.
+            For more context, see <see href="https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/5791">MSAL.NET issue 5791</see>.
+            </summary>
+            <example>
+            <format type="text/markdown">
+            <![CDATA[
+            The JSON fragment below opts a signed assertion from managed identity credential into the bound credential flow:
+            ```json
+            {
+              "AzureAd": {
+                "Instance": "https://login.microsoftonline.com/",
+                "TenantId": "your-tenant-id",
+                "ClientId": "your-client-id",
+                "ClientCredentials": [
+                  {
+                    "SourceType": "SignedAssertionFromManagedIdentity",
+                    "ManagedIdentityClientId": "your-user-assigned-managed-identity-client-id",
+                    "TokenExchangeUrl": "api://AzureADTokenExchange",
+                    "UseBoundCredential": true
+                  }
+                ]
+              }
+            }
+            ```
+            ]]></format>
+            </example>
+        </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CredentialType">
             <summary>
             Describes the type of credentials, based on the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/>.
@@ -301,9 +361,10 @@
             <list type="bullet">
             <item>
             <term><see cref="F:Microsoft.Identity.Abstractions.CredentialType.Certificate"/></term>
-            <description>when <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Certificate"/>, you will use this property to provide the certificate yourself. 
+            <description>when <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Certificate"/>, you will use this property to provide the certificate yourself.
             When <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> is <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Base64Encoded"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault"/>
-            or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/></description>
+            or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.Path"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithDistinguishedName"/> or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithThumbprint"/>
+            or <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithSubjectName"/></description>
             </item>
             <item>
             <term><see cref="F:Microsoft.Identity.Abstractions.CredentialType.Secret"/></term>
@@ -322,22 +383,22 @@
             </remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.TokenExchangeUrl">
-            <summary>
-            (Microsoft Entra specific)
-            Value that can be used to configure the token exchange resource url in the case
-            of federation identity credentials with Managed identity.
-            </summary>
-            /// <example>
-            <format type="text/markdown">
-            <![CDATA[
-            The JSON fragment below describes a workload identity federation with a user assigned managed identity:
-            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeUrl_json":::
+             <summary>
+             (Microsoft Entra specific)
+             Value that can be used to configure the token exchange resource url in the case
+             of federation identity credentials with Managed identity.
+             </summary>
+             /// <example>
+             <format type="text/markdown">
+             <![CDATA[
+             The JSON fragment below describes a workload identity federation with a user assigned managed identity:
+             :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeUrl_json":::
             
-            The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
-            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeUrl_csharp":::
-            ]]></format>
-            </example> 
-            <remarks>If you want to use the default token exchange resource "api://AzureADTokenExchange", don't provide a token exchange url.</remarks>
+             The code below describes programmatically in C#, the same workload identity federation with a user assigned managed identity.
+             :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="tokenExchangeUrl_csharp":::
+             ]]></format>
+             </example>
+             <remarks>If you want to use the default token exchange resource "api://AzureADTokenExchange", don't provide a token exchange url.</remarks>
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderName">
             <summary>
@@ -347,7 +408,7 @@
         </member>
         <member name="P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderData">
             <summary>
-            Extensibility. When used with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.CustomSignedAssertion"/>, this property specifies 
+            Extensibility. When used with <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> = <see cref="F:Microsoft.Identity.Abstractions.CredentialSource.CustomSignedAssertion"/>, this property specifies
             additional data that will be passed to the extension computing the signed assertion. This is meant for SDKs extending the credential
             description capabilities.
             </summary>
@@ -365,7 +426,7 @@
         <member name="F:Microsoft.Identity.Abstractions.CredentialSource.Certificate">
             <summary>
             Use this value if you provide a certificate yourself. When setting the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> property to this value,
-            you will also provide the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.Certificate"/>.
+            you will also provide the <b>CredentialDescription.Certificate</b>.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Abstractions.CredentialSource.KeyVault">
@@ -535,6 +596,29 @@
             This is an extension point, which goes along with <see cref = "P:Microsoft.Identity.Abstractions.CredentialDescription.CustomSignedAssertionProviderName" />
             </summary>
         </member>
+        <member name="F:Microsoft.Identity.Abstractions.CredentialSource.ManagedCertificate">
+            <summary>
+            Use this value to indicate that the credential is a managed certificate.
+            This is currently a Microsoft-Internal concept which has no meaning outside of Microsoft.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.CredentialSource.StoreWithSubjectName">
+            <summary>
+            Use this value when you provide a certificate from the certificate store, described by its subject name.
+            When setting the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.SourceType"/> property to this value, you'll also provide the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateSubjectName"/>
+            and <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CertificateStorePath"/> properties.
+            </summary>
+            <example>
+            <format type="text/markdown">
+            <![CDATA[
+            The Json fragment below describes a user certificate stored in the personal certificates folder (<b>CurrentUser/My</b>) and specified by its subject name, used as a client credential in a confidential client application:
+            :::code language="json" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="subjectname_json":::
+            
+            The code below describes programmatically in C#, a computer certificate in the personal certificates folder (<b>LocalMachine/My</b>) accessed by its subject name.
+            :::code language="csharp" source="~/../abstractions-samples/test/Microsoft.Identity.Abstractions.Tests/CredentialDescriptionTest.cs" id="subjectname_csharp":::
+            ]]></format>
+            </example>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.CredentialSourceLoaderParameters">
             <summary>
             Parameters that credential loaders, like signed assertion providers, can use to load credentials. You won't use this class directly
@@ -560,6 +644,18 @@
             <summary>
             Authority (Cloud instance and tenant) to which the credential will be presented.
             </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialSourceLoaderParameters.Protocol">
+            <summary>
+            Gets or sets the authentication protocol being used for this request.
+            For example, "Bearer", "MTLS_POP", "MTLS".
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.CredentialSourceLoaderParameters.ApiUrl">
+            <summary>
+            Gets or sets the URL of the API which will be hit with this request.
+            </summary>
+            <remarks>The value should be a valid absolute URI.</remarks>
         </member>
         <member name="T:Microsoft.Identity.Abstractions.CredentialType">
             <summary>
@@ -589,11 +685,25 @@
             Decrypt keys. It can only be used in <see cref="P:Microsoft.Identity.Abstractions.IdentityApplicationOptions.TokenDecryptionCredentials"/>.
             </summary>
         </member>
+        <member name="T:Microsoft.Identity.Abstractions.IAuthenticationSchemeInformationProvider">
+            <summary>
+            Provides information about the effective authentication scheme (options name). 
+            If passing null or string.Empty, this returns the default authentication scheme.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.IAuthenticationSchemeInformationProvider.GetEffectiveAuthenticationScheme(System.String)">
+            <summary>
+            Get the effective authentication scheme based on the provided authentication scheme.
+            </summary>
+            <param name="authenticationScheme">intended authentication scheme (options name).</param>
+            <returns>Effective authentication scheme (default authentication scheme if the intended
+            authentication scheme is null or an empty string.</returns>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.ICredentialsLoader">
             <summary>
             Contract for credential loaders, implemented by classes like the DefaultCertificateLoader or the DefaultCredentialLoader 
             in Microsoft.Identity.Web. Credential loaders are used to load credentials from a <see cref="T:Microsoft.Identity.Abstractions.CredentialDescription"/>, the result
-            is then in the <see cref="P:Microsoft.Identity.Abstractions.CredentialDescription.CachedValue"/> property.
+            is then in the <b>CredentialDescription.CachedValue</b> property.
             Credential loaders constitute an extensibility point. They delegate to credential source loaders, which are specified in the <see cref="P:Microsoft.Identity.Abstractions.ICredentialsLoader.CredentialSourceLoaders"/>
             collection, choosing the one which <see cref="P:Microsoft.Identity.Abstractions.ICredentialSourceLoader.CredentialSource"/> matches the credential source of the
             credential description to load.
@@ -933,6 +1043,92 @@
             which is the value used by Microsoft.Identity.Web.UI.
             </summary>
         </member>
+        <member name="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError">
+            <summary>
+            Represents an error that occurred during authorization header creation or processing.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderError.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderError.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/> class
+            with the specified error code and message.
+            </summary>
+            <param name="code">The error code that identifies the type of error.</param>
+            <param name="message">A human-readable message describing the error.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderError.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/> class
+            with the specified error code, message, and underlying exception.
+            </summary>
+            <param name="code">The error code that identifies the type of error.</param>
+            <param name="message">A human-readable message describing the error.</param>
+            <param name="exception">The underlying exception that caused this error.</param>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderError.Code">
+            <summary>
+            Gets or sets the error code that identifies the type of error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderError.Message">
+            <summary>
+            Gets or sets a human-readable message describing the error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderError.Exception">
+            <summary>
+            Gets or sets the underlying exception that caused this error, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderError.Metadata">
+            <summary>
+            Metadata captured during the failed token-acquisition attempt that produced this error,
+            or <see langword="null"/> when no metadata was captured.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderError.FailureDetails">
+            <summary>
+            Diagnostic details about the failure (server error code, status code, claims challenge,
+            correlation id), or <see langword="null"/> when no such details were captured.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation">
+            <summary>
+            Represents comprehensive information about an authorization header,
+            including the header value and binding certificate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation.AuthorizationHeaderValue">
+            <summary>
+            Gets or sets the authorization header value.
+            For example: "Bearer token", "PoP token", etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation.BindingCertificate">
+            <summary>
+            Gets or sets the binding certificate for client authentication.
+            This certificate is used to bind the authorization header to the client,
+            commonly used in mutual TLS (mTLS) authentication scenarios and Proof-of-Possession (PoP) protocols.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation.Metadata">
+            <summary>
+            Metadata describing how the access token backing this header was acquired,
+            or <see langword="null"/> when no metadata was captured.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation.AdditionalResponseParameters">
+            <summary>
+            Additional parameters returned on the token-endpoint response, or <see langword="null"/> if none.
+            Mirrors <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenResult.AdditionalResponseParameters"/>; populated on the header surface
+            so callers do not need a separate <see cref="T:Microsoft.Identity.Abstractions.AcquireTokenResult"/> lookup.
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions">
             <summary>
             Options passed-in to call downstream web APIs. To call Microsoft Graph, see rather
@@ -973,6 +1169,28 @@
             the Authorization header, and just before the message is sent.
             </summary>
         </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.OnBeforeAuthHeaderCreation">
+            <summary>
+            Provides an opportunity for the caller app to customize the <see cref="T:System.Net.Http.HttpRequestMessage"/> <b>before</b>
+            the authorization header is created. At this point the <c>Authorization</c> header is not yet present.
+            Use this to shape the request that a request-binding protocol signs — for example a SignedHttpRequest
+            (SHR) that binds the query, headers, or body (the <c>q</c>/<c>h</c>/<c>b</c> claims) to the token — so the
+            signature covers the finalized request. To observe or adjust the request <b>after</b> the header has been
+            created, use <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.OnAfterAuthHeaderCreation"/> (or <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.CustomizeHttpRequestMessage"/>).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.OnAfterAuthHeaderCreation">
+            <summary>
+            Provides an opportunity for the caller app to customize the <see cref="T:System.Net.Http.HttpRequestMessage"/> <b>after</b>
+            the authorization header (including the <c>Authorization</c> header) has been set, and just before the
+            message is sent — the point at which the finalized request can be read or adjusted. Provided for naming
+            symmetry with <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.OnBeforeAuthHeaderCreation"/>; it shares this timing with the pre-existing
+            <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.CustomizeHttpRequestMessage"/>, which continues to be invoked for backwards compatibility. When
+            both are set they run at the same point, so callers should not depend on their relative order. Do
+            not modify material bound by a request-binding protocol (SHR <c>q</c>/<c>h</c>/<c>b</c>) here, since it
+            runs after signing; use <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.OnBeforeAuthHeaderCreation"/> for that.
+            </summary>
+        </member>
         <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions.AcquireTokenOptions">
             <summary>
             Options related to token acquisition.
@@ -1010,6 +1228,99 @@
             </summary>
             <returns>URL of the downstream web API.</returns>
         </member>
+        <member name="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult">
+            <summary>
+            Represents the result of an authorization header creation operation.
+            This result can contain either successful authorization header information or error details.
+            </summary>
+            <remarks>
+            This class wraps <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> to provide strongly-typed
+            results for authorization header operations. It includes an implicit conversion to string
+            for backward compatibility with existing code that expects a string authorization header.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.#ctor(Microsoft.Identity.Abstractions.AuthorizationHeaderInformation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult"/> class
+            with successful authorization header information.
+            </summary>
+            <param name="info">The authorization header information containing the result of a successful operation.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.#ctor(Microsoft.Identity.Abstractions.AuthorizationHeaderError)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult"/> class
+            with error information.
+            </summary>
+            <param name="error">The error information describing why the operation failed.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.#ctor(Microsoft.Identity.Abstractions.AuthorizationHeaderInformation,Microsoft.Identity.Abstractions.AuthorizationHeaderError)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult"/> class
+            with either authorization header information or error details.
+            </summary>
+            <param name="info">The authorization header information if the operation succeeded, or null if it failed.</param>
+            <param name="error">The error information if the operation failed, or null if it succeeded.</param>
+            <remarks>
+            Exactly one of <paramref name="info"/> or <paramref name="error"/> should be non-null.
+            This constructor is provided for compatibility with the original design proposal.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Succeeded">
+            <summary>
+            Gets a value indicating whether the operation succeeded.
+            </summary>
+            <value>
+            <c>true</c> if the operation succeeded and <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Result"/> contains a valid value;
+            <c>false</c> if the operation failed and <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Error"/> contains the error.
+            </value>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Result">
+            <summary>
+            Gets the authorization header information associated with the operation result.
+            </summary>
+            <returns>The authorization header information associated with the operation result.</returns>
+            <remarks>This property is only valid if <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Succeeded"/> is <c>true</c>.</remarks>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Error">
+            <summary>
+            Gets the error associated with the operation result.
+            </summary>
+            <returns>The error associated with the operation result.</returns>
+            <remarks>This property is only valid if <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.Succeeded"/> is <c>false</c>.</remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.op_Implicit(Microsoft.Identity.Abstractions.AuthorizationHeaderResult)~System.String">
+            <summary>
+            Implicitly converts an <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult"/> to a string
+            containing the authorization header value.
+            </summary>
+            <param name="result">The result to convert.</param>
+            <returns>The authorization header value if the operation succeeded.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown when the result represents a failed operation. If the error contains an exception,
+            the original exception is thrown; otherwise, a new <see cref="T:System.InvalidOperationException"/>
+            is thrown with details about the failure.
+            </exception>
+            <remarks>
+            This implicit conversion provides backward compatibility with code that expects
+            authorization header providers to return string values directly.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.op_Implicit(Microsoft.Identity.Abstractions.AuthorizationHeaderInformation)~Microsoft.Identity.Abstractions.AuthorizationHeaderResult">
+            <summary>
+            Implicitly creates an <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult"/> from
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/>.
+            </summary>
+            <param name="info">The authorization header information.</param>
+            <returns>A successful result containing the authorization header information.</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AuthorizationHeaderResult.op_Implicit(Microsoft.Identity.Abstractions.AuthorizationHeaderError)~Microsoft.Identity.Abstractions.AuthorizationHeaderResult">
+            <summary>
+            Implicitly creates an <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderResult"/> from
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/>.
+            </summary>
+            <param name="error">The authorization header error.</param>
+            <returns>A failed result containing the error information.</returns>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.DownstreamApiOptions">
             <summary>
             Options passed-in to call downstream web APIs.
@@ -1026,7 +1337,13 @@
                 "MyProfile": {
                    "BaseUrl": "https://graph.microsoft.com/v1.0",
                    "RelativePath": "/me/profile",
-                    "Scopes": [ "user.read"]
+                    "Scopes": [ "user.read"],
+                    "ExtraHeaderParameters": {
+                      "OData-Version": "4.0"
+                    },
+                    "ExtraQueryParameters": {
+                      "filter": "displayName eq 'John'"
+                    }
                 }
               ]
             ```
@@ -1040,7 +1357,13 @@
                    "RelativePath": "/books/all",
                    "RequestAppToken": true,
                    "ProtocolScheme": "Pop",
-                    "Scopes": ["https://mylibrary.com/.default"]
+                    "Scopes": ["https://mylibrary.com/.default"],
+                    "ExtraHeaderParameters": {
+                      "X-API-Version": "v2"
+                    },
+                    "ExtraQueryParameters": {
+                      "format": "json"
+                    }
                 }
               ]
             ```
@@ -1113,6 +1436,22 @@
             Content type of the request body.
             </summary>
             <default>application/json</default>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.DownstreamApiOptions.ExtraHeaderParameters">
+            <summary>
+            Sets extra headers in the HTTP request to the downstream web API. This should
+            not be confused with another option to set the headers in the request to the 
+            Identity Provider. See <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraHeadersParameters"/> for 
+            that scenario.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.DownstreamApiOptions.ExtraQueryParameters">
+            <summary>
+            Sets query parameters for the query string in the HTTP request to the 
+            downstream web API. This should not be confused with another option to set the 
+            query parameters in the request to the Identity Provider. See 
+            <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraQueryParameters"/> for that scenario.
+            </summary>
         </member>
         <member name="T:Microsoft.Identity.Abstractions.DownstreamApiOptionsReadOnlyHttpMethod">
             <summary>
@@ -1189,7 +1528,7 @@
             <summary>
             Creates an authorization header for calling a protected web API on behalf of a user or the application.
             </summary>
-            <param name="scopes">The scopes for which to request the authorization header. 
+            <param name="scopes">The scopes for which to request the authorization header.
             Provide a single scope if the header needs to be created on behalf of an application.</param>
             <param name="options">The <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions"/> containing information about the API
             to be called and token acquisition settings. If not provided, the header will be for a bearer token.</param>
@@ -1199,6 +1538,125 @@
             context.</param>
             <param name="cancellationToken">A token to cancel the operation.</param>
             <returns>A string containing the authorization header, such as "Bearer token" or "PoP token".</returns>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider2">
+            <summary>
+            Extends <see cref="T:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider"/> with metadata-carrying counterparts of its three
+            header-creation methods. Each returns the full <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> (header
+            value, binding certificate, and token-acquisition metadata) as an
+            <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> instead of a bare header string.
+            </summary>
+            <remarks>
+            Follows the additive numeric-suffix interface-evolution convention: the new interface extends the
+            existing one so a single implementation can serve both, and existing string-returning callers are
+            unaffected. The user, application, and unified entry points mirror the inputs of
+            <see cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderForUserAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/>,
+            <see cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderForAppAsync(System.String,Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Threading.CancellationToken)"/>, and
+            <see cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/> respectively; when the
+            selected protocol is bound (for example mTLS Proof-of-Possession) the binding certificate is
+            populated on the returned <see cref="P:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation.BindingCertificate"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider2.CreateAuthorizationHeaderInformationForUserAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)">
+            <summary>
+            Rich-result counterpart of <see cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderForUserAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/>:
+            creates the authorization header used to call a protected web API on behalf of a user and returns
+            the full <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> on success, with metadata and (when the
+            protocol is bound) the binding certificate populated. On failure the
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/> carries the token-acquisition metadata and structured
+            failure details when available.
+            </summary>
+            <param name="scopes">Scopes for which to request the authorization header.</param>
+            <param name="authorizationHeaderProviderOptions">Information about the API that will be called (for
+            some protocols like PoP), and token acquisition options.</param>
+            <param name="claimsPrincipal">Inbound authentication elements. In a web API, this is usually the
+            result of the validation of a token. In a web app, this would be information about the signed-in
+            user. This is not useful in daemon applications. In Microsoft.Identity.Web you rarely need to
+            provide this parameter as it's inferred from the context.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>An <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> containing the
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> on success, or an <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/>
+            on failure.</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider2.CreateAuthorizationHeaderInformationForAppAsync(System.String,Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Threading.CancellationToken)">
+            <summary>
+            Rich-result counterpart of <see cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderForAppAsync(System.String,Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Threading.CancellationToken)"/>:
+            creates the authorization header used to call a protected web API on behalf of the application
+            itself and returns the full <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> on success, with metadata
+            and (when the protocol is bound) the binding certificate populated. On failure the
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/> carries the token-acquisition metadata and structured
+            failure details when available.
+            </summary>
+            <param name="scopes">Scopes for which to request the authorization header.</param>
+            <param name="downstreamApiOptions">Information about the API that will be called (for some
+            protocols like PoP), and token acquisition options. Optional. If not provided, the authorization
+            header will be for a bearer token.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>An <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> containing the
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> on success, or an <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/>
+            on failure.</returns>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider2.CreateAuthorizationHeaderInformationAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)">
+            <summary>
+            Rich-result counterpart of <see cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/>:
+            creates an authorization header for calling a protected web API on behalf of a user or the
+            application and returns the full <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> on success, with
+            metadata and (when the protocol is bound) the binding certificate populated. On failure the
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/> carries the token-acquisition metadata and structured
+            failure details when available.
+            </summary>
+            <param name="scopes">The scopes for which to request the authorization header. Provide a single
+            scope if the header needs to be created on behalf of an application.</param>
+            <param name="options">The <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions"/> containing information
+            about the API to be called and token acquisition settings. If not provided, the header will be for
+            a bearer token.</param>
+            <param name="claimsPrincipal">Inbound authentication elements. In a web API, this is usually the
+            result of the validation of a token. In a web app, this would be information about the signed-in
+            user. This is not useful in daemon applications. In Microsoft.Identity.Web you rarely need to
+            provide this parameter as it's inferred from the context.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>An <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> containing the
+            <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderInformation"/> on success, or an <see cref="T:Microsoft.Identity.Abstractions.AuthorizationHeaderError"/>
+            on failure.</returns>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider`1">
+            <summary>
+            <inheritdoc cref="T:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider"/>
+            </summary>
+            <typeparam name="TResult">The result type.</typeparam>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider`1.CreateAuthorizationHeaderAsync(Microsoft.Identity.Abstractions.DownstreamApiOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/>
+            <param name="downstreamApiOptions">
+            The options containing information about the API
+            to be called and token acquisition settings.
+            Use <see cref="P:Microsoft.Identity.Abstractions.DownstreamApiOptions.Scopes"/> to request scope(s)
+            for the authorization header.
+            </param>
+            <param name="claimsPrincipal">
+            <inheritdoc cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/>
+            </param>
+            <param name="cancellationToken">
+            <inheritdoc cref="M:Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider.CreateAuthorizationHeaderAsync(System.Collections.Generic.IEnumerable{System.String},Microsoft.Identity.Abstractions.AuthorizationHeaderProviderOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)"/>
+            </param>        
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.IBoundAuthorizationHeaderProvider">
+            <summary>
+            Creates an authorization header value that the caller can use to access a protected web API, which supports either unbound or
+            bound to a certificate (for example, in an mTLS PoP scenario) tokens.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.IBoundAuthorizationHeaderProvider.CreateBoundAuthorizationHeaderAsync(Microsoft.Identity.Abstractions.DownstreamApiOptions,System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)">
+            <summary>
+            Creates the authorization header used to call a protected web API with either unbound or bound to certificate tokens.
+            </summary>
+            <param name="downstreamApiOptions">Information about the API that will be called and token acquisition options.</param>
+            <param name="claimsPrincipal">Inbound authentication elements. In a web API, this is usually the result of the
+            validation of a token. In a web app, this would be information about the signed-in user. This is not useful in
+            daemon applications. In Microsoft.Identity.Web you rarely need to provide this parameter as it's inferred from the
+            context.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>A result which contains authorization token with optional bound certificate</returns>
         </member>
         <member name="T:Microsoft.Identity.Abstractions.IDownstreamApi">
             <summary>
@@ -1856,6 +2314,274 @@
             </code>
             </example>
         </member>
+        <member name="T:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails">
+            <summary>
+            Diagnostic details about a failed token-acquisition attempt, mirroring fields
+            exposed by the underlying token-service exception.
+            </summary>
+            <remarks>
+            All members are diagnostic only. Do not program against specific values of <see cref="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.SubError"/>,
+            <see cref="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.ErrorCode"/>, or <see cref="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.ServiceErrorCodes"/>; they are set by the token service and
+            may change without notice.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.ErrorCode">
+            <summary>
+            Token-service error code (for example an OAuth error code or an ESTS error code).
+            Mirrors <c>MsalServiceException.ErrorCode</c> when MSAL is the underlying acquirer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.SubError">
+            <summary>
+            Server-emitted sub-error code refining <see cref="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.ErrorCode"/> (for example
+            <c>consent_required</c>, <c>bad_token</c>, <c>protection_policy_required</c>);
+            diagnostic only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.ServiceErrorCodes">
+            <summary>
+            The raw STS-specific error codes returned by the token service (for example the numeric
+            <c>AADSTS</c> codes) that further refine <see cref="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.ErrorCode"/>. Mirrors
+            <c>MsalServiceException.ErrorCodesForLogging</c> when MSAL is the underlying acquirer; diagnostic only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.StatusCode">
+            <summary>
+            HTTP status code returned by the token endpoint, when available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.Claims">
+            <summary>
+            Claims challenge returned by the token service, when available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionFailureDetails.CorrelationId">
+            <summary>
+            Correlation id associated with the failing request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.OperationError">
+            <summary>
+            Represents an error that occurred during an operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationError.#ctor">
+            <summary>
+            Creates an instance of <see cref="T:Microsoft.Identity.Abstractions.OperationError"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.OperationResult`2">
+            <summary>
+            Represents the result of an operation that can either succeed with a valid result or failed with a specific error.
+            </summary>
+            <typeparam name="TResult">The type of the successful result value.</typeparam>
+            <typeparam name="TError">The type of the error.</typeparam>
+            <remarks>
+            This struct implements a discriminated union pattern for operation results.
+            It ensures that either a valid result or an error is available, but never both.
+            This pattern helps with clear error handling and propagation.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationResult`2.#ctor(`0)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> indicating a successful operation
+            and containing an object of the associated type.
+            </summary>
+            <param name="result">The value associated with the success.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationResult`2.#ctor(`1)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/>
+            indicating a failed operation and containing error information.
+            </summary>
+            <param name="error">The error associated with the failure.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationResult`2.#ctor">
+            <summary>
+            Empty constructor implementation to prevent creating an empty result.
+            </summary>
+            <remarks>Throws an <see cref="T:System.InvalidOperationException"/> when called as this should never be used. Always initialize Result with either a value or error.</remarks>
+            <exception cref="T:System.InvalidOperationException">Thrown when called.</exception>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.OperationResult`2.Succeeded">
+            <summary>
+            Gets a value indicating whether the operation succeeded.
+            </summary>
+            <value>
+            <c>true</c> if the operation succeeded and <see cref="P:Microsoft.Identity.Abstractions.OperationResult`2.Result"/> contains a valid value;
+            <c>false</c> if the operation failed and <see cref="P:Microsoft.Identity.Abstractions.OperationResult`2.Error"/> contains the error.
+            </value>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.OperationResult`2.Error">
+            <summary>
+            Gets the error associated with the operation result.
+            </summary>
+            <returns>The error associated with the operation result.</returns>
+            <remarks>This property is only valid if the result type is not valid.</remarks>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.OperationResult`2.Result">
+            <summary>
+            Gets the result associated with the operation result.
+            </summary>
+            <returns>The result associated with the operation result.</returns>
+            <remarks>This property is only valid if the result type is valid.</remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationResult`2.op_Implicit(`0)~Microsoft.Identity.Abstractions.OperationResult{`0,`1}">
+            <summary>
+            Creates an <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/>, successful result implicitly from the value.
+            </summary>
+            <param name="result">The value to be stored in the result.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationResult`2.op_Implicit(`1)~Microsoft.Identity.Abstractions.OperationResult{`0,`1}">
+            <summary>
+            Creates an <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/> result implicitly from the error value.
+            </summary>
+            <param name="error">The error to be stored in the result.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.OperationResult`2.ToOperationResult">
+            <summary>
+            Casts the result to a <see cref="T:Microsoft.Identity.Abstractions.OperationResult`2"/>.
+            </summary>
+            <remarks>Required for compatibility, see CA2225 for more information</remarks>
+            <returns>The existing instance.</returns>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.AcquiredTokenCacheLevel">
+            <summary>
+            Cache tier that served the access token.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheLevel.None">
+            <summary>
+            Token was retrieved from the identity provider rather than from a cache tier.
+            This includes cache misses (entry absent or expired), forced or proactive refresh,
+            and cases where the cache was bypassed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheLevel.Unknown">
+            <summary>
+            The cache tier is not known.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheLevel.L1Cache">
+            <summary>
+            Token served from the in-memory (L1) cache.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheLevel.L2Cache">
+            <summary>
+            Token served from the distributed (L2) cache.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason">
+            <summary>
+            Reason a token-acquisition attempt refreshed the cached access token.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason.NotApplicable">
+            <summary>
+            No refresh occurred. The cached token satisfied the request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason.ForceRefreshOrClaims">
+            <summary>
+            Refresh was requested explicitly (for example a force-refresh flag) or driven by a claims challenge.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason.NoCachedAccessToken">
+            <summary>
+            No matching token was found in the cache.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason.Expired">
+            <summary>
+            The cached token had expired.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason.ProactivelyRefreshed">
+            <summary>
+            The token was refreshed proactively before its expiration to smooth out load.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenCacheRefreshReason.CacheDisabled">
+            <summary>
+            The token cache was disabled, so the cache was not consulted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.AcquiredTokenRegionDetails">
+            <summary>
+            Information about regional ESTS routing for a token-acquisition attempt.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquiredTokenRegionDetails.RegionUsed">
+            <summary>
+            Region that was used for the request, or <see langword="null"/> if no region was used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquiredTokenRegionDetails.RegionOutcome">
+            <summary>
+            How the value of <see cref="P:Microsoft.Identity.Abstractions.AcquiredTokenRegionDetails.RegionUsed"/> was obtained.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquiredTokenRegionDetails.AutoDetectionError">
+            <summary>
+            Diagnostic message populated when region autodetection failed; <see langword="null"/> otherwise.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome">
+            <summary>
+            Outcome of regional ESTS routing for a token-acquisition attempt.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome.None">
+            <summary>
+            Regional routing was not requested.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome.UserProvidedValid">
+            <summary>
+            A user-supplied region was used and matched the autodetected region.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome.UserProvidedAutodetectionFailed">
+            <summary>
+            A user-supplied region was used; autodetection could not verify it.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome.UserProvidedInvalid">
+            <summary>
+            A user-supplied region was used but disagreed with the autodetected region.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome.AutodetectSuccess">
+            <summary>
+            The region was discovered through autodetection.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenRegionOutcome.FallbackToGlobal">
+            <summary>
+            Autodetection failed and the request was sent to the global ESTS.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.AcquiredTokenSource">
+            <summary>
+            Source from which an access token was obtained.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenSource.IdentityProvider">
+            <summary>
+            Token was obtained directly from the identity provider (an STS token endpoint).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenSource.Cache">
+            <summary>
+            Token was served from the token cache (in-memory L1 or distributed L2).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Identity.Abstractions.AcquiredTokenSource.Broker">
+            <summary>
+            Token was obtained from a broker (for example WAM on Windows).
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.AcquireTokenOptions">
             <summary>
             Options directing the token acquisition. These options are provided to the <see cref="T:Microsoft.Identity.Abstractions.ITokenAcquirer"/> methods, or
@@ -2001,6 +2727,42 @@
             </summary>
             <returns>A shallow Clone of the options.</returns>
         </member>
+        <member name="T:Microsoft.Identity.Abstractions.AcquireTokenOptionsExtensions">
+            <summary>
+            SDK-to-SDK helpers for flowing the outgoing <see cref="T:System.Net.Http.HttpRequestMessage"/> to a request-aware
+            authorization header provider through <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraParameters"/>.
+            </summary>
+            <remarks>
+            Not meant to be used by application developers, but by other SDKs. Some protocols bind the authorization
+            header to the outgoing request - for example a PoP SignedHttpRequest's <c>q</c>/<c>h</c>/<c>b</c> claims
+            hash the request's query, headers, and body. The calling SDK sets the request before the header is created;
+            the header-provider SDK reads it. Using the existing <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraParameters"/> bag
+            avoids adding a new interface for each request-bound protocol (SHR, mTLS PoP, acquisition metadata, ...).
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AcquireTokenOptionsExtensions.SetHttpRequestMessage(Microsoft.Identity.Abstractions.AcquireTokenOptions,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Stores the outgoing <see cref="T:System.Net.Http.HttpRequestMessage"/> so a request-aware authorization header provider
+            can bind to it. The request's content should already be set so that body binding is accurate.
+            </summary>
+            <param name="options">The token acquisition options to attach the request to.</param>
+            <param name="httpRequestMessage">The outgoing request whose material may be bound into the header.</param>
+            <remarks>
+            Writes to a fresh copy of <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenOptions.ExtraParameters"/>. <see cref="M:Microsoft.Identity.Abstractions.AcquireTokenOptions.Clone"/>
+            shallow-copies the dictionary reference, so a per-call options object can share one instance with a
+            DI-singleton; cloning before writing keeps this per-request value isolated to the current call and prevents
+            concurrent acquisitions from observing each other's request.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Abstractions.AcquireTokenOptionsExtensions.GetHttpRequestMessage(Microsoft.Identity.Abstractions.AcquireTokenOptions)">
+            <summary>
+            Gets the outgoing <see cref="T:System.Net.Http.HttpRequestMessage"/> previously stored by
+            <see cref="M:Microsoft.Identity.Abstractions.AcquireTokenOptionsExtensions.SetHttpRequestMessage(Microsoft.Identity.Abstractions.AcquireTokenOptions,System.Net.Http.HttpRequestMessage)"/>, or <see langword="null"/>
+            if none was set. The reader does not own the request; the SDK that created it remains responsible for disposal.
+            </summary>
+            <param name="options">The token acquisition options to read the request from.</param>
+            <returns>The stored request, or <see langword="null"/>.</returns>
+        </member>
         <member name="T:Microsoft.Identity.Abstractions.AcquireTokenResult">
             <summary>
             Result of a token acquisition.
@@ -2061,6 +2823,22 @@
         <member name="P:Microsoft.Identity.Abstractions.AcquireTokenResult.TokenType">
             <summary>
             Gets the protocol (Bearer or Pop).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquireTokenResult.AdditionalResponseParameters">
+            <summary>
+            Exposes response parameters returned by the token issuer on the token endpoint, alongside the access token and its expiration time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquireTokenResult.BindingCertificate">
+            <summary>
+            The certificate bound to the access token, specific to mTLS POP tokens.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.AcquireTokenResult.Metadata">
+            <summary>
+            Metadata describing how the token was acquired (timings, cache state, region routing,
+            additional response parameters). <see langword="null"/> if no metadata was captured.
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Abstractions.ITokenAcquirer">
@@ -2139,6 +2917,70 @@
             <returns>
             New instance of <see cref="T:Microsoft.Identity.Abstractions.ManagedIdentityOptions"/> with the same <see cref="P:Microsoft.Identity.Abstractions.ManagedIdentityOptions.UserAssignedClientId"/>.
             </returns>
+        </member>
+        <member name="T:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata">
+            <summary>
+            Metadata describing how an access token was acquired: timings, cache state,
+            region routing, and any additional response parameters returned by the token endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.TokenSource">
+            <summary>
+            Source the token was obtained from.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.CacheRefreshReason">
+            <summary>
+            Reason the cache was refreshed during this attempt, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.CacheLevel">
+            <summary>
+            Cache tier that served the token.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.TokenEndpoint">
+            <summary>
+            Token endpoint contacted, or <see langword="null"/> if the token was served from the cache.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.DurationTotalInMs">
+            <summary>
+            Total wall-clock duration of the token-acquisition attempt, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.DurationInHttpInMs">
+            <summary>
+            Time spent in HTTP calls to the token endpoint, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.DurationInCacheInMs">
+            <summary>
+            Time spent reading and writing the token cache, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.ExpiresOn">
+            <summary>
+            Point in time at which the access token expires, or <see langword="null"/> when not captured.
+            Mirrors <see cref="P:Microsoft.Identity.Abstractions.AcquireTokenResult.ExpiresOn"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.RefreshOn">
+            <summary>
+            Point in time at which the token should be proactively refreshed,
+            or <see langword="null"/> when no proactive refresh hint was provided.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Abstractions.TokenAcquisitionMetadata.RegionDetails">
+            <summary>
+            Regional ESTS routing details, or <see langword="null"/> when regional routing was not used.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Polyfill that enables <c>init</c>-only setters on target frameworks that do not
+            ship the type in their reference assemblies.
+            </summary>
         </member>
     </members>
 </doc>

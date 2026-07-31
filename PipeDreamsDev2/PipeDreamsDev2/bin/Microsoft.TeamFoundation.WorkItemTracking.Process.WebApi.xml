@@ -6,7 +6,7 @@
     <members>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.CreateProcessBehaviorAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.ProcessBehaviorCreateRequest,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a single behavior in the given process.
+            [Preview API] Creates a single behavior in the given process.
             </summary>
             <param name="behavior"></param>
             <param name="processId">The ID of the process</param>
@@ -15,7 +15,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteProcessBehaviorAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a behavior in the process.
+            [Preview API] Removes a behavior in the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="behaviorRefName">The reference name of the behavior</param>
@@ -24,7 +24,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessBehaviorAsync(System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.GetBehaviorsExpand},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a behavior of the process.
+            [Preview API] Returns a behavior of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="behaviorRefName">The reference name of the behavior</param>
@@ -34,7 +34,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessBehaviorsAsync(System.Guid,System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.GetBehaviorsExpand},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of all behaviors in the process.
+            [Preview API] Returns a list of all behaviors in the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="expand"></param>
@@ -43,7 +43,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateProcessBehaviorAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.ProcessBehaviorUpdateRequest,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Replaces a behavior in the process.
+            [Preview API] Replaces a behavior in the process.
             </summary>
             <param name="behaviorData"></param>
             <param name="processId">The ID of the process</param>
@@ -53,7 +53,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.CreateControlInGroupAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Control,System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a control in a group.
+            [Preview API] Creates a control in a group.
             </summary>
             <param name="control">The control.</param>
             <param name="processId">The ID of the process.</param>
@@ -64,7 +64,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.MoveControlToGroupAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Control,System.Guid,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Moves a control to a specified group.
+            [Preview API] Moves a control to a specified group.
             </summary>
             <param name="control">The control.</param>
             <param name="processId">The ID of the process.</param>
@@ -77,7 +77,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.RemoveControlFromGroupAsync(System.Guid,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a control from the work item form.
+            [Preview API] Removes a control from the work item form.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -88,7 +88,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateControlAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Control,System.Guid,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a control on the work item form.
+            [Preview API] Updates a control on the work item form.
             </summary>
             <param name="control">The updated control.</param>
             <param name="processId">The ID of the process.</param>
@@ -100,7 +100,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.AddFieldToWorkItemTypeAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.AddProcessWorkItemTypeFieldRequest,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a field to a work item type.
+            [Preview API] Adds a field to a work item type.
             </summary>
             <param name="field"></param>
             <param name="processId">The ID of the process.</param>
@@ -110,7 +110,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetAllWorkItemTypeFieldsAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of all fields in a work item type.
+            [Preview API] Returns a list of all fields in a work item type.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -119,7 +119,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetWorkItemTypeFieldAsync(System.Guid,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.ProcessWorkItemTypeFieldsExpandLevel},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a field in a work item type.
+            [Preview API] Returns a field in a work item type.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -130,7 +130,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.RemoveWorkItemTypeFieldAsync(System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a field from a work item type. Does not permanently delete the field.
+            [Preview API] Removes a field from a work item type. Does not permanently delete the field.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -140,7 +140,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateWorkItemTypeFieldAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.UpdateProcessWorkItemTypeFieldRequest,System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a field in a work item type.
+            [Preview API] Updates a field in a work item type.
             </summary>
             <param name="field"></param>
             <param name="processId">The ID of the process.</param>
@@ -151,7 +151,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.AddGroupAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Group,System.Guid,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a group to the work item form.
+            [Preview API] Adds a group to the work item form.
             </summary>
             <param name="group">The group.</param>
             <param name="processId">The ID of the process.</param>
@@ -163,7 +163,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.MoveGroupToPageAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Group,System.Guid,System.String,System.String,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Moves a group to a different page and section.
+            [Preview API] Moves a group to a different page and section.
             </summary>
             <param name="group">The updated group.</param>
             <param name="processId">The ID of the process.</param>
@@ -178,7 +178,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.MoveGroupToSectionAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Group,System.Guid,System.String,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Moves a group to a different section.
+            [Preview API] Moves a group to a different section.
             </summary>
             <param name="group">The updated group.</param>
             <param name="processId">The ID of the process.</param>
@@ -192,7 +192,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.RemoveGroupAsync(System.Guid,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a group from the work item form.
+            [Preview API] Removes a group from the work item form.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -204,7 +204,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateGroupAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Group,System.Guid,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a group in the work item form.
+            [Preview API] Updates a group in the work item form.
             </summary>
             <param name="group">The updated group.</param>
             <param name="processId">The ID of the process.</param>
@@ -217,7 +217,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetFormLayoutAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the form layout.
+            [Preview API] Gets the form layout.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -226,7 +226,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.CreateListAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.PickList,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a picklist.
+            [Preview API] Creates a picklist.
             </summary>
             <param name="picklist">Picklist</param>
             <param name="userState"></param>
@@ -234,7 +234,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteListAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a picklist.
+            [Preview API] Removes a picklist.
             </summary>
             <param name="listId">The ID of the list</param>
             <param name="userState"></param>
@@ -242,7 +242,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetListAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a picklist.
+            [Preview API] Returns a picklist.
             </summary>
             <param name="listId">The ID of the list</param>
             <param name="userState"></param>
@@ -250,14 +250,14 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetListsMetadataAsync(System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns meta data of the picklist.
+            [Preview API] Returns meta data of the picklist.
             </summary>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateListAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.PickList,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a list.
+            [Preview API] Updates a list.
             </summary>
             <param name="picklist"></param>
             <param name="listId">The ID of the list</param>
@@ -266,7 +266,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.AddPageAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Page,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a page to the work item form.
+            [Preview API] Adds a page to the work item form.
             </summary>
             <param name="page">The page.</param>
             <param name="processId">The ID of the process.</param>
@@ -276,7 +276,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.RemovePageAsync(System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a page from the work item form
+            [Preview API] Removes a page from the work item form
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -286,7 +286,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdatePageAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Page,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a page on the work item form
+            [Preview API] Updates a page on the work item form
             </summary>
             <param name="page">The page</param>
             <param name="processId">The ID of the process</param>
@@ -296,7 +296,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.CreateNewProcessAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.CreateProcessModel,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a process.
+            [Preview API] Creates a process.
             </summary>
             <param name="createRequest">CreateProcessModel.</param>
             <param name="userState"></param>
@@ -304,7 +304,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteProcessByIdAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a process of a specific ID.
+            [Preview API] Removes a process of a specific ID.
             </summary>
             <param name="processTypeId"></param>
             <param name="userState"></param>
@@ -312,7 +312,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.EditProcessAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.UpdateProcessModel,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Edit a process of a specific ID.
+            [Preview API] Edit a process of a specific ID.
             </summary>
             <param name="updateRequest"></param>
             <param name="processTypeId"></param>
@@ -321,7 +321,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetListOfProcessesAsync(System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.GetProcessExpandLevel},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get list of all processes including system and inherited.
+            [Preview API] Get list of all processes including system and inherited.
             </summary>
             <param name="expand"></param>
             <param name="userState"></param>
@@ -329,7 +329,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessByItsIdAsync(System.Guid,System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.GetProcessExpandLevel},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a single process of a specified ID.
+            [Preview API] Get a single process of a specified ID.
             </summary>
             <param name="processTypeId"></param>
             <param name="expand"></param>
@@ -338,7 +338,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.AddProcessWorkItemTypeRuleAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.CreateProcessRuleRequest,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a rule to work item type in the process.
+            [Preview API] Adds a rule to work item type in the process.
             </summary>
             <param name="processRuleCreate"></param>
             <param name="processId">The ID of the process</param>
@@ -348,7 +348,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteProcessWorkItemTypeRuleAsync(System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a rule from the work item type in the process.
+            [Preview API] Removes a rule from the work item type in the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -358,7 +358,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessWorkItemTypeRuleAsync(System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a single rule in the work item type of the process.
+            [Preview API] Returns a single rule in the work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -368,7 +368,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessWorkItemTypeRulesAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of all rules in the work item type of the process.
+            [Preview API] Returns a list of all rules in the work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -377,7 +377,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateProcessWorkItemTypeRuleAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.UpdateProcessRuleRequest,System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a rule in the work item type of the process.
+            [Preview API] Updates a rule in the work item type of the process.
             </summary>
             <param name="processRule"></param>
             <param name="processId">The ID of the process</param>
@@ -388,7 +388,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.CreateStateDefinitionAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.WorkItemStateInputModel,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a state definition in the work item type of the process.
+            [Preview API] Creates a state definition in the work item type of the process.
             </summary>
             <param name="stateModel"></param>
             <param name="processId">The ID of the process</param>
@@ -398,7 +398,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteStateDefinitionAsync(System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a state definition in the work item type of the process.
+            [Preview API] Removes a state definition in the work item type of the process.
             </summary>
             <param name="processId">ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -408,7 +408,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetStateDefinitionAsync(System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a single state definition in a work item type of the process.
+            [Preview API] Returns a single state definition in a work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -418,7 +418,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetStateDefinitionsAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of all state definitions in a work item type of the process.
+            [Preview API] Returns a list of all state definitions in a work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -427,7 +427,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.HideStateDefinitionAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.HideStateModel,System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Hides a state definition in the work item type of the process.Only states with customizationType:System can be hidden.
+            [Preview API] Hides a state definition in the work item type of the process.Only states with customizationType:System can be hidden.
             </summary>
             <param name="hideStateModel"></param>
             <param name="processId">The ID of the process</param>
@@ -438,7 +438,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateStateDefinitionAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.WorkItemStateInputModel,System.Guid,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a given state definition in the work item type of the process.
+            [Preview API] Updates a given state definition in the work item type of the process.
             </summary>
             <param name="stateModel"></param>
             <param name="processId">ID of the process</param>
@@ -449,7 +449,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteSystemControlAsync(System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a system control modification on the work item form.
+            [Preview API] Deletes a system control modification on the work item form.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -459,7 +459,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetSystemControlsAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets edited system controls for a work item type in a process. To get all system controls (base + edited) use layout API(s)
+            [Preview API] Gets edited system controls for a work item type in a process. To get all system controls (base + edited) use layout API(s)
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -468,7 +468,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateSystemControlAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.Control,System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates/adds a system control on the work item form.
+            [Preview API] Updates/adds a system control on the work item form.
             </summary>
             <param name="control"></param>
             <param name="processId">The ID of the process.</param>
@@ -479,7 +479,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.CreateProcessWorkItemTypeAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.CreateProcessWorkItemTypeRequest,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a work item type in the process.
+            [Preview API] Creates a work item type in the process.
             </summary>
             <param name="workItemType"></param>
             <param name="processId">The ID of the process on which to create work item type.</param>
@@ -488,7 +488,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.DeleteProcessWorkItemTypeAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a work item type in the process.
+            [Preview API] Removes a work item type in the process.
             </summary>
             <param name="processId">The ID of the process.</param>
             <param name="witRefName">The reference name of the work item type.</param>
@@ -497,7 +497,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessWorkItemTypeAsync(System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.GetWorkItemTypeExpand},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a single work item type in a process.
+            [Preview API] Returns a single work item type in a process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefName">The reference name of the work item type</param>
@@ -507,7 +507,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetProcessWorkItemTypesAsync(System.Guid,System.Nullable{Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.GetWorkItemTypeExpand},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of all work item types in a process.
+            [Preview API] Returns a list of all work item types in a process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="expand">Flag to determine what properties of work item type to return</param>
@@ -516,7 +516,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateProcessWorkItemTypeAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.UpdateProcessWorkItemTypeRequest,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a work item type of the process.
+            [Preview API] Updates a work item type of the process.
             </summary>
             <param name="workItemTypeUpdate"></param>
             <param name="processId">The ID of the process</param>
@@ -526,7 +526,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.AddBehaviorToWorkItemTypeAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.WorkItemTypeBehavior,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a behavior to the work item type of the process.
+            [Preview API] Adds a behavior to the work item type of the process.
             </summary>
             <param name="behavior"></param>
             <param name="processId">The ID of the process</param>
@@ -536,7 +536,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetBehaviorForWorkItemTypeAsync(System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a behavior for the work item type of the process.
+            [Preview API] Returns a behavior for the work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefNameForBehaviors">Work item type reference name for the behavior</param>
@@ -546,7 +546,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.GetBehaviorsForWorkItemTypeAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a list of all behaviors for the work item type of the process.
+            [Preview API] Returns a list of all behaviors for the work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefNameForBehaviors">Work item type reference name for the behavior</param>
@@ -555,7 +555,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.RemoveBehaviorFromWorkItemTypeAsync(System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a behavior for the work item type of the process.
+            [Preview API] Removes a behavior for the work item type of the process.
             </summary>
             <param name="processId">The ID of the process</param>
             <param name="witRefNameForBehaviors">Work item type reference name for the behavior</param>
@@ -565,7 +565,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WorkItemTrackingProcessHttpClient.UpdateBehaviorToWorkItemTypeAsync(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.WorkItemTypeBehavior,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a behavior for the work item type of the process.
+            [Preview API] Updates a behavior for the work item type of the process.
             </summary>
             <param name="behavior"></param>
             <param name="processId">The ID of the process</param>
@@ -1599,9 +1599,26 @@
             i.e.when the Is value of the referenced field is equal to the Was value of that field.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.RuleConditionType.WhenWas" -->
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.RuleConditionType.WhenCurrentUserIsMemberOfGroup" -->
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.RuleConditionType.WhenCurrentUserIsNotMemberOfGroup" -->
+        <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.RuleConditionType.WhenWas">
+            <summary>
+            $WhenWas. This condition limits the execution of its children to cases when another field value is changed from one value to another. 
+            e.g. If the condition is : When the work item state changes from New to Approved, here $WhenWas clause defines the "New" state of the workitem and $When clause defines "Approved" state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.RuleConditionType.WhenCurrentUserIsMemberOfGroup">
+            <summary>
+            This condition checks if current user is member of a particular group. This condition does not have any 1:1 mapping with any server side rule condition, rather this is a dummy condition
+            added for customer simplicity of understanding. This condition is later translated to a FOR membership filter . 
+            e.g. If the condition is : WhenCurrentUserIsMemberOfGroup "Approvers" then "MakeRequired" Field1.Here it translates to a For rule , "MakeRequired" for "Approvers"
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.RuleConditionType.WhenCurrentUserIsNotMemberOfGroup">
+            <summary>
+            This condition checks if current user is not member of a particular group. This condition does not have any 1:1 mapping with any server side rule condition, rather this is a dummy condition
+            added for customer simplicity of understanding. This condition is later translated to a NOT membership filter . 
+            e.g. If the condition is : WhenCurrentUserIsNotMemberOfGroup "Approvers" then "MakeRequired" Field1.Here it translates to a Not rule , "MakeRequired" not "Approvers"
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.Models.UpdateProcessRuleRequest">
             <summary>
             Request class/object to update the rule.

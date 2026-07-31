@@ -52,9 +52,8 @@
         <member name="P:Microsoft.Identity.Web.CertificatelessOptions.ManagedIdentityClientId">
             <summary>
             The value is used to establish a connection between external workload identities
-            and Azure Active Directory. If Azure AD is the issuer, this value should be the object
-            ID of the managed identity service principal in the tenant that will be used to 
-            impersonate the app.
+            and Azure Active Directory. If Azure AD is the issuer, this value should be the client
+            ID of the managed identity.
             Can be null if you are using the machine assigned managed identity.
             Needs to be assigned if you are using a user assigned managed identity.
             </summary>
@@ -113,6 +112,29 @@
             Expiry of the client assertion.
             </summary>
         </member>
+        <member name="P:Microsoft.Identity.Web.ClientAssertionProviderBase.SupportsTokenBinding">
+            <summary>
+            Indicates whether this provider can produce a binding certificate alongside its signed
+            assertion, enabling the outer confidential client to issue mTLS Proof-of-Possession
+            tokens. Defaults to <c>false</c>; providers that opt in must override this property to
+            <c>true</c> and override <see cref="M:Microsoft.Identity.Web.ClientAssertionProviderBase.GetSignedAssertionWithBindingAsync(Microsoft.Identity.Client.AssertionRequestOptions,System.Threading.CancellationToken)"/> to return a
+            non-null <see cref="T:Microsoft.Identity.Client.ClientSignedAssertion"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ClientAssertionProviderBase.GetSignedAssertionWithBindingAsync(Microsoft.Identity.Client.AssertionRequestOptions,System.Threading.CancellationToken)">
+            <summary>
+            Acquires a signed assertion together with its binding certificate, used by
+            confidential clients configured for mTLS Proof-of-Possession. Returns <c>null</c>
+            when the provider does not support token binding (the default).
+            </summary>
+            <param name="assertionRequestOptions">Input options populated by MSAL.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>
+            The signed assertion paired with its binding certificate, or <c>null</c> if the
+            provider does not support token binding. Providers that return non-null must also
+            return <c>true</c> from <see cref="P:Microsoft.Identity.Web.ClientAssertionProviderBase.SupportsTokenBinding"/>.
+            </returns>
+        </member>
         <member name="T:Microsoft.Identity.Web.ManagedIdentityClientAssertion">
             <summary>
             See https://aka.ms/ms-id-web/certificateless.
@@ -141,12 +163,60 @@
             This value is different on clouds other than Azure Public</param>
             <param name="logger">A logger</param>
         </member>
+        <member name="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.#ctor(System.String,System.String,Microsoft.Extensions.Logging.ILogger,Microsoft.Identity.Client.IMsalHttpClientFactory)">
+            <summary>
+            Same as <see cref="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.#ctor(System.String,System.String,Microsoft.Extensions.Logging.ILogger)"/>,
+            but allows injecting a custom MSAL HttpClient factory (used by tests).
+            </summary>
+            <param name="managedIdentityClientId">Optional ClientId of the Managed Identity</param>
+            <param name="tokenExchangeUrl">Optional audience of the token to be requested from Managed Identity. Default value is "api://AzureADTokenExchange". 
+            This value is different on clouds other than Azure Public</param>
+            <param name="logger">A logger.</param>
+            <param name="testHttpClientFactory">Optional MSAL HttpClient factory.</param>
+        </member>
         <member name="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.GetClientAssertionAsync(Microsoft.Identity.Client.AssertionRequestOptions)">
             <summary>
             Prototype of certificate-less authentication using a signed assertion
             acquired with managed identity (certificateless).
             </summary>
             <returns>The signed assertion.</returns>
+        </member>
+        <member name="P:Microsoft.Identity.Web.ManagedIdentityClientAssertion.SupportsTokenBinding">
+            <summary>
+            Returns <c>true</c>: managed identity provides a binding certificate alongside the
+            federated assertion via MSAL's IMDS V2 mTLS PoP flow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.GetSignedAssertionWithBindingAsync(Microsoft.Identity.Client.AssertionRequestOptions,System.Threading.CancellationToken)">
+            <summary>
+            Acquires a managed identity token bound to a binding certificate via mTLS PoP,
+            returning both the assertion and the binding certificate so MSAL can pin the outer
+            confidential client request to the same certificate (FIC + mTLS PoP, two-leg flow).
+            </summary>
+            <remarks>
+            Used when the consuming confidential client has token binding enabled (e.g.,
+            <c>AuthorizationHeaderProviderOptions.ProtocolScheme = "MTLS_POP"</c>). Requires
+            MSAL.NET key-attestation support and an Azure VM / Arc-hosted managed identity
+            capable of returning a <see cref="P:Microsoft.Identity.Client.AuthenticationResult.BindingCertificate"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.AcquireManagedIdentityTokenAsync(Microsoft.Identity.Client.AssertionRequestOptions,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Builds and executes the underlying managed-identity token request shared by both the
+            bearer (<see cref="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.GetClientAssertionAsync(Microsoft.Identity.Client.AssertionRequestOptions)"/>) and mTLS PoP
+            (<see cref="M:Microsoft.Identity.Web.ManagedIdentityClientAssertion.GetSignedAssertionWithBindingAsync(Microsoft.Identity.Client.AssertionRequestOptions,System.Threading.CancellationToken)"/>) code paths.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Identity.Web.TestOnly.ManagedIdentityClientAssertionTestHook">
+            <summary>
+            TEST-ONLY hook so unit tests can override the HttpClient factory used by
+            ManagedIdentityClientAssertion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Identity.Web.TestOnly.ManagedIdentityClientAssertionTestHook.HttpClientFactoryForTests">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.Identity.Client.IMsalHttpClientFactory"/> used by <c>ManagedIdentityClientAssertion</c> for unit testing purposes.
+            </summary>
         </member>
     </members>
 </doc>

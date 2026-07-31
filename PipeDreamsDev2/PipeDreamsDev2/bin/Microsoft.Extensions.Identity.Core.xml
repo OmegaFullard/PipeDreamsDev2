@@ -568,6 +568,11 @@
             Represents the 2.0 version of the identity schema
             </summary>
         </member>
+        <member name="F:Microsoft.AspNetCore.Identity.IdentitySchemaVersions.Version3">
+            <summary>
+            Represents the 3.0 version of the identity schema
+            </summary>
+        </member>
         <member name="T:Microsoft.AspNetCore.Identity.ILookupNormalizer">
             <summary>
             Provides an abstraction for normalizing keys (emails/names) for lookup purposes.
@@ -911,7 +916,7 @@
             <summary>
             Get the authenticator key for the specified <paramref name="user" />.
             </summary>
-            <param name="user">The user whose security stamp should be set.</param>
+            <param name="user">The user whose authenticator key should be retrieved.</param>
             <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
             <returns>The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing the security stamp for the specified <paramref name="user"/>.</returns>
         </member>
@@ -1189,6 +1194,58 @@
             <returns>
             The <see cref="T:System.Threading.Tasks.Task"/> for the asynchronous operation, containing the user, if any which matched the specified login provider and key.
             </returns>
+        </member>
+        <member name="T:Microsoft.AspNetCore.Identity.IUserPasskeyStore`1">
+            <summary>
+            Provides an abstraction for storing passkey credentials for a user.
+            </summary>
+            <typeparam name="TUser">The type that represents a user.</typeparam>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.IUserPasskeyStore`1.AddOrUpdatePasskeyAsync(`0,Microsoft.AspNetCore.Identity.UserPasskeyInfo,System.Threading.CancellationToken)">
+            <summary>
+            Adds a new passkey credential in the store for the specified <paramref name="user"/>,
+            or updates an existing passkey.
+            </summary>
+            <param name="user">The user to create the passkey credential for.</param>
+            <param name="passkey">The passkey to add.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.IUserPasskeyStore`1.GetPasskeysAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Gets the passkey credentials for the specified <paramref name="user"/>.
+            </summary>
+            <param name="user">The user whose passkeys should be retrieved.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing a list of the user's passkeys.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.IUserPasskeyStore`1.FindByPasskeyIdAsync(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Finds and returns a user, if any, associated with the specified passkey credential identifier.
+            </summary>
+            <param name="credentialId">The passkey credential id to search for.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing the user, if any, associated with the specified passkey credential id.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.IUserPasskeyStore`1.FindPasskeyAsync(`0,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Finds a passkey for the specified user with the specified credential id.
+            </summary>
+            <param name="user">The user whose passkey should be retrieved.</param>
+            <param name="credentialId">The credential id to search for.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing the user's passkey information.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.IUserPasskeyStore`1.RemovePasskeyAsync(`0,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Removes a passkey credential from the specified <paramref name="user"/>.
+            </summary>
+            <param name="user">The user to remove the passkey credential from.</param>
+            <param name="credentialId">The credential id of the passkey to remove.</param>
+            <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
+            <returns>The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation.</returns>
         </member>
         <member name="T:Microsoft.AspNetCore.Identity.IUserPasswordStore`1">
             <summary>
@@ -1781,7 +1838,7 @@
         </member>
         <member name="T:Microsoft.AspNetCore.Identity.PersonalDataAttribute">
             <summary>
-            Used to indicate that a something is considered personal data.
+            Used to indicate that something is considered personal data.
             </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Identity.PhoneNumberTokenProvider`1">
@@ -1819,7 +1876,7 @@
         </member>
         <member name="T:Microsoft.AspNetCore.Identity.ProtectedPersonalDataAttribute">
             <summary>
-            Used to indicate that a something is considered personal data and should be protected.
+            Used to indicate that something is considered personal data and should be protected.
             </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Identity.RoleManager`1">
@@ -2476,7 +2533,7 @@
             </summary>
             <param name="loginProvider">The provider associated with this login information.</param>
             <param name="providerKey">The unique identifier for this user provided by the login provider.</param>
-            <param name="displayName">The display name for the login provider.</param>
+            <param name="providerDisplayName">The display name for the login provider.</param>
         </member>
         <member name="P:Microsoft.AspNetCore.Identity.UserLoginInfo.LoginProvider">
             <summary>
@@ -2593,6 +2650,11 @@
             The <see cref="T:Microsoft.AspNetCore.Identity.IdentityOptions"/> used to configure Identity.
             </summary>
         </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserManager`1.ServiceProvider">
+            <summary>
+            The <see cref="T:System.IServiceProvider"/> used to resolve Identity services.
+            </summary>
+        </member>
         <member name="P:Microsoft.AspNetCore.Identity.UserManager`1.SupportsUserAuthenticationTokens">
             <summary>
             Gets a flag indicating whether the backing user store supports authentication tokens.
@@ -2697,6 +2759,14 @@
             <value>
             true if the backing user store supports returning <see cref="T:System.Linq.IQueryable"/> collections of
             information, otherwise false.
+            </value>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserManager`1.SupportsUserPasskey">
+            <summary>
+            Gets a flag indicating whether the backing user store supports passkeys.
+            </summary>
+            <value>
+            true if the backing user store supports passkeys, otherwise false.
             </value>
         </member>
         <member name="P:Microsoft.AspNetCore.Identity.UserManager`1.Users">
@@ -3541,6 +3611,53 @@
             <param name="user">The user.</param>
             <returns>How many recovery code are still valid for a user.</returns>
         </member>
+        <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.AddOrUpdatePasskeyAsync(`0,Microsoft.AspNetCore.Identity.UserPasskeyInfo)">
+            <summary>
+            Adds a new passkey for the given user or updates an existing one.
+            </summary>
+            <param name="user">The user for whom the passkey should be added or updated.</param>
+            <param name="passkey">The passkey to add or update.</param>
+            <returns>Whether the passkey was successfully set.</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.GetPasskeysAsync(`0)">
+            <summary>
+            Gets a user's passkeys.
+            </summary>
+            <param name="user">The user whose passkeys should be retrieved.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing a list of the user's passkeys.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.GetPasskeyAsync(`0,System.Byte[])">
+            <summary>
+            Finds a user's passkey by its credential id.
+            </summary>
+            <param name="user">The user whose passkey should be retrieved.</param>
+            <param name="credentialId">The credential ID to search for.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing the passkey if found; otherwise <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.FindByPasskeyIdAsync(System.Byte[])">
+            <summary>
+            Finds the user associated with a passkey.
+            </summary>
+            <param name="credentialId">The credential ID to search for.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing the user if found, otherwise <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.RemovePasskeyAsync(`0,System.Byte[])">
+            <summary>
+            Removes a passkey credential from a user.
+            </summary>
+            <param name="user">The user whose passkey should be removed.</param>
+            <param name="credentialId">The credential id of the passkey to remove.</param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous operation, containing the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult"/>
+            of the operation.
+            </returns>
+        </member>
         <member name="M:Microsoft.AspNetCore.Identity.UserManager`1.Dispose(System.Boolean)">
             <summary>
             Releases the unmanaged resources used by the role manager and optionally releases the managed resources.
@@ -3620,6 +3737,90 @@
             True if the application requires each user to have their own, unique, not null, not blank email, otherwise false.
             </value>
         </member>
+        <member name="T:Microsoft.AspNetCore.Identity.UserPasskeyInfo">
+            <summary>
+            Provides information for a user's passkey credential.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Identity.UserPasskeyInfo.#ctor(System.Byte[],System.Byte[],System.DateTimeOffset,System.UInt32,System.String[],System.Boolean,System.Boolean,System.Boolean,System.Byte[],System.Byte[])">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNetCore.Identity.UserPasskeyInfo"/>.
+            </summary>
+            <param name="credentialId">The credential ID for the passkey.</param>
+            <param name="publicKey">The public key for the passkey.</param>
+            <param name="createdAt">The time when the passkey was created.</param>
+            <param name="signCount">The signature counter for the passkey.</param>
+            <param name="attestationObject">The passkey's attestation object.</param>
+            <param name="clientDataJson">The passkey's client data JSON.</param>
+            <param name="transports">The transports supported by this passkey.</param>
+            <param name="isUserVerified">Indicates if the passkey has a verified user.</param>
+            <param name="isBackupEligible">Indicates if the passkey is eligible for backup.</param>
+            <param name="isBackedUp">Indicates if the passkey is currently backed up.</param>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.CredentialId">
+            <summary>
+            Gets the credential ID for this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.PublicKey">
+            <summary>
+            Gets the public key associated with this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.Name">
+            <summary>
+            Gets or sets the friendly name for this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.CreatedAt">
+            <summary>
+            Gets the time this passkey was created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.SignCount">
+            <summary>
+            Gets or sets the signature counter for this passkey.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.Transports">
+            <summary>
+            Gets the transports supported by this passkey.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#enumdef-authenticatortransport"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.IsUserVerified">
+            <summary>
+            Gets or sets whether the passkey has a verified user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.IsBackupEligible">
+            <summary>
+            Gets whether the passkey is eligible for backup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.IsBackedUp">
+            <summary>
+            Gets or sets whether the passkey is currently backed up.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.AttestationObject">
+            <summary>
+            Gets the attestation object associated with this passkey.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#attestation-object"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNetCore.Identity.UserPasskeyInfo.ClientDataJson">
+            <summary>
+            Gets the collected client data JSON associated with this passkey.
+            </summary>
+            <remarks>
+            See <see href="https://www.w3.org/TR/webauthn-3/#dictdef-collectedclientdata"/>.
+            </remarks>
+        </member>
         <member name="T:Microsoft.AspNetCore.Identity.UserValidator`1">
             <summary>
             Provides validation services for user classes.
@@ -3650,6 +3851,55 @@
             <summary>Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is null.</summary>
             <param name="argument">The reference type argument to validate as non-null.</param>
             <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentNullThrowHelper.ThrowIfNullOrEmpty(System.String,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is null or empty.</summary>
+            <param name="argument">The <see cref="T:System.String"/> argument to validate as non-null and non-empty.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfZero(System.Int32,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.</summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfNegative(System.Int32,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfNegative(System.Int64,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.</summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfNegativeOrZero(System.Int32,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.</summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfGreaterThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfLessThan``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greatar than or equal than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Shared.ArgumentOutOfRangeThrowHelper.ThrowIfLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+            <param name="value">The argument to validate as greatar than than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
         </member>
         <member name="M:Microsoft.AspNetCore.Shared.ObjectDisposedThrowHelper.ThrowIf(System.Boolean,System.Object)">
             <summary>Throws an <see cref="T:System.ObjectDisposedException"/> if the specified <paramref name="condition"/> is <see langword="true"/>.</summary>
@@ -3830,6 +4080,9 @@
         </member>
         <member name="P:Microsoft.Extensions.Identity.Core.Resources.StoreNotIUserTwoFactorStore">
             <summary>Store does not implement IUserTwoFactorStore&lt;TUser&gt;.</summary>
+        </member>
+        <member name="P:Microsoft.Extensions.Identity.Core.Resources.StoreNotIUserPasskeyStore">
+            <summary>Store does not implement IUserPasskeyStore&lt;TUser&gt;.</summary>
         </member>
         <member name="P:Microsoft.Extensions.Identity.Core.Resources.RecoveryCodeRedemptionFailed">
             <summary>Recovery code redemption failed.</summary>

@@ -3204,10 +3204,39 @@
             true if the character is an extender, false otherwise
             </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.ReadDynamicContent" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.ReadComment" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.ReadUnknownDirective" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.SkipProcessingDirective" -->
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.ReadDynamicContent">
+            <summary>
+            skips dynamic content starting with '&lt;![' and ending with ']&gt;' 
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.ReadComment">
+            <summary>
+            <![CDATA[
+            skips comments starting with '<!-' and ending with '-->' 
+            NOTE: 10/06/2004: processing changed, will now skip anything starting with
+            the "<!-"  sequence and ending in "!>" or "->", because in practice many html pages do not
+            use the full comment specifying conventions
+            ]]>
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.ReadUnknownDirective">
+            <summary>
+            <![CDATA[
+            skips past unknown directives that start with "<!" but are not comments or Cdata
+            ignores content of such directives until the next ">" character
+            applies to directives such as DOCTYPE, etc that we do not presently support
+            ]]>
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlLexicalAnalyzer.SkipProcessingDirective">
+            <summary>
+            <![CDATA[
+            skips processing directives starting with the characters '<?' and ending with '?>' 
+            NOTE: 10/14/2004: IE also ends processing directives with a />, so this function is
+            being modified to recognize that condition as well
+            ]]>
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.HtmlParser">
             <summary>
             HtmlParser class accepts a string of possibly badly formed Html, parses it and returns a string
@@ -3420,9 +3449,58 @@
             The caller must use this node to get to next sibling from it.
             </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddSection(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddParagraph(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddImplicitParagraph(System.Xml.XmlElement,System.Xml.XmlNode,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})" -->
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddSection(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})">
+            <summary>
+            Generates Section or Paragraph element from DIV depending whether it contains any block elements or not
+            </summary>
+            <param name="xamlParentElement">
+            XmlElement representing Xaml parent to which the converted element should be added
+            </param>
+            <param name="htmlElement">
+            XmlElement representing Html element to be converted
+            </param>
+            <param name="inheritedProperties">
+            properties inherited from parent context
+            </param>
+            <param name="stylesheet"></param>
+            <param name="sourceContext"></param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddParagraph(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})">
+            <summary>
+            Generates Paragraph element from P, H1-H7, Center etc.
+            </summary>
+            <param name="xamlParentElement">
+            XmlElement representing Xaml parent to which the converted element should be added
+            </param>
+            <param name="htmlElement">
+            XmlElement representing Html element to be converted
+            </param>
+            <param name="inheritedProperties">
+            properties inherited from parent context
+            </param>
+            <param name="stylesheet"></param>
+            <param name="sourceContext"></param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddImplicitParagraph(System.Xml.XmlElement,System.Xml.XmlNode,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})">
+            <summary>
+            Creates a Paragraph element and adds all nodes starting from htmlNode
+            converted to appropriate Inlines.
+            </summary>
+            <param name="xamlParentElement">
+            XmlElement representing Xaml parent to which the converted element should be added
+            </param>
+            <param name="htmlNode">
+            XmlNode starting a collection of implicitly wrapped inlines.
+            </param>
+            <param name="inheritedProperties">
+            properties inherited from parent context
+            </param>
+            <param name="stylesheet"></param>
+            <param name="sourceContext"></param>
+            <returns>
+            The last htmlNode added to the implicit paragraph
+            </returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddList(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})">
             <summary>
             Converts Html ul or ol element into Xaml list element. During conversion if the ul/ol element has any children 
@@ -3509,7 +3587,21 @@
             <param name="stylesheet"></param>
             <param name="sourceContext"></param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddTableColumnGroup(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})" -->
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddTableColumnGroup(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})">
+            <summary>
+            Converts htmlColgroupElement into Xaml TableColumnGroup element, and appends it to the parent
+            xamlTableElement
+            </summary>
+            <param name="xamlTableElement">
+            XmlElement representing Xaml Table element to which the converted column group should be added
+            </param>
+            <param name="htmlColgroupElement">
+            XmlElement representing Html colgroup element to be converted
+            </param>
+            <param name="inheritedProperties">
+            Properties inherited from parent context
+            </param>
+        </member>
         <member name="M:Microsoft.TeamFoundation.TestManagement.Client.HtmlToXamlConverter.AddTableColumn(System.Xml.XmlElement,System.Xml.XmlElement,System.Collections.Hashtable,Microsoft.TeamFoundation.TestManagement.Client.CssStylesheet,System.Collections.Generic.List{System.Xml.XmlElement})">
             <summary>
             Converts htmlColElement into Xaml TableColumn element, and appends it to the parent
@@ -3915,7 +4007,17 @@
             Gets the display name of user associated with the unique foundation id
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.TestManagement.Client.TfsIdentityStore.AddDisambiguousDisplayName(System.Guid,System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.TestManagement.Client.TfsIdentityStore.AddDisambiguousDisplayName(System.Guid,System.String)">
+            <summary>
+            Adds disambiguous display name by parsing identity via WorkItemStore
+            In non-ambiguous scenario, the name looks like the same as actual display name
+            In ambiguous scenario, the name will continue unique identifier which looks like "Name &lt;UniqueName&gt;"
+            
+            For pre-Dev14, it will be using TeamFoundationIdentity.DisplayName instead
+            </summary>
+            <param name="identity">GUID of TeamFoundation identity to look up</param>
+            <param name="disambiguousName">Disambiguous name if available</param>
+        </member>
         <member name="P:Microsoft.TeamFoundation.TestManagement.Client.TfsIdentityStore.AllUserIdentities">
             <summary>
             Get all user identities cached locally.
@@ -10087,6 +10189,11 @@
               Looks up a localized string similar to The work item store is not configured correctly. It must have a category with reference name {0}..
             </summary>
         </member>
+        <member name="P:Microsoft.TeamFoundation.TestManagement.Client.Resources.ClassicAndYamlReleaseSettingsError">
+            <summary>
+              Looks up a localized string similar to Both classic and yaml release settings cannot be defined..
+            </summary>
+        </member>
         <member name="P:Microsoft.TeamFoundation.TestManagement.Client.Resources.CloneRequirementsNotSupported">
             <summary>
               Looks up a localized string similar to Cloning of requirements is not supported in the version of server being used. Please upgrade the server to latest version or remove the clonerequirements option..
@@ -10314,7 +10421,7 @@
         </member>
         <member name="P:Microsoft.TeamFoundation.TestManagement.Client.Resources.RegistrationError">
             <summary>
-              Looks up a localized string similar to An error occurred while trying to locate the Azure DevOps registration entry for {0}. For more information, contact the Azure DevOps Server administrator..
+              Looks up a localized string similar to An error occurred while trying to locate the Azure DevOps Server registration entry for {0}. For more information, contact the Azure DevOps Server administrator..
             </summary>
         </member>
         <member name="P:Microsoft.TeamFoundation.TestManagement.Client.Resources.ReplaceParameterWithEmptyTextErrorMessage">
@@ -10735,7 +10842,7 @@
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestResultState.Paused">
             <summary>
             Test has been paused. This is applicable when a test case is paused
-            by the user (For e.g. Manual Tester can pause the execution of the 
+            by the user (For e.g. Manual Tester can pause the execution of the
             manual test case)
             </summary>
         </member>
@@ -10785,7 +10892,7 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestOutcome.Aborted">
             <summary>
-            Test was aborted. 
+            Test was aborted.
             This was not caused by a user gesture, but rather by a framework decision.
             </summary>
         </member>
@@ -10796,7 +10903,7 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestOutcome.NotExecuted">
             <summary>
-            Test was not executed. 
+            Test was not executed.
             This was caused by a user gesture - e.g. user hit stop button.
             </summary>
         </member>
@@ -10904,7 +11011,7 @@
         </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.UploadState">
             <summary>
-            Background attachment upload states 
+            Background attachment upload states
             </summary>
         </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.TestConfigurationState">
@@ -10950,7 +11057,7 @@
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestPointState.Ready">
             <summary>
             The test point needs to be executed in order for the test pass to be
-            considered complete.  Either the test has not been run before or the 
+            considered complete.  Either the test has not been run before or the
             previous run failed.
             </summary>
         </member>
@@ -10988,7 +11095,7 @@
         </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.TestObjectId">
             <summary>
-            Reserved object ids, new objects use None, deleted objects use Deleted 
+            Reserved object ids, new objects use None, deleted objects use Deleted
             </summary>
         </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.CloneItemType">
@@ -11041,7 +11148,7 @@
         </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.TestRunType">
             <summary>
-            The types for test run. 
+            The types for test run.
             </summary>
         </member>
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestRunType.Unspecified">
@@ -11071,7 +11178,7 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestRunType.RunWithDtlEnv">
             <summary>
-            These test run would require DTL environment. 
+            These test run would require DTL environment.
             These could be either of automated or manual test run.
             </summary>
         </member>
@@ -11173,7 +11280,7 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionState.NotStarted">
             <summary>
-            The session is still being created. 
+            The session is still being created.
             </summary>
         </member>
         <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionState.InProgress">
@@ -11199,6 +11306,156 @@
         <member name="T:Microsoft.TeamFoundation.TestManagement.Client.IntRange">
             <summary>
             Minimum and maximum values of INT data-type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestPhase.SystemSetup">
+            <summary>
+            System Setup
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestPhase.UserSetup">
+            <summary>
+            User Setup
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestPhase.Test">
+            <summary>
+            Test
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestPhase.UserCleanup">
+            <summary>
+            User Cleanup
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.TestPhase.SystemCleanup">
+            <summary>
+            System Cleanup
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.ResultLinkType.ResultInvestigation">
+            <summary>
+            Result Investigation
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.ResultLinkType.TestInfo">
+            <summary>
+            Test info
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.ResultLinkType.MoreInfo">
+            <summary>
+            More info
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.ResultLinkType.BucketInvestigation">
+            <summary>
+            Bucket investigation
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionLinkType.None">
+            <summary>
+            Default
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionLinkType.SessionInfo">
+            <summary>
+            Link type for Session information
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionLinkType.ResubmitSession">
+            <summary>
+            Link type for Session resubmission
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.LinkOperationType.Open">
+            <summary>
+            Link that opens in a new tab/window
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.LinkOperationType.WebService">
+            <summary>
+            Link that makes a post/get to a web service
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.NotificationSeverity.Informational">
+            <summary>
+            Informational Notification
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.NotificationSeverity.Warning">
+            <summary>
+            Warning Notification
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.NotificationSeverity.Error">
+            <summary>
+            Error Notification
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.NotificationSeverity.Critical">
+            <summary>
+            Critical Notification
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.MachineTimelineType.None">
+            <summary>
+            Default
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.MachineTimelineType.Requested">
+            <summary>
+            Timeline type for Machine requested
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.MachineTimelineType.Ready">
+            <summary>
+            Timeline type for Machine ready
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.MachineTimelineType.Released">
+            <summary>
+            Timeline type for Machine released
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionTimelineType.None">
+            <summary>
+            Default
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionTimelineType.Queued">
+            <summary>
+            Timeline type for Queued status
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionTimelineType.Completed">
+            <summary>
+            Timeline type for Completed status
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.SessionTimelineType.Started">
+            <summary>
+            Timeline type for Started status
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.FailureAnalysisClassification.None">
+            <summary>
+            Default
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.FailureAnalysisClassification.Critical">
+            <summary>
+            Failure analysis critical classification
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.FailureAnalysisClassification.System">
+            <summary>
+            Failure analysis system classification
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.TestManagement.Client.FailureAnalysisClassification.Discounted">
+            <summary>
+            Failure analysis discounted classification
             </summary>
         </member>
         <member name="T:Microsoft.TeamFoundation.TestManagement.AttachmentUploadFields">

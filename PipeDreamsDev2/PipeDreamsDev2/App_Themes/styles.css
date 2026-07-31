@@ -7,6 +7,18 @@ form {
     padding: 0;
 }
 
+html,
+body,
+.body {
+    width: 100%;
+    min-height: 100%;
+}
+
+.body-content {
+    width: 100%;
+    max-width: 100%;
+}
+
 body {
     font: normal 16px "Segoe UI", Arial, sans-serif;
     color: #36454f;
@@ -55,15 +67,15 @@ img {
     border-color: inherit;
     border-width: 0;
     border-radius: 25px;
-    width: 125px;
+    width: 250px;
     margin-right: 0px;
     margin-top: 0px;
-    height: 125px;
+    height: 250px;
     margin-left: 0px;
 }
 
 #logo img {
-    max-height: 50px;
+    max-height: 275px;
     width: auto;
     border-radius: 25px;
 }

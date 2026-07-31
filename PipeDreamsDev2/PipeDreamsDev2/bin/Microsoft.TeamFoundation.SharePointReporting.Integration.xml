@@ -514,7 +514,11 @@
             </summary>
             <returns>true if reporting cube is configured</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.Reporting.ReportingUtilities.GetReportServiceUri(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection)" -->
+        <member name="M:Microsoft.TeamFoundation.Client.Reporting.ReportingUtilities.GetReportServiceUri(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection)">
+            <summary />
+            <param name="tpc"></param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.Reporting.ReportingUtilities.GetBaseProjectCollectionPath(Microsoft.TeamFoundation.Client.TfsTeamProjectCollection)">
             <summary>
             Returns the item path for the project collection, such as 'tfsreports/collection0'.
@@ -815,7 +819,28 @@
             Combines a base report item path with a sub item.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Client.Reporting.ReportingUtilities.TryGetReportingServicesErrorMessage(System.Web.Services.Protocols.SoapException)" -->
+        <member name="M:Microsoft.TeamFoundation.Client.Reporting.ReportingUtilities.TryGetReportingServicesErrorMessage(System.Web.Services.Protocols.SoapException)">
+             <summary>
+             Attempts to extract the exact Report Server error message from the SoapException Detail XML Element,
+             if available. This provides a cleaner error message for the end user, removing exception names and
+             stack traces from the SoapException message.
+             </summary>
+             <param name="exception">A SoapException that results from invoking the Report Server.</param>
+             <returns>The error message corresponding to the failed RS operation, if available.</returns>
+             <remarks>
+             For instance, a full SoapException message might be:
+            
+             System.Web.Services.Protocols.SoapException: "The path of the item '/@$' is not valid. The full path must be less
+             than 260 characters long; other restrictions apply. If the report server is in native mode, the path must start with slash."
+             ---> Microsoft.ReportingServices.Diagnostics.Utilities.InvalidItemPathException: The path of the item '/@$' is not valid.
+             The full path must be less than 260 characters long; other restrictions apply. If the report server is in native mode,
+             the path must start with slash.
+                at Microsoft.ReportingServices.WebServer.ReportingService2005Impl.GetItemType(String Item, ItemTypeEnum&amp; Type)
+                at Microsoft.ReportingServices.WebServer.ReportingService2005.GetItemType(String Item, ItemTypeEnum&amp; Type)
+            
+             but we only want to extract the part in "quotes" to surface it to the end user.
+             </remarks>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Client.Reporting.ReportingUtilities.ConvertException(System.Web.Services.Protocols.SoapException)">
             <summary>
             Converts a SoapException to a typed ReportingServiceException, potentially cleaning up

@@ -206,9 +206,197 @@
             Used to set initial filters.
             </summary>
         </member>
+        <member name="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestCaseResultsDataExtended">
+            <summary>
+            This data model is used in TestCaseResultsDataProvider for extended data to populates the data required for initial page load
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestCaseResultsDataExtended.Results">
+            <summary>
+            Use to store the results displayed in the table
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestCaseResultsDataExtended.TestCaseName">
+            <summary>
+            Test Case Name to be displayed in the table header
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestCaseResultsDataExtended.ContextPoint">
+            <summary>
+            Point information from where the execution history was viewed.
+            Used to set initial filters.
+            </summary>
+        </member>
         <member name="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlansHubRefreshData">
             <summary>
             This data model is used in TestPlansHubRefreshDataProvider and populates the data required for initial page load
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData">
+            <summary>
+            This data model is used in AllTestRunsViewDataProvider and provides Test Run Data
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.State">
+            <summary>
+            The state of the run. Type <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.TestRunState"/>
+             Valid states - Unspecified ,NotStarted, InProgress, Completed, Waiting, Aborted, NeedsInvestigation
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.Id">
+            <summary>
+            ID of the Test run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.Name">
+            <summary>
+            Name of the Test run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.StartedDate">
+            <summary>
+            Start date time of the run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.CompletedDate">
+            <summary>
+            Completed date time of the run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.BuildName">
+            <summary>
+            Build Name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.FailedTestsCount">
+            <summary>
+            No. of tests failed in the run
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.PassRate">
+            <summary>
+            Pass rate of the run
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.DurationInMs">
+            <summary>
+            Duration of the run execution in milliseconds
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.TestPlanId">
+            <summary>
+            Id of the Test plan associated with this Test run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.TestPlanName">
+            <summary>
+            Name of the Test plan associated with this Test run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestRunData.BuildId">
+            <summary>
+            Build Id.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData">
+            <summary>
+            This data model is used in TestRunDataProvider and provides the TestCaseResultsData for a Test run
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Id">
+            <summary>
+            ID of a test result.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Configuration">
+            <summary>
+            Reference to test configuration. Type <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.ShallowReference"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.DurationInMs">
+            <summary>
+            Duration of test execution in milliseconds. If not provided value will be set as CompletedDate - StartedDate
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Outcome">
+            <summary>
+            Test outcome of test result.
+            Valid values = (Unspecified, None, Passed, Failed, Inconclusive, Timeout, Aborted, Blocked, NotExecuted, Warning, Error, NotApplicable, Paused, InProgress, NotImpacted)
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.TestCase">
+            <summary>
+            Reference to the test executed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Priority">
+            <summary>
+            Priority of test executed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Area">
+            <summary>
+            Reference to area path of test.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.IterationPath">
+            <summary>
+            Iteration path of test.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.TestSuite">
+            <summary>
+            Reference to test suite test case workitem is part of.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Owner">
+            <summary>
+            Reference to test owner.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.RunBy">
+            <summary>
+            Reference to identity executed the test.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.TestRun">
+            <summary>
+            Reference to test run.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.TestCaseReferenceId">
+            <summary>
+            Reference ID of test used by test result. Type <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.TestResultMetaData"/>
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.Build">
+            <summary>
+            Shallow reference to build associated with test result.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.StackTrace">
+            <summary>
+            Stacktrace with maxSize= 1000 chars.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.ErrorMessage">
+            <summary>
+            Error message in test execution.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.ComputerName">
+            <summary>
+            Machine name where test executed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.AutomatedTestName">
+            <summary>
+            Fully qualified name of test executed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CustomTestCaseResultData.AutomatedTestStorage">
+            <summary>
+            Container to which test belongs.
             </summary>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanReference">
@@ -692,6 +880,11 @@
         <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams.ReleaseEnvironmentDefinition">
             <summary>
             Release Environment to be used to deploy the build and run automated tests from this test plan.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams.YamlReleaseReference">
+            <summary>
+            The Yaml Release Reference associated with this test plan.
             </summary>
         </member>
         <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams.TestOutcomeSettings">
@@ -1468,27 +1661,32 @@
             Test Case IDs to exported
             </summary>
         </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExportTestCaseParams.columnOptions">
+            <summary>
+            Columns needs to be exported
+            </summary>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestConfigurationAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a test configuration.
+            [Preview API] Create a test configuration.
             </summary>
-            <param name="testConfigurationCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters" /></param>
+            <param name="testConfigurationCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestConfigurationAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a test configuration.
+            [Preview API] Create a test configuration.
             </summary>
-            <param name="testConfigurationCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters" /></param>
+            <param name="testConfigurationCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestConfgurationAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test configuration by its ID.
+            [Preview API] Delete a test configuration by its ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="testConfiguartionId">ID of the test configuration to delete.</param>
@@ -1497,7 +1695,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestConfgurationAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test configuration by its ID.
+            [Preview API] Delete a test configuration by its ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="testConfiguartionId">ID of the test configuration to delete.</param>
@@ -1506,7 +1704,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestConfigurationByIdAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a test configuration
+            [Preview API] Get a test configuration
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="testConfigurationId">ID of the test configuration to get.</param>
@@ -1515,7 +1713,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestConfigurationByIdAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a test configuration
+            [Preview API] Get a test configuration
             </summary>
             <param name="project">Project ID</param>
             <param name="testConfigurationId">ID of the test configuration to get.</param>
@@ -1524,27 +1722,27 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestConfigurationsAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test configurations.
+            [Preview API] Get a list of test configurations.
             </summary>
             <param name="project">Project ID or project name</param>
-            <param name="continuationToken">If the list of configurations returned is not complete, a continuation token to query next batch of configurations is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test configurations.</param>
+            <param name="continuationToken">If the list of configurations returned is not complete, a continuation token to query next batch of configurations is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test configurations.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestConfigurationsAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test configurations.
+            [Preview API] Get a list of test configurations.
             </summary>
             <param name="project">Project ID</param>
-            <param name="continuationToken">If the list of configurations returned is not complete, a continuation token to query next batch of configurations is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test configurations.</param>
+            <param name="continuationToken">If the list of configurations returned is not complete, a continuation token to query next batch of configurations is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test configurations.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestConfigurationAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a test configuration by its ID.
+            [Preview API] Update a test configuration by its ID.
             </summary>
-            <param name="testConfigurationCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters" /></param>
+            <param name="testConfigurationCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="testConfiguartionId">ID of the test configuration to update.</param>
             <param name="userState"></param>
@@ -1552,9 +1750,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestConfigurationAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a test configuration by its ID.
+            [Preview API] Update a test configuration by its ID.
             </summary>
-            <param name="testConfigurationCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters" /></param>
+            <param name="testConfigurationCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestConfigurationCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="testConfiguartionId">ID of the test configuration to update.</param>
             <param name="userState"></param>
@@ -1592,25 +1790,25 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a test plan.
+            [Preview API] Create a test plan.
             </summary>
-            <param name="testPlanCreateParams">A testPlanCreateParams object.<see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams" /></param>
+            <param name="testPlanCreateParams">A testPlanCreateParams object.&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a test plan.
+            [Preview API] Create a test plan.
             </summary>
-            <param name="testPlanCreateParams">A testPlanCreateParams object.<see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams" /></param>
+            <param name="testPlanCreateParams">A testPlanCreateParams object.&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanCreateParams&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestPlanAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test plan.
+            [Preview API] Delete a test plan.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan to be deleted.</param>
@@ -1619,7 +1817,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestPlanAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test plan.
+            [Preview API] Delete a test plan.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan to be deleted.</param>
@@ -1628,7 +1826,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestPlanByIdAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a test plan by Id.
+            [Preview API] Get a test plan by Id.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan to get.</param>
@@ -1637,7 +1835,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestPlanByIdAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a test plan by Id.
+            [Preview API] Get a test plan by Id.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan to get.</param>
@@ -1646,11 +1844,11 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestPlansAsync(System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test plans
+            [Preview API] Get a list of test plans
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="owner">Filter for test plan by owner ID or name</param>
-            <param name="continuationToken">If the list of plans returned is not complete, a continuation token to query next batch of plans is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test plans.</param>
+            <param name="continuationToken">If the list of plans returned is not complete, a continuation token to query next batch of plans is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test plans.</param>
             <param name="includePlanDetails">Get all properties of the test plan</param>
             <param name="filterActivePlans">Get just the active plans</param>
             <param name="userState"></param>
@@ -1658,11 +1856,11 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestPlansAsync(System.Guid,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test plans
+            [Preview API] Get a list of test plans
             </summary>
             <param name="project">Project ID</param>
             <param name="owner">Filter for test plan by owner ID or name</param>
-            <param name="continuationToken">If the list of plans returned is not complete, a continuation token to query next batch of plans is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test plans.</param>
+            <param name="continuationToken">If the list of plans returned is not complete, a continuation token to query next batch of plans is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test plans.</param>
             <param name="includePlanDetails">Get all properties of the test plan</param>
             <param name="filterActivePlans">Get just the active plans</param>
             <param name="userState"></param>
@@ -1670,9 +1868,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanUpdateParams,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a test plan.
+            [Preview API] Update a test plan.
             </summary>
-            <param name="testPlanUpdateParams">A testPlanUpdateParams object.<see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanUpdateParams" /></param>
+            <param name="testPlanUpdateParams">A testPlanUpdateParams object.&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanUpdateParams&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan to be updated.</param>
             <param name="userState"></param>
@@ -1680,9 +1878,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanUpdateParams,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a test plan.
+            [Preview API] Update a test plan.
             </summary>
-            <param name="testPlanUpdateParams">A testPlanUpdateParams object.<see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanUpdateParams" /></param>
+            <param name="testPlanUpdateParams">A testPlanUpdateParams object.&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanUpdateParams&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan to be updated.</param>
             <param name="userState"></param>
@@ -1690,7 +1888,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetSuiteEntriesAsync(System.String,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntryTypes},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test suite entries in the test suite.
+            [Preview API] Get a list of test suite entries in the test suite.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="suiteId">Id of the parent suite.</param>
@@ -1700,7 +1898,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetSuiteEntriesAsync(System.Guid,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntryTypes},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test suite entries in the test suite.
+            [Preview API] Get a list of test suite entries in the test suite.
             </summary>
             <param name="project">Project ID</param>
             <param name="suiteId">Id of the parent suite.</param>
@@ -1710,9 +1908,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.ReorderSuiteEntriesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntryUpdateParams},System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Reorder test suite entries in the test suite.
+            [Preview API] Reorder test suite entries in the test suite.
             </summary>
-            <param name="suiteEntries">List of <see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntry" /> to reorder.</param>
+            <param name="suiteEntries">List of &lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntry&quot; /&gt; to reorder.</param>
             <param name="project">Project ID or project name</param>
             <param name="suiteId">Id of the parent test suite.</param>
             <param name="userState"></param>
@@ -1720,9 +1918,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.ReorderSuiteEntriesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntryUpdateParams},System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Reorder test suite entries in the test suite.
+            [Preview API] Reorder test suite entries in the test suite.
             </summary>
-            <param name="suiteEntries">List of <see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntry" /> to reorder.</param>
+            <param name="suiteEntries">List of &lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteEntry&quot; /&gt; to reorder.</param>
             <param name="project">Project ID</param>
             <param name="suiteId">Id of the parent test suite.</param>
             <param name="userState"></param>
@@ -1730,7 +1928,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateBulkTestSuitesAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestSuiteCreateParams[],System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create bulk requirement based test suites.
+            [Preview API] Create bulk requirement based test suites.
             </summary>
             <param name="testSuiteCreateParams">Parameters for suite creation</param>
             <param name="project">Project ID or project name</param>
@@ -1741,7 +1939,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateBulkTestSuitesAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestSuiteCreateParams[],System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create bulk requirement based test suites.
+            [Preview API] Create bulk requirement based test suites.
             </summary>
             <param name="testSuiteCreateParams">Parameters for suite creation</param>
             <param name="project">Project ID</param>
@@ -1752,7 +1950,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestSuiteCreateParams,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create test suite.
+            [Preview API] Create test suite.
             </summary>
             <param name="testSuiteCreateParams">Parameters for suite creation</param>
             <param name="project">Project ID or project name</param>
@@ -1762,7 +1960,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestSuiteCreateParams,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create test suite.
+            [Preview API] Create test suite.
             </summary>
             <param name="testSuiteCreateParams">Parameters for suite creation</param>
             <param name="project">Project ID</param>
@@ -1772,7 +1970,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestSuiteAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete test suite.
+            [Preview API] Delete test suite.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan that contains the suite.</param>
@@ -1782,7 +1980,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestSuiteAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete test suite.
+            [Preview API] Delete test suite.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan that contains the suite.</param>
@@ -1792,7 +1990,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestSuiteByIdAsync(System.String,System.Int32,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get test suite by suite id.
+            [Preview API] Get test suite by suite id.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan that contains the suites.</param>
@@ -1803,7 +2001,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestSuiteByIdAsync(System.Guid,System.Int32,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get test suite by suite id.
+            [Preview API] Get test suite by suite id.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan that contains the suites.</param>
@@ -1814,31 +2012,31 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestSuitesForPlanAsync(System.String,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get test suites for plan.
+            [Preview API] Get test suites for plan.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan for which suites are requested.</param>
             <param name="expand">Include the children suites and testers details.</param>
-            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test suites.</param>
+            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test suites.</param>
             <param name="asTreeView">If the suites returned should be in a tree structure.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestSuitesForPlanAsync(System.Guid,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get test suites for plan.
+            [Preview API] Get test suites for plan.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan for which suites are requested.</param>
             <param name="expand">Include the children suites and testers details.</param>
-            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test suites.</param>
+            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test suites.</param>
             <param name="asTreeView">If the suites returned should be in a tree structure.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestSuiteUpdateParams,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update test suite.
+            [Preview API] Update test suite.
             </summary>
             <param name="testSuiteUpdateParams">Parameters for suite updation</param>
             <param name="project">Project ID or project name</param>
@@ -1849,7 +2047,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestSuiteUpdateParams,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update test suite.
+            [Preview API] Update test suite.
             </summary>
             <param name="testSuiteUpdateParams">Parameters for suite updation</param>
             <param name="project">Project ID</param>
@@ -1860,7 +2058,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetSuitesByTestCaseIdAsync(System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Find the list of all test suites in which a given test case is present. This is helpful if you need to find out which test suites are using a test case, when you need to make changes to a test case.
+            [Preview API] Find the list of all test suites in which a given test case is present. This is helpful if you need to find out which test suites are using a test case, when you need to make changes to a test case.
             </summary>
             <param name="testCaseId">ID of the test case for which suites need to be fetched.</param>
             <param name="userState"></param>
@@ -1868,7 +2066,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.AddTestCasesToSuiteAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteTestCaseCreateUpdateParameters},System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add test cases to a suite with specified configurations
+            [Preview API] Add test cases to a suite with specified configurations
             </summary>
             <param name="suiteTestCaseCreateUpdateParameters">SuiteTestCaseCreateUpdateParameters object.</param>
             <param name="project">Project ID or project name</param>
@@ -1879,7 +2077,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.AddTestCasesToSuiteAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteTestCaseCreateUpdateParameters},System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add test cases to a suite with specified configurations
+            [Preview API] Add test cases to a suite with specified configurations
             </summary>
             <param name="suiteTestCaseCreateUpdateParameters">SuiteTestCaseCreateUpdateParameters object.</param>
             <param name="project">Project ID</param>
@@ -1890,7 +2088,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestCaseAsync(System.String,System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a particular Test Case from a Suite.
+            [Preview API] Get a particular Test Case from a Suite.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan for which test cases are requested.</param>
@@ -1903,7 +2101,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestCaseAsync(System.Guid,System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a particular Test Case from a Suite.
+            [Preview API] Get a particular Test Case from a Suite.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan for which test cases are requested.</param>
@@ -1916,7 +2114,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestCaseListAsync(System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExcludeFlags},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get Test Case List return those test cases which have all the configuration Ids as mentioned in the optional parameter. If configuration Ids is null, it return all the test cases
+            [Preview API] Get Test Case List return those test cases which have all the configuration Ids as mentioned in the optional parameter. If configuration Ids is null, it return all the test cases
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan for which test cases are requested.</param>
@@ -1924,7 +2122,7 @@
             <param name="testIds">Test Case Ids to be fetched.</param>
             <param name="configurationIds">Fetch Test Cases which contains all the configuration Ids specified.</param>
             <param name="witFields">Get the list of witFields.</param>
-            <param name="continuationToken">If the list of test cases returned is not complete, a continuation token to query next batch of test cases is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test cases.</param>
+            <param name="continuationToken">If the list of test cases returned is not complete, a continuation token to query next batch of test cases is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test cases.</param>
             <param name="returnIdentityRef">If set to true, returns all identity fields, like AssignedTo, ActivatedBy etc., as IdentityRef objects. If set to false, these fields are returned as unique names in string format. This is false by default.</param>
             <param name="expand">If set to false, will get a smaller payload containing only basic details about the suite test case object</param>
             <param name="excludeFlags">Flag to exclude various values from payload. For example to remove point assignments pass exclude = 1. To remove extra information (links, test plan , test suite) pass exclude = 2. To remove both extra information and point assignments pass exclude = 3 (1 + 2).</param>
@@ -1934,7 +2132,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestCaseListAsync(System.Guid,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExcludeFlags},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get Test Case List return those test cases which have all the configuration Ids as mentioned in the optional parameter. If configuration Ids is null, it return all the test cases
+            [Preview API] Get Test Case List return those test cases which have all the configuration Ids as mentioned in the optional parameter. If configuration Ids is null, it return all the test cases
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan for which test cases are requested.</param>
@@ -1942,7 +2140,7 @@
             <param name="testIds">Test Case Ids to be fetched.</param>
             <param name="configurationIds">Fetch Test Cases which contains all the configuration Ids specified.</param>
             <param name="witFields">Get the list of witFields.</param>
-            <param name="continuationToken">If the list of test cases returned is not complete, a continuation token to query next batch of test cases is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test cases.</param>
+            <param name="continuationToken">If the list of test cases returned is not complete, a continuation token to query next batch of test cases is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test cases.</param>
             <param name="returnIdentityRef">If set to true, returns all identity fields, like AssignedTo, ActivatedBy etc., as IdentityRef objects. If set to false, these fields are returned as unique names in string format. This is false by default.</param>
             <param name="expand">If set to false, will get a smaller payload containing only basic details about the suite test case object</param>
             <param name="excludeFlags">Flag to exclude various values from payload. For example to remove point assignments pass exclude = 1. To remove extra information (links, test plan , test suite) pass exclude = 2. To remove both extra information and point assignments pass exclude = 3 (1 + 2).</param>
@@ -1952,7 +2150,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RemoveTestCasesFromSuiteAsync(System.String,System.Int32,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes test cases from a suite based on the list of test case Ids provided.
+            [Preview API] Removes test cases from a suite based on the list of test case Ids provided.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan from which test cases are to be removed.</param>
@@ -1963,7 +2161,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RemoveTestCasesFromSuiteAsync(System.Guid,System.Int32,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes test cases from a suite based on the list of test case Ids provided.
+            [Preview API] Removes test cases from a suite based on the list of test case Ids provided.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan from which test cases are to be removed.</param>
@@ -1974,7 +2172,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RemoveTestCasesListFromSuiteAsync(System.String,System.Int32,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes test cases from a suite based on the list of test case Ids provided. This API can be used to remove a larger number of test cases.
+            [Preview API] Removes test cases from a suite based on the list of test case Ids provided. This API can be used to remove a larger number of test cases.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan from which test cases are to be removed.</param>
@@ -1985,7 +2183,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RemoveTestCasesListFromSuiteAsync(System.Guid,System.Int32,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes test cases from a suite based on the list of test case Ids provided. This API can be used to remove a larger number of test cases.
+            [Preview API] Removes test cases from a suite based on the list of test case Ids provided. This API can be used to remove a larger number of test cases.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan from which test cases are to be removed.</param>
@@ -1996,7 +2194,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateSuiteTestCasesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteTestCaseCreateUpdateParameters},System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update the configurations for test cases
+            [Preview API] Update the configurations for test cases
             </summary>
             <param name="suiteTestCaseCreateUpdateParameters">A SuiteTestCaseCreateUpdateParameters object.</param>
             <param name="project">Project ID or project name</param>
@@ -2007,7 +2205,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateSuiteTestCasesAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteTestCaseCreateUpdateParameters},System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update the configurations for test cases
+            [Preview API] Update the configurations for test cases
             </summary>
             <param name="suiteTestCaseCreateUpdateParameters">A SuiteTestCaseCreateUpdateParameters object.</param>
             <param name="project">Project ID</param>
@@ -2017,26 +2215,26 @@
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CloneTestCaseAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CloneTestCaseParams,System.String,System.Object,System.Threading.CancellationToken)">
-             <summary>
-            
-             </summary>
-             <param name="cloneRequestBody"></param>
-             <param name="project">Project ID or project name</param>
-             <param name="userState"></param>
-             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="cloneRequestBody"></param>
+            <param name="project">Project ID or project name</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CloneTestCaseAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CloneTestCaseParams,System.Guid,System.Object,System.Threading.CancellationToken)">
-             <summary>
-            
-             </summary>
-             <param name="cloneRequestBody"></param>
-             <param name="project">Project ID</param>
-             <param name="userState"></param>
-             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+            <summary>
+            [Preview API]
+            </summary>
+            <param name="cloneRequestBody"></param>
+            <param name="project">Project ID</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestCaseCloneInformationAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get clone information.
+            [Preview API] Get clone information.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="cloneOperationId">Operation ID returned when we queue a clone operation</param>
@@ -2045,7 +2243,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestCaseCloneInformationAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get clone information.
+            [Preview API] Get clone information.
             </summary>
             <param name="project">Project ID</param>
             <param name="cloneOperationId">Operation ID returned when we queue a clone operation</param>
@@ -2056,7 +2254,7 @@
             <summary>
             [Preview API] Exports a set of test cases from a suite to a file. Currently supported  formats: xlsx
             </summary>
-            <param name="exportTestCaseRequestBody">A ExportTestCaseParams object.<see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExportTestCaseParams" /></param>
+            <param name="exportTestCaseRequestBody">A ExportTestCaseParams object.&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExportTestCaseParams&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -2065,14 +2263,14 @@
             <summary>
             [Preview API] Exports a set of test cases from a suite to a file. Currently supported  formats: xlsx
             </summary>
-            <param name="exportTestCaseRequestBody">A ExportTestCaseParams object.<see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExportTestCaseParams" /></param>
+            <param name="exportTestCaseRequestBody">A ExportTestCaseParams object.&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.ExportTestCaseParams&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestCaseAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test case.
+            [Preview API] Delete a test case.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="testCaseId">Id of test case to be deleted.</param>
@@ -2081,18 +2279,56 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestCaseAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test case.
+            [Preview API] Delete a test case.
             </summary>
             <param name="project">Project ID</param>
             <param name="testCaseId">Id of test case to be deleted.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetDeletedTestPlansAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get a list of deleted test plans
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="continuationToken">If the list of plans returned is not complete, a continuation token to query next batch of plans is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test plans.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetDeletedTestPlansAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get a list of deleted test plans
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="continuationToken">If the list of plans returned is not complete, a continuation token to query next batch of plans is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test plans.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RestoreDeletedTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanAndSuiteRestoreModel,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Restores the deleted test plan
+            </summary>
+            <param name="restoreModel">The model containing the restore information</param>
+            <param name="project">Project ID or project name</param>
+            <param name="planId">The ID of the test plan to restore</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RestoreDeletedTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanAndSuiteRestoreModel,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Restores the deleted test plan
+            </summary>
+            <param name="restoreModel">The model containing the restore information</param>
+            <param name="project">Project ID</param>
+            <param name="planId">The ID of the test plan to restore</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CloneTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CloneTestPlanParams,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Clone test plan
+            [Preview API] Clone test plan
             </summary>
-            <param name="cloneRequestBody">Plan Clone Request Body detail <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.TestPlanCloneRequest" /></param>
+            <param name="cloneRequestBody">Plan Clone Request Body detail &lt;see cref=&quot;T:Microsoft.TeamFoundation.TestManagement.WebApi.TestPlanCloneRequest&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="deepClone">Clones all the associated test cases as well</param>
             <param name="userState"></param>
@@ -2100,9 +2336,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CloneTestPlanAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CloneTestPlanParams,System.Guid,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Clone test plan
+            [Preview API] Clone test plan
             </summary>
-            <param name="cloneRequestBody">Plan Clone Request Body detail <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.TestPlanCloneRequest" /></param>
+            <param name="cloneRequestBody">Plan Clone Request Body detail &lt;see cref=&quot;T:Microsoft.TeamFoundation.TestManagement.WebApi.TestPlanCloneRequest&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="deepClone">Clones all the associated test cases as well</param>
             <param name="userState"></param>
@@ -2110,7 +2346,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetCloneInformationAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get clone information.
+            [Preview API] Get clone information.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="cloneOperationId">Operation ID returned when we queue a clone operation</param>
@@ -2119,7 +2355,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetCloneInformationAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get clone information.
+            [Preview API] Get clone information.
             </summary>
             <param name="project">Project ID</param>
             <param name="cloneOperationId">Operation ID returned when we queue a clone operation</param>
@@ -2128,7 +2364,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetPointsAsync(System.String,System.Int32,System.Int32,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a particular Test Point from a suite.
+            [Preview API] Get a particular Test Point from a suite.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan for which test points are requested.</param>
@@ -2141,7 +2377,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetPointsAsync(System.Guid,System.Int32,System.Int32,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a particular Test Point from a suite.
+            [Preview API] Get a particular Test Point from a suite.
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan for which test points are requested.</param>
@@ -2154,14 +2390,14 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetPointsListAsync(System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get all the points inside a suite based on some filters
+            [Preview API] Get all the points inside a suite based on some filters
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="planId">ID of the test plan for which test points are requested.</param>
             <param name="suiteId">ID of the test suite for which test points are requested</param>
             <param name="testPointIds">ID of test points to fetch.</param>
             <param name="testCaseId">Get Test Points for specific test case Ids.</param>
-            <param name="continuationToken">If the list of test point returned is not complete, a continuation token to query next batch of test points is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test points.</param>
+            <param name="continuationToken">If the list of test point returned is not complete, a continuation token to query next batch of test points is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test points.</param>
             <param name="returnIdentityRef">If set to true, returns the AssignedTo field in TestCaseReference as IdentityRef object.</param>
             <param name="includePointDetails">If set to false, will get a smaller payload containing only basic details about the test point object</param>
             <param name="isRecursive">If set to true, will also fetch test points belonging to child suites recursively.</param>
@@ -2170,14 +2406,14 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetPointsListAsync(System.Guid,System.Int32,System.Int32,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get all the points inside a suite based on some filters
+            [Preview API] Get all the points inside a suite based on some filters
             </summary>
             <param name="project">Project ID</param>
             <param name="planId">ID of the test plan for which test points are requested.</param>
             <param name="suiteId">ID of the test suite for which test points are requested</param>
             <param name="testPointIds">ID of test points to fetch.</param>
             <param name="testCaseId">Get Test Points for specific test case Ids.</param>
-            <param name="continuationToken">If the list of test point returned is not complete, a continuation token to query next batch of test points is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test points.</param>
+            <param name="continuationToken">If the list of test point returned is not complete, a continuation token to query next batch of test points is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test points.</param>
             <param name="returnIdentityRef">If set to true, returns the AssignedTo field in TestCaseReference as IdentityRef object.</param>
             <param name="includePointDetails">If set to false, will get a smaller payload containing only basic details about the test point object</param>
             <param name="isRecursive">If set to true, will also fetch test points belonging to child suites recursively.</param>
@@ -2186,7 +2422,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestPointsAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPointUpdateParams},System.String,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update Test Points. This is used to Reset test point to active, update the outcome of a test point or update the tester of a test point
+            [Preview API] Update Test Points. This is used to Reset test point to active, update the outcome of a test point or update the tester of a test point
             </summary>
             <param name="testPointUpdateParams">A TestPointUpdateParams Object.</param>
             <param name="project">Project ID or project name</param>
@@ -2199,7 +2435,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestPointsAsync(System.Collections.Generic.IEnumerable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPointUpdateParams},System.Guid,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update Test Points. This is used to Reset test point to active, update the outcome of a test point or update the tester of a test point
+            [Preview API] Update Test Points. This is used to Reset test point to active, update the outcome of a test point or update the tester of a test point
             </summary>
             <param name="testPointUpdateParams">A TestPointUpdateParams Object.</param>
             <param name="project">Project ID</param>
@@ -2210,11 +2446,77 @@
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetDeletedTestSuitesForPlanAsync(System.String,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get Deleted Test Suites for a Test Plan.
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="planId">ID of the test plan for which suites are requested.</param>
+            <param name="expand">Include the children suites and testers details.</param>
+            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test suites.</param>
+            <param name="asTreeView">If the suites returned should be in a tree structure.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetDeletedTestSuitesForPlanAsync(System.Guid,System.Int32,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get Deleted Test Suites for a Test Plan.
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="planId">ID of the test plan for which suites are requested.</param>
+            <param name="expand">Include the children suites and testers details.</param>
+            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test suites.</param>
+            <param name="asTreeView">If the suites returned should be in a tree structure.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetDeletedTestSuitesForProjectAsync(System.String,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get Deleted Test Suites within a Project.
+            </summary>
+            <param name="project">Project ID or project name</param>
+            <param name="expand">Include the children suites and testers details.</param>
+            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test suites.</param>
+            <param name="asTreeView">If the suites returned should be in a tree structure.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetDeletedTestSuitesForProjectAsync(System.Guid,System.Nullable{Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.SuiteExpand},System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Get Deleted Test Suites within a Project.
+            </summary>
+            <param name="project">Project ID</param>
+            <param name="expand">Include the children suites and testers details.</param>
+            <param name="continuationToken">If the list of suites returned is not complete, a continuation token to query next batch of suites is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test suites.</param>
+            <param name="asTreeView">If the suites returned should be in a tree structure.</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RestoreDeletedTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanAndSuiteRestoreModel,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Restores the deleted test suite
+            </summary>
+            <param name="payload">The model containing the restore information</param>
+            <param name="project">Project ID or project name</param>
+            <param name="suiteId">The ID of the test suite to restore</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.RestoreDeletedTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanAndSuiteRestoreModel,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            [Preview API] Restores the deleted test suite
+            </summary>
+            <param name="payload">The model containing the restore information</param>
+            <param name="project">Project ID</param>
+            <param name="suiteId">The ID of the test suite to restore</param>
+            <param name="userState"></param>
+            <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CloneTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CloneTestSuiteParams,System.String,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Clone test suite
+            [Preview API] Clone test suite
             </summary>
-            <param name="cloneRequestBody">Suite Clone Request Body detail <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.TestSuiteCloneRequest" /></param>
+            <param name="cloneRequestBody">Suite Clone Request Body detail &lt;see cref=&quot;T:Microsoft.TeamFoundation.TestManagement.WebApi.TestSuiteCloneRequest&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="deepClone">Clones all the associated test cases as well</param>
             <param name="userState"></param>
@@ -2222,9 +2524,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CloneTestSuiteAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.CloneTestSuiteParams,System.Guid,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Clone test suite
+            [Preview API] Clone test suite
             </summary>
-            <param name="cloneRequestBody">Suite Clone Request Body detail <see cref="T:Microsoft.TeamFoundation.TestManagement.WebApi.TestSuiteCloneRequest" /></param>
+            <param name="cloneRequestBody">Suite Clone Request Body detail &lt;see cref=&quot;T:Microsoft.TeamFoundation.TestManagement.WebApi.TestSuiteCloneRequest&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="deepClone">Clones all the associated test cases as well</param>
             <param name="userState"></param>
@@ -2232,7 +2534,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetSuiteCloneInformationAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get clone information.
+            [Preview API] Get clone information.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="cloneOperationId">Operation ID returned when we queue a clone operation</param>
@@ -2241,7 +2543,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetSuiteCloneInformationAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get clone information.
+            [Preview API] Get clone information.
             </summary>
             <param name="project">Project ID</param>
             <param name="cloneOperationId">Operation ID returned when we queue a clone operation</param>
@@ -2250,25 +2552,25 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestVariableAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a test variable.
+            [Preview API] Create a test variable.
             </summary>
-            <param name="testVariableCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters" /></param>
+            <param name="testVariableCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.CreateTestVariableAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a test variable.
+            [Preview API] Create a test variable.
             </summary>
-            <param name="testVariableCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters" /></param>
+            <param name="testVariableCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestVariableAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test variable by its ID.
+            [Preview API] Delete a test variable by its ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="testVariableId">ID of the test variable to delete.</param>
@@ -2277,7 +2579,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.DeleteTestVariableAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a test variable by its ID.
+            [Preview API] Delete a test variable by its ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="testVariableId">ID of the test variable to delete.</param>
@@ -2286,7 +2588,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestVariableByIdAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a test variable by its ID.
+            [Preview API] Get a test variable by its ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="testVariableId">ID of the test variable to get.</param>
@@ -2295,7 +2597,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestVariableByIdAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a test variable by its ID.
+            [Preview API] Get a test variable by its ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="testVariableId">ID of the test variable to get.</param>
@@ -2304,27 +2606,27 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestVariablesAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test variables.
+            [Preview API] Get a list of test variables.
             </summary>
             <param name="project">Project ID or project name</param>
-            <param name="continuationToken">If the list of variables returned is not complete, a continuation token to query next batch of variables is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test variables.</param>
+            <param name="continuationToken">If the list of variables returned is not complete, a continuation token to query next batch of variables is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test variables.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.GetTestVariablesAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of test variables.
+            [Preview API] Get a list of test variables.
             </summary>
             <param name="project">Project ID</param>
-            <param name="continuationToken">If the list of variables returned is not complete, a continuation token to query next batch of variables is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test variables.</param>
+            <param name="continuationToken">If the list of variables returned is not complete, a continuation token to query next batch of variables is included in the response header as &quot;x-ms-continuationtoken&quot;. Omit this parameter to get the first batch of test variables.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestVariableAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a test variable by its ID.
+            [Preview API] Update a test variable by its ID.
             </summary>
-            <param name="testVariableCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters" /></param>
+            <param name="testVariableCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID or project name</param>
             <param name="testVariableId">ID of the test variable to update.</param>
             <param name="userState"></param>
@@ -2332,9 +2634,9 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanHttpClientBase.UpdateTestVariableAsync(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a test variable by its ID.
+            [Preview API] Update a test variable by its ID.
             </summary>
-            <param name="testVariableCreateUpdateParameters"><see cref="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters" /></param>
+            <param name="testVariableCreateUpdateParameters">&lt;see cref=&quot;T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestVariableCreateUpdateParameters&quot; /&gt;</param>
             <param name="project">Project ID</param>
             <param name="testVariableId">ID of the test variable to update.</param>
             <param name="userState"></param>
@@ -2482,6 +2784,17 @@
             <param name="continuationToken">If the list of variables returned is not complete, a continuation token to query next batch of variables is included in the response header as "x-ms-continuationtoken". Omit this parameter to get the first batch of test variables.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanAndSuiteRestoreModel">
+            <summary>
+            Test Plan/Suite restore request body params
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.TestPlanAndSuiteRestoreModel.IsDeleted">
+            <summary>
+            Indicates whether the deleted test plan/suite should be restored.
+            </summary>
+            <value>False if the deleted test plan/suite should be restored.</value>
         </member>
     </members>
 </doc>

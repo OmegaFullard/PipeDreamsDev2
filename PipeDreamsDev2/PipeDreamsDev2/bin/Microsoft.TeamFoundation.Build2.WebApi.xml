@@ -1157,7 +1157,7 @@
         </member>
         <member name="P:Microsoft.TeamFoundation.Build.WebApi.Build.Priority">
             <summary>
-            The build's priority.
+            Azure Pipelines does not support job priority. This field is deprecated.
             </summary>
         </member>
         <member name="P:Microsoft.TeamFoundation.Build.WebApi.Build.Reason">
@@ -1279,7 +1279,7 @@
         </member>
         <member name="P:Microsoft.TeamFoundation.Build.WebApi.Build.TriggeredByBuild">
             <summary>
-            The build that triggered this build via a Build completion trigger.
+            The build that triggered this build via a Build completion trigger. Do not set it when queuing a new pipeline run.
             </summary>
         </member>
         <member name="P:Microsoft.TeamFoundation.Build.WebApi.Build.TriggerInfo">
@@ -3020,6 +3020,11 @@
             Enable shell tasks args sanitizing preview.
             </summary>
         </member>
+        <member name="F:Microsoft.TeamFoundation.Build.WebApi.PipelineGeneralSettings.DisableImpliedYAMLCiTrigger">
+            <summary>
+            Disable implied pipeline CI triggers if the trigger section in YAML is missing.
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.Build.WebApi.RetentionSetting">
             <summary>
             Contains the minimum, maximum, and current value for a retention setting.
@@ -3799,6 +3804,11 @@
         <member name="P:Microsoft.TeamFoundation.Build.WebApi.TimelineRecord.Name">
             <summary>
             The name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Build.WebApi.TimelineRecord.RefName">
+            <summary>
+            The ref name
             </summary>
         </member>
         <member name="P:Microsoft.TeamFoundation.Build.WebApi.TimelineRecord.StartTime">
@@ -4763,8 +4773,16 @@
             Create a plan Id for the build, do not run it
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.Build.WebApi.RepositoryCleanOptions.Source" -->
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.Build.WebApi.RepositoryCleanOptions.SourceAndOutputDir" -->
+        <member name="F:Microsoft.TeamFoundation.Build.WebApi.RepositoryCleanOptions.Source">
+            <summary>
+            Run git clean -fdx &amp;&amp; git reset --hard or Tf /scorch on $(build.sourcesDirectory)
+            </summary>
+        </member>
+        <member name="F:Microsoft.TeamFoundation.Build.WebApi.RepositoryCleanOptions.SourceAndOutputDir">
+            <summary>
+            Run git clean -fdx &amp;&amp; git reset --hard or Tf /scorch on $(build.sourcesDirectory), also re-create $(build.binariesDirectory)
+            </summary>
+        </member>
         <member name="F:Microsoft.TeamFoundation.Build.WebApi.RepositoryCleanOptions.SourceDir">
             <summary>
             Re-create $(build.sourcesDirectory)
@@ -5009,7 +5027,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.CreateArtifactAsync(Microsoft.TeamFoundation.Build.WebApi.BuildArtifact,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Associates an artifact with a build.
+            [Preview API] Associates an artifact with a build.
             </summary>
             <param name="artifact">The artifact.</param>
             <param name="project">Project ID or project name</param>
@@ -5019,7 +5037,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.CreateArtifactAsync(Microsoft.TeamFoundation.Build.WebApi.BuildArtifact,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Associates an artifact with a build.
+            [Preview API] Associates an artifact with a build.
             </summary>
             <param name="artifact">The artifact.</param>
             <param name="project">Project ID</param>
@@ -5029,7 +5047,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetArtifactAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific artifact for a build.
+            [Preview API] Gets a specific artifact for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5039,7 +5057,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetArtifactAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific artifact for a build.
+            [Preview API] Gets a specific artifact for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5049,7 +5067,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetArtifactContentZipAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific artifact for a build.
+            [Preview API] Gets a specific artifact for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5059,7 +5077,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetArtifactContentZipAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific artifact for a build.
+            [Preview API] Gets a specific artifact for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5069,7 +5087,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetArtifactsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all artifacts for a build.
+            [Preview API] Gets all artifacts for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5078,7 +5096,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetArtifactsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all artifacts for a build.
+            [Preview API] Gets all artifacts for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5087,7 +5105,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetFileAsync(System.String,System.Int32,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a file from the build.
+            [Preview API] Gets a file from the build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5099,7 +5117,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetFileAsync(System.Guid,System.Int32,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a file from the build.
+            [Preview API] Gets a file from the build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5111,7 +5129,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetAttachmentsAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the list of attachments of a specific type that are associated with a build.
+            [Preview API] Gets the list of attachments of a specific type that are associated with a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5121,7 +5139,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetAttachmentsAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the list of attachments of a specific type that are associated with a build.
+            [Preview API] Gets the list of attachments of a specific type that are associated with a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5131,7 +5149,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetAttachmentAsync(System.String,System.Int32,System.Guid,System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific attachment.
+            [Preview API] Gets a specific attachment.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5144,7 +5162,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetAttachmentAsync(System.Guid,System.Int32,System.Guid,System.Guid,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific attachment.
+            [Preview API] Gets a specific attachment.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5195,7 +5213,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBadgeAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a badge that indicates the status of the most recent build for a definition. Note that this API is deprecated. Prefer StatusBadgeController.GetStatusBadge.
+            [Preview API] Gets a badge that indicates the status of the most recent build for a definition. Note that this API is deprecated. Prefer StatusBadgeController.GetStatusBadge.
             </summary>
             <param name="project">The project ID or name.</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -5205,7 +5223,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListBranchesAsync(System.String,System.String,System.Nullable{System.Guid},System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of branches for the given source code repository.
+            [Preview API] Gets a list of branches for the given source code repository.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="providerName">The name of the source provider.</param>
@@ -5217,7 +5235,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListBranchesAsync(System.Guid,System.String,System.Nullable{System.Guid},System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of branches for the given source code repository.
+            [Preview API] Gets a list of branches for the given source code repository.
             </summary>
             <param name="project">Project ID</param>
             <param name="providerName">The name of the source provider.</param>
@@ -5273,7 +5291,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesForBuildAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all retention leases that apply to a specific build.
+            [Preview API] Gets all retention leases that apply to a specific build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5282,7 +5300,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesForBuildAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all retention leases that apply to a specific build.
+            [Preview API] Gets all retention leases that apply to a specific build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5291,7 +5309,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteBuildAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a build.
+            [Preview API] Deletes a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5300,7 +5318,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteBuildAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a build.
+            [Preview API] Deletes a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5309,7 +5327,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a build
+            [Preview API] Gets a build
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId"></param>
@@ -5319,7 +5337,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a build
+            [Preview API] Gets a build
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId"></param>
@@ -5329,7 +5347,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildsAsync(System.String,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildReason},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildStatus},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildResult},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.QueryDeletedOption},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildQueryOrder},System.String,System.Collections.Generic.IEnumerable{System.Int32},System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of builds.
+            [Preview API] Gets a list of builds.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitions">A comma-delimited list of definition IDs. If specified, filters to builds for these definitions.</param>
@@ -5357,7 +5375,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildsAsync(System.Guid,System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildReason},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildStatus},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildResult},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Int32},System.String,System.Nullable{System.Int32},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.QueryDeletedOption},System.Nullable{Microsoft.TeamFoundation.Build.WebApi.BuildQueryOrder},System.String,System.Collections.Generic.IEnumerable{System.Int32},System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of builds.
+            [Preview API] Gets a list of builds.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitions">A comma-delimited list of definition IDs. If specified, filters to builds for these definitions.</param>
@@ -5385,33 +5403,33 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.QueueBuildAsync(Microsoft.TeamFoundation.Build.WebApi.Build,System.String,System.Nullable{System.Boolean},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Queues a build
+            [Preview API] Queues a build
             </summary>
             <param name="build"></param>
             <param name="project">Project ID or project name</param>
             <param name="ignoreWarnings"></param>
             <param name="checkInTicket"></param>
             <param name="sourceBuildId"></param>
-            <param name="definitionId">Optional definition id to queue a build without a body. Ignored if there's a valid body</param>
+            <param name="definitionId">Optional definition id to queue a build without a body. Ignored if there&apos;s a valid body</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.QueueBuildAsync(Microsoft.TeamFoundation.Build.WebApi.Build,System.Guid,System.Nullable{System.Boolean},System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Queues a build
+            [Preview API] Queues a build
             </summary>
             <param name="build"></param>
             <param name="project">Project ID</param>
             <param name="ignoreWarnings"></param>
             <param name="checkInTicket"></param>
             <param name="sourceBuildId"></param>
-            <param name="definitionId">Optional definition id to queue a build without a body. Ignored if there's a valid body</param>
+            <param name="definitionId">Optional definition id to queue a build without a body. Ignored if there&apos;s a valid body</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildAsync(Microsoft.TeamFoundation.Build.WebApi.Build,System.String,System.Int32,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a build.
+            [Preview API] Updates a build.
             </summary>
             <param name="build">The build.</param>
             <param name="project">Project ID or project name</param>
@@ -5422,7 +5440,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildAsync(Microsoft.TeamFoundation.Build.WebApi.Build,System.Guid,System.Int32,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates a build.
+            [Preview API] Updates a build.
             </summary>
             <param name="build">The build.</param>
             <param name="project">Project ID</param>
@@ -5433,7 +5451,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildsAsync(System.Collections.Generic.IEnumerable{Microsoft.TeamFoundation.Build.WebApi.Build},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates multiple builds.
+            [Preview API] Updates multiple builds.
             </summary>
             <param name="builds">The builds to update.</param>
             <param name="project">Project ID or project name</param>
@@ -5442,7 +5460,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildsAsync(System.Collections.Generic.IEnumerable{Microsoft.TeamFoundation.Build.WebApi.Build},System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates multiple builds.
+            [Preview API] Updates multiple builds.
             </summary>
             <param name="builds">The builds to update.</param>
             <param name="project">Project ID</param>
@@ -5451,7 +5469,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildChangesAsync(System.String,System.Int32,System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the changes associated with a build
+            [Preview API] Gets the changes associated with a build
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId"></param>
@@ -5463,7 +5481,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildChangesAsync(System.Guid,System.Int32,System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the changes associated with a build
+            [Preview API] Gets the changes associated with a build
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId"></param>
@@ -5475,7 +5493,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetChangesBetweenBuildsAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the changes made to the repository between two given builds.
+            [Preview API] Gets the changes made to the repository between two given builds.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="fromBuildId">The ID of the first build.</param>
@@ -5486,7 +5504,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetChangesBetweenBuildsAsync(System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the changes made to the repository between two given builds.
+            [Preview API] Gets the changes made to the repository between two given builds.
             </summary>
             <param name="project">Project ID</param>
             <param name="fromBuildId">The ID of the first build.</param>
@@ -5497,7 +5515,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildControllerAsync(System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a controller
+            [Preview API] Gets a controller
             </summary>
             <param name="controllerId"></param>
             <param name="userState"></param>
@@ -5505,7 +5523,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildControllersAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets controller, optionally filtered by name
+            [Preview API] Gets controller, optionally filtered by name
             </summary>
             <param name="name"></param>
             <param name="userState"></param>
@@ -5513,7 +5531,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.CreateDefinitionAsync(Microsoft.TeamFoundation.Build.WebApi.BuildDefinition,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new definition.
+            [Preview API] Creates a new definition.
             </summary>
             <param name="definition">The definition.</param>
             <param name="project">Project ID or project name</param>
@@ -5524,7 +5542,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.CreateDefinitionAsync(Microsoft.TeamFoundation.Build.WebApi.BuildDefinition,System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new definition.
+            [Preview API] Creates a new definition.
             </summary>
             <param name="definition">The definition.</param>
             <param name="project">Project ID</param>
@@ -5535,7 +5553,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteDefinitionAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a definition and all associated builds.
+            [Preview API] Deletes a definition and all associated builds.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -5544,7 +5562,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteDefinitionAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a definition and all associated builds.
+            [Preview API] Deletes a definition and all associated builds.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -5553,7 +5571,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a definition, optionally at a specific revision.
+            [Preview API] Gets a definition, optionally at a specific revision.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -5566,7 +5584,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a definition, optionally at a specific revision.
+            [Preview API] Gets a definition, optionally at a specific revision.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -5579,7 +5597,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionsAsync(System.String,System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.Build.WebApi.DefinitionQueryOrder},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTime},System.Collections.Generic.IEnumerable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Guid},System.Nullable{System.Int32},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of definitions.
+            [Preview API] Gets a list of definitions.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="name">If specified, filters to definitions whose names match this pattern.</param>
@@ -5603,7 +5621,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionsAsync(System.Guid,System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.Build.WebApi.DefinitionQueryOrder},System.Nullable{System.Int32},System.String,System.Nullable{System.DateTime},System.Collections.Generic.IEnumerable{System.Int32},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Guid},System.Nullable{System.Int32},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of definitions.
+            [Preview API] Gets a list of definitions.
             </summary>
             <param name="project">Project ID</param>
             <param name="name">If specified, filters to definitions whose names match this pattern.</param>
@@ -5627,7 +5645,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.RestoreDefinitionAsync(System.String,System.Int32,System.Boolean,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Restores a deleted definition
+            [Preview API] Restores a deleted definition
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The identifier of the definition to restore.</param>
@@ -5637,7 +5655,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.RestoreDefinitionAsync(System.Guid,System.Int32,System.Boolean,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Restores a deleted definition
+            [Preview API] Restores a deleted definition
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The identifier of the definition to restore.</param>
@@ -5647,9 +5665,9 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateDefinitionAsync(Microsoft.TeamFoundation.Build.WebApi.BuildDefinition,System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates an existing build definition.  In order for this operation to succeed, the value of the "Revision" property of the request body must match the existing build definition's. It is recommended that you obtain the existing build definition by using GET, modify the build definition as necessary, and then submit the modified definition with PUT.
+            [Preview API] Updates an existing build definition.  In order for this operation to succeed, the value of the &quot;Revision&quot; property of the request body must match the existing build definition&apos;s. It is recommended that you obtain the existing build definition by using GET, modify the build definition as necessary, and then submit the modified definition with PUT.
             </summary>
-            <param name="definition">The new version of the definition. Its "Revision" property must match the existing definition for the update to be accepted.</param>
+            <param name="definition">The new version of the definition. Its &quot;Revision&quot; property must match the existing definition for the update to be accepted.</param>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
             <param name="secretsSourceDefinitionId"></param>
@@ -5659,9 +5677,9 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateDefinitionAsync(Microsoft.TeamFoundation.Build.WebApi.BuildDefinition,System.Guid,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates an existing build definition.  In order for this operation to succeed, the value of the "Revision" property of the request body must match the existing build definition's. It is recommended that you obtain the existing build definition by using GET, modify the build definition as necessary, and then submit the modified definition with PUT.
+            [Preview API] Updates an existing build definition.  In order for this operation to succeed, the value of the &quot;Revision&quot; property of the request body must match the existing build definition&apos;s. It is recommended that you obtain the existing build definition by using GET, modify the build definition as necessary, and then submit the modified definition with PUT.
             </summary>
-            <param name="definition">The new version of the definition. Its "Revision" property must match the existing definition for the update to be accepted.</param>
+            <param name="definition">The new version of the definition. Its &quot;Revision&quot; property must match the existing definition for the update to be accepted.</param>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
             <param name="secretsSourceDefinitionId"></param>
@@ -5671,26 +5689,26 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetFileContentsAsync(System.String,System.String,System.Nullable{System.Guid},System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the contents of a file in the given source code repository.
+            [Preview API] Gets the contents of a file in the given source code repository.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="providerName">The name of the source provider.</param>
             <param name="serviceEndpointId">If specified, the ID of the service endpoint to query. Can only be omitted for providers that do not use service endpoints, e.g. TFVC or TFGit.</param>
             <param name="repository">If specified, the vendor-specific identifier or the name of the repository to get branches. Can only be omitted for providers that do not support multiple repositories.</param>
-            <param name="commitOrBranch">The identifier of the commit or branch from which a file's contents are retrieved.</param>
+            <param name="commitOrBranch">The identifier of the commit or branch from which a file&apos;s contents are retrieved.</param>
             <param name="path">The path to the file to retrieve, relative to the root of the repository.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetFileContentsAsync(System.Guid,System.String,System.Nullable{System.Guid},System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the contents of a file in the given source code repository.
+            [Preview API] Gets the contents of a file in the given source code repository.
             </summary>
             <param name="project">Project ID</param>
             <param name="providerName">The name of the source provider.</param>
             <param name="serviceEndpointId">If specified, the ID of the service endpoint to query. Can only be omitted for providers that do not use service endpoints, e.g. TFVC or TFGit.</param>
             <param name="repository">If specified, the vendor-specific identifier or the name of the repository to get branches. Can only be omitted for providers that do not support multiple repositories.</param>
-            <param name="commitOrBranch">The identifier of the commit or branch from which a file's contents are retrieved.</param>
+            <param name="commitOrBranch">The identifier of the commit or branch from which a file&apos;s contents are retrieved.</param>
             <param name="path">The path to the file to retrieve, relative to the root of the repository.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -5775,7 +5793,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildGeneralSettingsAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets pipeline general settings.
+            [Preview API] Gets pipeline general settings.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -5783,7 +5801,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildGeneralSettingsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets pipeline general settings.
+            [Preview API] Gets pipeline general settings.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -5791,7 +5809,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildGeneralSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.PipelineGeneralSettings,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates pipeline general settings.
+            [Preview API] Updates pipeline general settings.
             </summary>
             <param name="newSettings"></param>
             <param name="project">Project ID or project name</param>
@@ -5800,7 +5818,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildGeneralSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.PipelineGeneralSettings,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates pipeline general settings.
+            [Preview API] Updates pipeline general settings.
             </summary>
             <param name="newSettings"></param>
             <param name="project">Project ID</param>
@@ -5809,7 +5827,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionHistoryAsync(System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns the retention history for the project collection. This includes pipelines that have custom retention rules that may prevent the retention job from cleaning them up, runs per pipeline with retention type, files associated with pipelines owned by the collection with retention type, and the number of files per pipeline.
+            [Preview API] Returns the retention history for the project collection. This includes pipelines that have custom retention rules that may prevent the retention job from cleaning them up, runs per pipeline with retention type, files associated with pipelines owned by the collection with retention type, and the number of files per pipeline.
             </summary>
             <param name="daysToLookback"></param>
             <param name="userState"></param>
@@ -5837,7 +5855,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddRetentionLeasesAsync(System.Collections.Generic.IReadOnlyList{Microsoft.TeamFoundation.Build.WebApi.NewRetentionLease},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds new leases for pipeline runs.
+            [Preview API] Adds new leases for pipeline runs.
             </summary>
             <param name="newLeases"></param>
             <param name="project">Project ID or project name</param>
@@ -5846,7 +5864,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddRetentionLeasesAsync(System.Collections.Generic.IReadOnlyList{Microsoft.TeamFoundation.Build.WebApi.NewRetentionLease},System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds new leases for pipeline runs.
+            [Preview API] Adds new leases for pipeline runs.
             </summary>
             <param name="newLeases"></param>
             <param name="project">Project ID</param>
@@ -5855,7 +5873,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteRetentionLeasesByIdAsync(System.String,System.Collections.Generic.IEnumerable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes specific retention leases.
+            [Preview API] Removes specific retention leases.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="ids"></param>
@@ -5864,7 +5882,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteRetentionLeasesByIdAsync(System.Guid,System.Collections.Generic.IEnumerable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes specific retention leases.
+            [Preview API] Removes specific retention leases.
             </summary>
             <param name="project">Project ID</param>
             <param name="ids"></param>
@@ -5873,7 +5891,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeaseAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns the details of the retention lease given a lease id.
+            [Preview API] Returns the details of the retention lease given a lease id.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="leaseId"></param>
@@ -5882,7 +5900,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeaseAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns the details of the retention lease given a lease id.
+            [Preview API] Returns the details of the retention lease given a lease id.
             </summary>
             <param name="project">Project ID</param>
             <param name="leaseId"></param>
@@ -5891,69 +5909,69 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesByMinimalRetentionLeasesAsync(System.String,System.Collections.Generic.IEnumerable{Microsoft.TeamFoundation.Build.WebApi.MinimalRetentionLease},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns any leases matching the specified MinimalRetentionLeases
+            [Preview API] Returns any leases matching the specified MinimalRetentionLeases
             </summary>
             <param name="project">Project ID or project name</param>
-            <param name="leasesToFetch">List of JSON-serialized MinimalRetentionLeases separated by '|'</param>
+            <param name="leasesToFetch">List of JSON-serialized MinimalRetentionLeases separated by &apos;|&apos;</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesByMinimalRetentionLeasesAsync(System.Guid,System.Collections.Generic.IEnumerable{Microsoft.TeamFoundation.Build.WebApi.MinimalRetentionLease},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns any leases matching the specified MinimalRetentionLeases
+            [Preview API] Returns any leases matching the specified MinimalRetentionLeases
             </summary>
             <param name="project">Project ID</param>
-            <param name="leasesToFetch">List of JSON-serialized MinimalRetentionLeases separated by '|'</param>
+            <param name="leasesToFetch">List of JSON-serialized MinimalRetentionLeases separated by &apos;|&apos;</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesByOwnerIdAsync(System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns any leases owned by the specified entity, optionally scoped to a single pipeline definition and run.
+            [Preview API] Returns any leases owned by the specified entity, optionally scoped to a single pipeline definition and run.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="ownerId"></param>
             <param name="definitionId">An optional parameter to limit the search to a specific pipeline definition.</param>
-            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires <paramref name="definitionId" />.</param>
+            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires &lt;paramref name=&quot;definitionId&quot; /&gt;.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesByOwnerIdAsync(System.Guid,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns any leases owned by the specified entity, optionally scoped to a single pipeline definition and run.
+            [Preview API] Returns any leases owned by the specified entity, optionally scoped to a single pipeline definition and run.
             </summary>
             <param name="project">Project ID</param>
             <param name="ownerId"></param>
             <param name="definitionId">An optional parameter to limit the search to a specific pipeline definition.</param>
-            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires <paramref name="definitionId" />.</param>
+            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires &lt;paramref name=&quot;definitionId&quot; /&gt;.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesByUserIdAsync(System.String,System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns any leases owned by the specified user, optionally scoped to a single pipeline definition and run.
+            [Preview API] Returns any leases owned by the specified user, optionally scoped to a single pipeline definition and run.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userOwnerId">The user id to search for.</param>
             <param name="definitionId">An optional parameter to limit the search to a specific pipeline definition.</param>
-            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires <paramref name="definitionId" />.</param>
+            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires &lt;paramref name=&quot;definitionId&quot; /&gt;.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionLeasesByUserIdAsync(System.Guid,System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns any leases owned by the specified user, optionally scoped to a single pipeline definition and run.
+            [Preview API] Returns any leases owned by the specified user, optionally scoped to a single pipeline definition and run.
             </summary>
             <param name="project">Project ID</param>
             <param name="userOwnerId">The user id to search for.</param>
             <param name="definitionId">An optional parameter to limit the search to a specific pipeline definition.</param>
-            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires <paramref name="definitionId" />.</param>
+            <param name="runId">An optional parameter to limit the search to a single pipeline run. Requires &lt;paramref name=&quot;definitionId&quot; /&gt;.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateRetentionLeaseAsync(Microsoft.TeamFoundation.Build.WebApi.RetentionLeaseUpdate,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the duration or pipeline protection status of a retention lease.
+            [Preview API] Updates the duration or pipeline protection status of a retention lease.
             </summary>
             <param name="leaseUpdate">The new data for the retention lease.</param>
             <param name="project">Project ID or project name</param>
@@ -5963,7 +5981,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateRetentionLeaseAsync(Microsoft.TeamFoundation.Build.WebApi.RetentionLeaseUpdate,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the duration or pipeline protection status of a retention lease.
+            [Preview API] Updates the duration or pipeline protection status of a retention lease.
             </summary>
             <param name="leaseUpdate">The new data for the retention lease.</param>
             <param name="project">Project ID</param>
@@ -5973,7 +5991,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogAsync(System.String,System.Int32,System.Int32,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets an individual log file for a build.
+            [Preview API] Gets an individual log file for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -5985,7 +6003,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogAsync(System.Guid,System.Int32,System.Int32,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets an individual log file for a build.
+            [Preview API] Gets an individual log file for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -5997,7 +6015,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogLinesAsync(System.String,System.Int32,System.Int32,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets an individual log file for a build.
+            [Preview API] Gets an individual log file for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6009,7 +6027,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogLinesAsync(System.Guid,System.Int32,System.Int32,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets an individual log file for a build.
+            [Preview API] Gets an individual log file for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6021,7 +6039,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the logs for a build.
+            [Preview API] Gets the logs for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6030,7 +6048,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the logs for a build.
+            [Preview API] Gets the logs for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6039,7 +6057,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogsZipAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the logs for a build.
+            [Preview API] Gets the logs for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6048,7 +6066,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogsZipAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the logs for a build.
+            [Preview API] Gets the logs for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6057,7 +6075,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogZipAsync(System.String,System.Int32,System.Int32,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets an individual log file for a build.
+            [Preview API] Gets an individual log file for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6069,7 +6087,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildLogZipAsync(System.Guid,System.Int32,System.Int32,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets an individual log file for a build.
+            [Preview API] Gets an individual log file for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6121,14 +6139,14 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildOptionDefinitionsAsync(System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all build definition options supported by the system.
+            [Preview API] Gets all build definition options supported by the system.
             </summary>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildOptionDefinitionsAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all build definition options supported by the system.
+            [Preview API] Gets all build definition options supported by the system.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -6136,7 +6154,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildOptionDefinitionsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all build definition options supported by the system.
+            [Preview API] Gets all build definition options supported by the system.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -6144,33 +6162,33 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetPathContentsAsync(System.String,System.String,System.Nullable{System.Guid},System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the contents of a directory in the given source code repository.
+            [Preview API] Gets the contents of a directory in the given source code repository.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="providerName">The name of the source provider.</param>
             <param name="serviceEndpointId">If specified, the ID of the service endpoint to query. Can only be omitted for providers that do not use service endpoints, e.g. TFVC or TFGit.</param>
             <param name="repository">If specified, the vendor-specific identifier or the name of the repository to get branches. Can only be omitted for providers that do not support multiple repositories.</param>
-            <param name="commitOrBranch">The identifier of the commit or branch from which a file's contents are retrieved.</param>
+            <param name="commitOrBranch">The identifier of the commit or branch from which a file&apos;s contents are retrieved.</param>
             <param name="path">The path contents to list, relative to the root of the repository.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetPathContentsAsync(System.Guid,System.String,System.Nullable{System.Guid},System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the contents of a directory in the given source code repository.
+            [Preview API] Gets the contents of a directory in the given source code repository.
             </summary>
             <param name="project">Project ID</param>
             <param name="providerName">The name of the source provider.</param>
             <param name="serviceEndpointId">If specified, the ID of the service endpoint to query. Can only be omitted for providers that do not use service endpoints, e.g. TFVC or TFGit.</param>
             <param name="repository">If specified, the vendor-specific identifier or the name of the repository to get branches. Can only be omitted for providers that do not support multiple repositories.</param>
-            <param name="commitOrBranch">The identifier of the commit or branch from which a file's contents are retrieved.</param>
+            <param name="commitOrBranch">The identifier of the commit or branch from which a file&apos;s contents are retrieved.</param>
             <param name="path">The path contents to list, relative to the root of the repository.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildPropertiesAsync(System.String,System.Int32,System.Collections.Generic.IEnumerable{System.String},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets properties for a build.
+            [Preview API] Gets properties for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6180,7 +6198,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildPropertiesAsync(System.Guid,System.Int32,System.Collections.Generic.IEnumerable{System.String},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets properties for a build.
+            [Preview API] Gets properties for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6190,7 +6208,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildPropertiesAsync(Microsoft.VisualStudio.Services.WebApi.Patch.Json.JsonPatchDocument,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates properties for a build.
+            [Preview API] Updates properties for a build.
             </summary>
             <param name="document">A json-patch document describing the properties to update.</param>
             <param name="project">Project ID or project name</param>
@@ -6200,7 +6218,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildPropertiesAsync(Microsoft.VisualStudio.Services.WebApi.Patch.Json.JsonPatchDocument,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates properties for a build.
+            [Preview API] Updates properties for a build.
             </summary>
             <param name="document">A json-patch document describing the properties to update.</param>
             <param name="project">Project ID</param>
@@ -6210,7 +6228,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionPropertiesAsync(System.String,System.Int32,System.Collections.Generic.IEnumerable{System.String},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets properties for a definition.
+            [Preview API] Gets properties for a definition.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6220,7 +6238,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionPropertiesAsync(System.Guid,System.Int32,System.Collections.Generic.IEnumerable{System.String},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets properties for a definition.
+            [Preview API] Gets properties for a definition.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6230,7 +6248,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateDefinitionPropertiesAsync(Microsoft.VisualStudio.Services.WebApi.Patch.Json.JsonPatchDocument,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates properties for a definition.
+            [Preview API] Updates properties for a definition.
             </summary>
             <param name="document">A json-patch document describing the properties to update.</param>
             <param name="project">Project ID or project name</param>
@@ -6240,7 +6258,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateDefinitionPropertiesAsync(Microsoft.VisualStudio.Services.WebApi.Patch.Json.JsonPatchDocument,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates properties for a definition.
+            [Preview API] Updates properties for a definition.
             </summary>
             <param name="document">A json-patch document describing the properties to update.</param>
             <param name="project">Project ID</param>
@@ -6250,7 +6268,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetPullRequestAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a pull request object from source provider.
+            [Preview API] Gets a pull request object from source provider.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="providerName">The name of the source provider.</param>
@@ -6262,7 +6280,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetPullRequestAsync(System.Guid,System.String,System.String,System.String,System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a pull request object from source provider.
+            [Preview API] Gets a pull request object from source provider.
             </summary>
             <param name="project">Project ID</param>
             <param name="providerName">The name of the source provider.</param>
@@ -6274,7 +6292,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildReportAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a build report.
+            [Preview API] Gets a build report.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6284,7 +6302,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildReportAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a build report.
+            [Preview API] Gets a build report.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6294,7 +6312,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildReportHtmlContentAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a build report.
+            [Preview API] Gets a build report.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6304,7 +6322,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildReportHtmlContentAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a build report.
+            [Preview API] Gets a build report.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6314,13 +6332,13 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListRepositoriesAsync(System.String,System.String,System.Nullable{System.Guid},System.String,System.Nullable{Microsoft.TeamFoundation.Build.WebApi.ResultSet},System.Nullable{System.Boolean},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of source code repositories.
+            [Preview API] Gets a list of source code repositories.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="providerName">The name of the source provider.</param>
             <param name="serviceEndpointId">If specified, the ID of the service endpoint to query. Can only be omitted for providers that do not use service endpoints, e.g. TFVC or TFGit.</param>
             <param name="repository">If specified, the vendor-specific identifier or the name of a single repository to get.</param>
-            <param name="resultSet">'top' for the repositories most relevant for the endpoint. If not set, all repositories are returned. Ignored if 'repository' is set.</param>
+            <param name="resultSet">&apos;top&apos; for the repositories most relevant for the endpoint. If not set, all repositories are returned. Ignored if &apos;repository&apos; is set.</param>
             <param name="pageResults">If set to true, this will limit the set of results and will return a continuation token to continue the query.</param>
             <param name="continuationToken">When paging results, this is a continuation token, returned by a previous call to this method, that can be used to return the next set of repositories.</param>
             <param name="userState"></param>
@@ -6328,13 +6346,13 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListRepositoriesAsync(System.Guid,System.String,System.Nullable{System.Guid},System.String,System.Nullable{Microsoft.TeamFoundation.Build.WebApi.ResultSet},System.Nullable{System.Boolean},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of source code repositories.
+            [Preview API] Gets a list of source code repositories.
             </summary>
             <param name="project">Project ID</param>
             <param name="providerName">The name of the source provider.</param>
             <param name="serviceEndpointId">If specified, the ID of the service endpoint to query. Can only be omitted for providers that do not use service endpoints, e.g. TFVC or TFGit.</param>
             <param name="repository">If specified, the vendor-specific identifier or the name of a single repository to get.</param>
-            <param name="resultSet">'top' for the repositories most relevant for the endpoint. If not set, all repositories are returned. Ignored if 'repository' is set.</param>
+            <param name="resultSet">&apos;top&apos; for the repositories most relevant for the endpoint. If not set, all repositories are returned. Ignored if &apos;repository&apos; is set.</param>
             <param name="pageResults">If set to true, this will limit the set of results and will return a continuation token to continue the query.</param>
             <param name="continuationToken">When paging results, this is a continuation token, returned by a previous call to this method, that can be used to return the next set of repositories.</param>
             <param name="userState"></param>
@@ -6387,7 +6405,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionSettingsAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the project's retention settings.
+            [Preview API] Gets the project&apos;s retention settings.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -6395,7 +6413,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetRetentionSettingsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the project's retention settings.
+            [Preview API] Gets the project&apos;s retention settings.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -6403,7 +6421,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateRetentionSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateProjectRetentionSettingModel,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the project's retention settings.
+            [Preview API] Updates the project&apos;s retention settings.
             </summary>
             <param name="updateModel"></param>
             <param name="project">Project ID or project name</param>
@@ -6412,7 +6430,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateRetentionSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateProjectRetentionSettingModel,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the project's retention settings.
+            [Preview API] Updates the project&apos;s retention settings.
             </summary>
             <param name="updateModel"></param>
             <param name="project">Project ID</param>
@@ -6421,7 +6439,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionRevisionsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all revisions of a definition.
+            [Preview API] Gets all revisions of a definition.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6430,7 +6448,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionRevisionsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all revisions of a definition.
+            [Preview API] Gets all revisions of a definition.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6439,14 +6457,14 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildSettingsAsync(System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the build settings.
+            [Preview API] Gets the build settings.
             </summary>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildSettingsAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the build settings.
+            [Preview API] Gets the build settings.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -6454,7 +6472,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildSettingsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the build settings.
+            [Preview API] Gets the build settings.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -6462,7 +6480,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.BuildSettings,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the build settings.
+            [Preview API] Updates the build settings.
             </summary>
             <param name="settings">The new settings.</param>
             <param name="userState"></param>
@@ -6470,7 +6488,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.BuildSettings,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the build settings.
+            [Preview API] Updates the build settings.
             </summary>
             <param name="settings">The new settings.</param>
             <param name="project">Project ID or project name</param>
@@ -6479,7 +6497,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildSettingsAsync(Microsoft.TeamFoundation.Build.WebApi.BuildSettings,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the build settings.
+            [Preview API] Updates the build settings.
             </summary>
             <param name="settings">The new settings.</param>
             <param name="project">Project ID</param>
@@ -6488,7 +6506,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListSourceProvidersAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of source providers and their capabilities.
+            [Preview API] Get a list of source providers and their capabilities.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -6496,7 +6514,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListSourceProvidersAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of source providers and their capabilities.
+            [Preview API] Get a list of source providers and their capabilities.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -6504,7 +6522,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateStageAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateStageParameters,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a build stage
+            [Preview API] Update a build stage
             </summary>
             <param name="updateParameters"></param>
             <param name="buildId"></param>
@@ -6514,7 +6532,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateStageAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateStageParameters,System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a build stage
+            [Preview API] Update a build stage
             </summary>
             <param name="updateParameters"></param>
             <param name="project">Project ID or project name</param>
@@ -6525,7 +6543,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateStageAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateStageParameters,System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a build stage
+            [Preview API] Update a build stage
             </summary>
             <param name="updateParameters"></param>
             <param name="project">Project ID</param>
@@ -6536,7 +6554,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetStatusBadgeAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            [Preview API] <p>Gets the build status for a definition, optionally scoped to a specific branch, stage, job, and configuration.</p> <p>If there are more than one, then it is required to pass in a <paramref name="stageName" /> value when specifying a <paramref name="jobName" />, and the same rule then applies for both if passing a <paramref name="configuration" /> parameter.</p>
+            [Preview API] &lt;p&gt;Gets the build status for a definition, optionally scoped to a specific branch, stage, job, and configuration.&lt;/p&gt; &lt;p&gt;If there are more than one, then it is required to pass in a &lt;paramref name=&quot;stageName&quot; /&gt; value when specifying a &lt;paramref name=&quot;jobName&quot; /&gt;, and the same rule then applies for both if passing a &lt;paramref name=&quot;configuration&quot; /&gt; parameter.&lt;/p&gt;
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definition">Either the definition name with optional leading folder path, or the definition id.</param>
@@ -6550,7 +6568,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetStatusBadgeAsync(System.Guid,System.String,System.String,System.String,System.String,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            [Preview API] <p>Gets the build status for a definition, optionally scoped to a specific branch, stage, job, and configuration.</p> <p>If there are more than one, then it is required to pass in a <paramref name="stageName" /> value when specifying a <paramref name="jobName" />, and the same rule then applies for both if passing a <paramref name="configuration" /> parameter.</p>
+            [Preview API] &lt;p&gt;Gets the build status for a definition, optionally scoped to a specific branch, stage, job, and configuration.&lt;/p&gt; &lt;p&gt;If there are more than one, then it is required to pass in a &lt;paramref name=&quot;stageName&quot; /&gt; value when specifying a &lt;paramref name=&quot;jobName&quot; /&gt;, and the same rule then applies for both if passing a &lt;paramref name=&quot;configuration&quot; /&gt; parameter.&lt;/p&gt;
             </summary>
             <param name="project">Project ID</param>
             <param name="definition">Either the definition name with optional leading folder path, or the definition id.</param>
@@ -6564,7 +6582,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddBuildTagAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a tag to a build.
+            [Preview API] Adds a tag to a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6574,7 +6592,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddBuildTagAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a tag to a build.
+            [Preview API] Adds a tag to a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6584,7 +6602,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddBuildTagsAsync(System.Collections.Generic.IEnumerable{System.String},System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds tags to a build.
+            [Preview API] Adds tags to a build.
             </summary>
             <param name="tags">The tags to add. Request body is composed directly from listed tags.</param>
             <param name="project">Project ID or project name</param>
@@ -6594,7 +6612,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddBuildTagsAsync(System.Collections.Generic.IEnumerable{System.String},System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds tags to a build.
+            [Preview API] Adds tags to a build.
             </summary>
             <param name="tags">The tags to add. Request body is composed directly from listed tags.</param>
             <param name="project">Project ID</param>
@@ -6604,7 +6622,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteBuildTagAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a tag from a build. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
+            [Preview API] Removes a tag from a build. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6614,7 +6632,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteBuildTagAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a tag from a build. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
+            [Preview API] Removes a tag from a build. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6624,7 +6642,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildTagsAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the tags for a build.
+            [Preview API] Gets the tags for a build.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6633,7 +6651,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildTagsAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the tags for a build.
+            [Preview API] Gets the tags for a build.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6642,7 +6660,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildTagsAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateTagParameters,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds/Removes tags from a build.
+            [Preview API] Adds/Removes tags from a build.
             </summary>
             <param name="updateParameters">The tags to add/remove.</param>
             <param name="project">Project ID or project name</param>
@@ -6652,7 +6670,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateBuildTagsAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateTagParameters,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds/Removes tags from a build.
+            [Preview API] Adds/Removes tags from a build.
             </summary>
             <param name="updateParameters">The tags to add/remove.</param>
             <param name="project">Project ID</param>
@@ -6662,7 +6680,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddDefinitionTagAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a tag to a definition
+            [Preview API] Adds a tag to a definition
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6672,7 +6690,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddDefinitionTagAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds a tag to a definition
+            [Preview API] Adds a tag to a definition
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6682,7 +6700,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddDefinitionTagsAsync(System.Collections.Generic.IEnumerable{System.String},System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds multiple tags to a definition.
+            [Preview API] Adds multiple tags to a definition.
             </summary>
             <param name="tags">The tags to add.</param>
             <param name="project">Project ID or project name</param>
@@ -6692,7 +6710,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.AddDefinitionTagsAsync(System.Collections.Generic.IEnumerable{System.String},System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds multiple tags to a definition.
+            [Preview API] Adds multiple tags to a definition.
             </summary>
             <param name="tags">The tags to add.</param>
             <param name="project">Project ID</param>
@@ -6702,7 +6720,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteDefinitionTagAsync(System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a tag from a definition. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
+            [Preview API] Removes a tag from a definition. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6712,7 +6730,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteDefinitionTagAsync(System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a tag from a definition. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
+            [Preview API] Removes a tag from a definition. NOTE: This API will not work for tags with special characters. To remove tags with special characters, use the PATCH method instead (in 6.0+)
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6722,7 +6740,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionTagsAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the tags for a definition.
+            [Preview API] Gets the tags for a definition.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6732,7 +6750,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionTagsAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the tags for a definition.
+            [Preview API] Gets the tags for a definition.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -6742,7 +6760,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateDefinitionTagsAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateTagParameters,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds/Removes tags from a definition.
+            [Preview API] Adds/Removes tags from a definition.
             </summary>
             <param name="updateParameters">The tags to add/remove.</param>
             <param name="project">Project ID or project name</param>
@@ -6752,7 +6770,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.UpdateDefinitionTagsAsync(Microsoft.TeamFoundation.Build.WebApi.UpdateTagParameters,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Adds/Removes tags from a definition.
+            [Preview API] Adds/Removes tags from a definition.
             </summary>
             <param name="updateParameters">The tags to add/remove.</param>
             <param name="project">Project ID</param>
@@ -6762,7 +6780,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteTagAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a tag from builds, definitions, and from the tag store
+            [Preview API] Removes a tag from builds, definitions, and from the tag store
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="tag">The tag to remove.</param>
@@ -6771,7 +6789,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteTagAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Removes a tag from builds, definitions, and from the tag store
+            [Preview API] Removes a tag from builds, definitions, and from the tag store
             </summary>
             <param name="project">Project ID</param>
             <param name="tag">The tag to remove.</param>
@@ -6780,7 +6798,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetTagsAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of all build tags in the project.
+            [Preview API] Gets a list of all build tags in the project.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -6788,7 +6806,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetTagsAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of all build tags in the project.
+            [Preview API] Gets a list of all build tags in the project.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -6796,7 +6814,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteTemplateAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a build definition template.
+            [Preview API] Deletes a build definition template.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="templateId">The ID of the template.</param>
@@ -6805,7 +6823,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.DeleteTemplateAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a build definition template.
+            [Preview API] Deletes a build definition template.
             </summary>
             <param name="project">Project ID</param>
             <param name="templateId">The ID of the template.</param>
@@ -6814,7 +6832,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetTemplateAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific build definition template.
+            [Preview API] Gets a specific build definition template.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="templateId">The ID of the requested template.</param>
@@ -6823,7 +6841,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetTemplateAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a specific build definition template.
+            [Preview API] Gets a specific build definition template.
             </summary>
             <param name="project">Project ID</param>
             <param name="templateId">The ID of the requested template.</param>
@@ -6832,7 +6850,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetTemplatesAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all definition templates.
+            [Preview API] Gets all definition templates.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -6840,7 +6858,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetTemplatesAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all definition templates.
+            [Preview API] Gets all definition templates.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -6848,7 +6866,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.SaveTemplateAsync(Microsoft.TeamFoundation.Build.WebApi.BuildDefinitionTemplate,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates an existing build definition template.
+            [Preview API] Updates an existing build definition template.
             </summary>
             <param name="template">The new version of the template.</param>
             <param name="project">Project ID or project name</param>
@@ -6858,7 +6876,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.SaveTemplateAsync(Microsoft.TeamFoundation.Build.WebApi.BuildDefinitionTemplate,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates an existing build definition template.
+            [Preview API] Updates an existing build definition template.
             </summary>
             <param name="template">The new version of the template.</param>
             <param name="project">Project ID</param>
@@ -6868,7 +6886,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildTimelineAsync(System.String,System.Int32,System.Nullable{System.Guid},System.Nullable{System.Int32},System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets details for a build
+            [Preview API] Gets details for a build
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId"></param>
@@ -6880,7 +6898,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildTimelineAsync(System.Guid,System.Int32,System.Nullable{System.Guid},System.Nullable{System.Int32},System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets details for a build
+            [Preview API] Gets details for a build
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId"></param>
@@ -6892,7 +6910,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.RestoreWebhooksAsync(System.Collections.Generic.List{Microsoft.TeamFoundation.Build.WebApi.DefinitionTriggerType},System.String,System.String,System.Nullable{System.Guid},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Recreates the webhooks for the specified triggers in the given source code repository.
+            [Preview API] Recreates the webhooks for the specified triggers in the given source code repository.
             </summary>
             <param name="triggerTypes">The types of triggers to restore webhooks for.</param>
             <param name="project">Project ID or project name</param>
@@ -6904,7 +6922,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.RestoreWebhooksAsync(System.Collections.Generic.List{Microsoft.TeamFoundation.Build.WebApi.DefinitionTriggerType},System.Guid,System.String,System.Nullable{System.Guid},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Recreates the webhooks for the specified triggers in the given source code repository.
+            [Preview API] Recreates the webhooks for the specified triggers in the given source code repository.
             </summary>
             <param name="triggerTypes">The types of triggers to restore webhooks for.</param>
             <param name="project">Project ID</param>
@@ -6916,7 +6934,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListWebhooksAsync(System.String,System.String,System.Nullable{System.Guid},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of webhooks installed in the given source code repository.
+            [Preview API] Gets a list of webhooks installed in the given source code repository.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="providerName">The name of the source provider.</param>
@@ -6927,7 +6945,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.ListWebhooksAsync(System.Guid,System.String,System.Nullable{System.Guid},System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of webhooks installed in the given source code repository.
+            [Preview API] Gets a list of webhooks installed in the given source code repository.
             </summary>
             <param name="project">Project ID</param>
             <param name="providerName">The name of the source provider.</param>
@@ -6938,7 +6956,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildWorkItemsRefsAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the work items associated with a build. Only work items in the same project are returned.
+            [Preview API] Gets the work items associated with a build. Only work items in the same project are returned.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="buildId">The ID of the build.</param>
@@ -6948,7 +6966,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildWorkItemsRefsAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the work items associated with a build. Only work items in the same project are returned.
+            [Preview API] Gets the work items associated with a build. Only work items in the same project are returned.
             </summary>
             <param name="project">Project ID</param>
             <param name="buildId">The ID of the build.</param>
@@ -6958,7 +6976,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildWorkItemsRefsFromCommitsAsync(System.Collections.Generic.IEnumerable{System.String},System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the work items associated with a build, filtered to specific commits.
+            [Preview API] Gets the work items associated with a build, filtered to specific commits.
             </summary>
             <param name="commitIds">A comma-delimited list of commit IDs.</param>
             <param name="project">Project ID or project name</param>
@@ -6969,7 +6987,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetBuildWorkItemsRefsFromCommitsAsync(System.Collections.Generic.IEnumerable{System.String},System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the work items associated with a build, filtered to specific commits.
+            [Preview API] Gets the work items associated with a build, filtered to specific commits.
             </summary>
             <param name="commitIds">A comma-delimited list of commit IDs.</param>
             <param name="project">Project ID</param>
@@ -6980,7 +6998,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetWorkItemsBetweenBuildsAsync(System.String,System.Int32,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all the work items between two builds.
+            [Preview API] Gets all the work items between two builds.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="fromBuildId">The ID of the first build.</param>
@@ -6991,7 +7009,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetWorkItemsBetweenBuildsAsync(System.Guid,System.Int32,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all the work items between two builds.
+            [Preview API] Gets all the work items between two builds.
             </summary>
             <param name="project">Project ID</param>
             <param name="fromBuildId">The ID of the first build.</param>
@@ -7002,7 +7020,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionYamlAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Converts a definition to YAML, optionally at a specific revision.
+            [Preview API] Converts a definition to YAML, optionally at a specific revision.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="definitionId">The ID of the definition.</param>
@@ -7015,7 +7033,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Build.WebApi.BuildHttpClientBase.GetDefinitionYamlAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Collections.Generic.IEnumerable{System.String},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Converts a definition to YAML, optionally at a specific revision.
+            [Preview API] Converts a definition to YAML, optionally at a specific revision.
             </summary>
             <param name="project">Project ID</param>
             <param name="definitionId">The ID of the definition.</param>

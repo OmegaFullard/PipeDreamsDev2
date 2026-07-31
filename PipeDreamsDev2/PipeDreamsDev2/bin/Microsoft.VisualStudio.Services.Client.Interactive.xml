@@ -631,11 +631,6 @@
             API version to use with the AzureRM endpoint
             </summary>
         </member>
-        <member name="F:Microsoft.VisualStudio.Services.Client.AccountManagement.VSAccountProvider.GraphEndpointApiVersion">
-            <summary>
-            API version to use with the graph endpoint
-            </summary>
-        </member>
         <member name="F:Microsoft.VisualStudio.Services.Client.AccountManagement.VSAccountProvider.SilentRetryCount">
             <summary>
             Number of times we should retry a silent token acquisition
@@ -694,11 +689,6 @@
         <member name="P:Microsoft.VisualStudio.Services.Client.AccountManagement.VSAccountProvider.Configuration">
             <summary>
             Configuration endpoints and data used to access active directory.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.AccountManagement.VSAccountProvider.Endpoint">
-            <summary>
-            The endpoint we use to talk to when making a connection for add accounts and getting access tokens
             </summary>
         </member>
         <member name="P:Microsoft.VisualStudio.Services.Client.AccountManagement.VSAccountProvider.GetSelfIdentity">
@@ -1188,11 +1178,6 @@
             Provider unique guid
             </summary>
         </member>
-        <member name="F:Microsoft.VisualStudio.Services.Client.AccountManagement.AccountManagementUtilities.EndpointRegistryOverrideName">
-            <summary>
-            Registry value which can be used to override the endpoint used to acquire tokens by default
-            </summary>
-        </member>
         <member name="F:Microsoft.VisualStudio.Services.Client.AccountManagement.AccountManagementUtilities.VSOEndpointRegistryOverrideName">
             <summary>
             End point used to connect to VSTS when asking for both the session tokens and the tenant infomration
@@ -1228,12 +1213,6 @@
             <summary>
             Get the endpoint to call VSTS services with from the registry
             </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Client.AccountManagement.AccountManagementUtilities.GetEndpointRegistryOverride">
-            <summary>
-            Get the endpoint we will use to acquire a token against for account creation and authentication
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Client.AccountManagement.AccountManagementUtilities.GetExtraParametersRegistryOverride">
             <summary>
@@ -1492,7 +1471,12 @@
             running in visual studio.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.VisualStudio.Services.Client.AccountManagement.IVSAccountProviderShim.ExtraQueryParameters" -->
+        <member name="P:Microsoft.VisualStudio.Services.Client.AccountManagement.IVSAccountProviderShim.ExtraQueryParameters">
+            <summary>
+            Extra query parameters to pass to authentication. This string is passed as is and is usually of the form:
+            <![CDATA[param=value&param2=value2&param3=value3]]>
+            </summary>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Client.AccountManagement.IVSAccountProviderShim.GetConfiguration">
             <summary>
             Configuration endpoints and data used to access active directory.
@@ -1875,19 +1859,9 @@
             Gets the native client redirect URI to use that goes along with the ClientIdentifier
             </summary>
         </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.AadProviderConfiguration.ResourceEndpoint">
-            <summary>
-            Gets the default resource to use when retrieving tokens against the authority
-            </summary>
-        </member>
         <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.AadProviderConfiguration.AzureResourceManagementEndpoint">
             <summary>
             Gets the azure resource management endpoint to use which matches with the AAD authority. 
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.AadProviderConfiguration.GraphEndpoint">
-            <summary>
-            Gets the graph endpoint to use which matches with the AAD authority. 
             </summary>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration">
@@ -1921,11 +1895,6 @@
             The native client redirect URI to use that goes along with the ClientIdentifier.
             </summary>
         </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.ResourceEndpoint">
-            <summary>
-            The default resource to use when retrieving tokens against the authority.
-            </summary>
-        </member>
         <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.Scopes">
             <summary>
             The default scopes to use when retrieving tokens against the authority.
@@ -1934,21 +1903,6 @@
         <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.AzureResourceManagementEndpoint">
             <summary>
             The azure resource management endpoint to use which matches with the AAD authority.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.GraphEndpoint">
-            <summary>
-            The graph endpoint to use which matches with the AAD authority.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.GraphScopes">
-            <summary>
-            The graph scopes to use which matches with the AAD authority.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.AzureRMAudienceEndpoint">
-            <summary>
-            Uri to use when requesting access tokens to the AzureRMEndpoint
             </summary>
         </member>
         <member name="P:Microsoft.VisualStudio.Services.Client.Keychain.VSProvider.IAadProviderConfiguration.AzureRMAudienceScopes">
@@ -2057,6 +2011,44 @@
             Temporary implementation since we don't have a good configuration story here at the moment.
             </summary>
         </member>
+        <member name="T:Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential">
+            <summary>
+            Credential used to authenticate with Azure DevOps using Azure Identity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential.#ctor(Azure.Core.TokenCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential"/> class.
+            </summary>
+            <param name="tokenCredential">The Azure Identity credential to authenticate with.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential.CredentialType">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential.IsAuthenticationChallenge(Microsoft.VisualStudio.Services.Common.IHttpResponse)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential.OnCreateTokenProvider(System.Uri,Microsoft.VisualStudio.Services.Common.IHttpResponse)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Client.VssAzureIdentityTokenProvider">
+            <summary>
+            Provider used to authenticate with Azure DevOps using Azure Identity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Client.VssAzureIdentityTokenProvider.#ctor(Microsoft.VisualStudio.Services.Client.VssAzureIdentityCredential,Azure.Core.TokenCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.Client.VssAzureIdentityTokenProvider"/> class.
+            </summary>
+            <param name="credential">ADO credential being provided for.</param>
+            <param name="tokenCredential">The Azure Identity credential.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Client.VssAzureIdentityTokenProvider.GetTokenIsInteractive">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Client.VssAzureIdentityTokenProvider.OnGetTokenAsync(Microsoft.VisualStudio.Services.Common.IssuedToken,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
         <member name="T:Microsoft.VisualStudio.Services.Client.VssClientCredentials">
             <summary>
             Provides credentials to use when connecting to a Visual Studio Service.
@@ -2064,7 +2056,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Client.VssClientCredentials.#ctor(Microsoft.VisualStudio.Services.Common.WindowsCredential,Microsoft.VisualStudio.Services.Common.FederatedCredential,System.Nullable{Microsoft.VisualStudio.Services.Common.CredentialPromptType},System.Threading.Tasks.TaskScheduler,Microsoft.VisualStudio.Services.Common.IVssCredentialPrompt)">
             <summary>
-            Initializes a new <c>VssCredentials</c> instance with the specified windows and issued token 
+            Initializes a new <c>VssCredentials</c> instance with the specified windows and issued token
             credential.
             </summary>
             <param name="windowsCredential">The windows credential to use for authentication</param>
@@ -2100,7 +2092,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Client.VssClientCredentials.#ctor(Microsoft.VisualStudio.Services.Common.WindowsCredential,Microsoft.VisualStudio.Services.Common.FederatedCredential,Microsoft.VisualStudio.Services.Common.CredentialPromptType,System.Threading.Tasks.TaskScheduler,Microsoft.VisualStudio.Services.Common.IVssCredentialPrompt)">
             <summary>
-            Initializes a new <c>VssCredentials</c> instance with the specified windows and issued token 
+            Initializes a new <c>VssCredentials</c> instance with the specified windows and issued token
             credential.
             </summary>
             <param name="windowsCredential">The windows credential to use for authentication</param>
@@ -2653,7 +2645,7 @@
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Client.ClientResources.VsAccountProviderUnsupportedAccount">
              <summary>
-             When the account's ProviderId doesn't match account provider's ID
+             When the account&apos;s ProviderId doesn&apos;t match account provider&apos;s ID
             
              The account is not supported by the provider because its ProviderId doesn&apos;t match.
              </summary>

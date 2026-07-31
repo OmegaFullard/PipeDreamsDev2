@@ -653,6 +653,11 @@
             Dashboard Last Accessed Date.
             </summary>
         </member>
+        <member name="P:Microsoft.TeamFoundation.Dashboards.WebApi.Dashboard.GlobalParametersConfig">
+            <summary>
+            Dashboard Global Parameters Config
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Dashboards.WebApi.Dashboard.IsNew">
             <summary>
             Describes if the Dashboard is newly created.
@@ -685,7 +690,15 @@
             Dashboard group entry, wrapping around Dashboard (needed?)
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.TeamFoundation.Dashboards.WebApi.GroupMemberPermission" -->
+        <member name="T:Microsoft.TeamFoundation.Dashboards.WebApi.GroupMemberPermission">
+            <summary>
+            None - Team member cannot edit dashboard
+            Edit - Team member can add, configure and delete widgets
+            Manage - Team member can add, reorder, delete dashboards
+            Manage Permissions - Team member can manage membership of other members to perform
+               group operations.
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.Dashboards.WebApi.DashboardGroupEntryResponse">
             <summary>
             Response from RestAPI when saving and editing DashboardGroupEntry
@@ -740,7 +753,16 @@
             The default semantic version: 1.0.0 (i.e. starting with first major version)
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.TeamFoundation.Dashboards.WebApi.TeamDashboardPermission" -->
+        <member name="T:Microsoft.TeamFoundation.Dashboards.WebApi.TeamDashboardPermission">
+            <summary>
+            Read - User can see dashboards
+            Create - User can create dashboards
+            Edit - User can add, configure and delete widgets, and edit dashboard settings.
+            Delete - User can delete dashboards
+            Manage Permissions - Team member can manage membership of other members to perform
+               group operations.
+            </summary>
+        </member>
         <member name="T:Microsoft.TeamFoundation.Dashboards.WebApi.Widget">
             <summary>
             Widget data

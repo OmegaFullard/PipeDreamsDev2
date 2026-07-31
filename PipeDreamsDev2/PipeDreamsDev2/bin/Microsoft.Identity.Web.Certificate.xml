@@ -82,6 +82,18 @@
             <param name="certificateStoreName">Store name where to find the certificate.</param>
             <returns>A certificate description.</returns>
         </member>
+        <member name="M:Microsoft.Identity.Web.CertificateDescription.FromStoreWithSubjectName(System.String,System.Security.Cryptography.X509Certificates.StoreLocation,System.Security.Cryptography.X509Certificates.StoreName)">
+            <summary>
+            Creates a certificate description from a certificate subject name (such as "MyCert")
+            and store location (Certificate Manager on Windows, for instance).
+            The provided subject name is matched as a substring against the Subject field of each
+            certificate in the store; the most recently issued matching certificate is selected.
+            </summary>
+            <param name="certificateSubjectName">Certificate subject name (or substring of the subject) to search for in the store.</param>
+            <param name="certificateStoreLocation">Store location where to find the certificate.</param>
+            <param name="certificateStoreName">Store name where to find the certificate.</param>
+            <returns>A certificate description.</returns>
+        </member>
         <member name="P:Microsoft.Identity.Web.CertificateDescription.X509KeyStorageFlags">
             <summary>
              Defines where and how to import the private key of an X.509 certificate.
@@ -142,6 +154,12 @@
             From the certificate store, described by its distinguished name.
             </summary>
         </member>
+        <member name="F:Microsoft.Identity.Web.CertificateSource.StoreWithSubjectName">
+            <summary>
+            From the certificate store, described by its subject name.
+            The provided value is matched as a substring against the certificate's Subject field.
+            </summary>
+        </member>
         <member name="T:Microsoft.Identity.Web.DefaultCertificateLoader">
              <summary>
              Certificate Loader.
@@ -174,6 +192,21 @@
             <summary>
             Constructor with custom signed assertion providers.
             </summary>
+            <param name="customSignedAssertionProviders">List of providers of custom signed assertions</param>
+            <param name="logger">ILogger.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCertificateLoader.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICredentialSourceLoader},Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DefaultCertificateLoader})">
+            <summary>
+            Constructor with a logger and custom credential source loaders.
+            </summary>
+            <param name="credentialSourceLoaders">Additional credential source loaders. Can override built-in loaders.</param>
+            <param name="logger">Logger instance</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCertificateLoader.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICredentialSourceLoader},System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICustomSignedAssertionProvider},Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DefaultCertificateLoader})">
+            <summary>
+            Constructor with both custom signed assertion providers and custom credential source loaders.
+            </summary>
+            <param name="credentialSourceLoaders">Additional credential source loaders. Can override built-in loaders.</param>
             <param name="customSignedAssertionProviders">List of providers of custom signed assertions</param>
             <param name="logger">ILogger.</param>
         </member>
@@ -247,6 +280,13 @@
             </summary>
             <param name="logger"></param>
         </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICredentialSourceLoader},Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DefaultCredentialsLoader})">
+            <summary>
+            Constructor with a logger and custom credential source loaders
+            </summary>
+            <param name="credentialSourceLoaders">Additional credential source loaders. Can override built-in loaders.</param>
+            <param name="logger">Logger instance</param>
+        </member>
         <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.#ctor">
             <summary>
             Default constructor (for backward compatibility)
@@ -277,15 +317,18 @@
             <param name="customSignedAssertionProviders">Set of custom signed assertion providers.</param>
             <param name="logger">ILogger.</param>
         </member>
+        <member name="M:Microsoft.Identity.Web.DefaultCredentialsLoader.#ctor(System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICredentialSourceLoader},System.Collections.Generic.IEnumerable{Microsoft.Identity.Abstractions.ICustomSignedAssertionProvider},Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DefaultCredentialsLoader})">
+            <summary>
+            Constructor for DefaultCredentialsLoader with both custom signed assertion providers and custom credential source loaders.
+            </summary>
+            <param name="credentialSourceLoaders">Additional credential source loaders. Can override built-in loaders.</param>
+            <param name="customSignedAssertionProviders">Set of custom signed assertion providers.</param>
+            <param name="logger">ILogger.</param>
+        </member>
         <member name="P:Microsoft.Identity.Web.DefaultCredentialsLoader.CustomSignedAssertionCredentialSourceLoaders">
             <summary>
             Dictionary of custom signed assertion credential source loaders, by name (either ICustomSignedAssertionProvider.Name or the fully qualified type name).
             The application can add more to process additional credential sources.
-            </summary>
-        </member>
-        <member name="T:Microsoft.Identity.Web.DefaultCredentialsLoader.Logger">
-            <summary>
-            Logging infrastructure
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Web.ICertificateLoader">

@@ -563,7 +563,17 @@
             <param name="isPdf">returned true if the file is a PDF; false otherwise</param>
             <returns>the encoding that matches or null</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.Diff.FileTypeUtil.GetUTF8Info(System.Byte[],System.Int32,System.Int64,System.IO.Stream,Microsoft.TeamFoundation.Diff.UTF8Flags@)" -->
+        <member name="M:Microsoft.TeamFoundation.Diff.FileTypeUtil.GetUTF8Info(System.Byte[],System.Int32,System.Int64,System.IO.Stream,Microsoft.TeamFoundation.Diff.UTF8Flags@)">
+            <summary>
+            Port of vscommon\unilib\utf.cpp::GetUTF8Info
+            Analyzes byte array checking if it contains valid and invalid utf8 characters.
+            </summary>
+            <param name="buffer">Array of bytes, representing string in unknown encoding.</param>
+            <param name="bufferLength">Number of bytes in the array to analyze</param>
+            <param name="scanBytes">The maximum number of bytes to scan when attempting to detect file encoding (beyond the initial bufferLength). </param>
+            <param name="stream">The stream for reading additional bytes if needed when attempting to detect file encoding (beyond the initial bufferLength). </param>
+            <param name="result">UTF8 Flags indicating possible UTF-8 encoding and errors.</param>
+        </member>
         <member name="T:Microsoft.TeamFoundation.Diff.LcsDiff`1">
             <summary>
             An implementation of the difference algorithm described in

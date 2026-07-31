@@ -6,7 +6,7 @@
     <members>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.CreatePolicyConfigurationAsync(Microsoft.TeamFoundation.Policy.WebApi.PolicyConfiguration,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a policy configuration of a given policy type.
+            [Preview API] Create a policy configuration of a given policy type.
             </summary>
             <param name="configuration">The policy configuration to create.</param>
             <param name="project">Project ID or project name</param>
@@ -15,7 +15,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.CreatePolicyConfigurationAsync(Microsoft.TeamFoundation.Policy.WebApi.PolicyConfiguration,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Create a policy configuration of a given policy type.
+            [Preview API] Create a policy configuration of a given policy type.
             </summary>
             <param name="configuration">The policy configuration to create.</param>
             <param name="project">Project ID</param>
@@ -24,7 +24,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.DeletePolicyConfigurationAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a policy configuration by its ID.
+            [Preview API] Delete a policy configuration by its ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="configurationId">ID of the policy configuration to delete.</param>
@@ -33,7 +33,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.DeletePolicyConfigurationAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a policy configuration by its ID.
+            [Preview API] Delete a policy configuration by its ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="configurationId">ID of the policy configuration to delete.</param>
@@ -42,7 +42,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationAsync(System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a policy configuration by its ID.
+            [Preview API] Get a policy configuration by its ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="configurationId">ID of the policy configuration</param>
@@ -51,7 +51,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationAsync(System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a policy configuration by its ID.
+            [Preview API] Get a policy configuration by its ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="configurationId">ID of the policy configuration</param>
@@ -60,7 +60,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationsAsync(System.String,System.String,System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of policy configurations in a project.
+            [Preview API] Get a list of policy configurations in a project.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="scope">[Provided for legacy reasons] The scope on which a subset of policies is defined.</param>
@@ -70,7 +70,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationsAsync(System.Guid,System.String,System.Nullable{System.Guid},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Get a list of policy configurations in a project.
+            [Preview API] Get a list of policy configurations in a project.
             </summary>
             <param name="project">Project ID</param>
             <param name="scope">[Provided for legacy reasons] The scope on which a subset of policies is defined.</param>
@@ -80,7 +80,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.UpdatePolicyConfigurationAsync(Microsoft.TeamFoundation.Policy.WebApi.PolicyConfiguration,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a policy configuration by its ID.
+            [Preview API] Update a policy configuration by its ID.
             </summary>
             <param name="configuration">The policy configuration to update.</param>
             <param name="project">Project ID or project name</param>
@@ -90,7 +90,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.UpdatePolicyConfigurationAsync(Microsoft.TeamFoundation.Policy.WebApi.PolicyConfiguration,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a policy configuration by its ID.
+            [Preview API] Update a policy configuration by its ID.
             </summary>
             <param name="configuration">The policy configuration to update.</param>
             <param name="project">Project ID</param>
@@ -140,7 +140,7 @@
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="artifactId">A string which uniquely identifies the target of a policy evaluation.</param>
-            <param name="includeNotApplicable">Some policies might determine that they do not apply to a specific pull request. Setting this parameter to true will return evaluation records even for policies which don't apply to this pull request.</param>
+            <param name="includeNotApplicable">Some policies might determine that they do not apply to a specific pull request. Setting this parameter to true will return evaluation records even for policies which don&apos;t apply to this pull request.</param>
             <param name="top">The number of policy evaluation records to retrieve.</param>
             <param name="skip">The number of policy evaluation records to ignore. For example, to retrieve results 101-150, set top to 50 and skip to 100.</param>
             <param name="userState"></param>
@@ -152,7 +152,7 @@
             </summary>
             <param name="project">Project ID</param>
             <param name="artifactId">A string which uniquely identifies the target of a policy evaluation.</param>
-            <param name="includeNotApplicable">Some policies might determine that they do not apply to a specific pull request. Setting this parameter to true will return evaluation records even for policies which don't apply to this pull request.</param>
+            <param name="includeNotApplicable">Some policies might determine that they do not apply to a specific pull request. Setting this parameter to true will return evaluation records even for policies which don&apos;t apply to this pull request.</param>
             <param name="top">The number of policy evaluation records to retrieve.</param>
             <param name="skip">The number of policy evaluation records to ignore. For example, to retrieve results 101-150, set top to 50 and skip to 100.</param>
             <param name="userState"></param>
@@ -160,7 +160,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationRevisionAsync(System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve a specific revision of a given policy by ID.
+            [Preview API] Retrieve a specific revision of a given policy by ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="configurationId">The policy configuration ID.</param>
@@ -170,7 +170,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationRevisionAsync(System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve a specific revision of a given policy by ID.
+            [Preview API] Retrieve a specific revision of a given policy by ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="configurationId">The policy configuration ID.</param>
@@ -180,7 +180,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationRevisionsAsync(System.String,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve all revisions for a given policy.
+            [Preview API] Retrieve all revisions for a given policy.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="configurationId">The policy configuration ID.</param>
@@ -191,7 +191,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyConfigurationRevisionsAsync(System.Guid,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve all revisions for a given policy.
+            [Preview API] Retrieve all revisions for a given policy.
             </summary>
             <param name="project">Project ID</param>
             <param name="configurationId">The policy configuration ID.</param>
@@ -202,7 +202,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyTypeAsync(System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve a specific policy type by ID.
+            [Preview API] Retrieve a specific policy type by ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="typeId">The policy ID.</param>
@@ -211,7 +211,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyTypeAsync(System.Guid,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve a specific policy type by ID.
+            [Preview API] Retrieve a specific policy type by ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="typeId">The policy ID.</param>
@@ -220,7 +220,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyTypesAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve all available policy types.
+            [Preview API] Retrieve all available policy types.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -228,7 +228,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Policy.WebApi.PolicyHttpClient.GetPolicyTypesAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Retrieve all available policy types.
+            [Preview API] Retrieve all available policy types.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -277,6 +277,22 @@
         <member name="P:Microsoft.TeamFoundation.Policy.WebApi.PolicyConfiguration.Links">
             <summary>
             The links to other objects related to this object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.Policy.WebApi.PolicyConfigurationV2">
+            <summary>
+            Optimized version which parse JSON on demand only.
+            The full policy configuration with settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Policy.WebApi.PolicyConfigurationV2.Settings">
+            <summary>
+            The policy configuration settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Policy.WebApi.PolicyConfigurationV2.SettingsAsString">
+            <summary>
+            The policy configuration settings string.
             </summary>
         </member>
         <member name="T:Microsoft.TeamFoundation.Policy.WebApi.PolicyConfigurationRef">
@@ -430,6 +446,40 @@
             </summary>
             <remarks>
             This status should not normally occur. It signals that the policy itself has encountered an error or exception.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.Policy.WebApi.PolicyEvaluationRecordV2">
+            <summary>
+            Optimized version which parse JSON on demand only.
+            This record encapsulates the current state of a policy as it applies to one specific pull request. Each pull request
+            has a unique PolicyEvaluationRecord for each pull request which the policy applies to. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Policy.WebApi.PolicyEvaluationRecordV2.Configuration">
+            <summary>
+            Contains all configuration data for the policy which is being evaluated.
+            </summary>
+            <remarks>This contains policy configuration options for a policy as the policy's display name, policy scope, and settings
+            which vary based on the type of policy.</remarks>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Policy.WebApi.PolicyEvaluationRecordV2.Context">
+            <summary>
+            Internal context data of this policy evaluation.
+            </summary>
+            <remarks>
+            The contents of this JSON object are internal to the running policy.
+            It may contain things such as a build ID, a digital signature, or any other thing(s) which are needed
+            for the policy to approve or reject a pull request.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.Policy.WebApi.PolicyEvaluationRecordV2.ContextAsString">
+            <summary>
+            Internal context data of this policy evaluation.
+            </summary>
+            <remarks>
+            The contents of this JSON string are internal to the running policy.
+            It may contain things such as a build ID, a digital signature, or any other thing(s) which are needed
+            for the policy to approve or reject a pull request.
             </remarks>
         </member>
         <member name="T:Microsoft.TeamFoundation.Policy.WebApi.PolicyType">

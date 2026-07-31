@@ -440,55 +440,55 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateAttachmentAsync(System.IO.Stream,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates an attachment in the wiki.
+            [Preview API] Creates an attachment in the wiki.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="name">Wiki attachment name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateAttachmentAsync(System.IO.Stream,System.String,System.Guid,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates an attachment in the wiki.
+            [Preview API] Creates an attachment in the wiki.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="name">Wiki attachment name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateAttachmentAsync(System.IO.Stream,System.Guid,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates an attachment in the wiki.
+            [Preview API] Creates an attachment in the wiki.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="name">Wiki attachment name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateAttachmentAsync(System.IO.Stream,System.Guid,System.Guid,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates an attachment in the wiki.
+            [Preview API] Creates an attachment in the wiki.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="name">Wiki attachment name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateCommentAttachmentAsync(System.IO.Stream,System.String,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Uploads an attachment on a comment on a wiki page.
+            [Preview API] Uploads an attachment on a comment on a wiki page.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID or project name</param>
@@ -499,7 +499,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateCommentAttachmentAsync(System.IO.Stream,System.String,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Uploads an attachment on a comment on a wiki page.
+            [Preview API] Uploads an attachment on a comment on a wiki page.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID or project name</param>
@@ -510,7 +510,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateCommentAttachmentAsync(System.IO.Stream,System.Guid,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Uploads an attachment on a comment on a wiki page.
+            [Preview API] Uploads an attachment on a comment on a wiki page.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID</param>
@@ -521,7 +521,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateCommentAttachmentAsync(System.IO.Stream,System.Guid,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Uploads an attachment on a comment on a wiki page.
+            [Preview API] Uploads an attachment on a comment on a wiki page.
             </summary>
             <param name="uploadStream">Stream to upload</param>
             <param name="project">Project ID</param>
@@ -532,7 +532,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAttachmentContentAsync(System.String,System.String,System.Int32,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Downloads an attachment on a comment on a wiki page.
+            [Preview API] Downloads an attachment on a comment on a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -543,7 +543,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAttachmentContentAsync(System.String,System.Guid,System.Int32,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Downloads an attachment on a comment on a wiki page.
+            [Preview API] Downloads an attachment on a comment on a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -554,7 +554,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAttachmentContentAsync(System.Guid,System.String,System.Int32,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Downloads an attachment on a comment on a wiki page.
+            [Preview API] Downloads an attachment on a comment on a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -565,7 +565,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAttachmentContentAsync(System.Guid,System.Guid,System.Int32,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Downloads an attachment on a comment on a wiki page.
+            [Preview API] Downloads an attachment on a comment on a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -576,7 +576,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentReactionAsync(System.String,System.String,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a reaction on a wiki page comment.
+            [Preview API] Add a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name</param>
@@ -588,7 +588,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentReactionAsync(System.String,System.Guid,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a reaction on a wiki page comment.
+            [Preview API] Add a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name</param>
@@ -600,7 +600,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentReactionAsync(System.Guid,System.String,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a reaction on a wiki page comment.
+            [Preview API] Add a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name</param>
@@ -612,7 +612,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentReactionAsync(System.Guid,System.Guid,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a reaction on a wiki page comment.
+            [Preview API] Add a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name</param>
@@ -624,7 +624,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentReactionAsync(System.String,System.String,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a reaction on a wiki page comment.
+            [Preview API] Delete a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or name</param>
@@ -636,7 +636,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentReactionAsync(System.String,System.Guid,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a reaction on a wiki page comment.
+            [Preview API] Delete a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or name</param>
@@ -648,7 +648,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentReactionAsync(System.Guid,System.String,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a reaction on a wiki page comment.
+            [Preview API] Delete a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or name</param>
@@ -660,7 +660,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentReactionAsync(System.Guid,System.Guid,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a reaction on a wiki page comment.
+            [Preview API] Delete a reaction on a wiki page comment.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or name</param>
@@ -672,7 +672,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetEngagedUsersAsync(System.String,System.String,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
+            [Preview API] Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -686,7 +686,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetEngagedUsersAsync(System.String,System.Guid,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
+            [Preview API] Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -700,7 +700,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetEngagedUsersAsync(System.Guid,System.String,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
+            [Preview API] Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -714,7 +714,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetEngagedUsersAsync(System.Guid,System.Guid,System.Int32,System.Int32,Microsoft.Azure.DevOps.Comments.WebApi.CommentReactionType,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
+            [Preview API] Gets a list of users who have reacted for the given wiki comment with a given reaction type. Supports paging, with a default page size of 100 users at a time.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -728,7 +728,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters,System.String,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a comment on a wiki page.
+            [Preview API] Add a comment on a wiki page.
             </summary>
             <param name="request">Comment create request.</param>
             <param name="project">Project ID or project name</param>
@@ -739,7 +739,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters,System.String,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a comment on a wiki page.
+            [Preview API] Add a comment on a wiki page.
             </summary>
             <param name="request">Comment create request.</param>
             <param name="project">Project ID or project name</param>
@@ -750,7 +750,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters,System.Guid,System.String,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a comment on a wiki page.
+            [Preview API] Add a comment on a wiki page.
             </summary>
             <param name="request">Comment create request.</param>
             <param name="project">Project ID</param>
@@ -761,7 +761,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.AddCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentCreateParameters,System.Guid,System.Guid,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Add a comment on a wiki page.
+            [Preview API] Add a comment on a wiki page.
             </summary>
             <param name="request">Comment create request.</param>
             <param name="project">Project ID</param>
@@ -772,7 +772,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentAsync(System.String,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a comment on a wiki page.
+            [Preview API] Delete a comment on a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or name.</param>
@@ -783,7 +783,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentAsync(System.String,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a comment on a wiki page.
+            [Preview API] Delete a comment on a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or name.</param>
@@ -794,7 +794,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentAsync(System.Guid,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a comment on a wiki page.
+            [Preview API] Delete a comment on a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or name.</param>
@@ -805,7 +805,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteCommentAsync(System.Guid,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Delete a comment on a wiki page.
+            [Preview API] Delete a comment on a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or name.</param>
@@ -816,7 +816,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetCommentAsync(System.String,System.String,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a comment associated with the Wiki Page.
+            [Preview API] Returns a comment associated with the Wiki Page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -829,7 +829,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetCommentAsync(System.String,System.Guid,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a comment associated with the Wiki Page.
+            [Preview API] Returns a comment associated with the Wiki Page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -842,7 +842,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetCommentAsync(System.Guid,System.String,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a comment associated with the Wiki Page.
+            [Preview API] Returns a comment associated with the Wiki Page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -855,7 +855,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetCommentAsync(System.Guid,System.Guid,System.Int32,System.Int32,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a comment associated with the Wiki Page.
+            [Preview API] Returns a comment associated with the Wiki Page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -868,7 +868,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.ListCommentsAsync(System.String,System.String,System.Int32,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentSortOrder},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a pageable list of comments.
+            [Preview API] Returns a pageable list of comments.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -884,7 +884,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.ListCommentsAsync(System.String,System.Guid,System.Int32,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentSortOrder},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a pageable list of comments.
+            [Preview API] Returns a pageable list of comments.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -900,7 +900,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.ListCommentsAsync(System.Guid,System.String,System.Int32,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentSortOrder},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a pageable list of comments.
+            [Preview API] Returns a pageable list of comments.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -916,7 +916,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.ListCommentsAsync(System.Guid,System.Guid,System.Int32,System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentExpandOptions},System.Nullable{Microsoft.Azure.DevOps.Comments.WebApi.CommentSortOrder},System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns a pageable list of comments.
+            [Preview API] Returns a pageable list of comments.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -932,7 +932,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentUpdateParameters,System.String,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a comment on a wiki page.
+            [Preview API] Update a comment on a wiki page.
             </summary>
             <param name="comment">Comment update request.</param>
             <param name="project">Project ID or project name</param>
@@ -944,7 +944,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentUpdateParameters,System.String,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a comment on a wiki page.
+            [Preview API] Update a comment on a wiki page.
             </summary>
             <param name="comment">Comment update request.</param>
             <param name="project">Project ID or project name</param>
@@ -956,7 +956,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentUpdateParameters,System.Guid,System.String,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a comment on a wiki page.
+            [Preview API] Update a comment on a wiki page.
             </summary>
             <param name="comment">Comment update request.</param>
             <param name="project">Project ID</param>
@@ -968,7 +968,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateCommentAsync(Microsoft.Azure.DevOps.Comments.WebApi.CommentUpdateParameters,System.Guid,System.Guid,System.Int32,System.Int32,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Update a comment on a wiki page.
+            [Preview API] Update a comment on a wiki page.
             </summary>
             <param name="comment">Comment update request.</param>
             <param name="project">Project ID</param>
@@ -980,55 +980,55 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreatePageMoveAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageMoveParameters,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a page move operation that updates the path and order of the page as provided in the parameters.
+            [Preview API] Creates a page move operation that updates the path and order of the page as provided in the parameters.
             </summary>
             <param name="pageMoveParameters">Page more operation parameters.</param>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="comment">Comment that is to be associated with this page move.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreatePageMoveAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageMoveParameters,System.String,System.Guid,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a page move operation that updates the path and order of the page as provided in the parameters.
+            [Preview API] Creates a page move operation that updates the path and order of the page as provided in the parameters.
             </summary>
             <param name="pageMoveParameters">Page more operation parameters.</param>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="comment">Comment that is to be associated with this page move.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreatePageMoveAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageMoveParameters,System.Guid,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a page move operation that updates the path and order of the page as provided in the parameters.
+            [Preview API] Creates a page move operation that updates the path and order of the page as provided in the parameters.
             </summary>
             <param name="pageMoveParameters">Page more operation parameters.</param>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="comment">Comment that is to be associated with this page move.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreatePageMoveAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageMoveParameters,System.Guid,System.Guid,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a page move operation that updates the path and order of the page as provided in the parameters.
+            [Preview API] Creates a page move operation that updates the path and order of the page as provided in the parameters.
             </summary>
             <param name="pageMoveParameters">Page more operation parameters.</param>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="comment">Comment that is to be associated with this page move.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.String,System.String,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates or edits a wiki page.
+            [Preview API] Creates or edits a wiki page.
             </summary>
             <param name="parameters">Wiki create or update operation parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -1036,13 +1036,13 @@
             <param name="path">Wiki page path.</param>
             <param name="Version">Version of the page on which the change is to be made. Mandatory for `Edit` scenario. To be populated in the If-Match header of the request.</param>
             <param name="comment">Comment to be associated with the page operation.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.String,System.Guid,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates or edits a wiki page.
+            [Preview API] Creates or edits a wiki page.
             </summary>
             <param name="parameters">Wiki create or update operation parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -1050,13 +1050,13 @@
             <param name="path">Wiki page path.</param>
             <param name="Version">Version of the page on which the change is to be made. Mandatory for `Edit` scenario. To be populated in the If-Match header of the request.</param>
             <param name="comment">Comment to be associated with the page operation.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.Guid,System.String,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates or edits a wiki page.
+            [Preview API] Creates or edits a wiki page.
             </summary>
             <param name="parameters">Wiki create or update operation parameters.</param>
             <param name="project">Project ID</param>
@@ -1064,13 +1064,13 @@
             <param name="path">Wiki page path.</param>
             <param name="Version">Version of the page on which the change is to be made. Mandatory for `Edit` scenario. To be populated in the If-Match header of the request.</param>
             <param name="comment">Comment to be associated with the page operation.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.Guid,System.Guid,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates or edits a wiki page.
+            [Preview API] Creates or edits a wiki page.
             </summary>
             <param name="parameters">Wiki create or update operation parameters.</param>
             <param name="project">Project ID</param>
@@ -1078,217 +1078,217 @@
             <param name="path">Wiki page path.</param>
             <param name="Version">Version of the page on which the change is to be made. Mandatory for `Edit` scenario. To be populated in the If-Match header of the request.</param>
             <param name="comment">Comment to be associated with the page operation.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageAsync(System.String,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="comment">Comment to be associated with this page delete.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageAsync(System.String,System.Guid,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="comment">Comment to be associated with this page delete.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageAsync(System.Guid,System.String,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="comment">Comment to be associated with this page delete.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageAsync(System.Guid,System.Guid,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="comment">Comment to be associated with this page delete.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageAsync(System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageAsync(System.String,System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageAsync(System.Guid,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageAsync(System.Guid,System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageTextAsync(System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageTextAsync(System.String,System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageTextAsync(System.Guid,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageTextAsync(System.Guid,System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageZipAsync(System.String,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageZipAsync(System.String,System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageZipAsync(System.Guid,System.String,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageZipAsync(System.Guid,System.Guid,System.String,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided path. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="path">Wiki page path.</param>
             <param name="recursionLevel">Recursion level for subpages retrieval. Defaults to `None` (Optional).</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. Defaults to the default branch (Optional).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. Defaults to the default branch (Optional).</param>
             <param name="includeContent">True to include the content of the page in the response for Json content type. Defaults to false (Optional)</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageByIdAsync(System.String,System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1299,7 +1299,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageByIdAsync(System.String,System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1310,7 +1310,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageByIdAsync(System.Guid,System.String,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1321,7 +1321,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeletePageByIdAsync(System.Guid,System.Guid,System.Int32,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes a wiki page.
+            [Preview API] Deletes a wiki page.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1332,7 +1332,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdAsync(System.String,System.String,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1344,7 +1344,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdAsync(System.String,System.Guid,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1356,7 +1356,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdAsync(System.Guid,System.String,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1368,7 +1368,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdAsync(System.Guid,System.Guid,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1380,7 +1380,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdTextAsync(System.String,System.String,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1392,7 +1392,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdTextAsync(System.String,System.Guid,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1404,7 +1404,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdTextAsync(System.Guid,System.String,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1416,7 +1416,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdTextAsync(System.Guid,System.Guid,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1428,7 +1428,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdZipAsync(System.String,System.String,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1440,7 +1440,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdZipAsync(System.String,System.Guid,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1452,7 +1452,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdZipAsync(System.Guid,System.String,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1464,7 +1464,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageByIdZipAsync(System.Guid,System.Guid,System.Int32,System.Nullable{Microsoft.TeamFoundation.SourceControl.WebApi.VersionControlRecursionType},System.Nullable{System.Boolean},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
+            [Preview API] Gets metadata or content of the wiki page for the provided page id. Content negotiation is done based on the `Accept` header sent in the request.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name..</param>
@@ -1476,7 +1476,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdatePageByIdAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.String,System.String,System.Int32,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Edits a wiki page.
+            [Preview API] Edits a wiki page.
             </summary>
             <param name="parameters">Wiki update operation parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -1489,7 +1489,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdatePageByIdAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.String,System.Guid,System.Int32,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Edits a wiki page.
+            [Preview API] Edits a wiki page.
             </summary>
             <param name="parameters">Wiki update operation parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -1502,7 +1502,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdatePageByIdAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.Guid,System.String,System.Int32,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Edits a wiki page.
+            [Preview API] Edits a wiki page.
             </summary>
             <param name="parameters">Wiki update operation parameters.</param>
             <param name="project">Project ID</param>
@@ -1515,7 +1515,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdatePageByIdAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiPageCreateOrUpdateParameters,System.Guid,System.Guid,System.Int32,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Edits a wiki page.
+            [Preview API] Edits a wiki page.
             </summary>
             <param name="parameters">Wiki update operation parameters.</param>
             <param name="project">Project ID</param>
@@ -1528,95 +1528,95 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPagesBatchAsync(Microsoft.TeamFoundation.Wiki.WebApi.Contracts.WikiPagesBatchRequest,System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns pageable list of Wiki Pages
+            [Preview API] Returns pageable list of Wiki Pages
             </summary>
             <param name="pagesBatchRequest">Wiki batch page request.</param>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPagesBatchAsync(Microsoft.TeamFoundation.Wiki.WebApi.Contracts.WikiPagesBatchRequest,System.String,System.Guid,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns pageable list of Wiki Pages
+            [Preview API] Returns pageable list of Wiki Pages
             </summary>
             <param name="pagesBatchRequest">Wiki batch page request.</param>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPagesBatchAsync(Microsoft.TeamFoundation.Wiki.WebApi.Contracts.WikiPagesBatchRequest,System.Guid,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns pageable list of Wiki Pages
+            [Preview API] Returns pageable list of Wiki Pages
             </summary>
             <param name="pagesBatchRequest">Wiki batch page request.</param>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPagesBatchAsync(Microsoft.TeamFoundation.Wiki.WebApi.Contracts.WikiPagesBatchRequest,System.Guid,System.Guid,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns pageable list of Wiki Pages
+            [Preview API] Returns pageable list of Wiki Pages
             </summary>
             <param name="pagesBatchRequest">Wiki batch page request.</param>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
-            <param name="versionDescriptor"><see cref="T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor" /> for the page. (Optional in case of <see cref="F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki" />).</param>
+            <param name="versionDescriptor">&lt;see cref=&quot;T:Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor&quot; /&gt; for the page. (Optional in case of &lt;see cref=&quot;F:Microsoft.TeamFoundation.Wiki.WebApi.WikiType.ProjectWiki&quot; /&gt;).</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageDataAsync(System.String,System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns page detail corresponding to Page ID.
+            [Preview API] Returns page detail corresponding to Page ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="pageId">Wiki page ID.</param>
-            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It's inclusive of current day.</param>
+            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It&apos;s inclusive of current day.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageDataAsync(System.String,System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns page detail corresponding to Page ID.
+            [Preview API] Returns page detail corresponding to Page ID.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="pageId">Wiki page ID.</param>
-            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It's inclusive of current day.</param>
+            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It&apos;s inclusive of current day.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageDataAsync(System.Guid,System.String,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns page detail corresponding to Page ID.
+            [Preview API] Returns page detail corresponding to Page ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="pageId">Wiki page ID.</param>
-            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It's inclusive of current day.</param>
+            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It&apos;s inclusive of current day.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetPageDataAsync(System.Guid,System.Guid,System.Int32,System.Nullable{System.Int32},System.Object,System.Threading.CancellationToken)">
             <summary>
-            Returns page detail corresponding to Page ID.
+            [Preview API] Returns page detail corresponding to Page ID.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="pageId">Wiki page ID.</param>
-            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It's inclusive of current day.</param>
+            <param name="pageViewsForDays">last N days from the current day for which page views is to be returned. It&apos;s inclusive of current day.</param>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageViewStatsAsync(System.String,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new page view stats resource or updates an existing page view stats resource.
+            [Preview API] Creates a new page view stats resource or updates an existing page view stats resource.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1628,7 +1628,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageViewStatsAsync(System.String,System.Guid,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new page view stats resource or updates an existing page view stats resource.
+            [Preview API] Creates a new page view stats resource or updates an existing page view stats resource.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1640,7 +1640,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageViewStatsAsync(System.Guid,System.String,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new page view stats resource or updates an existing page view stats resource.
+            [Preview API] Creates a new page view stats resource or updates an existing page view stats resource.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1652,7 +1652,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateOrUpdatePageViewStatsAsync(System.Guid,System.Guid,Microsoft.TeamFoundation.SourceControl.WebApi.GitVersionDescriptor,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates a new page view stats resource or updates an existing page view stats resource.
+            [Preview API] Creates a new page view stats resource or updates an existing page view stats resource.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1664,7 +1664,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiCreateParametersV2,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates the wiki resource.
+            [Preview API] Creates the wiki resource.
             </summary>
             <param name="wikiCreateParams">Parameters for the wiki creation.</param>
             <param name="userState"></param>
@@ -1672,7 +1672,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiCreateParametersV2,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates the wiki resource.
+            [Preview API] Creates the wiki resource.
             </summary>
             <param name="wikiCreateParams">Parameters for the wiki creation.</param>
             <param name="project">Project ID or project name</param>
@@ -1681,7 +1681,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.CreateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiCreateParametersV2,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Creates the wiki resource.
+            [Preview API] Creates the wiki resource.
             </summary>
             <param name="wikiCreateParams">Parameters for the wiki creation.</param>
             <param name="project">Project ID</param>
@@ -1690,7 +1690,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteWikiAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Deletes the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="userState"></param>
@@ -1698,7 +1698,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteWikiAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Deletes the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="userState"></param>
@@ -1706,7 +1706,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteWikiAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Deletes the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1715,7 +1715,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteWikiAsync(System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Deletes the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1724,7 +1724,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteWikiAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Deletes the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1733,7 +1733,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.DeleteWikiAsync(System.Guid,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Deletes the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Deletes the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1742,14 +1742,14 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAllWikisAsync(System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all wikis in a project or collection.
+            [Preview API] Gets all wikis in a project or collection.
             </summary>
             <param name="userState"></param>
             <param name="cancellationToken">The cancellation token to cancel operation.</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAllWikisAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all wikis in a project or collection.
+            [Preview API] Gets all wikis in a project or collection.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="userState"></param>
@@ -1757,7 +1757,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetAllWikisAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets all wikis in a project or collection.
+            [Preview API] Gets all wikis in a project or collection.
             </summary>
             <param name="project">Project ID</param>
             <param name="userState"></param>
@@ -1765,7 +1765,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetWikiAsync(System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Gets the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="userState"></param>
@@ -1773,7 +1773,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetWikiAsync(System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Gets the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
             <param name="userState"></param>
@@ -1781,7 +1781,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetWikiAsync(System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Gets the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1790,7 +1790,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetWikiAsync(System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Gets the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID or project name</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1799,7 +1799,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetWikiAsync(System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Gets the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1808,7 +1808,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.GetWikiAsync(System.Guid,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Gets the wiki corresponding to the wiki ID or wiki name provided.
+            [Preview API] Gets the wiki corresponding to the wiki ID or wiki name provided.
             </summary>
             <param name="project">Project ID</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1817,7 +1817,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiUpdateParameters,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
+            [Preview API] Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
             </summary>
             <param name="updateParameters">Update parameters.</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1826,7 +1826,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiUpdateParameters,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
+            [Preview API] Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
             </summary>
             <param name="updateParameters">Update parameters.</param>
             <param name="wikiIdentifier">Wiki ID or wiki name.</param>
@@ -1835,7 +1835,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiUpdateParameters,System.String,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
+            [Preview API] Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
             </summary>
             <param name="updateParameters">Update parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -1845,7 +1845,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiUpdateParameters,System.String,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
+            [Preview API] Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
             </summary>
             <param name="updateParameters">Update parameters.</param>
             <param name="project">Project ID or project name</param>
@@ -1855,7 +1855,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiUpdateParameters,System.Guid,System.String,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
+            [Preview API] Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
             </summary>
             <param name="updateParameters">Update parameters.</param>
             <param name="project">Project ID</param>
@@ -1865,7 +1865,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.Wiki.WebApi.WikiHttpClient.UpdateWikiAsync(Microsoft.TeamFoundation.Wiki.WebApi.WikiUpdateParameters,System.Guid,System.Guid,System.Object,System.Threading.CancellationToken)">
             <summary>
-            Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
+            [Preview API] Updates the wiki corresponding to the wiki ID or wiki name provided using the update parameters.
             </summary>
             <param name="updateParameters">Update parameters.</param>
             <param name="project">Project ID</param>

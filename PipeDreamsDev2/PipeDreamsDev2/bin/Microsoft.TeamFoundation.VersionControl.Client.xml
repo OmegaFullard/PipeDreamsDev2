@@ -2669,21 +2669,6 @@
             <param name="fileLabel">label to use with File: output line</param>
             <param name="exitedHandler">handler to attach to the Process Exited event</param>
         </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.VersionControlException">
-            <summary>
-            The VersionControlException is the base class of all new Exception types in Source Control.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.RepositoryNotFoundException">
-            <summary>
-            Thrown to indicate that a repository at the specified URL was not found or accessible.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.WorkItemUpdateException">
-            <summary>
-            Exception for work item update failure.
-            </summary>
-        </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.CheckinException">
             <summary>
             Thrown to indicate that there were conflicts preventing checkin.
@@ -2723,150 +2708,9 @@
             These are the checkin conflicts that occurred.
             </summary>
         </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException">
-            <summary>
-            Thrown to indicate that a checkin was denied due to the gated checkin plugin.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.AffectedBuildDefinitions">
-            <summary>
-            Gets a collection of (Name, Uri) pairs defining the build definitions which blocked the checkin attempt.
-            This property is always valid.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.QueueId">
-            <summary>
-            Gets the ID of the queue entry for the build that was queued for checkin. This property is valid when
-            the SubCode is 3.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.BuildUri">
-            <summary>
-            Gets the URI of the build which was queued for the checkin. This property is valid when SubCode is 3.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.OverridePermissionFailures">
-            <summary>
-            Gets a list of team projects for which the caller is missing the 'Override check-in validation by build' 
-            permission. This property is valid when SubCode is 4.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.HasOverridePermission">
-            <summary>
-            Gets a value indicating whether or not the user that performed the checkin has the required permissions
-            to override the gated checkin policy. This property is always valid.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.ShelvesetName">
-            <summary>
-            Gets the name of the shelveset that was created on behalf of the account making the checkin. If a shelveset
-            could not be created for any reason this value will be null. This property is valid when SubCode is 1 or 3.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.CheckInTicket">
-            <summary>
-            Gets the check-in ticket provided by the server for submitting a CheckInShelveset build request. This 
-            ticket should be used when requesting a build in response to this exception to ensure the ability to
-            submit even if the caller does not have the normally required permissions.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.SubCode">
-            <summary>
-            Gets the sub code for this exception. The sub code indicates what action(s) were performed on the server 
-            to aid the client in taking the appropriate corrective action.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.CheckInContainsLocks">
-            <summary>
-            Gets a value indicating whether or not the set of pending changes being checked in contains
-            one or more pending changes with the Lock bit set. This value is not set for shelvesets.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ShelveException">
-            <summary>
-            Thrown to indicate that there were problems preventing a shelveset being committed.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.UnshelveException">
-            <summary>
-            Thrown to indicate that there were problems preventing unshelving a shelveset.
-            </summary>
-        </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.OnlyOneWorkspaceException">
             <summary>
             Thrown to indicate that the files specified span more than one workspace.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.MappingConflictException">
-            <summary>
-            Thrown to indicate that the workspace contains conflicting or redundant working folders for
-            a given client folder.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.InvalidFileTypeException">
-            <summary>
-            Thrown to indicate that the specified file type is invalid.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.BaselineUnavailableException">
-            <summary>
-            Thrown by the client when an undo wanted to place content on disk, but could not
-            because a baseline was not available offline.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.DepthOneMappingsNotSupportedException">
-            <summary>
-            Thrown to indicate that the server does not support 1 depth mappings. When a client
-            tries to pass up 1 depth mappings to an older server. The mappings will get converted
-            to depth 120 mappings
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ResourceAccessException">
-            <summary>
-            Thrown when an access check fails
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionTableException">
-            <summary>
-            Thrown when the workspace version table file is corrupt or not able to be loaded
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ReconcileBlockedByProjectRenameException.OldProjectNames">
-            <summary>
-            The set of old project names.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ReconcileBlockedByProjectRenameException.NewProjectNames">
-            <summary>
-            The set of new project names.
-            </summary>
-        </member>
-        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ReconcileBlockedByProjectRenameException.NewProjectRevisionId">
-            <summary>
-            The new project revision ID.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ThirdPartyAssemblyToolException">
-            <summary>
-            Thrown when there is an error loading or executing a third party tool that is defined in a user
-            specified assembly.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ThirdPartyAutomergeToolException">
-            <summary>
-            Thrown when an external automerge tool fails to execute or cannot complete the automerge due
-            to conflicts.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ResolveRequiresOneResolutionException">
-            <summary>
-            Thrown when there is an error loading or executing a third party tool that is defined in a user
-            specified assembly.
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.UploadFileException">
-            <summary>
-            Thrown when an exception occurs on upload file.
             </summary>
         </member>
         <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ExtendedItem.IsInWorkspace">
@@ -3912,7 +3756,12 @@
             </summary>
             <returns>A stream that contains the contents of the item.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Client.Item.DownloadFile(System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.Item.DownloadFile(System.String)">
+            <summary>
+            Downloads the content for this version of the item.
+            </summary>
+            <param name="localFileName">where to save the downloaded file contents</param>
+        </member>
         <member name="P:Microsoft.TeamFoundation.VersionControl.Client.Item.ArtifactUri">
             <summary>
             Artifact Uri -- Versioned Item
@@ -7516,16 +7365,16 @@
             </summary>
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.IPolicyCompatibility.GetBinaryFormatter">
-            <summary>
-            This is necessary if you need to create a new BinaryFormatter and hook into the
-            serialization process for backwards compatibility (e.g., you need to set the
-            Binder property on the formatter to handle compat for a checkin policy that has
-            been moved to another assembly).
+             <summary>
+             This is necessary if you need to create a new BinaryFormatter and hook into the
+             serialization process for backwards compatibility (e.g., you need to set the
+             Binder property on the formatter to handle compat for a checkin policy that has
+             been moved to another assembly).
             
-            If you do not need to hook into the serialization process, just return 
-            new BinaryFormatter().
-            </summary>
-            <returns>the BinaryFormatter to use for serializing the policy</returns>
+             If you do not need to hook into the serialization process, just return
+             new BinaryFormatter().
+             </summary>
+             <returns>the BinaryFormatter to use for serializing the policy</returns>
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.IPolicyCompatibility.GetAssemblyName">
             <summary>
@@ -7534,6 +7383,36 @@
             a previously released version of the checkin policy.
             </summary>
             <returns>The assembly name that should be stored in the metadata.</returns>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.IPolicyCompatibilityJson">
+            <summary>
+            This interface is used for backwards compatibility for checkin policies that have been moved
+            to new types or assemblies. And uses a json library as serialization algorithm.
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.IPolicyCompatibilityJson.GetJsonSerializerSettings">
+            ********************************************************************************************
+             <summary>
+             This is necessary if you need to create a new JsonSerializerSettings and hook into the
+             serialization process for backwards compatibility (e.g., you need to set the
+             Binder property on the formatter to handle compat for a checkin policy that has
+             been moved to another assembly).
+            
+             If you do not need to hook into the serialization process, just return
+             new JsonSerializerSettings().
+             </summary>
+             <returns>the JsonSerializerSettings to use for serializing the policy</returns>
+            ********************************************************************************************
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.IPolicyCompatibilityJson.GetAssemblyName">
+            ********************************************************************************************
+             <summary>
+             Used for backwards compatibility where you need to specify a different assembly
+             name for the checkin policy in order to maintain backwards compatibility with
+             a previously released version of the checkin policy.
+             </summary>
+             <returns>The assembly name that should be stored in the metadata.</returns>
+            ********************************************************************************************
         </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.IPolicyEvaluation">
             <summary>
@@ -7838,7 +7717,7 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.LoadFailurePolicyType.New">
             <summary>
-            Since the load failed, we can't create an instance of it.  This method just throws 
+            Since the load failed, we can't create an instance of it.  This method just throws
             VersionControlException.
             </summary>
             <returns></returns>
@@ -8064,6 +7943,108 @@
             </summary>
         </member>
         <member name="P:Microsoft.TeamFoundation.VersionControl.Client.PolicyBase.Disposed">
+            <summary>
+            Returns true if this object has been disposed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase">
+            <summary>
+            This class is helper that provides some of the basic functions of a checkin policy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Type">
+            <summary>
+            A string representing the type of the policy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.TypeDescription">
+            <summary>
+            A string describing what this type of policy does.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Description">
+            <summary>
+            A string describing the behavior of this instance of a policy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.InstallationInstructions">
+            <summary>
+            A message that is displayed if the policy appears to not be installed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.CanEdit">
+            <summary>
+            A property that indicates whether or not this policy includes configuration UI.
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Edit(Microsoft.TeamFoundation.VersionControl.Client.IPolicyEditArgs)">
+            <summary>
+            Display UI to allow the user to configure the properties of this policy.
+            </summary>
+            <param name="policyEditArgs">Edit context for the policy</param>
+            <returns>true if the policy was updated.</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Initialize(Microsoft.TeamFoundation.VersionControl.Client.IPendingCheckin)">
+            <summary>
+            Initialize the policy instance so that it can perform evaluations.
+            </summary>
+            <param name="pendingCheckin">An object that allows the policy to gather information about the
+            checkin for evaluation.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Evaluate">
+            <summary>
+            Evaluate the policy and return a list of failures if there are any.  If there are none,
+            return an empty list.
+            </summary>
+            <returns>List of failures for this policy.</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Activate(Microsoft.TeamFoundation.VersionControl.Client.PolicyFailure)">
+            <summary>
+            Display UI to allow a user to get more information on a particular policy failure.
+            </summary>
+            <param name="failure">The failure on which the user wants more info.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.DisplayHelp(Microsoft.TeamFoundation.VersionControl.Client.PolicyFailure)">
+            <summary>
+            Display UI to give help on what this failure means and what the user can do to resolve it.
+            </summary>
+            <param name="failure">The failure on which the user wants help.</param>
+        </member>
+        <member name="E:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.PolicyStateChanged">
+            <summary>
+            An event the policy can raise to notify the host of an asynchronous change in the
+            list of policy failures.
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.OnPolicyStateChanged(Microsoft.TeamFoundation.VersionControl.Client.PolicyFailure[])">
+            <summary>
+            Fire the event to notify of a change in policy state.
+            </summary>
+            <param name="failures"></param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.GetJsonSerializerSettings">
+            <summary>
+            Only override this if you need to create a new JsonSerializerSettings and hook into the
+            serialization process for backwards compatibility (e.g., you need to set the
+            Binder property on the formatter to handle compat for a checkin policy that has
+            been moved to another assembly).
+            </summary>
+            <returns>the JsonSerializerSettings to use for serializing the policy</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.GetAssemblyName">
+            <summary>
+            Only override this for backwards compatibility where you need to specify a different assembly
+            name for the checkin policy in order to maintain backwards compatibility with
+            a previously released version of the checkin policy.
+            </summary>
+            <returns>The assembly name that should be stored in the metadata.</returns>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.PendingCheckin">
+            <summary>
+            Get an object representing the pending changes portion of the pending checkin.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.CheckinPolicyBase.Disposed">
             <summary>
             Returns true if this object has been disposed.
             </summary>
@@ -8576,6 +8557,31 @@
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.WorkingFolderType">
             <summary>
             Used to describe working folder entries.  Each entry is either a map or a cloak
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ReconcileBlockedByProjectRenameException.OldProjectNames">
+            <summary>
+            The set of old project names.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ReconcileBlockedByProjectRenameException.NewProjectNames">
+            <summary>
+            The set of new project names.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ReconcileBlockedByProjectRenameException.NewProjectRevisionId">
+            <summary>
+            The new project revision ID.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ResourceAccessException">
+            <summary>
+            Thrown when an access check fails
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.VersionControlException">
+            <summary>
+            The VersionControlException is the base class of all new Exception types in Source Control.
             </summary>
         </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ExtendedMerge">
@@ -9146,7 +9152,16 @@
             Server item path representing the label's scope.  Name + Scope must be unique
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlLabel.#ctor(Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer,System.String,System.String,System.String,System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlLabel.#ctor(Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a representation of a source control label to be sent to the server.
+            </summary>
+            <param name="sourceControl">the repository in which the label resides</param>
+            <param name="name">the label's name</param>
+            <param name="ownerName">the label's owner (may be null/empty)</param>
+            <param name="scope">the label's scope (may be null/empty)</param>
+            <param name="comment">the label's comment (may be null/empty)</param>
+        </member>
         <member name="P:Microsoft.TeamFoundation.VersionControl.Client.VersionControlLabel.ArtifactUri">
             <summary>
             Artifact Uri for a Label.
@@ -9298,13 +9313,6 @@
             <param name="to">end of the version range</param>
             <returns>a version string representing the path and version range</returns>
         </member>
-        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionSpec.AddDeletionModifierIfNecessary(Microsoft.TeamFoundation.VersionControl.Client.Item)">
-            <summary>
-            Formats a path to include the deletion identifier if it's non-zero
-            </summary>
-            <param name="item">The item to format.</param>
-            <returns></returns>
-        </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionSpec.AddDeletionModifierIfNecessary(System.String,System.Int32)">
             <summary>
             Formats a path to include the deletion identifier if it's non-zero
@@ -9367,6 +9375,13 @@
             A VersionSpecFactory subclass for creating VersionSpec types from the MS.TF.VC.Client assembly.
             Part of a mechanism to share parsing code for versionspecs between the client and server object models.
             </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionSpec.AddDeletionModifierIfNecessary(Microsoft.TeamFoundation.VersionControl.Client.Item)">
+            <summary>
+            Formats a path to include the deletion identifier if it's non-zero
+            </summary>
+            <param name="item">The item to format.</param>
+            <returns></returns>
         </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.Warning">
             <summary>
@@ -12223,18 +12238,6 @@
             This class represents a version specifier based on a specified workspace.
             </summary>
         </member>
-        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionSpec.#ctor(Microsoft.TeamFoundation.VersionControl.Client.WorkspaceInfo)">
-            <summary>
-            Construct a WorkspaceVersionSpec based the specified WorkspaceInfo.
-            </summary>
-            <param name="wsInfo">Workspace info to pull workspace information from</param>
-        </member>
-        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionSpec.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace)">
-            <summary>
-            Construct a WorkspaceVersionSpec based the specified Workspace.
-            </summary>
-            <param name="workspace">Workspace to pull workspace information from</param>
-        </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionSpec.#ctor(System.String,System.String)">
             <summary>
             Construct a WorkspaceVersionSpec based the specified workspace name and owner.
@@ -12267,6 +12270,18 @@
             <summary>
             Identifier for this version spec in command-line usage.
             </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionSpec.#ctor(Microsoft.TeamFoundation.VersionControl.Client.WorkspaceInfo)">
+            <summary>
+            Construct a WorkspaceVersionSpec based the specified WorkspaceInfo.
+            </summary>
+            <param name="wsInfo">Workspace info to pull workspace information from</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionSpec.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace)">
+            <summary>
+            Construct a WorkspaceVersionSpec based the specified Workspace.
+            </summary>
+            <param name="workspace">Workspace to pull workspace information from</param>
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer.QueryHistory(System.String,Microsoft.TeamFoundation.VersionControl.Client.VersionSpec,System.Int32,Microsoft.TeamFoundation.VersionControl.Client.RecursionType,System.String,Microsoft.TeamFoundation.VersionControl.Client.VersionSpec,Microsoft.TeamFoundation.VersionControl.Client.VersionSpec,System.Int32,System.Boolean,System.Boolean)">
             <summary>
@@ -13992,9 +14007,24 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer.GetCheckinPoliciesForServerPaths(System.String[])">
             <summary>
-            Get the list of check in policies for the specified team projects.
+            Get the list of old type check in policies for the specified team projects.
             </summary>
             <param name="serverItems">Server items to get the policies for</param>
+            <returns>The list of policies</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer.GetCheckinClientPoliciesForServerPaths(System.String[])">
+            <summary>
+            Get the list of new type check in policies for the specified team projects.
+            </summary>
+            <param name="serverItems">Server items to get the policies for</param>
+            <returns>The list of policies</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer.GetCheckinPoliciesByKeyForServerPaths(System.String[],System.String)">
+            <summary>
+            Get the list of check in policies by key for the specified team projects.
+            </summary>
+            <param name="serverItems">Server items to get the policies for</param>
+            <param name="checkinPolicyAnnotationKey">Key of annotation by which policies taken</param>
             <returns>The list of policies</returns>
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer.GetCheckinNoteDefinitionsForServerPaths(System.String[])">
@@ -15265,6 +15295,137 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.RepositoryNotFoundException">
+            <summary>
+            Thrown to indicate that a repository at the specified URL was not found or accessible.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.WorkItemUpdateException">
+            <summary>
+            Exception for work item update failure.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException">
+            <summary>
+            Thrown to indicate that a checkin was denied due to the gated checkin plugin.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.AffectedBuildDefinitions">
+            <summary>
+            Gets a collection of (Name, Uri) pairs defining the build definitions which blocked the checkin attempt.
+            This property is always valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.QueueId">
+            <summary>
+            Gets the ID of the queue entry for the build that was queued for checkin. This property is valid when
+            the SubCode is 3.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.BuildUri">
+            <summary>
+            Gets the URI of the build which was queued for the checkin. This property is valid when SubCode is 3.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.OverridePermissionFailures">
+            <summary>
+            Gets a list of team projects for which the caller is missing the 'Override check-in validation by build' 
+            permission. This property is valid when SubCode is 4.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.HasOverridePermission">
+            <summary>
+            Gets a value indicating whether or not the user that performed the checkin has the required permissions
+            to override the gated checkin policy. This property is always valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.ShelvesetName">
+            <summary>
+            Gets the name of the shelveset that was created on behalf of the account making the checkin. If a shelveset
+            could not be created for any reason this value will be null. This property is valid when SubCode is 1 or 3.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.CheckInTicket">
+            <summary>
+            Gets the check-in ticket provided by the server for submitting a CheckInShelveset build request. This 
+            ticket should be used when requesting a build in response to this exception to ensure the ability to
+            submit even if the caller does not have the normally required permissions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.SubCode">
+            <summary>
+            Gets the sub code for this exception. The sub code indicates what action(s) were performed on the server 
+            to aid the client in taking the appropriate corrective action.
+            </summary>
+        </member>
+        <member name="P:Microsoft.TeamFoundation.VersionControl.Client.GatedCheckinException.CheckInContainsLocks">
+            <summary>
+            Gets a value indicating whether or not the set of pending changes being checked in contains
+            one or more pending changes with the Lock bit set. This value is not set for shelvesets.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ShelveException">
+            <summary>
+            Thrown to indicate that there were problems preventing a shelveset being committed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.UnshelveException">
+            <summary>
+            Thrown to indicate that there were problems preventing unshelving a shelveset.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.MappingConflictException">
+            <summary>
+            Thrown to indicate that the workspace contains conflicting or redundant working folders for
+            a given client folder.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.InvalidFileTypeException">
+            <summary>
+            Thrown to indicate that the specified file type is invalid.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.BaselineUnavailableException">
+            <summary>
+            Thrown by the client when an undo wanted to place content on disk, but could not
+            because a baseline was not available offline.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.DepthOneMappingsNotSupportedException">
+            <summary>
+            Thrown to indicate that the server does not support 1 depth mappings. When a client
+            tries to pass up 1 depth mappings to an older server. The mappings will get converted
+            to depth 120 mappings
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.WorkspaceVersionTableException">
+            <summary>
+            Thrown when the workspace version table file is corrupt or not able to be loaded
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ThirdPartyAssemblyToolException">
+            <summary>
+            Thrown when there is an error loading or executing a third party tool that is defined in a user
+            specified assembly.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ThirdPartyAutomergeToolException">
+            <summary>
+            Thrown when an external automerge tool fails to execute or cannot complete the automerge due
+            to conflicts.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.ResolveRequiresOneResolutionException">
+            <summary>
+            Thrown when there is an error loading or executing a third party tool that is defined in a user
+            specified assembly.
+            </summary>
+        </member>
+        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.UploadFileException">
+            <summary>
+            Thrown when an exception occurs on upload file.
+            </summary>
+        </member>
         <member name="P:Microsoft.TeamFoundation.VersionControl.Client.ServerSettingsCache.FileName">
             <summary>
             The path of the cache file, which is a function of the client cache directory and the server GUID.
@@ -15413,11 +15574,6 @@
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.BranchObjectUpdatedEventArgs">
             <summary>
             Event arguments for branch object updated
-            </summary>
-        </member>
-        <member name="T:Microsoft.TeamFoundation.VersionControl.Client.CancelException">
-            <summary>
-            Exception specifically for user-requested cancellation of the client's actions.
             </summary>
         </member>
         <member name="T:Microsoft.TeamFoundation.VersionControl.Client.CommitCheckinEventHandler">
@@ -15934,16 +16090,45 @@
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.GetCheckinPolicies">
             <summary>
-            Get the list of check in policies for this project.
+            Get the list of check in policies of old type for this project.
+            </summary>
+            <returns>The list of policies of old type.</returns>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.GetCheckinClientPolicies">
+            <summary>
+            Get the list of check in policies of new type for this project.
             </summary>
             <returns>The list of policies.</returns>
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.SetCheckinPolicies(Microsoft.TeamFoundation.VersionControl.Client.PolicyEnvelope[])">
             <summary>
-            Sets the checkin policies for this project.
+            Sets the checkin policies of old type for this project.
             </summary>
             <param name="policies">The checking policies.  If null or
               an empty array is specified, the policies for this project are cleared.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.SetCheckinClientPolicies(Microsoft.TeamFoundation.VersionControl.Client.PolicyEnvelope[])">
+            <summary>
+            Sets the checkin policies for this project.
+            </summary>
+            <param name="policies">The checking policies. If null or
+              an empty array is specified, the policies for this project are cleared.</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.SetCheckinPoliciesByKey(Microsoft.TeamFoundation.VersionControl.Client.PolicyEnvelope[],System.String)">
+            <summary>
+            Sets the checkin policies by key for this project.
+            </summary>
+            <param name="policies">The checking policies. If null or
+              an empty array is specified, the policies for this project are cleared.</param>
+            <param name="checkinPolicyAnnotationKey">Key of annotation by which policies taken</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.MigrateFromOldPolicies">
+            <summary>
+            Read all old policies and tries to convert them to new one and then save to server.
+            Old policy should implement IPolicyMigration otherwise they would be skipped during migration.
+            If there are any new policies saved at the time of migration it will be stopped to not override them.
+            All expected new policies should be installed on the machine.
+            </summary>
         </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.TeamProject.SetCheckinNoteFields(Microsoft.TeamFoundation.VersionControl.Client.CheckinNoteFieldDefinition[])">
             <summary>
@@ -16870,8 +17055,18 @@
             Normally this class should not be used by external code.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueue.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueue.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace,Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueueOptions)" -->
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueue.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace)">
+            <summary>
+            Constructs a queue for updating the workspace's local version table.
+            </summary>
+            <param name="workspace">the workspace that will be updated</param>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueue.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace,Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueueOptions)">
+            <summary>
+            Constructs a queue for updating the workspace's local version table.
+            </summary>
+            <param name="workspace">the workspace that will be updated</param>
+        </member>
         <member name="M:Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueue.#ctor(Microsoft.TeamFoundation.VersionControl.Client.Workspace,Microsoft.TeamFoundation.VersionControl.Client.UpdateLocalVersionQueueOptions,Microsoft.TeamFoundation.VersionControl.Client.WorkspaceLock)">
             <summary>
             Constructs a queue for updating the workspace's local version table.

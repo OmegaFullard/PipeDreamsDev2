@@ -4,427 +4,17 @@
         <name>Microsoft.VisualStudio.Services.Common</name>
     </assembly>
     <members>
-        <member name="T:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequester">
-            <summary>
-            Implements calls to a third-party service.
-            </summary>
-            <remarks>
-            This interface is intended to be replaced with a mock / stub implementation for L2 tests
-            since calls to external services are not allowed for L2s.
-            </remarks>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory">
-            <summary>
-            Creates instances of <c>IExternalProviderHttpRequester</c>.
-            </summary>
-            <remarks>
-            <c>IExternalProviderHttpRequester</c> needs a factory because it is disposable.
-            Creating and disposing a new instance for each request is the easiest way to manage the lifetime.
-            It also allows settings such as default headers to be passed into the requester dynamically, on a per-request basis.
-            </remarks>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory.ProviderType">
-            <summary>
-            The name of the external service.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory.Initialize(System.Object)">
-            <param name="requestContext">This is intended to be an <c>IVssRequestContext</c>, but we don't have a reference to its assembly here.</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory.GetRequester(System.Net.Http.HttpMessageHandler)">
-            <summary>
-            Creates an instance of <c>IExternalProviderHttpRequester</c> from a message handler.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Performance.PerformanceNativeMethods.GetCPUTime">
-            <summary>
-            Get the current CPU Cycle count for the current thread
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryToken">
-            <summary>
-            Token which is stored in the registry. This is used along with the RegistryTokenStorage.
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage">
-            <summary>
-            Used to store token information in the registry
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RetrieveAll(System.String)">
-            <summary>
-            Retrieve all tokens for a given kind.
-            </summary>
-            <param name="kind">The kind of token. For example "TFS"</param>
-            <returns>Tokens</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RetrieveTokenSecret(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken)">
-            <summary>
-            Given a token retrieve the token secret in an unencrypted form.
-            </summary>
-            <param name="token"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.SetTokenSecret(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="token"></param>
-            <param name="tokenValue"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RemoveTokenSecret(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken)">
-            <summary>
-            
-            </summary>
-            <param name="token"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.GetProperty(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="token"></param>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.SetProperty(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken,System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="token"></param>
-            <param name="name"></param>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RemoveAll">
-            <summary>
-            Removes all tokens from this storage
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.GetRootKey">
-            <summary>
-            Get a registry key object that represents the root of the storage.
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorageFactory.c_tokenStorageKeyPostFix">
-            <summary>
-            The post fix is used so that all of the storage information is contained within one key that we control
-            and that can be deleted without us having to worry we are deleting something we did not intend to delete.
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorageFactory.c_registryRoot">
-            <summary>
-            The version number in this string is frozen as of dev14, token storage is meant to be shared between
-            all versions of vs from 14 onward. This storage contains the fedauth tokens and session tokens
-            Eventually both of these tokens are hoped to be replaced by AAD tokens and this storage will be obsolete then.
-            Do not change this version number.
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorageFactory.RegistryRootPath">
-            <summary>
-            The resulting root path
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken">
-            <summary>
-            Represents a token in the system which is used to connect to a resource.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.TokenValue">
-            <summary>
-            The last token value, may be null.
-            </summary>
-            <remarks>
-            This value is updated whenever SetTokenValue or RefreshTokenValue succeeds.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RefreshTokenValue">
-            <summary>
-            Get the token value (secret) for this token.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.SetTokenValue(System.String)">
-            <summary>
-            Sets the token value (secret) for this token.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RemoveTokenValue">
-            <summary>
-            Removes the token value (secret) for this token.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.GetProperty(System.String)">
-            <summary>
-            Get a property related to the token out of storage
-            </summary>
-            <param name="name">Name of the property in storage</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.SetProperty(System.String,System.String)">
-            <summary>
-            Set a property related to the token in storage
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RetrieveValue">
-            <summary>
-            Retrieve the token (secret) from storage
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.SetValue(System.String)">
-            <summary>
-            Store the token (secret) in storage
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RemoveValue">
-            <summary>
-            Remove the token (secret) from storage
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey">
-             <summary>
-            
-             </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.#ctor">
-             <summary>
-            
-             </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.#ctor(System.String,System.String,System.String,System.String)">
-             <summary>
-            
-             </summary>
-             <param name="kind"></param>
-             <param name="resource"></param>
-             <param name="userName"></param>
-             <param name="type"></param>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.Kind">
-            <summary>
-            The token kind (e.g., "vss-user", "vss-account", "windows-store").
-            </summary>
-            <remarks>
-            The token kind is case-sensitive.
-            </remarks>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.Resource">
-            <summary>
-            The token resource name or uri.
-            </summary>
-            <remarks>
-            The token resource is case-sensitive.
-            </remarks>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.UserName">
-            <summary>
-            The token user name, user id, or any app-specific unique value.
-            </summary>
-            <remarks>
-            The token user name is case-insensitive.
-            </remarks>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.Type">
-            <summary>
-            The type of the stored token. Can be any app-specific value,
-            but is intended to convey the authentication type.
-            Therefore some examples might be:
-            "Federated", "OAuth", "Windows", "Basic", "ServiceIdentity", "S2S"
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage">
-            <summary>
-            Defines how to store a token in storage.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.Add(Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey,System.String)">
-            <summary>
-            Add a new token to the storage.
-            </summary>
-            <param name="tokenKey">Required.</param>
-            <param name="tokenValue">Required.</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.Retrieve(Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey)">
-            <summary>
-            Retrieve the specified token.
-            </summary>
-            <param name="tokenKey">Required.</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.Remove(Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey)">
-            <summary>
-            Remove a token from storage.
-            </summary>
-            <param name="tokenKey">Required.</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.RetrieveAll(System.String)">
-            <summary>
-            Retrieve all tokens by kind.
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.Utility.LookupGenerator">
-            <summary>
-            The <see cref="T:Microsoft.VisualStudio.Services.Common.Utility.LookupGenerator"/> is a collection of functions to create 
-            lookup delegates, storing any relevant state via closure.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Utility.LookupGenerator.CreateLookupWithDefault``2(``1,System.Collections.Generic.IReadOnlyDictionary{``0,``1})">
-            <summary>
-            Creates a lookup function using closure encapsulation of an <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/>
-            to handle the lookup table.  If the requested key is not found, the lookup will return the provided
-            default.
-            </summary>
-            <typeparam name="T">The key of the lookup</typeparam>
-            <typeparam name="TOut">The value stored in the lookup table</typeparam>
-            <param name="default">A default value returned if the key is not found</param>
-            <param name="dictionary">The lookup table, stored in the closure of the lookup function</param>
-            <returns>A lookup function which returns the value at the requested key, or a default value.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.GetCredentialsFromStore(System.String)">
-            <summary>
-            Given a Uri, returns stored credentials from the Windows credentials manager which
-            have been previously stored for that Uri. If no credentials exist in the Windows
-            credentials manager for the given Uri, this method returns null.
-            </summary>
-            <param name="uri">Uri to look up in the Windows credentials manager for this user</param>
-            <returns>NetworkCredential from the credentials manager, if found</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.StoreWindowsCredentials(System.String,System.String,System.String)">
-            <summary>
-            Creates a credential or modifies an existing credential in the windows credential vault for the specified host.
-            </summary>
-            <param name="host">The internet or network address</param>
-            <param name="userName">Username to store</param>
-            <param name="password">Password to store</param>
-            <returns>ERROR_SUCCESS (0) if successful. Otherwise, a Win32 error code returned by CredWrite.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.StoreCredentialsToStore(System.Int32,System.String,System.String,System.Security.SecureString,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
-            <summary>
-            Persist the provided credentials in the Windows credentials manager for this user.
-            The credentials are stored until the user logs off.
-            </summary>
-            <param name="credType">The type of the credential.</param>
-            <param name="targetName">Then name of the credential to serve as the key in the credentials manager</param>
-            <param name="uri">Uri to serve as the key in the credentials manager</param>
-            <param name="userName">Username to store</param>
-            <param name="password">Password to store</param>
-            <param name="comment">A string comment from the user that describes this credential</param>
-            <param name="attributes">Application-defined attributes that are associated with the credential</param>
-            <returns>ERROR_SUCCESS (0) if successful. Otherwise, a Win32 error code returned by CredWrite.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.DeleteWindowsCredentials(System.String)">
-            <summary>
-            Deletes a credential from the user's windows credential vault for the specified host.
-            </summary>
-            <param name="host">The internet or network address</param>
-            <returns>The function returns TRUE on success and FALSE on failure. The Marshal.GetLastWin32Error() function can be called to get a more specific error status code.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.IsMatch(Microsoft.VisualStudio.Services.Common.TfsCredentialCacheEntry,System.Nullable{System.Boolean})">
-            <summary>
-            Helper method to determine if the given cache entry can be returned to the caller
-            </summary>
-            <param name="entry"></param>
-            <param name="nonInteractive"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.FailedUserName(System.Uri,System.Net.ICredentials)">
-            <summary>
-            Given a URI and credentials which failed to authenticate, returns
-            the username which failed to authenticate, in DOMAIN\user form.
-            </summary>
-            <param name="uri">Uri to which the credentials failed to authenticate</param>
-            <param name="failedCredentials">Credentials which failed to authenticate</param>
-            <returns>DOMAIN\user which failed to authenticate, or String.Empty</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.GetNetworkCredential(System.String,System.Text.StringBuilder)">
-            <summary>
-            Returns a NetworkCredential instance created from a username and password.
-            </summary>
-            <param name="username">Username, possibly in the form DOMAIN\user</param>
-            <param name="password">Password</param>
-            <returns>NetworkCredential instance</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.ZeroStringBuilder(System.Text.StringBuilder)">
-            <summary>
-            Zeroes out a StringBuilder
-            </summary>
-            <param name="toZero">StringBuilder to zero out</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.ZeroString(System.String)">
-            <summary>
-            Zeroes out a String
-            </summary>
-            <param name="toZero">String to zero</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderRegistryHelper.BuildSecurityDescriptor(System.String)">
-            <summary>
-            Creates read-write permissions for local administrators 
-            and for the specified account.
-            </summary>
-            <param name="owningAccountName">An account under that the service is running</param>
-            <returns></returns>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.CredentialsProviderRegistryHelper.m_accountsRoot">
-            <summary>
-            The version number in this string is frozen as of dev14, credential storage is meant to be shared between
-            all versions of client from 14 onward.
-            This storage contains the credential for each hosted service account used by each feature area.
-            Do not change this version number.
-            In case you need to change version number, please update c_testingSavedAccountsRoot in the
-            Vssf\Client\TFCommon.L1.Tests\CredentialsCacheManagerTests.cs
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.EncryptSecret(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)">
-            <summary>
-            Encrypts password using specified certificate and the default algorithm (aes256).
-            </summary>
-            <param name="secret">Secret to encrypt.</param>
-            <param name="cert">Certificate that should be used to encrypt the password.</param>
-            <returns>Encrypted password in base-64 encoding.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.EncryptSecret(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.Pkcs.AlgorithmIdentifier)">
-            <summary>
-            Encrypts password using specified certificate.
-            </summary>
-            <param name="secret">Secret to encrypt.</param>
-            <param name="cert">Certificate that should be used to encrypt the password.</param>
-            <param name="algorithm">Algorithm to use for symmetric part of encryption.</param>
-            <returns>Encrypted password in base-64 encoding.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.DecryptSecret(System.String)">
-            <summary>
-            Decrypts password using local machine cert store. 
-            The certificate used to encrypt the secret must be resident there.
-            </summary>
-            <param name="password">Password to decrypt.</param>
-            <returns>Decrypted password in a secure string.</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.TryDecryptSecret(System.String,System.Security.SecureString@)">
-            <summary>
-            Attempts to decrypt the passed in string. If this fails for whatever
-            reason we return the same string back to the caller without throwing
-            </summary>
-            <param name="encryptedSecret"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.DecryptSecretInsecure(System.String)">
-            <summary>
-            Decrypts password using local machine cert store. 
-            The certificate used to encrypt the secret must be resident there.
-            </summary>
-            <remarks>
-            NOTE: This method exists only for back compat purposes. Do not use
-            Use the method that returns a SecureString instead.
-            </remarks>
-            <param name="password">Password to decrypt.</param>
-            <returns>Decrypted password in an open string.</returns>
-        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.Internal.EnvironmentUtility.SetMachineEnvironmentVariable(System.String,System.String)">
             <summary>
             Sets machine environment variable without sending WM_SETTINGCHANGE(26) to HWND_BROADCAST, which can take about 10 seconds
             </summary>
             <param name="variable"></param>
             <param name="value"></param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.Internal.HtmlUtility">
+            <summary>
+            Utility class for general Uri actions.  See LinkingUtilities for artifact uri specific methods.
+            </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.Internal.NativeMethods.FormatError(System.Int32)">
             <summary>
@@ -473,7 +63,74 @@
              Applications should also call NetApiBufferFree to free the memory that other network management functions use internally to return information.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.Common.Internal.PasswordUtility.GeneratePassword(System.Int32,System.Int32)" -->
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PasswordUtility.GeneratePassword(System.Int32,System.Int32)">
+            <summary>
+            Generates a random password of the specified length.
+            </summary>
+            <param name="length">The number of characters in the generated password. The length must be between 1 and 128 characters.</param>
+            <param name="numberOfNonAlphanumericCharacters">The minimum number of non-alphanumeric characters (such as @, #, !, %, &amp;, and so on) in the generated password.</param>
+            <returns>A random password of the specified length</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.IsValidTypeString(System.String)">
+            <summary>
+            Used for deserialization checks. Makes sure that
+            the type string presented is in the inclusion list
+            of valid types for the property service
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.TryGetValidType(System.String,System.Type@)">
+            <summary>
+            Used for deserialization checks. Looks up the
+            type string presented in the inclusion list
+            of valid types for the property service and returns the Type object
+            </summary>
+            <param name="type"></param>
+            <param name="result">Resulting type that maps to the type string</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyName(System.String)">
+            <summary>
+            Make sure the property name conforms to the requirements for a
+            property name.
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyValue(System.String,System.Object)">
+            <summary>
+            Make sure the property value is within the supported range of values
+            for the type of the property specified.
+            </summary>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyString(System.String,System.Int32,System.String)">
+            <summary>
+            Validation helper for validating all property strings.
+            </summary>
+            <param name="propertyString"></param>
+            <param name="maxSize"></param>
+            <param name="argumentName"></param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.CheckRange``1(``0,``0,``0,System.String,System.Type,System.String)">
+            <summary>
+            Verify that a propery is within the bounds of the specified range.
+            </summary>
+            <param name="propertyValue">The property value</param>
+            <param name="minValue">The minimum value allowed</param>
+            <param name="maxValue">The maximum value allowed</param>
+            <param name="propertyName">The name of the property</param>
+            <param name="containerType">The container of the property</param>
+            <param name="topLevelParamName">The top level parameter name</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyFilter(System.String)">
+            <summary>
+            Make sure the property filter conforms to the requirements for a
+            property filter.
+            </summary>
+            <param name="propertyNameFilter"></param>
+        </member>
         <member name="F:Microsoft.VisualStudio.Services.Common.Internal.RegistryChangeNotificationFilter.NameChange">
             <summary>
             Notify the caller if a subkey is added or deleted. 
@@ -612,71 +269,6 @@
             This class was pulled from the .NET 4.0 public implementation. In .NET 2.0 the class is marked as internal
             and at the time of writing this assembly was linked against the 2.0 framework.
             </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.Internal.HtmlUtility">
-            <summary>
-            Utility class for general Uri actions.  See LinkingUtilities for artifact uri specific methods.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.IsValidTypeString(System.String)">
-            <summary>
-            Used for deserialization checks. Makes sure that
-            the type string presented is in the inclusion list
-            of valid types for the property service
-            </summary>
-            <param name="type"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.TryGetValidType(System.String,System.Type@)">
-            <summary>
-            Used for deserialization checks. Looks up the
-            type string presented in the inclusion list
-            of valid types for the property service and returns the Type object
-            </summary>
-            <param name="type"></param>
-            <param name="result">Resulting type that maps to the type string</param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyName(System.String)">
-            <summary>
-            Make sure the property name conforms to the requirements for a
-            property name.
-            </summary>
-            <param name="propertyName"></param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyValue(System.String,System.Object)">
-            <summary>
-            Make sure the property value is within the supported range of values
-            for the type of the property specified.
-            </summary>
-            <param name="propertyName"></param>
-            <param name="value"></param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyString(System.String,System.Int32,System.String)">
-            <summary>
-            Validation helper for validating all property strings.
-            </summary>
-            <param name="propertyString"></param>
-            <param name="maxSize"></param>
-            <param name="argumentName"></param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.CheckRange``1(``0,``0,``0,System.String,System.Type,System.String)">
-            <summary>
-            Verify that a propery is within the bounds of the specified range.
-            </summary>
-            <param name="propertyValue">The property value</param>
-            <param name="minValue">The minimum value allowed</param>
-            <param name="maxValue">The maximum value allowed</param>
-            <param name="propertyName">The name of the property</param>
-            <param name="containerType">The container of the property</param>
-            <param name="topLevelParamName">The top level parameter name</param>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.Internal.PropertyValidation.ValidatePropertyFilter(System.String)">
-            <summary>
-            Make sure the property filter conforms to the requirements for a
-            property filter.
-            </summary>
-            <param name="propertyNameFilter"></param>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.Internal.UriUtility">
             <summary>
@@ -1533,291 +1125,6 @@
             Avatar image cannot be zero bytes in length.
             </summary>
         </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.EnumerableUtility.AsEnumerable``1(System.Func{System.Int32,System.Int32,System.Collections.Generic.IEnumerable{``0}},System.Int32)">
-            <summary>
-            Wraps a batch API as a single IEnumerable
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="pagingExpression">The paging expression, for example: (skip, take) =&gt; service.GetGroupLicensingRules(requestContext, take, skip)</param>
-            <param name="take">Batch size</param>
-            <returns></returns>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.OSDetails">
-            <summary>
-            Provides information regarding the Team Foundation Server operating system.  This
-            class does not attempt to provide information for older operating systems the server
-            is not supported on (e.g. Windows 2000, Home Server and Windows XP).
-            
-            If support for those OS's are needed - feel free to extend this class.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsClient">
-            <summary>
-            True if a client OS such as Windows Vista or Windows 7.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.OSDetails.IsMachineInWorkgroup">
-            <summary>
-            Returns true if computer is joined to a workgroup or not joined. Otherwise, returns false (computer joined to a domain).
-            </summary>
-            <returns>Returns true if computer is joined to a workgroup or not joined. Otherwise, returns false (computer joined to a domain).</returns>
-            <exception cref="t:System.ComponentModel.Win32Exception">Call to native method NetGetJoinInformation failed.</exception>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsServer">
-            <summary>
-            True if a server OS such as Windows Server 2019 or Windows Server 2022
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsServerCore">
-            <summary>
-            Returns true if we are running on Server Core, false otherwise.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.Is64BitOperatingSystem">
-            <summary>
-            Returns true if OS is 64 bit.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsWow64">
-            <summary>
-            Returns <c>true</c> if the current process is running in WOW64 mode.
-            </summary>
-        </member>
-        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.Is64BitNotWow64">
-            <summary>
-            Returns <c>true</c> if the current process is running on 64-bit AND NOT in WOW64 mode.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.DateTimeUtility.GetHighResolutionUtcNow">
-            <summary>
-            Method provides a high-resolution timestamp from the operating
-            system.
-            (note: recommended to use vs. System.DateTime.Now.Ticks due
-            to slight inaccuracies in the DateTime implementation. Especially
-            for log timestamps, DateTime.Now is inadequate since it has a
-            ~15millisecond resolution, whereas this OS method has a
-            ~1microsecond resolution)
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.ProcessUtility.UniqueProcessId">
-            <summary>
-            A unique ID representing this process instance.  Pids are frequently reused, so this ID
-            differentiates between different process instances that have the same Pid.
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.SerializationHelper">
-            <summary>
-            Class provides helper methods for common serialization/deserialization
-            needs
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeBinary``1(System.Byte[],System.Runtime.Serialization.SerializationBinder)">
-            <summary>
-            Helper method deserializes the bytes to a runtime object using a BinaryFormatter.
-            </summary>
-            <typeparam name="T">Type of item</typeparam>
-            <param name="bytes">Byte representation of the object</param>
-            <returns>object of type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeDataContract``1(System.String)">
-            <summary>
-            Helper method deserializes the XML text to a runtime object using a DataContractSerializer.
-            (Note that the item/object must be decorated with a DataContract attribute and any properties
-            on the object that should be deserialized should be decorated with a DataMember attribute.)
-            </summary>
-            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
-            <param name="value">Valid XML text representation of the object</param>
-            <param name="settings">Settings to apply to the XmlReader</param>
-            <returns>object of the type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeDataContract``1(System.String,System.Xml.XmlReaderSettings)">
-            <summary>
-            Helper method deserializes the XML text to a runtime object using a DataContractSerializer.
-            (Note that the item/object must be decorated with a DataContract attribute and any properties
-            on the object that should be deserialized should be decorated with a DataMember attribute.)
-            </summary>
-            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
-            <param name="value">Valid XML text representation of the object</param>
-            <param name="settings">Settings to apply to the XmlReader</param>
-            <returns>object of the type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeDataContract``1(System.String,System.String,System.String,System.Xml.XmlReaderSettings)">
-            <summary>
-            Helper method deserializes the XML text to a runtime object using a DataContractSerializer.
-            (Note that the item/object must be decorated with a DataContract attribute and any properties
-            on the object that should be deserialized should be decorated with a DataMember attribute.)
-            </summary>
-            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
-            <param name="value">Valid XML text representation of the object</param>
-            <param name="rootName">Defines the name of the root XML element</param>
-            <param name="rootNamespace">Defines the name of the root XML element namespace</param>
-            <param name="settings">Settings to apply to the XmlReader</param>
-            <returns>object of the type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeNetDataContract``1(System.String)">
-            <summary>
-            Helper method deserializes the XML text to a runtime object using a NetDataContractSerializer.
-            (Note that the item/object must be decorated with a DataContract attribute and any properties
-            on the object that should be deserialized should be decorated with a DataMember attribute.)
-            </summary>
-            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
-            <param name="value">Valid XML text representation of the object</param>
-            <returns>object of the type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeXml``1(System.String)">
-            <summary>
-            Helper method deserializes the XML text to a runtime object using an XmlSerializer
-            </summary>
-            <typeparam name="T">Type of the object</typeparam>
-            <param name="xmlText">Valid XML text representation of the object</param>
-            <returns>object of the type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeXml``1(System.String,System.Xml.XmlReaderSettings)">
-            <summary>
-            Helper method deserializes the XML text to a runtime object using an XmlSerializer
-            </summary>
-            <typeparam name="T">Type of the object</typeparam>
-            <param name="xmlText">Valid XML text representation of the object</param>
-            <param name="settings">Settings to apply to the XmlReader</param>
-            <returns>object of the type T</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.Serialize``1(``0,System.Xml.XmlWriterSettings,System.Runtime.Serialization.XmlObjectSerializer)">
-            <summary>
-            Helper method serializes the item to XML text.  (Note that the
-            item/object must be flagged with a DataContract attribute
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <param name="settings">Settings to use for the XML output</param>
-            <param name="serializer">Defines the serializer (i.e. BinaryFormatter, DataContractSerializer, XmlSerializer etc...)</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeBinary(System.Object)">
-            <summary>
-            Helper method serializes the item to a byte array using a BinaryFormatter.
-            </summary>
-            <param name="item">Instance of an item of type T</param>
-            <param name="settings">Settings to use for the XML output</param>
-            <returns>byte array</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeDataContract``1(``0)">
-            <summary>
-            Helper method serializes the item to XML text.  (Note that the
-            item/object must be flagged with a DataContract attribute
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeDataContract``1(``0,System.Xml.XmlWriterSettings)">
-            <summary>
-            Helper method serializes the item to XML text.  (Note that the
-            item/object must be flagged with a DataContract attribute
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <param name="settings">Settings to use for the XML output</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeDataContract``1(``0,System.String,System.String,System.Xml.XmlWriterSettings)">
-            <summary>
-            Helper method serializes the item to XML text.  (Note that the
-            item/object must be flagged with a DataContract attribute
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <param name="rootName">Defines the name of the root XML element</param>
-            <param name="rootNamespace">Defines the name of the root XML element namespace</param>
-            <param name="settings">Settings to use for the XML output</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeNetDataContract(System.Object)">
-            <summary>
-            Helper method serializes the item to XML text.  (Note that the
-            item/object must be flagged with a DataContract attribute
-            </summary>
-            <param name="item">Item to serialize</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeXml``1(``0)">
-            <summary>
-            Helper method serializes the item to XML text using an XmlSerializer
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeXml``1(``0,System.Xml.XmlWriterSettings)">
-            <summary>
-            Helper method serializes the item to XML text using an XmlSerializer
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <param name="settings">Settings to use for the XML output</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeXml``1(``0,System.Xml.XmlWriterSettings,System.Xml.Serialization.XmlSerializerNamespaces)">
-            <summary>
-            Helper method serializes the item to XML text using an XmlSerializer
-            </summary>
-            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
-            <param name="item">Instance of an item of type T</param>
-            <param name="settings">Settings to use for the XML output</param>
-            <param name="namespaces">Namespaces to add to the serialized XML</param>
-            <returns>string/XML</returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.ConvertToString(System.IO.Stream)">
-            <summary>
-            Method returns the stream bytes as a StringBuilder instance
-            for byte array-to-text conversion
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.CsvConfiguration`1.ValidateTypeConfiguration">
-            <summary>
-            Sanity checks on the attributed properties in the records used
-            in the CSV
-            </summary>
-        </member>
-        <member name="T:Microsoft.VisualStudio.Services.Common.VssEnvironment">
-            <summary>
-            Information about the common installation and deployment locations of Vss and Tfs components.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetTfsSharedFilesPath">
-            <summary>
-            Returns the path to the common Microsoft Shared TFS files.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetVssCommonFilesPath">
-            <summary>
-            Returns the path to the common Microsoft Visual Studio Common7 IDE files.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetVssSharedFilesPath">
-            <summary>
-            Returns the path to the common Microsoft Shared Visual Studio Service files.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetVssPrivateFilesPath">
-            <summary>
-            Returns the path to the private Microsoft Visual Studio IDE files.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.EnumerateAllPaths">
-            <summary>
-            Enumerates all installation and component paths.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.EnumerateTfsPaths">
-            <summary>
-            Enumerates all Tfs component paths.
-            </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.EnumerateVssPaths">
-            <summary>
-            Enumerates all Vss installation and component paths.
-            </summary>
-        </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.FederatedCredential">
             <summary>
             Provides a common implementation for federated credentials.
@@ -2214,6 +1521,15 @@
             <param name="failedToken">The failed token</param>
             <returns>A provider for retrieving tokens for the configured credential</returns>
         </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssCredentials.CreateTokenProvider(System.Uri,Microsoft.VisualStudio.Services.Common.IHttpResponse,Microsoft.VisualStudio.Services.Common.IssuedToken,System.String)">
+            <summary>
+            Creates a token provider for the configured issued token credentials, after getting a CAE claims challenge.
+            </summary>
+            <param name="serverUrl">The targeted server</param>
+            <param name="webResponse">The failed web response</param>
+            <param name="failedToken">The failed token</param>
+            <returns>A provider for retrieving tokens for the configured credential</returns>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.VssCredentials.TryGetTokenProvider(System.Uri,Microsoft.VisualStudio.Services.Common.IssuedTokenProvider@)">
             <summary>
             Retrieves the token provider for the provided server URL if one has been created.
@@ -2228,6 +1544,13 @@
             </summary>
             <param name="webResponse">The web response</param>
             <returns>True if this is an token authentication redirect, false otherwise</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssCredentials.IsAuthenticationChallenge_CAEClaimsChallenge(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Determines if the web response is a CAE Claims challenge and returns the claims challenge.
+            </summary>
+            <param name="webResponse">The web response, a response object</param>
+            <returns>Claims challenge if its a CAE claims challenge, null otherwise</returns>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.VssCredentials.LoadCachedCredentials(System.Uri,System.Boolean)">
             <summary>
@@ -2407,7 +1730,17 @@
             <param name="path">This is the path key for the data to retrieve.</param>
             <returns>Returns the value stored at the given path as type T</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.Common.ClientStorage.IVssClientStorageReader.ReadEntry``1(System.String,``0)" -->
+        <member name="M:Microsoft.VisualStudio.Services.Common.ClientStorage.IVssClientStorageReader.ReadEntry``1(System.String,``0)">
+            <summary>
+            Reads one entry from the storage.  If the entry does not exist or can not be converted to type T, the default value provided will be returned.
+            When T is not a simple type, and there is extra logic to determine the default value, the pattern: ReadEntry&lt;T&gt;(path) &amp;&amp; GetDefault(); is
+            preferred, so that method to retrieve the default is not evaluated unless the entry does not exist.
+            </summary>
+            <typeparam name="T">The type to return.</typeparam>
+            <param name="path">This is the path key for the data to retrieve.</param>
+            <param name="defaultValue">The value to return if the key does not exist or the value can not be converted to type T</param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ClientStorage.IVssClientStorageReader.ReadEntries``1(System.String)">
             <summary>
             Returns all entries under the path provided whose values can be converted to T.  If path = "root\mydata", then this will return all entries where path begins with "root\mydata\".
@@ -4583,7 +3916,11 @@
             The original typeName to be returned by the server when processing requests within the REST Api range specified.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.VisualStudio.Services.Common.ConfigFileException" -->
+        <member name="T:Microsoft.VisualStudio.Services.Common.ConfigFileException">
+            <summary>
+            Thrown when a config file fails to load
+            </summary>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.VssServiceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
             Initializes an exception from serialized data
@@ -4620,6 +3957,38 @@
         <member name="T:Microsoft.VisualStudio.Services.Common.TagOperationFailed">
             <summary>
             Thrown when an operation on a tag failed because of client-supplied values.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequester">
+            <summary>
+            Implements calls to a third-party service.
+            </summary>
+            <remarks>
+            This interface is intended to be replaced with a mock / stub implementation for L2 tests
+            since calls to external services are not allowed for L2s.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory">
+            <summary>
+            Creates instances of <c>IExternalProviderHttpRequester</c>.
+            </summary>
+            <remarks>
+            <c>IExternalProviderHttpRequester</c> needs a factory because it is disposable.
+            Creating and disposing a new instance for each request is the easiest way to manage the lifetime.
+            It also allows settings such as default headers to be passed into the requester dynamically, on a per-request basis.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory.ProviderType">
+            <summary>
+            The name of the external service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory.Initialize(System.Object)">
+            <param name="requestContext">This is intended to be an <c>IVssRequestContext</c>, but we don't have a reference to its assembly here.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.IExternalProviderHttpRequesterFactory.GetRequester(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            Creates an instance of <c>IExternalProviderHttpRequester</c> from a message handler.
             </summary>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.GenerateConstantAttributeBase">
@@ -4664,6 +4033,12 @@
             An interface to allow custom implementations to
             gather client certificates when necessary.
             </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Performance.PerformanceNativeMethods.GetCPUTime">
+            <summary>
+            Get the current CPU Cycle count for the current thread
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.PerformanceTimingGroup">
             <summary>
@@ -4763,6 +4138,226 @@
             Client environments using earlier .Net would ignore it.
             </summary>
         </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryToken">
+            <summary>
+            Token which is stored in the registry. This is used along with the RegistryTokenStorage.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage">
+            <summary>
+            Used to store token information in the registry
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RetrieveAll(System.String)">
+            <summary>
+            Retrieve all tokens for a given kind.
+            </summary>
+            <param name="kind">The kind of token. For example "TFS"</param>
+            <returns>Tokens</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RetrieveTokenSecret(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken)">
+            <summary>
+            Given a token retrieve the token secret in an unencrypted form.
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.SetTokenSecret(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="token"></param>
+            <param name="tokenValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RemoveTokenSecret(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken)">
+            <summary>
+            
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.GetProperty(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="token"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.SetProperty(Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="token"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.RemoveAll">
+            <summary>
+            Removes all tokens from this storage
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.RegistryTokenStorage.GetRootKey">
+            <summary>
+            Get a registry key object that represents the root of the storage.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken">
+            <summary>
+            Represents a token in the system which is used to connect to a resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.TokenValue">
+            <summary>
+            The last token value, may be null.
+            </summary>
+            <remarks>
+            This value is updated whenever SetTokenValue or RefreshTokenValue succeeds.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RefreshTokenValue">
+            <summary>
+            Get the token value (secret) for this token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.SetTokenValue(System.String)">
+            <summary>
+            Sets the token value (secret) for this token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RemoveTokenValue">
+            <summary>
+            Removes the token value (secret) for this token.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.GetProperty(System.String)">
+            <summary>
+            Get a property related to the token out of storage
+            </summary>
+            <param name="name">Name of the property in storage</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.SetProperty(System.String,System.String)">
+            <summary>
+            Set a property related to the token in storage
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RetrieveValue">
+            <summary>
+            Retrieve the token (secret) from storage
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.SetValue(System.String)">
+            <summary>
+            Store the token (secret) in storage
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssToken.RemoveValue">
+            <summary>
+            Remove the token (secret) from storage
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.#ctor(System.String,System.String,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="kind"></param>
+             <param name="resource"></param>
+             <param name="userName"></param>
+             <param name="type"></param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.Kind">
+            <summary>
+            The token kind (e.g., "vss-user", "vss-account", "windows-store").
+            </summary>
+            <remarks>
+            The token kind is case-sensitive.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.Resource">
+            <summary>
+            The token resource name or uri.
+            </summary>
+            <remarks>
+            The token resource is case-sensitive.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.UserName">
+            <summary>
+            The token user name, user id, or any app-specific unique value.
+            </summary>
+            <remarks>
+            The token user name is case-insensitive.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey.Type">
+            <summary>
+            The type of the stored token. Can be any app-specific value,
+            but is intended to convey the authentication type.
+            Therefore some examples might be:
+            "Federated", "OAuth", "Windows", "Basic", "ServiceIdentity", "S2S"
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage">
+            <summary>
+            Defines how to store a token in storage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.Add(Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey,System.String)">
+            <summary>
+            Add a new token to the storage.
+            </summary>
+            <param name="tokenKey">Required.</param>
+            <param name="tokenValue">Required.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.Retrieve(Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey)">
+            <summary>
+            Retrieve the specified token.
+            </summary>
+            <param name="tokenKey">Required.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.Remove(Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenKey)">
+            <summary>
+            Remove a token from storage.
+            </summary>
+            <param name="tokenKey">Required.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorage.RetrieveAll(System.String)">
+            <summary>
+            Retrieve all tokens by kind.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorageFactory.c_tokenStorageKeyPostFix">
+            <summary>
+            The post fix is used so that all of the storage information is contained within one key that we control
+            and that can be deleted without us having to worry we are deleting something we did not intend to delete.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorageFactory.c_registryRoot">
+            <summary>
+            The version number in this string is frozen as of dev14, token storage is meant to be shared between
+            all versions of vs from 14 onward. This storage contains the fedauth tokens and session tokens
+            Eventually both of these tokens are hoped to be replaced by AAD tokens and this storage will be obsolete then.
+            Do not change this version number.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.Common.TokenStorage.VssTokenStorageFactory.RegistryRootPath">
+            <summary>
+            The resulting root path
+            </summary>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckForNull``1(``0,System.String)">
             <summary>
             Throw an exception if the object is null.
@@ -4803,7 +4398,20 @@
             Checks that nullable type has value
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckGenericForNull(System.Object,System.String,System.String)" -->
+        <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckGenericForNull(System.Object,System.String,System.String)">
+            <summary>
+            Throw an exception if the object is null.
+            Note that we have both CheckForNull and CheckGenericForNull methods.
+            Normally, people should use CheckForNull. It has T: class constraint to ensure that
+            we do not call it on value types, which cannot be null.
+            Sometimes, we want to check for null in generic methods where generic type can be both value and reference type.
+            This method should only be used in such places. Compiler generates box IL instruction when CheckGenericForNull is used with value type,
+            but JITer optimizes the generated code to 0 instructions.
+            </summary>
+            <param name="var">the object to check</param>
+            <param name="varName">the variable or parameter name to display</param>
+            <param name="expectedServiceArea">the Service Area where this exception is expected due to user input. See <see cref="T:Microsoft.VisualStudio.Services.Common.ExpectedExceptionExtensions"/></param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckStringForNullOrEmpty(System.String,System.String)">
             <summary>
             Throw an exception if a string is null or empty.
@@ -4971,7 +4579,6 @@
             </summary>
             <param name="c"></param>
             <param name="allowCrLf">Carriage return and line-feed is considered legal if the allowCrLf parameter is set to true.</param>
-            <param name="allowGB18030">Allows characters in 9FA6-9FEF range if set to true.</param>
             <remarks>A character is "not displayable" if it's UnicodeCategory is in the set {LineSeparator, ParagraphSeparator, Control, Format, OtherNotAssigned}.</remarks>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.IsIllegalInputCharacter(System.Char,System.Boolean,System.Boolean)">
@@ -4980,6 +4587,7 @@
             </summary>
             <param name="c"></param>
             <param name="allowCrLf">Carriage return and line-feed is considered legal if the allowCrLf parameter is set to true.</param>
+            <param name="allowGB18030">Allows OtherNotAssigned characters in 9FA6-9FEF range if set to true.</param>
             <remarks>A character is "not displayable" if it's UnicodeCategory is in the set {LineSeparator, ParagraphSeparator, Control, Format, OtherNotAssigned}.</remarks>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.ReplaceIllegalCharacters(System.String,System.Char,System.Boolean)">
@@ -5333,6 +4941,17 @@
             <param name="typeName"></param>
             <param name="expectedServiceArea">the Service Area where this exception is expected due to user input. See <see cref="T:Microsoft.VisualStudio.Services.Common.ExpectedExceptionExtensions"/></param>
         </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckExactType``1(System.Object,System.String,System.String)">
+            <summary>
+            Performs a type check on the variable, and throws if it is not an exact match.
+            </summary>
+            <typeparam name="T">The type to check against.</typeparam>
+            <param name="var">The variable to check the type of.</param>
+            <param name="varName">The name of the variable to type check.</param>
+            <param name="message">The message to include in case of an exception.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the type of <paramref name="var"/> does exactly not match <typeparamref name="T"/>
+            (IE, if <paramref name="var"/>'s type is a child of <typeparamref name="T"/>.)</exception>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ArgumentUtility.CheckForDefinedEnum``1(``0,System.String)">
             <summary>
             Checks if an enum value is defined on the enum type
@@ -5431,6 +5050,24 @@
             <param name="bytes">byte array to be converted.</param>
             <returns>hex string converted from byte array.</returns>
         </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.Utility.LookupGenerator">
+            <summary>
+            The <see cref="T:Microsoft.VisualStudio.Services.Common.Utility.LookupGenerator"/> is a collection of functions to create 
+            lookup delegates, storing any relevant state via closure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.Utility.LookupGenerator.CreateLookupWithDefault``2(``1,System.Collections.Generic.IReadOnlyDictionary{``0,``1})">
+            <summary>
+            Creates a lookup function using closure encapsulation of an <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/>
+            to handle the lookup table.  If the requested key is not found, the lookup will return the provided
+            default.
+            </summary>
+            <typeparam name="T">The key of the lookup</typeparam>
+            <typeparam name="TOut">The value stored in the lookup table</typeparam>
+            <param name="default">A default value returned if the key is not found</param>
+            <param name="dictionary">The lookup table, stored in the closure of the lookup function</param>
+            <returns>A lookup function which returns the value at the requested key, or a default value.</returns>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.CollectionsExtensions.AddRange``2(``1,System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Adds all of the given values to this collection.
@@ -5444,35 +5081,120 @@
             See <see cref="M:Microsoft.VisualStudio.Services.Common.CollectionsExtensions.AddRange``2(``1,System.Collections.Generic.IEnumerable{``0})"/> for more details.
             </summary>
         </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.ConnectionStringUtility.MaskPassword(System.String)">
+        <member name="M:Microsoft.VisualStudio.Services.Common.CollectionsExtensions.Add``2(``0,System.Collections.Generic.IEnumerable{``1})">
             <summary>
-            Mask the password portion of the valid sql connection string.  Use this for tracing.
+            This extension method allows to do the following.
             </summary>
-            <param name="connectionString"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.ConnectionStringUtility.ReplaceInitialCatalog(System.String,System.String)">
-            <summary>
-            Replaces Initial catalog (database name) in the connection string.
-            </summary>
-            <param name="connectionString">Connection string to update.</param>
-            <param name="databaseName">New value for the Initial Catalog (database name). 
-            If this parameter is null, Initial Catalog is removed from the connection string.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.ConnectionStringUtility.DecryptAndNormalizeConnectionString(System.String)">
-            <summary>
-            Given a string, that *should* be either a plain text connection string or an encrypted connection string
-            try to determine if it is encrypted, and if so, decrypt it, then parse via SqlConnectionStringBuilder and
-            return a normalized version. Will return null (and not throw) if anything goes wrong.
-            Caller may choose to throw or not...
-            </summary>
-            <param name="inputString"></param>
+            <example><![CDATA[
+            public class MyClass
+            {
+                public List&lt;string&gt; stringList { get; } = new List<string>();
+            }
+            string[] collection = ["as", "ddsd"];
+            new MyClass
+            {
+                stringList = { collection } // compile error!
+            };
+            ]]></example>
             <returns></returns>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.ConvertUtility">
             <summary>
             Utility class for wrapping Convert.ChangeType to handle nullable values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.GetCredentialsFromStore(System.String)">
+            <summary>
+            Given a Uri, returns stored credentials from the Windows credentials manager which
+            have been previously stored for that Uri. If no credentials exist in the Windows
+            credentials manager for the given Uri, this method returns null.
+            </summary>
+            <param name="uri">Uri to look up in the Windows credentials manager for this user</param>
+            <returns>NetworkCredential from the credentials manager, if found</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.StoreWindowsCredentials(System.String,System.String,System.String)">
+            <summary>
+            Creates a credential or modifies an existing credential in the windows credential vault for the specified host.
+            </summary>
+            <param name="host">The internet or network address</param>
+            <param name="userName">Username to store</param>
+            <param name="password">Password to store</param>
+            <returns>ERROR_SUCCESS (0) if successful. Otherwise, a Win32 error code returned by CredWrite.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.StoreCredentialsToStore(System.Int32,System.String,System.String,System.Security.SecureString,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Persist the provided credentials in the Windows credentials manager for this user.
+            The credentials are stored until the user logs off.
+            </summary>
+            <param name="credType">The type of the credential.</param>
+            <param name="targetName">Then name of the credential to serve as the key in the credentials manager</param>
+            <param name="uri">Uri to serve as the key in the credentials manager</param>
+            <param name="userName">Username to store</param>
+            <param name="password">Password to store</param>
+            <param name="comment">A string comment from the user that describes this credential</param>
+            <param name="attributes">Application-defined attributes that are associated with the credential</param>
+            <returns>ERROR_SUCCESS (0) if successful. Otherwise, a Win32 error code returned by CredWrite.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.DeleteWindowsCredentials(System.String)">
+            <summary>
+            Deletes a credential from the user's windows credential vault for the specified host.
+            </summary>
+            <param name="host">The internet or network address</param>
+            <returns>The function returns TRUE on success and FALSE on failure. The Marshal.GetLastWin32Error() function can be called to get a more specific error status code.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsCacheManager.IsMatch(Microsoft.VisualStudio.Services.Common.TfsCredentialCacheEntry,System.Nullable{System.Boolean})">
+            <summary>
+            Helper method to determine if the given cache entry can be returned to the caller
+            </summary>
+            <param name="entry"></param>
+            <param name="nonInteractive"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.FailedUserName(System.Uri,System.Net.ICredentials)">
+            <summary>
+            Given a URI and credentials which failed to authenticate, returns
+            the username which failed to authenticate, in DOMAIN\user form.
+            </summary>
+            <param name="uri">Uri to which the credentials failed to authenticate</param>
+            <param name="failedCredentials">Credentials which failed to authenticate</param>
+            <returns>DOMAIN\user which failed to authenticate, or String.Empty</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.GetNetworkCredential(System.String,System.Text.StringBuilder)">
+            <summary>
+            Returns a NetworkCredential instance created from a username and password.
+            </summary>
+            <param name="username">Username, possibly in the form DOMAIN\user</param>
+            <param name="password">Password</param>
+            <returns>NetworkCredential instance</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.ZeroStringBuilder(System.Text.StringBuilder)">
+            <summary>
+            Zeroes out a StringBuilder
+            </summary>
+            <param name="toZero">StringBuilder to zero out</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderHelper.ZeroString(System.String)">
+            <summary>
+            Zeroes out a String
+            </summary>
+            <param name="toZero">String to zero</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CredentialsProviderRegistryHelper.BuildSecurityDescriptor(System.String)">
+            <summary>
+            Creates read-write permissions for local administrators 
+            and for the specified account.
+            </summary>
+            <param name="owningAccountName">An account under that the service is running</param>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Services.Common.CredentialsProviderRegistryHelper.m_accountsRoot">
+            <summary>
+            The version number in this string is frozen as of dev14, credential storage is meant to be shared between
+            all versions of client from 14 onward.
+            This storage contains the credential for each hosted service account used by each feature area.
+            Do not change this version number.
+            In case you need to change version number, please update c_testingSavedAccountsRoot in the
+            Vssf\Client\TFCommon.L1.Tests\CredentialsCacheManagerTests.cs
             </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.CultureResolution.GetBestCultureMatch(System.Collections.Generic.IList{System.Globalization.CultureInfo},System.Collections.Generic.ISet{System.Globalization.CultureInfo})">
@@ -5494,6 +5216,17 @@
             <param name="cultureA"></param>
             <param name="cultureB"></param>
             <returns>0 if the cultures are the same, higher integers mean they are less related. -1 means no relation.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.DateTimeUtility.GetHighResolutionUtcNow">
+            <summary>
+            Method provides a high-resolution timestamp from the operating
+            system.
+            (note: recommended to use vs. System.DateTime.Now.Ticks due
+            to slight inaccuracies in the DateTime implementation. Especially
+            for log timestamps, DateTime.Now is inadequate since it has a
+            ~15millisecond resolution, whereas this OS method has a
+            ~1microsecond resolution)
+            </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.DictionaryExtensions.AddOrUpdate``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1,System.Func{``1,``1,``1})">
             <summary>
@@ -5606,7 +5339,14 @@
             Returns the value in an IDictionary at the given key, or creates a new value using the given delegate, adds it at the given key, and returns the new value.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.Common.DictionaryExtensions.SetRange``3(``2,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}})" -->
+        <member name="M:Microsoft.VisualStudio.Services.Common.DictionaryExtensions.SetRange``3(``2,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}})">
+            <summary>
+            Adds all of the given key-value pairs (such as from another dictionary, since IDictionary implements IEnumerable&lt;KeyValuePair&gt;) to this dictionary.
+            Overwrites preexisting values of the same key.
+            To avoid overwriting values, use <see cref="M:Microsoft.VisualStudio.Services.Common.CollectionsExtensions.AddRange``2(``1,System.Collections.Generic.IEnumerable{``0})"/>.
+            </summary>
+            <returns>this dictionary</returns>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.DictionaryExtensions.SetRangeIfRangeNotNull``3(``2,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}})">
             <summary>
             Adds all of the given key-value pairs if and only if the key-value pairs object is not null.
@@ -5730,6 +5470,51 @@
             <summary>
             Throws <see cref="T:System.ArgumentException"/> if this IReadOnlyDictionary contains a preexisting value for the same key which is not equal to the given key.
             </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.EncryptSecret(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Encrypts password using specified certificate and the default algorithm (aes256).
+            </summary>
+            <param name="secret">Secret to encrypt.</param>
+            <param name="cert">Certificate that should be used to encrypt the password.</param>
+            <returns>Encrypted password in base-64 encoding.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.EncryptSecret(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.Pkcs.AlgorithmIdentifier)">
+            <summary>
+            Encrypts password using specified certificate.
+            </summary>
+            <param name="secret">Secret to encrypt.</param>
+            <param name="cert">Certificate that should be used to encrypt the password.</param>
+            <param name="algorithm">Algorithm to use for symmetric part of encryption.</param>
+            <returns>Encrypted password in base-64 encoding.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.DecryptSecret(System.String)">
+            <summary>
+            Decrypts password using local machine cert store. 
+            The certificate used to encrypt the secret must be resident there.
+            </summary>
+            <param name="password">Password to decrypt.</param>
+            <returns>Decrypted password in a secure string.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.TryDecryptSecret(System.String,System.Security.SecureString@)">
+            <summary>
+            Attempts to decrypt the passed in string. If this fails for whatever
+            reason we return the same string back to the caller without throwing
+            </summary>
+            <param name="encryptedSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.EncryptionUtility.DecryptSecretInsecure(System.String)">
+            <summary>
+            Decrypts password using local machine cert store. 
+            The certificate used to encrypt the secret must be resident there.
+            </summary>
+            <remarks>
+            NOTE: This method exists only for back compat purposes. Do not use
+            Use the method that returns a SecureString instead.
+            </remarks>
+            <param name="password">Password to decrypt.</param>
+            <returns>Decrypted password in an open string.</returns>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.EnumerableExtensions.AsEmptyIfNull``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -5862,6 +5647,15 @@
             <param name="pairs">The key-value string pairs.</param>
             <returns>The NameValueCollection.</returns>
         </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.EnumerableUtility.AsEnumerable``1(System.Func{System.Int32,System.Int32,System.Collections.Generic.IEnumerable{``0}},System.Int32)">
+            <summary>
+            Wraps a batch API as a single IEnumerable
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="pagingExpression">The paging expression, for example: (skip, take) =&gt; service.GetGroupLicensingRules(requestContext, take, skip)</param>
+            <param name="take">Batch size</param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.ExpectedExceptionExtensions.Expected(System.Exception,System.String)">
             <summary>
             Mark the exception as expected when caused by user input in the provided area.
@@ -5874,7 +5668,7 @@
             This allows for the use case "throw new ArgumentException().Expected(c_area)" 
             This will overwrite the expected area if called a second time. 
             This should not throw any exceptions as to avoid hiding the exception that was already caught. 
-            See https://dev.azure.com/mseng/AzureDevOps/_wiki/wikis/AzureDevOps.wiki/2898/Whitelisting-Expected-Commands-and-Exceptions
+            See https://dev.azure.com/mseng/AzureDevOps/_wiki/wikis/AzureDevOps.wiki/16820/Whitelisting-Expected-Commands-and-Exceptions
             </remarks> 
             <param name="area">The area name where the exception is expected. This will be compared against IVssRequestContext.ServiceName. Area should be non-empty</param>
             <returns><paramref name="ex"/> after setting the area</returns>
@@ -6011,6 +5805,52 @@
             </summary>
             <returns>An MD5 provider or null if FIPS prevents using it.</returns>
         </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.OSDetails">
+             <summary>
+             Provides information regarding the Team Foundation Server operating system.  This
+             class does not attempt to provide information for older operating systems the server
+             is not supported on (e.g. Windows 2000, Home Server and Windows XP).
+            
+             If support for those OS's are needed - feel free to extend this class.
+             </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsClient">
+            <summary>
+            True if a client OS such as Windows Vista or Windows 7.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.OSDetails.IsMachineInWorkgroup">
+            <summary>
+            Returns true if computer is joined to a workgroup or not joined. Otherwise, returns false (computer joined to a domain).
+            </summary>
+            <returns>Returns true if computer is joined to a workgroup or not joined. Otherwise, returns false (computer joined to a domain).</returns>
+            <exception cref="t:System.ComponentModel.Win32Exception">Call to native method NetGetJoinInformation failed.</exception>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsServer">
+            <summary>
+            True if a server OS such as Windows Server 2019 or Windows Server 2022
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsServerCore">
+            <summary>
+            Returns true if we are running on Server Core, false otherwise.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.Is64BitOperatingSystem">
+            <summary>
+            Returns true if OS is 64 bit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.IsWow64">
+            <summary>
+            Returns <c>true</c> if the current process is running in WOW64 mode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Services.Common.OSDetails.Is64BitNotWow64">
+            <summary>
+            Returns <c>true</c> if the current process is running on 64-bit AND NOT in WOW64 mode.
+            </summary>
+        </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.PartitionResults`1">
             <summary>
             Contains results from two-way variant of EnuemrableExtensions.Partition()
@@ -6038,25 +5878,15 @@
             Converts base64 represented value into hex string representation.
             </summary>
         </member>
+        <member name="F:Microsoft.VisualStudio.Services.Common.ProcessUtility.UniqueProcessId">
+            <summary>
+            A unique ID representing this process instance.  Pids are frequently reused, so this ID
+            differentiates between different process instances that have the same Pid.
+            </summary>
+        </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.SecretUtility">
             <summary>
             Utility for masking common secret patterns
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.PasswordMask">
-            <summary>
-            The string to use to replace secrets when throwing exceptions, logging 
-            or otherwise risking exposure
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.SecretMask">
-            <summary>
-            The string used to mask newer secrets
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.SignatureMask">
-            <summary>
-            The string used to mask url signatures
             </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.SecretUtility.ContainsUnmaskedSecret(System.String)">
@@ -6077,46 +5907,40 @@
             <remarks>This method is a temporary workaround and should be removed in M136
             This implementation is as least as expensive as a ScrubSecrets call</remarks>
         </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SecretUtility.ScrubSecrets(System.String,System.Boolean)">
+        <member name="M:Microsoft.VisualStudio.Services.Common.SecretUtility.ScrubSecrets(System.String,System.Boolean,System.Boolean)">
             <summary>
-            Scrub a message for any secrets (passwords, tokens, url signatures) in known formats
+            Scrub a message for any secrets (passwords, tokens(PAT not included unless scrubPatTokens is set), url signatures) in known formats
             This method is called to scrub exception messages and traces to prevent any secrets 
             from being leaked.
             </summary>
             <param name="message">The message to verify for secret data.</param>
             <param name="assertOnDetection">When true, if a message contains a 
             secret in a known format the method will debug assert. Default = true.</param>
+            <param name="scrubPatTokens">Turns on additional scrubbing for PAT tokens</param>
             <returns>The message with any detected secrets masked</returns>
             <remarks>This only does best effort pattern matching for a set of known patterns</remarks>
         </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.SecretUtility.ScrubUrlSignatures(System.String,System.Boolean)">
+        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.PasswordMask">
             <summary>
-            Scrubs signatures in a text containing signed url query strings.
+            The string to use to replace secrets when throwing exceptions, logging 
+            or otherwise risking exposure
             </summary>
-            <param name="message">The message to verify for url signatures.</param>
-            <param name="assertOnDetection">When true, if a message contains a 
-            url signatures in a known format the method will debug assert. Default = true.</param>
-            <returns>The message with any detected url signatures masked</returns>
         </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.c_jwtTypToken">
-            <remarks>
-            {"typ":" // eyJ0eXAiOi
-            </remarks>
+        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.SecretMask">
+            <summary>
+            The string used to mask newer secrets
+            </summary>
         </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.c_jwtAlgToken">
-            <remarks>
-            {"alg":" // eyJhbGciOi
-            </remarks>
+        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.SignatureMask">
+            <summary>
+            The string used to mask url signatures
+            </summary>
         </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.c_jwtX5tToken">
-            <remarks>
-            {"x5t":" // eyJ4NXQiOi
-            </remarks>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.c_jwtKidToken">
-            <remarks>
-            {"kid":" // eyJraWQiOi
-            </remarks>
+        <member name="F:Microsoft.VisualStudio.Services.Common.SecretUtility.OldPatRegex">
+            <summary>
+            Two regex that cover both old and new formats of AzureDevOps PAT
+            https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+            </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.SecureCompare.TimeInvariantEquals(System.Byte[],System.Byte[])">
              <summary>
@@ -6135,6 +5959,139 @@
              This method is intended to be used with arrays of the same length -- for example, two hashes from the same SHA algorithm.
              Comparing strings of unequal length can leak length information to an attacker.
              </remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.SerializationHelper">
+            <summary>
+            Class provides helper methods for common serialization/deserialization
+            needs
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeDataContract``1(System.String)">
+            <summary>
+            Helper method deserializes the XML text to a runtime object using a DataContractSerializer.
+            (Note that the item/object must be decorated with a DataContract attribute and any properties
+            on the object that should be deserialized should be decorated with a DataMember attribute.)
+            </summary>
+            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
+            <param name="value">Valid XML text representation of the object</param>
+            <param name="settings">Settings to apply to the XmlReader</param>
+            <returns>object of the type T</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeDataContract``1(System.String,System.Xml.XmlReaderSettings)">
+            <summary>
+            Helper method deserializes the XML text to a runtime object using a DataContractSerializer.
+            (Note that the item/object must be decorated with a DataContract attribute and any properties
+            on the object that should be deserialized should be decorated with a DataMember attribute.)
+            </summary>
+            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
+            <param name="value">Valid XML text representation of the object</param>
+            <param name="settings">Settings to apply to the XmlReader</param>
+            <returns>object of the type T</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeDataContract``1(System.String,System.String,System.String,System.Xml.XmlReaderSettings)">
+            <summary>
+            Helper method deserializes the XML text to a runtime object using a DataContractSerializer.
+            (Note that the item/object must be decorated with a DataContract attribute and any properties
+            on the object that should be deserialized should be decorated with a DataMember attribute.)
+            </summary>
+            <typeparam name="T">Type of the object that will be created on deserialization</typeparam>
+            <param name="value">Valid XML text representation of the object</param>
+            <param name="rootName">Defines the name of the root XML element</param>
+            <param name="rootNamespace">Defines the name of the root XML element namespace</param>
+            <param name="settings">Settings to apply to the XmlReader</param>
+            <returns>object of the type T</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeXml``1(System.String)">
+            <summary>
+            Helper method deserializes the XML text to a runtime object using an XmlSerializer
+            </summary>
+            <typeparam name="T">Type of the object</typeparam>
+            <param name="xmlText">Valid XML text representation of the object</param>
+            <returns>object of the type T</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.DeserializeXml``1(System.String,System.Xml.XmlReaderSettings)">
+            <summary>
+            Helper method deserializes the XML text to a runtime object using an XmlSerializer
+            </summary>
+            <typeparam name="T">Type of the object</typeparam>
+            <param name="xmlText">Valid XML text representation of the object</param>
+            <param name="settings">Settings to apply to the XmlReader</param>
+            <returns>object of the type T</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.Serialize``1(``0,System.Xml.XmlWriterSettings,System.Runtime.Serialization.XmlObjectSerializer)">
+            <summary>
+            Helper method serializes the item to XML text.  (Note that the
+            item/object must be flagged with a DataContract attribute
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <param name="settings">Settings to use for the XML output</param>
+            <param name="serializer">Defines the serializer (i.e. DataContractSerializer, XmlSerializer etc...)</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeDataContract``1(``0)">
+            <summary>
+            Helper method serializes the item to XML text.  (Note that the
+            item/object must be flagged with a DataContract attribute
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeDataContract``1(``0,System.Xml.XmlWriterSettings)">
+            <summary>
+            Helper method serializes the item to XML text.  (Note that the
+            item/object must be flagged with a DataContract attribute
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <param name="settings">Settings to use for the XML output</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeDataContract``1(``0,System.String,System.String,System.Xml.XmlWriterSettings)">
+            <summary>
+            Helper method serializes the item to XML text.  (Note that the
+            item/object must be flagged with a DataContract attribute
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <param name="rootName">Defines the name of the root XML element</param>
+            <param name="rootNamespace">Defines the name of the root XML element namespace</param>
+            <param name="settings">Settings to use for the XML output</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeXml``1(``0)">
+            <summary>
+            Helper method serializes the item to XML text using an XmlSerializer
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeXml``1(``0,System.Xml.XmlWriterSettings)">
+            <summary>
+            Helper method serializes the item to XML text using an XmlSerializer
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <param name="settings">Settings to use for the XML output</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.SerializeXml``1(``0,System.Xml.XmlWriterSettings,System.Xml.Serialization.XmlSerializerNamespaces)">
+            <summary>
+            Helper method serializes the item to XML text using an XmlSerializer
+            </summary>
+            <typeparam name="T">Class decorated with a DataContract attribute</typeparam>
+            <param name="item">Instance of an item of type T</param>
+            <param name="settings">Settings to use for the XML output</param>
+            <param name="namespaces">Namespaces to add to the serialized XML</param>
+            <returns>string/XML</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.SerializationHelper.ConvertToString(System.IO.Stream)">
+            <summary>
+            Method returns the stream bytes as a StringBuilder instance
+            for byte array-to-text conversion
+            </summary>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.StreamParser">
             <summary>
@@ -6393,6 +6350,60 @@
             Callers MUST dispose of the result, such as by a <code>using</code> statement, to scope the lifetime of the transform.
             </summary>
         </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom">
+            <summary>
+            A thread-safe wrapper around Random class.
+            </summary>
+            Implemantation is borrowed from the Stephen Toub's blog post: https://devblogs.microsoft.com/pfxteam/getting-random-numbers-in-a-thread-safe-way/
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom.Next">
+            <summary>
+            Returns a nonnegative random number.
+            </summary>
+            <returns>A 32-bit signed integer greater than or equal to zero and less than System.Int32.MaxValue.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom.Next(System.Int32)">
+            <summary>
+            Returns a nonnegative random number less than the specified maximum.
+            </summary>
+            <param name="maxValue">The exclusive upper bound of the random number to be generated. maxValue must be greater than or equal to zero.</param>
+            <returns>A 32-bit signed integer greater than or equal to zero, and less than maxValue; that is, the range of return values ordinarily includes zero but not maxValue.
+            However, if maxValue equals zero, maxValue is returned.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random number within a specified range.
+            </summary>
+            <param name="minValue">he inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. maxValue must be greater than or equal to minValue.</param>
+            <returns> A 32-bit signed integer greater than or equal to minValue and less than maxValue;
+            that is, the range of return values includes minValue but not maxValue. If minValue equals maxValue, minValue is returned.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom.NextBytes(System.Byte[])">
+            <summary>
+            Fills the elements of a specified array of bytes with random numbers.
+            </summary>
+            <param name="buffer">An array of bytes to contain random numbers.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom.NextBytes(System.Int32)">
+            <summary>
+            Creates a byte array with number of elements specified by the size parameter and fills its elements with random numbers.
+            </summary>
+            <param name="size">Specified the number of elements in the array. Must be greater or equal to zero.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssThreadSafeRandom.NextDouble">
+            <summary>
+            Returns a random number between 0.0 and 1.0.
+            </summary>
+            <returns> A double-precision floating point number greater than or equal to 0.0, and less 1.0</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.CsvConfiguration`1.ValidateTypeConfiguration">
+            <summary>
+            Sanity checks on the attributed properties in the records used
+            in the CSV
+            </summary>
+        </member>
         <member name="F:Microsoft.VisualStudio.Services.Common.AdminConstants.ServerProcessID">
             <summary>
             Each incoming web request is assigned a server process id, this constant defines
@@ -6458,26 +6469,6 @@
             Constant strings used in Notifications
             </summary>
         </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.MyProjectNameMacro">
-            <summary>
-            Macro used in subscriptions which will be replaced by the project name when evaluated
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.MyDisplayNameMacro">
-            <summary>
-            Macro used in subscriptions which will be replaced by the subscriber's Display Name when evaluated
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.MyUniqueNameMacro">
-            <summary>
-            Macro used in subscriptions which will be replaced by the subscriber's Unique User Name when evaluated
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.DynamicTargetsToken">
-            <summary>
-            Token used in subscription addresses to identify dynamic delivery targets computed from the source event
-            </summary>
-        </member>
         <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.CustomNotificationAddressesIdentityProperty">
             <summary>
             TeamFoundationIdentity property name for a user's custom list of Email addresses to receive notifications at
@@ -6486,134 +6477,6 @@
         <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.ConfirmedNotificationAddressIdentityProperty">
             <summary>
             TeamFoundationIdentity propery name for a user's confirmed Email address to receive notifications.  This is used in Hosted environments only.
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.WorkItemChangedEventTypeName">
-            <summary>
-            The name of the WorkItemChangedEvent
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.BuildStatusChangeEventName">
-            <summary>
-            The name of the BuildStatusChangedEvent type
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.BuildCompletedEventName">
-            <summary>
-            The name of the BuildCompletedEvent type
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.CheckinEventName">
-            <summary>
-            The name of the CheckinEvent type
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.CodeReviewChangedEventName">
-            <summary>
-            The name of the CodeReviewChangedEvent type
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.GitPushEventName">
-            <summary>
-            The name of the GitPushEvent type
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.GitPullRequestEventName">
-            <summary>
-            The name of the GitPullRequestEvent type
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.AlertsPageRelativePath">
-            <summary>
-            The relative path to the alerts admin web page
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.AlertsPage">
-            <summary>
-            The alerts page name
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.AlertsAdminPage">
-            <summary>
-            The admin alerts page
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.EmailConfirmationSendDates">
-            <summary>
-            Property used to keep track of how many confirmations were sent for this user.  Used to limit the number
-            of confirmations a single user is allowed to send out for their account.
-            The value is updated and monitored by the SendEmailConfirmationJob.
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.ProcessedFlagCharacter">
-            <summary>
-            Prefix to denote that identity field value have been processed
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.ProcessedTfIdFlagCharacter">
-            <summary>
-            Prefix to denote that identity field value have been processed and converted to TFID
-            </summary>
-            [Obsolete("Moved to Microsoft.VisualStudio.Services.Notifications.Common.NotificationFrameworkConstants.ProcessedTfIdFlagCharacter in assembly MS.VS.Services.Notifications.WebApi")]
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.DisplayNameFlagCharacter">
-            <summary>
-            Prefix to denote that this is the start of displayname value for this identity field
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.TfIdFlagCharacter">
-            <summary>
-            Prefix to denote that this is the start of TFID value for this identity field
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.AllowUserRegexInMatchConditionFeatureFlag">
-            <summary>
-            Optional Feature flag to enable escaping Regex expressions when creating Notification subscriptions.
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.MDMNotificationJobScope">
-            <summary>
-            The MDM scope name for the notification job
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.EventProcessingDelayKPI">
-            <summary>
-            Event processing delay KPI name
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.EventProcessingDelayKPIDesc">
-            <summary>
-            Event processing delay KPI description
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.MDMDeliveryJobscope">
-            <summary>
-            The MDM scope name for the delivery job
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.DeliveryDelayKPI">
-            <summary>
-            Notification delivery delay KPI name
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.DeliveryDelayWithRetriesKPI">
-            <summary>
-            Notification delivery delay with retries KPI name
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.TotalProcessingTimeKPI">
-            <summary>
-            Total time taken between the event creation till the notification delivery
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.TotalProcessingTimeWithRetriesKPI">
-            <summary>
-            Total time taken between the event creation till the notification delivery
-            </summary>
-        </member>
-        <member name="F:Microsoft.VisualStudio.Services.Common.NotificationConstants.DeliveryDelayKPIDesc">
-            <summary>
-            Notification delivery delay KPI description
             </summary>
         </member>
         <member name="F:Microsoft.VisualStudio.Services.Common.TeamProjectSecurityConstants.ManageProperties">
@@ -6681,6 +6544,36 @@
             <remarks>
             This permission was excluded from AllPermissions to avoid being unintentionally granted.
             </remarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.Common.VssEnvironment">
+            <summary>
+            Information about the common installation and deployment locations of Vss and Tfs components.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetTfsSharedFilesPath">
+            <summary>
+            Returns the path to the common Microsoft Shared TFS files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetVssCommonFilesPath">
+            <summary>
+            Returns the path to the common Microsoft Visual Studio Common7 IDE files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetVssSharedFilesPath">
+            <summary>
+            Returns the path to the common Microsoft Shared Visual Studio Service files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.GetVssPrivateFilesPath">
+            <summary>
+            Returns the path to the private Microsoft Visual Studio IDE files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.Common.VssEnvironment.EnumerateVssPaths">
+            <summary>
+            Enumerates all Vss installation and component paths.
+            </summary>
         </member>
         <member name="T:Microsoft.VisualStudio.Services.Common.VssException">
             <summary>
@@ -6852,12 +6745,6 @@
             <summary>
             Initializes a new <c>VssHttpRequestSettings</c> instance with compression enabled.
             </summary>
-        </member>
-        <member name="M:Microsoft.VisualStudio.Services.Common.VssHttpRequestSettings.#ctor(System.Guid,System.Guid)">
-            <summary>
-            Initializes a new <c>VssHttpRequestSettings</c> instance with compression enabled.
-            </summary>
-            <remarks>The e2eId argument is not used.</remarks>
         </member>
         <member name="M:Microsoft.VisualStudio.Services.Common.VssHttpRequestSettings.#ctor(Microsoft.VisualStudio.Services.Common.VssHttpRequestSettings)">
             <summary>
@@ -7543,10 +7430,38 @@
             <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context captured; otherwise, false.</param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync.TryFallbackAsync(System.String,System.Func{System.Threading.Tasks.Task},System.Boolean)" -->
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandGroupKey,System.Func{System.Threading.Tasks.Task{`0}},System.Func{System.Threading.Tasks.Task{`0}},System.Boolean)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandSetter,System.Func{System.Threading.Tasks.Task{`0}},System.Func{System.Threading.Tasks.Task{`0}},System.Boolean)" -->
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync.TryFallbackAsync(System.String,System.Func{System.Threading.Tasks.Task},System.Boolean)">
+            <summary>
+            Provides a CircuitBreaker command with support for Func&lt;TResult&gt; Run and Fallback methods.  
+            </summary>
+            <param name="message"></param>
+            <param name="fallback">The Action delegate to execute.</param>
+            <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context captured; otherwise, false.</param>
+            <returns>true if the fallback is executed without error.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1">
+            <summary>
+            Provides an asynchronous CircuitBreaker command with support for Func&lt;TResult&gt; Run and Fallback Tasks.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandGroupKey,System.Func{System.Threading.Tasks.Task{`0}},System.Func{System.Threading.Tasks.Task{`0}},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1"/> class.
+            </summary>
+            <param name="group">Used to group multiple command metrics.</param>
+            <param name="run">The Run delegate called when the circuit is closed.</param>
+            <param name="fallback">The Fallback delegate called when the circuit is open.</param>
+            <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context captured; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandSetter,System.Func{System.Threading.Tasks.Task{`0}},System.Func{System.Threading.Tasks.Task{`0}},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1"/> class.
+            </summary>
+            <param name="setter">Enables setting command defaults in code.</param>
+            <param name="run">The Run delegate called when the circuit is closed.</param>
+            <param name="fallback">The Fallback delegate called when the circuit is open.</param>
+            <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context captured; otherwise, false.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.CommandAsync`1.Execute">
             <summary>
             Used for asynchronous execution of command.
@@ -7558,8 +7473,22 @@
             Provides a synchronous CircuitBreaker command with support for Run and Fallback Actions
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.Command.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandGroupKey,System.Action,System.Action)" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.Command.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandSetter,System.Action,System.Action)" -->
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.Command.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandGroupKey,System.Action,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.CircuitBreaker.Command"/> class.
+            </summary>
+            <param name="group">Used to group multiple command metrics.</param>
+            <param name="run">The Run delegate called when the circuit is closed.</param>
+            <param name="fallback">The Fallback delegate called when the circuit is open.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.Command.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandSetter,System.Action,System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.CircuitBreaker.Command"/> class.
+            </summary>
+            <param name="setter">Enables setting command defaults in code.</param>
+            <param name="run">The Run delegate called when the circuit is closed.</param>
+            <param name="fallback">The Fallback delegate called when the circuit is open.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.Command.Execute">
             <summary>
             Used for synchronous execution of command.
@@ -7574,9 +7503,27 @@
             <param name="fallback">Fall back action if main action fails</param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandGroupKey,System.Func{`0},System.Func{`0})" -->
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandSetter,System.Func{`0},System.Func{`0})" -->
+        <member name="T:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1">
+            <summary>
+            Provides a synchronous CircuitBreaker command with support for Func&lt;TResult&gt; Run and Fallback delegates.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandGroupKey,System.Func{`0},System.Func{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1"/> class.
+            </summary>
+            <param name="group">Used to group multiple command metrics.</param>
+            <param name="run">The Run delegate called when the circuit is closed.</param>
+            <param name="fallback">The Fallback delegate called when the circuit is open.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1.#ctor(Microsoft.VisualStudio.Services.CircuitBreaker.CommandSetter,System.Func{`0},System.Func{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1"/> class.
+            </summary>
+            <param name="setter">Enables setting command defaults in code.</param>
+            <param name="run">The Run delegate called when the circuit is closed.</param>
+            <param name="fallback">The Fallback delegate called when the circuit is open.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Services.CircuitBreaker.Command`1.Execute">
             <summary>
             Used for synchronous execution of command.

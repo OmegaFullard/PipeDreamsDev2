@@ -20,6 +20,27 @@
             <param name="httpClientFactory">HTTP client factory.</param>
             <param name="logger">Logger.</param>
         </member>
+        <member name="M:Microsoft.Identity.Web.DownstreamApi.#ctor(Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider,Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.Identity.Abstractions.DownstreamApiOptions},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DownstreamApi},Microsoft.Identity.Client.IMsalHttpClientFactory)">
+            <summary>
+            Constructor which accepts optional MSAL HTTP client factory.
+            </summary>
+            <param name="authorizationHeaderProvider">Authorization header provider.</param>
+            <param name="namedDownstreamApiOptions">Named options provider.</param>
+            <param name="httpClientFactory">HTTP client factory.</param>
+            <param name="logger">Logger.</param>
+            <param name="msalHttpClientFactory">The MSAL HTTP client factory for mTLS PoP scenarios.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DownstreamApi.#ctor(Microsoft.Identity.Abstractions.IAuthorizationHeaderProvider,Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.Identity.Abstractions.DownstreamApiOptions},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Logging.ILogger{Microsoft.Identity.Web.DownstreamApi},Microsoft.Identity.Web.ICredentialsProvider,Microsoft.Identity.Client.IMsalHttpClientFactory)">
+            <summary>
+            Constructor which accepts optional MSAL HTTP client factory.
+            </summary>
+            <param name="authorizationHeaderProvider">Authorization header provider.</param>
+            <param name="namedDownstreamApiOptions">Named options provider.</param>
+            <param name="httpClientFactory">HTTP client factory.</param>
+            <param name="logger">Logger.</param>
+            <param name="credentialsProvider">Certificate provider for mTLS auth scenarios.</param>
+            <param name="msalHttpClientFactory">The MSAL HTTP client factory for mTLS PoP scenarios.</param>
+        </member>
         <member name="M:Microsoft.Identity.Web.DownstreamApi.CallApiAsync(System.String,System.Action{Microsoft.Identity.Abstractions.DownstreamApiOptions},System.Security.Claims.ClaimsPrincipal,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
@@ -58,6 +79,14 @@
             <param name="optionsInstanceName">Named configuration.</param>
             <param name="calledApiOptionsOverride">Delegate to override the configuration.</param>
             <param name="httpMethod">Http method overriding the configuration options.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DownstreamApi.ReadErrorResponseContentAsync(System.Net.Http.HttpResponseMessage,System.Threading.CancellationToken)">
+            <summary>
+            Safely reads error response content with size limits to avoid performance issues with large payloads.
+            </summary>
+            <param name="response">The HTTP response message.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>The error response content, truncated if necessary.</returns>
         </member>
         <member name="M:Microsoft.Identity.Web.DownstreamApi.GetForUserAsync``1(System.String,System.Action{Microsoft.Identity.Abstractions.DownstreamApiOptionsReadOnlyHttpMethod},System.Security.Claims.ClaimsPrincipal,System.Threading.CancellationToken)">
             <inheritdoc/>
@@ -107,7 +136,7 @@
         <member name="M:Microsoft.Identity.Web.DownstreamApi.DeleteForAppAsync``2(System.String,``0,System.Action{Microsoft.Identity.Abstractions.DownstreamApiOptionsReadOnlyHttpMethod},System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
-        <member name="M:Microsoft.Identity.Web.DownstreamApi.Logger.HttpRequestError(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String,System.Exception)">
+        <member name="M:Microsoft.Identity.Web.DownstreamApi.Logger.HttpRequestError(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String,System.Int32,System.String,System.Exception)">
             <summary>
             Logger for handling options exceptions in DownstreamApi.
             </summary>
@@ -115,6 +144,8 @@
             <param name="ServiceName">Name of API receiving request.</param>
             <param name="BaseUrl">Base url from appsettings.</param>
             <param name="RelativePath">Relative path from appsettings.</param>
+            <param name="statusCode">HTTP status code from the response.</param>
+            <param name="responseContent">Error content returned by the downstream API</param>
             <param name="ex">Exception.</param>
         </member>
         <member name="M:Microsoft.Identity.Web.DownstreamApi.Logger.UnauthenticatedApiCall(Microsoft.Extensions.Logging.ILogger,System.Exception)">
@@ -123,6 +154,21 @@
             </summary>
             <param name="logger">Logger.</param>
             <param name="ex">Exception.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DownstreamApi.Logger.ReservedHeaderIgnored(Microsoft.Extensions.Logging.ILogger,System.String)">
+            <summary>
+            Logs that an ExtraHeaderParameters entry was skipped because its name is reserved.
+            </summary>
+            <param name="logger">Logger.</param>
+            <param name="headerName">Header name that was ignored.</param>
+        </member>
+        <member name="M:Microsoft.Identity.Web.DownstreamApi.Logger.DuplicateHeaderIgnored(Microsoft.Extensions.Logging.ILogger,System.String)">
+            <summary>
+            Logs that an ExtraHeaderParameters entry was skipped because the request already
+            carries a value for the same header name.
+            </summary>
+            <param name="logger">Logger.</param>
+            <param name="headerName">Header name that was ignored.</param>
         </member>
         <member name="T:Microsoft.Identity.Web.DownstreamApiExtensions">
             <summary>

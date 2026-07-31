@@ -283,7 +283,14 @@
             For binary backward compatibility.
             new uses should use the IDictionary version of TryGetValue
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.WorkItemTracking.Common.CommonUtils.GetDisplayNameFromDistinctDisplayName(System.String)" -->
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Common.CommonUtils.GetDisplayNameFromDistinctDisplayName(System.String)">
+            <summary>
+            Gets the display name from the disticnt display name
+            Turns Joe Cool &lt;jcool@cool.com&gt; to Joe Cool
+            </summary>
+            <param name="distinctDisplayName">A display name that may contain the distinct component</param>
+            <returns>A display name without the distinct component</returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Common.CommonUtils.DistinctDisplayName(Microsoft.VisualStudio.Services.WebApi.IdentityRef)">
             <summary>
             Gets the distinct display name for identityRef object
@@ -396,7 +403,25 @@
             <param name="builder"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.HtmlFormatter.CreateHeader(Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.FormattingWorkItemCollection,Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.IWorkItemUrlBuilder)" -->
+        <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.HtmlFormatter.CreateHeader(Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.FormattingWorkItemCollection,Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.IWorkItemUrlBuilder)">
+            <summary>
+                Creates the header of the html content, which contains the TPC name and Query name (if applicable)
+                <remarks>
+                    Returns a XElement of the following structure:
+                    <![CDATA[
+                    <p style="margin:0px;size:11pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"
+                        <b><span style="padding:0in .05in 0in 0in;margin-bottom:4.0pt;color:#3D5277">Query:</span></b>
+                        <span style="margin-bottom:4.0pt;color:#3D5277">
+                           <a href="Query Link">Query Name</a>
+                        </span>
+                    </p>
+                    ]]>
+                </remarks>
+            </summary>
+            <param name="workItemCollection">List of work items - results of a query or work item selections.</param>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Common.Presentation.HtmlFormatter.GetAnchorNode(System.String,System.Object)">
             <summary>
             Create an anchor tag expressed in an XElement.
@@ -959,6 +984,11 @@
             <param name="nodeSelect"></param>
             <returns></returns>
         </member>
+        <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.WorkItemFormExtensionsConstants.ProjectAdminGroupCache">
+            <summary>
+            Contains the results of a check that some principal can be a member of the PA group for a particular project.
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.WorkItemTracking.Internals.WorkItemHelper.LoadRevisions(Microsoft.TeamFoundation.WorkItemTracking.Internals.IRowSetCollectionHelper,Microsoft.TeamFoundation.WorkItemTracking.Internals.IWorkItemOpenFieldDataHelper,System.Collections.Generic.Dictionary{System.Int32,System.Object})">
             <summary>
             Note: This implementation will upcast the tables param to IRowSetCollectionHelper2 when available.
@@ -981,7 +1011,13 @@
             formatting the strings.  In DEBUG builds, it also asserts that the number of format
             arguments and the length of args match.
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.BuletPlainText" -->
+        <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.BuletPlainText">
+             <summary>
+             It is used when converting &lt;li&gt; tag to a plain text.
+            
+              *  
+             </summary>
+        </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.ErrorInGroupNotSupported">
             <summary>
             TF248007: You cannot use the &apos;in group&apos; operator to run a query. Either this feature is not enabled on this server, or the server version is earlier than Team Foundation Server 2010.
@@ -1915,14 +1951,14 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.CopiedCommentItem">
              <summary>
-             {0} is the workitem tage, example:  'Copied from Bug 324'
+             {0} is the workitem tage, example:  &apos;Copied from Bug 324&apos;
             
              Copied from {0}.
              </summary>
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.WorkItemTag">
              <summary>
-             {0} is the work item type name, {1} is the work item ID, example 'Task 32'
+             {0} is the work item type name, {1} is the work item ID, example &apos;Task 32&apos;
             
              {0} {1}
              </summary>
@@ -3059,10 +3095,9 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.ErrorGroupContainsAADGroupMember">
              <summary>
-             {0} - an Azure DevOps group name
-             {1} - a list of AAD group name, separated by comma
+             {0} - an Azure DevOps group name{1} - a list of Microsoft Entra group names, separated by comma
             
-             VS237301: The process contains field rule attributes &quot;for&quot; or &quot;not&quot; that reference Azure Active Directory (AAD) groups, which is unsupported. The &apos;{0}&apos; group contains the following AAD groups: {1}
+             VS237301: The process contains field rule attributes &quot;for&quot; or &quot;not&quot; that reference Microsoft Entra groups, which is unsupported. The &apos;{0}&apos; group contains the following Microsoft Entra groups: {1}
              </summary>
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.ErrorGroupContainsAADGroupSnippet">
@@ -3122,7 +3157,7 @@
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.ErrorGroupContainsADGroupMember">
             <summary>
-            VS237302: The process contains field rule attributes &quot;for&quot; or &quot;not&quot; that reference Active Directory (AD) groups, which is unsupported in data import as these groups will be converted to Azure Active Directory (AAD) groups post data import. The &apos;{0}&apos; group contains the following AD groups: {1}
+            VS237302: The process contains field rule attributes &quot;for&quot; or &quot;not&quot; that reference Active Directory (AD) groups, which is unsupported in data import as these groups will be converted to Microsoft Entra groups post data import. The &apos;{0}&apos; group contains the following AD groups: {1}
             </summary>
         </member>
         <member name="F:Microsoft.TeamFoundation.WorkItemTracking.Internals.InternalsResourceStrings.FileDownloadExceededMaxBytes">

@@ -2799,6 +2799,11 @@
             Administer build resource permissions
             </summary>
         </member>
+        <member name="M:Microsoft.TeamFoundation.Build.Common.BuildTypeResource.EditPipelineQueueConfigurationPermission">
+            <summary>
+            Edit queue build configuration
+            </summary>
+        </member>
         <member name="M:Microsoft.TeamFoundation.Build.Common.BuildTypeResource.InvalidBuildFileContainerId(System.Object)">
             <summary>
             The path {0} must specify a valid container ID.
@@ -2831,6 +2836,16 @@
         <member name="M:Microsoft.TeamFoundation.Build.Common.BuildTypeResource.ManagePipelinePoliciesPermission">
             <summary>
             Manage pipeline policies
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Build.Common.BuildTypeResource.CreateBuildDefinitionPermission">
+            <summary>
+            Create build pipeline
+            </summary>
+        </member>
+        <member name="M:Microsoft.TeamFoundation.Build.Common.BuildTypeResource.ManageStageRunOrderPermission">
+            <summary>
+            Manage stage run order
             </summary>
         </member>
     </members>
